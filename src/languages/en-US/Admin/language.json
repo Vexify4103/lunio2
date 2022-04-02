@@ -1,0 +1,15 @@
+{
+     "USAGE": "language set",
+     "DESC": "Set the language on your server.",
+     "PERMS": "Admin",
+     
+     "METHOD_NAME_1": "list",
+     "METHOD_DESC_1": "List all available languages.",
+     "METHOD_PERMS_1": "Admin",
+
+     "EMBED_INVALID_LANGUAGE": "Invalid language key provided. You can list available languages with `/language list`",
+     "EMBED_LANGUAGE_SET": "Language is set to `{{LANGUAGE}}`.",
+     "EMBED_AVAILABLE_LANGUAGES": "Available languages",
+     "EMBED_AVAILABLE_LANGUAGES_2": "[Click here]({{LINK}}) to help translate the bot.",
+     "EMBED_AVAILABLE_LANGUAGES_FOOTER": "Type '.language set <language-key>' to change the language."
+}

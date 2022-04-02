@@ -1,0 +1,8 @@
+{
+     "USAGE": "requester <true/false>",
+     "DESC": "Enables/disables if the requester is shown on each track.",
+     "PERMS": "Admin",
+     
+     "EMBED_REQUESTER_ENABLED": "Requester will be shown permanently on each track.",
+     "EMBED_REQUESTER_DISABLED": "Requester is no longer shown permanently on each track."
+}

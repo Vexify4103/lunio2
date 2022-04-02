@@ -1,0 +1,14 @@
+{
+     "USAGE": "help",
+     "DESC": "Shows the help menu.",
+     "PERMS": "Everyone",
+     
+     "METHOD_NAME_1": "",
+     "METHOD_DESC_1": "",
+     "METHOD_PERMS_1": "",
+     "METHOD_NAME_2": "",
+     "METHOD_DESC_2": "",
+     "METHOD_PERMS_2": "",
+
+     "FOOTER_DESC": "Type '/help <CommandName>' for details on a command"
+}

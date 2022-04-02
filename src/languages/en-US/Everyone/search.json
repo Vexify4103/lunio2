@@ -1,0 +1,12 @@
+{
+     "USAGE": "search <song name>",
+     "DESC": "Searches and lets you choose a song.",
+     "PERMS": "Everyone",
+     
+     "EMBED_SEARCHING_TITLE": "Searching tracks",
+     "EMBED_SEARCHING_DESC": "This might take a while...",
+     "EMBED_NO_SONGS_FOUND": "Could not find any songs.",
+     "EMBED_TRACK_QUEUED_TITLE": "Track queued",
+     "EMBED_TRACK_QUEUED_TITLE_2": "Track queued - Position {{size}}",
+     "EMBED_TIMELIMIT_REACHED": "The time ran out. You have `30 seconds` to choose."
+}

@@ -1,0 +1,16 @@
+{
+     "USAGE": "ping",
+     "DESC": "Shows the latency of the bot.",
+     "PERMS": "Everyone",
+
+     "METHOD_NAME_1": "ws",
+     "METHOD_DESC_1": "Shows the websocket latency of the bot.",
+     "METHOD_PERMS_1": "Everyone",
+     "METHOD_NAME_2": "rest",
+     "METHOD_DESC_2": "Shows the rest latency of the bot.",
+     "METHOD_PERMS_2": "Everyone",
+     "METHOD_NAME_3": "database",
+     "METHOD_DESC_3": "Shows the latency of the database.",
+     "METHOD_PERMS_3": "Everyone"
+     
+}

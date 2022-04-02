@@ -1,0 +1,8 @@
+{
+     "USAGE": "shuffle",
+     "DESC": "Shuffle the queue.",
+     "PERMS": "DJ",
+
+     "EMBED_NEED_3": "Need at least `3` songs in the queue to shuffle.",
+     "EMBED_SHUFFLED_QUEUE": "Shuffled the queue."
+}

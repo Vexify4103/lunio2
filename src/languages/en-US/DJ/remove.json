@@ -1,0 +1,10 @@
+{
+     "USAGE": "remove <from> <to>",
+     "DESC": "Removes a song from the queue.",
+     "PERMS": "DJ",
+
+     "EMBED_NO_QUEUE": "There is currently no song in the queue.",
+     "EMBED_NO_SONG": "There's no song with index `0` in the queue.",
+     "EMBED_REMOVED_SONG": "Song removed.",
+     "EMBED_REMOVED_RANGE": "Removed `{{removedSongs}}` songs."
+}

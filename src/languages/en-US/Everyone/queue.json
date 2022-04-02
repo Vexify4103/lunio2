@@ -1,0 +1,12 @@
+{
+     "USAGE": "queue",
+     "DESC": "Shows the queue.",
+     "PERMS": "Everyone",
+     
+     "METHOD_NAME_1": "<page number>",
+     "METHOD_DESC_1": "Show a specific page of the queue.",
+     "METHOD_PERMS_1": "Everyone",
+
+     "EMBED_NO_SONGINQUEUE": "There is currently no song in the queue.",
+     "EMBED_SHOW_CURRENT_PAGE": "Page {{current}}/{{total}} | {{size}} songs | {{duration}} total duration"
+}

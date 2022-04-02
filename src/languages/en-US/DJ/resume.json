@@ -1,0 +1,8 @@
+{
+     "USAGE": "resume",
+     "DESC": "Resumes the current paused song.",
+     "PERMS": "DJ",
+
+     "EMBED_ALREADY_RESUMED": "The song is not paused.",
+     "EMBED_RESUMED_SONG": "Resumed the song."
+}

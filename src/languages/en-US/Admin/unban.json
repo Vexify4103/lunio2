@@ -1,0 +1,10 @@
+{
+     "USAGE": "unban <user>",
+     "DESC": "Lets you unban users from controlling the bot.",
+     "PERMS": "Admin",
+
+     "EMBED_SELF_UNBAN": "You can't unban yourself from requesting songs.",
+     "EMBED_USER_BOT": "Provided user is a bot!",
+     "EMBED_SUCCESSFULL_UNBAN": "User `{{USER}}` has been unbanned and can request songs again.",
+     "EMBED_ALREADY_UNBANNED": "User `{{USER}}` is not banned from requesting songs."
+}

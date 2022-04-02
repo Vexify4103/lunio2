@@ -1,0 +1,10 @@
+{
+     "USAGE": "ban <user>",
+     "DESC": "Lets you ban users from controlling the bot.",
+     "PERMS": "Admin",
+
+     "EMBED_SELF_BAN": "You can't ban yourself from requesting songs.",
+     "EMBED_USER_BOT": "Provided user is a bot!",
+     "EMBED_SUCCESSFULL_BAN": "User `{{USER}}` has been banned from requesting songs.",
+     "EMBED_ALREADY_BANNED": "User `{{USER}}` is already banned from requesting songs."
+}

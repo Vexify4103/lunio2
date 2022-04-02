@@ -1,0 +1,7 @@
+{
+     "NOW_PLAYING": "Now Playing",
+     "PLAYER_ERROR": "Something went wrong on our end. Please try again later.",
+     "AUTOPLAY_ERROR": "An error occured playing in autoplay.",
+     "INACTIVE_TIMEOUT": "I left the voice channel due to inactivity.\nIf this is a [Premium]({{URL}}) server, you can disable the disconnect via `/24-7`",
+     "ERROR_TITLE": "An error occured"
+}
