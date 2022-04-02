@@ -2,9 +2,6 @@
 const { logger } = require('./utils');
 
 (async () => {
-
-	// This is to verify the config file
-	// const configCorrect = await require('./scripts/verify-config.js').run(require('./config.js'));
 		// This file is for sharding
 		const { ShardingManager } = require('discord.js');
 
