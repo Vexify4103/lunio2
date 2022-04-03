@@ -16,7 +16,6 @@ module.exports = class Lyrics extends Command {
                description: 'Shows lyrics for the currently playing song.',
                cooldown: 2000,
                slash: true,
-               premiumOnly: false,
                usage: 'lyrics',
                reqVote: true,
                reqplayer: false,

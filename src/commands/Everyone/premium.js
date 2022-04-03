@@ -1,7 +1,9 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     MessageEmbed,
+     MessageActionRow,
+     MessageButton
 } = require("discord.js");
 const dayjs = require('dayjs');
 const duration = require('dayjs/plugin/duration');
@@ -59,9 +61,19 @@ module.exports = class Premium extends Command {
           const Premium10 = '951826481204580382';
           const Premium15 = '951826570249666560';
 
+          const linkRow = new MessageActionRow()
+               .addComponents(
+                    new MessageButton()
+                         .setURL(bot.config.premiumLink)
+                         .setLabel('Premium')
+                         .setStyle('LINK'),
 
-
-
+                    new MessageButton()
+                         .setURL(bot.config.premiumLink)
+                         .setLabel('Premium')
+                         .setStyle('Manage Upgrade')
+               )
+               
           switch (Sub) {
                case "status":
                     let user;
@@ -77,6 +89,7 @@ module.exports = class Premium extends Command {
 
                          return interaction.reply({
                               embeds: [embed],
+                              components: [linkRow],
                               ephemeral: true
                          })
                     }
@@ -125,6 +138,7 @@ module.exports = class Premium extends Command {
 
                     return interaction.reply({
                          embeds: [embed2],
+                         components: [linkRow],
                          ephemeral: true
                     });
                case "upgrade": //ID required
@@ -136,6 +150,7 @@ module.exports = class Premium extends Command {
 
                          return interaction.reply({
                               embeds: [embed],
+                              components: [linkRow],
                               ephemeral: true
                          })
                     }
@@ -146,6 +161,7 @@ module.exports = class Premium extends Command {
 
                          return interaction.reply({
                               embeds: [embed],
+                              components: [linkRow],
                               ephemeral: true
                          })
                     }
@@ -175,6 +191,7 @@ module.exports = class Premium extends Command {
 
                               return interaction.reply({
                                    embeds: [embed],
+                                   components: [linkRow],
                                    ephemeral: true
                               })
                          }
@@ -204,6 +221,7 @@ module.exports = class Premium extends Command {
 
                          return interaction.reply({
                               embeds: [embed],
+                              components: [linkRow],
                               ephemeral: true
                          })
                     }

@@ -27,28 +27,18 @@ module.exports = class slashCreate extends Event {
 		if (Object.keys(usersettings).length == 0) return;
 
 		if (!channel || !member) return bot.logger.error("Error running / command cause channel or member are undefined.");
-		// check bot permissions
-		// const requiredPERMS = ["MANAGE_CHANNELS", "VIEW_CHANNEL", "SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "READ_MESSAGE_HISTORY", "ADD_REACTIONS", "USE_EXTERNAL_EMOJIS", "CONNECT","SPEAK", "USE_VAD"]
-		// let PERMS = [];
-		// if (!guild.me.permissions.has(requiredPERMS, true)) {
-		// 	requiredPERMS.forEach(perms => {
-		// 		PERMS.push(guild.me.permissions.has(perms) ? `✅ ${perms}` : `❌ ${perms}`)
-		// 	})
-		// }
-		// DISPLAY MISSING BOT PERMISSIONS
-		// if (PERMS.length > 0) {
-		// 	let embed = new MessageEmbed()
-		// 		.setColor(bot.config.colorWrong)
-		// 		.setDescription(`Missing the permission ${bot.codeBlock(PERMS[0])} in here which is required`)
-
-		// 	//CHANNEL SEND EMBED
-		// 	return interaction.reply({
-		// 		embeds: [embed],
-		// 		ephemeral: true
-		// 	})
-		// }
 
 		// check user permissions
+		if (cmd.conf.adminOnly && !member.permissions.has('ADMINISTRATOR')) {
+			let embed = new MessageEmbed()
+				.setColor(bot.config.colorWrong)
+				.setDescription(`You need admin permissions to use this command.`)
+
+			return interaction.reply({
+				embeds: [embed],
+				ephemeral: true
+			})
+		}
 		let neededPermissions = [];
 		cmd.conf.userPermissions.forEach((perm) => {
 			if (!channel.permissionsFor(member).has(perm)) {
@@ -193,7 +183,6 @@ module.exports = class slashCreate extends Event {
 				.setColor(bot.config.colorOrange)
 				.setDescription(bot.translate(settings.Language, 'slashCreate:COMMAND_PREMIUM'))
 
-
 			return interaction.reply({
 				embeds: [embed],
 				ephemeral: true
@@ -211,6 +200,36 @@ module.exports = class slashCreate extends Event {
 		//		ephemeral: true
 		//	})
 		//} 
+
+		// IF COMMAND IS IN PREMIUM CATEGORY
+		if ((cmd.conf.location === './commands/Premium')) {
+			// IF NO PREMIUM DETECTED
+			if (!(settings.premium || settings.permpremium || usersettings.premium || usersettings.permpremium)) {
+				let embed = new MessageEmbed()
+					.setColor(bot.config.colorOrange)
+					.setDescription(bot.translate(settings.Language, 'slashCreate:COMMAND_PREMIUM'))
+	
+				return interaction.reply({
+					embeds: [embed],
+					ephemeral: true
+				})
+			}
+			// IF PLAYER REQUIRED
+			if (cmd.conf.reqplayer) {
+				if (!player) {
+					let embed = new MessageEmbed()
+						.setColor(bot.config.colorWrong)
+						.setDescription(bot.translate(settings.Language, 'slashCreate:BOT_NOT_PLAYING'))
+
+					return interaction.reply({
+						embeds: [embed],
+						ephemeral: true
+					})
+				}
+			}
+
+		}
+		// IF COMMAND IS MUSIC COMMAND
 		if (cmd.conf.music) {
 			// IF USER IS NOT IN A VOICE CHANNEL
 			if (!member.voice.channel) {
@@ -287,7 +306,7 @@ module.exports = class slashCreate extends Event {
 
 			// CHECK FOR DJ ROLE
 			// || settings.MusicDJ && cmd.help.name === 'playlist'
-			if ((settings.MusicDJ && cmd.conf.location === './commands/DJ')) {
+			if (settings.MusicDJ && cmd.conf.location === './commands/DJ') {
 
 				if (!bot.checkDJ(member, settings)) {
 					let embed = new MessageEmbed()
@@ -318,6 +337,7 @@ module.exports = class slashCreate extends Event {
 			return await cmd.callback(bot, interaction, guild, interaction.options, settings);	
 		} catch (error) {
 			bot.logger.error(`running slashCreate: ${guild.id} | ${error}`)
+			if (bot.config.debug) return console.log(error)
 		}
 	}
 };

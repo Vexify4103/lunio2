@@ -7,6 +7,7 @@ module.exports = class Cleanup extends Command {
      constructor(bot) {
           super(bot, {
                name: 'cleanup',
+               adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                userPermissions: ["ADMINISTRATOR"],

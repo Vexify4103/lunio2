@@ -15,15 +15,25 @@ module.exports = class Message extends Event {
 	// run event
 	async run(bot, msg) {
 
-		// Should not respond to bots
-		if (msg.author.bot && msg.author.id !== bot.user.id) return;
-		// Should not respond to dms
-		if (msg.channel.type === 'DM') return;
-		// Get server settings
+		// Get settings
 		let settings = await bot.getGuildData(bot, msg.guild.id)
 		if (Object.keys(settings).length == 0) return;
 		let usersettings = await bot.getUserData(bot, msg.author.id)
 		if (Object.keys(usersettings).length == 0) return;
+		const irc = await bot.isrequestchannel(msg.channel.id, settings);
+		// Should not respond to bots
+		if (irc && msg.author.bot && msg.author.id !== bot.user.id) {
+			try {
+				if (msg?.deletable) msg.delete()
+			} catch (error) {
+				bot.logger.error(`Error deleting message not from void: ${error}`)
+			}
+			return;
+		}
+		if (msg.author.bot && msg.author.id !== bot.user.id) return;
+		// Should not respond to dms
+		if (msg.channel.type === 'DM') return;
+
 		const guild = await bot.guilds.fetch(msg.guild.id);
 		const member = await guild.members.fetch(msg.author.id);
 		//Check if bot was mentioned
@@ -74,12 +84,8 @@ module.exports = class Message extends Event {
 				})
 			}
 		}
-
-		const irc = await bot.isrequestchannel(msg.channel.id, settings);
 		if (irc) {
 			const player = bot.manager.players.get(msg.guild.id);
-			// IF MSG IS FOR SEARCH COMMAND AND SO LENGTH IS SMALLER THEN 2
-			if (msg.content.length <= 2 && msg.author.id !== bot.user.id) return msg.delete();
 			if (msg.content.toLowerCase() === 'cancel') return;
 			// IF MSG IS FROM VOID AND IS NORMAL MESSAGE => DELETE AFTER TIME
 			if ((msg.author.id === bot.user.id) && (msg.type !== 'APPLICATION_COMMAND')) {
@@ -125,7 +131,7 @@ module.exports = class Message extends Event {
 					embeds: [embed],
 				})
 			}
-			
+
 			// CHECK IF MEMBER IS IN VOICE
 			if (!member.voice.channel) {
 				let embed = new MessageEmbed()
@@ -193,14 +199,14 @@ module.exports = class Message extends Event {
 					embeds: [embed]
 				})
 			}
-			
+
 			if (!msg.member.voice.channel.permissionsFor(msg.guild.me).has('CONNECT')) {
 				let embed = new MessageEmbed()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'messageCreate:MISSING_PERM', {
 						PERMISSION: 'Connect'
 					}))
-					
+
 				return channel.send({
 					embeds: [embed]
 				})
@@ -210,8 +216,8 @@ module.exports = class Message extends Event {
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'messageCreate:MISSING_PERM', {
 						PERMISSION: 'Speak'
-					}))	
-					
+					}))
+
 				return channel.send({
 					embeds: [embed]
 				})
@@ -222,7 +228,7 @@ module.exports = class Message extends Event {
 					.setDescription(bot.translate(settings.Language, 'messageCreate:MISSING_PERM', {
 						PERMISSION: 'Use Voice Activity'
 					}))
-					
+
 				return channel.send({
 					embeds: [embed]
 				})
@@ -241,7 +247,7 @@ module.exports = class Message extends Event {
 
 
 			try {
-				return await bot.search(bot, msg, msg.content, settings, member); 
+				return await bot.search(bot, msg, msg.content, settings, member);
 			} catch (error) {
 				bot.logger.error(`running messageCreate: ${msg.guild.id} | ${error}`)
 			}

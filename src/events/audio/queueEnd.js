@@ -10,10 +10,9 @@ class QueueEnd extends Event {
 		});
 	}
 
-	async run(bot, player, {
-		identifier: videoID,
-		requester
-	}) {
+	async run(bot, player, { identifier: videoID, requester }) {
+		// console.log(player.identifier)
+		// console.log(requester)
 		let settings = await bot.getGuildData(bot, player.guild);
 		let channel = await bot.channels.fetch(player.textChannel);
 		let customch;
@@ -101,9 +100,7 @@ class QueueEnd extends Event {
 					break;
 			}
 		} else {
-			if (settings.CustomChannel) {
-				await bot.musicoff(bot, settings);
-			}
+			if (settings.CustomChannel) await bot.musicoff(bot, settings);
 			player.timeout = setTimeout(() => {
 				// Don't leave channel if 24/7 mode is active
 				if (player.twentyFourSeven) return clearTimeout(player.timeout);
@@ -124,7 +121,7 @@ class QueueEnd extends Event {
 					})
 				}
 				player.destroy();
-			}, 1000 * 60 * 5); //1000 * 60 * 5
+			}, 1000 * 5); //1000 * 60 * 15
 		}
 	}
 }

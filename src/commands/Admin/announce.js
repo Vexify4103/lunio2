@@ -8,10 +8,10 @@ module.exports = class Playlists extends Command {
      constructor(bot) {
           super(bot, {
                name: 'announce',
+               adminOnly: true,
                helpPerms: "Admin",
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Toggle sending of now playing messages on/off',
                slash: true,
                usage: 'announce',

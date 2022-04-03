@@ -8,6 +8,7 @@ module.exports = class Requester extends Command {
      constructor(bot) {
           super(bot, {
                name: 'requester',
+               adminOnly: true,
                helpPerms: "Admin",
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],

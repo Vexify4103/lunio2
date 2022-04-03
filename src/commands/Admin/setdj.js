@@ -7,6 +7,7 @@ module.exports = class Setdj extends Command {
      constructor(bot) {
           super(bot, {
                name: 'setdj',
+               adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                userPermissions: ["ADMINISTRATOR"],

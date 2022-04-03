@@ -8,6 +8,7 @@ module.exports = class Setvc extends Command {
           super(bot, {
                name: 'setvc',
                dirname: __dirname,
+               adminOnly: true,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                userPermissions: ["ADMINISTRATOR"],
                description: 'List all restricted voice channels.',

@@ -23,6 +23,7 @@ module.exports = class Search extends Command {
                     description: 'song name',
                     type: 3,
                     required: true,
+                    autocomplete: true
                }],
           });
      }

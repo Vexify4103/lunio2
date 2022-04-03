@@ -7,6 +7,7 @@ module.exports = class Fix extends Command {
      constructor(bot) {
           super(bot, {
                name: 'fix',
+               adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                userPermissions: ["ADMINISTRATOR"],

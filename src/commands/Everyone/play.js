@@ -24,6 +24,7 @@ module.exports = class Play extends Command {
                     description: 'The link or title of the track.',
                     type: 3,
                     required: true,
+                    autocomplete: true,
                }, {
                     name: 'flags',
                     description: 'Specify extra parameters.',

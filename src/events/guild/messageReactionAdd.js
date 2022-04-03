@@ -68,6 +68,9 @@ module.exports = class messageReactionAdd extends Event {
 		let plsettings;
 		let embed;
 
+		if (settings.MusicDJ && emoji.name === '⏯️' || '⏹️' || '⏭️' || '🔄' || '🔀') {
+			if (!bot.checkDJ(member, settings)) return;
+		}
 		switch (reaction.emoji.name) {
 			case "⏯️":
 				if (!player) return;
@@ -75,12 +78,11 @@ module.exports = class messageReactionAdd extends Event {
 
 				if (player.paused) {
 					player.pause(false)
-					return await bot.musicembed(bot, player, settings);
 				}
 				if (!player.paused) {
 					player.pause(true)
-					return await bot.musicembed(bot, player, settings);
 				}
+				return await bot.musicembed(bot, player, settings);
 				break;
 			case "⏹️":
 				if (!player) return;
@@ -92,7 +94,8 @@ module.exports = class messageReactionAdd extends Event {
 				if (!player) return;
 				if (!player.queue.current && player.queue.size === 0) return;
 
-				return player.stop()
+				player.stop()
+				return await bot.musicembed(bot, player, settings)
 			case "🔄":
 				if (!player) return;
 				if (!player.queue.current && player.queue.size === 0) return;
@@ -145,7 +148,7 @@ module.exports = class messageReactionAdd extends Event {
 				if (!player.queue.current && player.queue.size === 0) return;
 
 				player.queue.shuffle()
-
+					
 				return await bot.musicembed(bot, player, settings)
 			case "⭐":
 				// REQUIRE VOTE FOR THIS!
@@ -331,15 +334,6 @@ module.exports = class messageReactionAdd extends Event {
 					}
 				})
 				return;
-		}
-		function searchAndDestroy(title, author, playlist) {
-			let found = 0;
-			for (let i = 0; i < playlist.length; i++) {
-				if (playlist.songs[i].title == title && playlist.songs[i].author == author) {
-					found = i;
-					return found;
-				}
-			}
 		}
 	}
 };

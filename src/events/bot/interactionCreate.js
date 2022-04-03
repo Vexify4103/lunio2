@@ -15,5 +15,8 @@ module.exports = class Interaction extends Event {
 
 		// The interaction is a button
 		if (interaction.isButton()) return bot.emit('clickButton', interaction);
+
+		// the interaction is an autocomplete field
+		if (interaction.isAutocomplete()) return bot.emit('autoComplete', interaction);
 	}
 };

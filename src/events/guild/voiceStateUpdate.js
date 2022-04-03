@@ -97,14 +97,11 @@ module.exports = class voiceStateUpdate extends Event {
 			case "JOIN":
 				var player = bot.manager.players.get(oldState.guild.id)
 				if (!player) return
-				if (stateChangeMembers.size === 1 && player.paused) {
+				if (stateChangeMembers.size > 1 && player.paused) {
 					//resume track
-					if (settings.CustomChannel) {
-						player.pause(false)
-						return await bot.musicembed(bot, player, settings);
-					} else {
-						player.pause(false)
-					}
+					player.pause(false)
+					if (settings.CustomChannel) await bot.musicembed(bot, player, settings);
+					return;
 				}
 				break;
 			case "LEAVE":
@@ -112,12 +109,11 @@ module.exports = class voiceStateUpdate extends Event {
 				if (!player) return
 				if (stateChangeMembers.size === 0 && player.playing) {
 					//pause track
-					if (settings.CustomChannel) {
-						player.pause(true)
-						return await bot.musicembed(bot, player, settings);
-					} else {
-						player.pause(true)
-					}
+					player.pause(true)
+					if (settings.CustomChannel) await bot.musicembed(bot, player, settings);
+					// console.log(player.queue.current)
+					// bot.manager.emit('queueEnd', bot, player, player.queue.current)
+					return;
 				}
 				break;
 		}
