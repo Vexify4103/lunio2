@@ -10,7 +10,6 @@ module.exports = class Ban extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Lets you ban users from controlling the bot.',
                cooldown: 2000,
                helpPerms: "Admin",

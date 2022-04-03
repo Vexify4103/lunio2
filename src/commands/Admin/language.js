@@ -10,7 +10,6 @@ module.exports = class Language extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Set the language on your server.',
                cooldown: 2000,
                helpPerms: "Admin",

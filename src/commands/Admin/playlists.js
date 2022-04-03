@@ -12,7 +12,6 @@ module.exports = class Playlists extends Command {
                helpPerms: "Admin",
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Enables/disables the possibility of queueing playlists.',
                cooldown: 2000,
                slash: true,

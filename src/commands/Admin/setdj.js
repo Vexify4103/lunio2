@@ -10,7 +10,6 @@ module.exports = class Setdj extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Show the current DJ roles.',
                cooldown: 2000,
                helpPerms: "Admin",

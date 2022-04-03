@@ -10,7 +10,6 @@ module.exports = class Setvc extends Command {
                dirname: __dirname,
                adminOnly: true,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'List all restricted voice channels.',
                cooldown: 2000,
                helpPerms: "Admin",

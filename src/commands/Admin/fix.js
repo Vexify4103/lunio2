@@ -10,7 +10,6 @@ module.exports = class Fix extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Tries to fix the server region.',
                cooldown: 2000,
                helpPerms: "Admin",

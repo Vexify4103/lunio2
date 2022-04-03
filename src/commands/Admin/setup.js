@@ -12,7 +12,6 @@ module.exports = class Setup extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Setup the unique songrequest channel.',
                helpPerms: "Admin",
                cooldown: 2000,

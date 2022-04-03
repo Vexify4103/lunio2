@@ -12,7 +12,6 @@ module.exports = class Requester extends Command {
                helpPerms: "Admin",
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Enables/disables if the requester is shown on each track.',
                cooldown: 2000,
                slash: true,

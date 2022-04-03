@@ -16,7 +16,6 @@ module.exports = class Unban extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Lets you unban users from controlling the bot.',
                cooldown: 2000,
                helpPerms: "Admin",

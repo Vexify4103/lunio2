@@ -10,7 +10,6 @@ module.exports = class Cleanup extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Clear command and bot messages.',
                cooldown: 2000,
                helpPerms: "Admin",

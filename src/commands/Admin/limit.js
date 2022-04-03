@@ -10,7 +10,6 @@ module.exports = class Limit extends Command {
                adminOnly: true,
                dirname: __dirname,
                botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-               userPermissions: ["ADMINISTRATOR"],
                description: 'Show current set limits.',
                cooldown: 2000,
                helpPerms: "Admin",
