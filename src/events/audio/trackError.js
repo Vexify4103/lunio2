@@ -1,6 +1,6 @@
 const Event = require('../../structures/Event');
 const {
-	MessageEmbed
+	EmbedBuilder
 } = require('discord.js');
 
 class TrackError extends Event {
@@ -13,18 +13,18 @@ class TrackError extends Event {
 	async run(bot, player, track, payload) {
 		const settings = await bot.getGuildData(bot, player.gild)
 		//console.log(track)
-		bot.logger.log(`Track error: ${payload.error} in guild: ${player.guild} for this song: ${track.title}.`);
+		bot.logger.error(`Track error: ${payload.message} **${payload.severity}** in guild: ${player.guild} for this song: ${track.title}.`);
 
 		let title = bot.translate(settings.Language, 'misc:ERROR_TITLE')
-		let embed = new MessageEmbed()
+		let embed = new EmbedBuilder()
 			.setColor(bot.config.colorWrong)
 			.setTitle(title)
-			.setDescription(`[${track.title}](${track.uri})`)
+			.setDescription(`${track.title}`)
 
 		let channel = await bot.channels.fetch(player.textChannel)
 		if (settings.CustomChannel) {
 			const ch = await bot.channels.fetch(settings.mChannelID);
-			
+
 			await bot.musicoff(bot, settings);
 
 			ch.send({

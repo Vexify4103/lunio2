@@ -1,7 +1,8 @@
 // Dependencies
 const {
-	MessageEmbed,
-	Collection
+	EmbedBuilder,
+	Collection,
+	PermissionsBitField
 } = require("discord.js");
 const Event = require('../../structures/Event');
 
@@ -29,8 +30,8 @@ module.exports = class slashCreate extends Event {
 		if (!channel || !member) return bot.logger.error("Error running / command cause channel or member are undefined.");
 
 		// check user permissions
-		if (cmd.conf.adminOnly && !member.permissions.has('ADMINISTRATOR')) {
-			let embed = new MessageEmbed()
+		if (cmd.conf.adminOnly && !member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorWrong)
 				.setDescription(`You need admin permissions to use this command.`)
 
@@ -48,7 +49,7 @@ module.exports = class slashCreate extends Event {
 
 		// Display missing user permissions
 		if (neededPermissions.length > 0) {
-			let embed = new MessageEmbed()
+			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorWrong)
 				.setDescription(`You need ${bot.codeBlock(neededPermissions.join("\n"))} permission/s for that command.`)
 
@@ -61,7 +62,7 @@ module.exports = class slashCreate extends Event {
 
 		// If interaction was ran outside of CustomChannel
 		if (settings.CustomChannel && (cmd.conf.music && interaction.channelId !== settings.mChannelID)) {
-			let embed = new MessageEmbed()
+			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorOrange)
 				.setDescription(`This command is restricted to <#${settings.mChannelID}>.`)
 
@@ -73,14 +74,14 @@ module.exports = class slashCreate extends Event {
 
 		// CHECK PERMISSIONS
 		// SETUP PERMISSIONS CHECK
-		const setupPerms = ['MANAGE_CHANNELS', 'ADD_REACTIONS', 'VIEW_CHANNEL', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'USE_EXTERNAL_EMOJIS', 'CONNECT', 'SPEAK', 'USE_VAD'];
-		const setupPermsReadable = ['Manage Channels', 'Add Reactions', 'Read Text Channels & See Voice Channels', 'Send Messages', 'Manage Messages', 'Embed Links', 'Attach Files', 'Read History', 'Use External Emojis', 'Connect', 'Speak', 'Use Voice Activity']
-		if (cmd.help.name === 'setup' && !guild.me.permissions.has(setupPerms)) {
+		const setupPerms = [PermissionsBitField.Flags.ManageChannels, PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ManageMessages, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.UseExternalEmojis, PermissionsBitField.Flags.Connect, PermissionsBitField.Flags.Speak, PermissionsBitField.Flags.UseVAD];
+		const setupPermsReadable = ['Manage Channels', 'Read Text Channels & See Voice Channels', 'Send Messages', 'Manage Messages', 'Embed Links', 'Attach Files', 'Read History', 'Use External Emojis', 'Connect', 'Speak', 'Use Voice Activity']
+		if (cmd.help.name === 'setup' && !guild.members.me.permissions.has(setupPerms)) {
 			let neededPerms = [];
 			for (let i = 0; i < setupPerms.length && setupPermsReadable.length; i++) {
 				const perm = setupPerms[i];
 				const readable = setupPermsReadable[i];
-				neededPerms.push(guild.me.permissions.has(perm) ? `✅ ${readable}` : `❌ ${readable}`)
+				neededPerms.push(guild.members.me.permissions.has(perm) ? `✅ ${readable}` : `❌ ${readable}`)
 			}
 			return interaction.reply({
 				content: `**__${bot.translate(settings.Language, 'slashCreate:REQUIRED_PERMS_SETUP')}:__**\n${neededPerms.join('\n')}`,
@@ -90,11 +91,11 @@ module.exports = class slashCreate extends Event {
 		}
 		// CUSTOMCHANNEL PERMISSION CHECK
 		if (interaction.channelId === settings.mChannelID) {
-			if (!guild.me.permissions.has('MANAGE_MESSAGES')) {
-				let embed = new MessageEmbed()
+			if (!guild.members.me.permissions.has(PermissionsBitField.Flags.ManageMessages)) {
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:MISSING_PERMISSION_SETUP', {
-						PERMISSION: 'MANAGE_MESSAGES'
+						PERMISSION: `${bot.codeBlock('ManageMessages')}`
 					}))
 
 				return interaction.reply({
@@ -107,7 +108,7 @@ module.exports = class slashCreate extends Event {
 		// IF COMMAND REQUIRES VOICE CHANNEL
 		if (cmd.conf.reqvc) {
 			if (!member.voice.channel) {
-				let embed = new MessageEmbed()
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorOrange)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:USER_NOT_VC'))
 
@@ -117,7 +118,7 @@ module.exports = class slashCreate extends Event {
 				})
 			}
 			if (player && (member.voice.channel.id !== player.voiceChannel)) {
-				let embed = new MessageEmbed()
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorOrange)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:PLAYING_DIFFERENT_VC'))
 
@@ -133,7 +134,7 @@ module.exports = class slashCreate extends Event {
 					str.push(`<#${v}>`)
 				});
 
-				let embed = new MessageEmbed()
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorOrange)
 					.setDescription(`${bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_ALLOWED_TO_JOIN')} ${str.join("\n")}`)
 
@@ -146,7 +147,7 @@ module.exports = class slashCreate extends Event {
 
 		// If user is banned from using commands
 		if (usersettings.guilds.includes(interaction.guildId)) {
-			let embed = new MessageEmbed()
+			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorOrange)
 				.setDescription(bot.translate(settings.Language, 'slashCreate:USER_BANNED'))
 
@@ -179,7 +180,7 @@ module.exports = class slashCreate extends Event {
 		}
 		// Check if user can use premium commands
 		if (cmd.conf.premiumOnly && !(settings.premium || settings.permpremium || usersettings.premium || usersettings.permpremium)) {
-			let embed = new MessageEmbed()
+			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorOrange)
 				.setDescription(bot.translate(settings.Language, 'slashCreate:COMMAND_PREMIUM'))
 
@@ -191,7 +192,7 @@ module.exports = class slashCreate extends Event {
 		// Check if user can run voterequireded commands
 		//if (cmd.conf.reqVote && !(settings.permvote || hasVoted)) {
 
-		//	let voteonly = new MessageEmbed()
+		//	let voteonly = new EmbedBuilder()
 		//		.setColor(bot.config.colorOrange)
 		//		.setDescription(`This command requires you to vote.\n[Click here](${bot.config.voteLink}) to vote and use this command for the next 12 hours.`)
 
@@ -205,10 +206,30 @@ module.exports = class slashCreate extends Event {
 		if ((cmd.conf.location === './commands/Premium')) {
 			// IF NO PREMIUM DETECTED
 			if (!(settings.premium || settings.permpremium || usersettings.premium || usersettings.permpremium)) {
-				let embed = new MessageEmbed()
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorOrange)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:COMMAND_PREMIUM'))
-	
+
+				return interaction.reply({
+					embeds: [embed],
+					ephemeral: true
+				})
+			}
+			if ((cmd.help.name === '247' || cmd.help.name === 'autoplay') && !member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+				let embed = new EmbedBuilder()
+					.setColor(bot.config.colorWrong)
+					.setDescription(bot.translate(settings.Language, 'slashCreate:USER_NOT_ADMIN'))
+
+				return interaction.reply({
+					embeds: [embed],
+					ephemeral: true
+				})
+			}
+			if (!bot.checkDJ(member, settings)) {
+				let embed = new EmbedBuilder()
+					.setColor(bot.config.colorOrange)
+					.setDescription(bot.translate(settings.Language, 'slashCreate:USER_NO_DJ'))
+
 				return interaction.reply({
 					embeds: [embed],
 					ephemeral: true
@@ -217,7 +238,7 @@ module.exports = class slashCreate extends Event {
 			// IF PLAYER REQUIRED
 			if (cmd.conf.reqplayer) {
 				if (!player) {
-					let embed = new MessageEmbed()
+					let embed = new EmbedBuilder()
 						.setColor(bot.config.colorWrong)
 						.setDescription(bot.translate(settings.Language, 'slashCreate:BOT_NOT_PLAYING'))
 
@@ -233,7 +254,7 @@ module.exports = class slashCreate extends Event {
 		if (cmd.conf.music) {
 			// IF USER IS NOT IN A VOICE CHANNEL
 			if (!member.voice.channel) {
-				let embed = new MessageEmbed()
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorOrange)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:USER_NOT_VC'))
 
@@ -243,11 +264,11 @@ module.exports = class slashCreate extends Event {
 				})
 			}
 			// IF BOT CANNOT SEE VOICE CHANNEL
-			if (!member.voice.channel.permissionsFor(guild.me).has('VIEW_CHANNEL')) {
-				let embed = new MessageEmbed()
+			if (!member.voice.channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) {
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:MISSING_READ_TEXT', {
-						PERMISSION: "Read Text Channels & See Voice Channels"
+						PERMISSION: `${bot.codeBlock('Read Text Channels & See Voice Channels')}`
 					}))
 
 				return interaction.reply({
@@ -256,8 +277,8 @@ module.exports = class slashCreate extends Event {
 				})
 			}
 			// IF VOICE CHANNEL IS FULL
-			if (member.voice.channel.full && !member.voice.channel.permissionsFor(guild.me).has('MOVE_MEMBERS') && (!guild.me.voice.channel || (guild.me.voice.channel.id !== member.voice.channel.id))) {
-				let embed = new MessageEmbed()
+			if (member.voice.channel.full && !member.voice.channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.MoveMembers) && (!guild.members.me.voice.channel || (guild.members.me.voice.channel.id !== member.voice.channel.id))) {
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:VC_ALREADY_FULL'))
 
@@ -267,37 +288,37 @@ module.exports = class slashCreate extends Event {
 				})
 			}
 
-			if (!member.voice.channel.permissionsFor(guild.me).has('CONNECT')) {
-				let embed = new MessageEmbed()
+			if (!member.voice.channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.Connect)) {
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:MISSING_PERM', {
-						PERMISSION: 'Connect'
+						PERMISSION: `${bot.codeBlock('Connect')}`
 					}))
-					
+
 				return interaction.reply({
 					embeds: [embed],
 					ephemeral: true
 				})
 			}
-			if (!member.voice.channel.permissionsFor(guild.me).has('SPEAK')) {
-				let embed = new MessageEmbed()
+			if (!member.voice.channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.Speak)) {
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:MISSING_PERM', {
-						PERMISSION: 'Speak'
-					}))	
-					
+						PERMISSION: `${bot.codeBlock('Speak')}`
+					}))
+
 				return interaction.reply({
 					embeds: [embed],
 					ephemeral: true
 				})
 			}
-			if (!member.voice.channel.permissionsFor(guild.me).has('USE_VAD')) {
-				let embed = new MessageEmbed()
+			if (!member.voice.channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.UseVAD)) {
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(bot.translate(settings.Language, 'slashCreate:MISSING_PERM', {
-						PERMISSION: 'Use Voice Activity'
+						PERMISSION: `${bot.codeBlock('Use Voice Activity')}`
 					}))
-					
+
 				return interaction.reply({
 					embeds: [embed],
 					ephemeral: true
@@ -306,23 +327,20 @@ module.exports = class slashCreate extends Event {
 
 			// CHECK FOR DJ ROLE
 			// || settings.MusicDJ && cmd.help.name === 'playlist'
-			if (settings.MusicDJ && cmd.conf.location === './commands/DJ') {
+			if (cmd.conf.location === './commands/DJ' && !bot.checkDJ(member, settings)) {
+				let embed = new EmbedBuilder()
+					.setColor(bot.config.colorOrange)
+					.setDescription(bot.translate(settings.Language, 'slashCreate:USER_NO_DJ'))
 
-				if (!bot.checkDJ(member, settings)) {
-					let embed = new MessageEmbed()
-						.setColor(bot.config.colorOrange)
-						.setDescription(bot.translate(settings.Language, 'slashCreate:USER_NO_DJ'))
-
-					return interaction.reply({
-						embeds: [embed],
-						ephemeral: true
-					})
-				}
+				return interaction.reply({
+					embeds: [embed],
+					ephemeral: true
+				})
 			}
 			// IF COMMAND REQUIRES ACTIVE PLAYER
 			if (cmd.conf.reqplayer) {
 				if (!player || !player.queue.current) {
-					let embed = new MessageEmbed()
+					let embed = new EmbedBuilder()
 						.setColor(bot.config.colorWrong)
 						.setDescription(bot.translate(settings.Language, 'slashCreate:BOT_NOT_PLAYING'))
 
@@ -334,10 +352,12 @@ module.exports = class slashCreate extends Event {
 			}
 		}
 		try {
-			return await cmd.callback(bot, interaction, guild, interaction.options, settings);	
+			await cmd.callback(bot, interaction, guild, interaction.options, settings);
 		} catch (error) {
+			console.trace(error)
 			bot.logger.error(`running slashCreate: ${guild.id} | ${error}`)
 			if (bot.config.debug) return console.log(error)
 		}
+		return undefined;
 	}
 };

@@ -4,7 +4,7 @@ const {
 } = require('../../utils'),
      Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 const {
      userSchema
@@ -15,7 +15,6 @@ module.exports = class Unban extends Command {
                name: 'unban',
                adminOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Lets you unban users from controlling the bot.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -37,7 +36,7 @@ module.exports = class Unban extends Command {
           let embed;
 
           if (member.user.id === interaction.user.id) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Admin/unban:EMBED_SELF_UNBAN'))
 
@@ -48,7 +47,7 @@ module.exports = class Unban extends Command {
           }
           // check if member mentioned is a bot
           if (member.user.bot) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Admin/unban:EMBED_USER_BOT'))
 
@@ -74,10 +73,10 @@ module.exports = class Unban extends Command {
 
                await bot.updateUserSettings(member.user, newsettings);
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorTrue)
                     .setDescription(bot.translate(settings.Language, 'Admin/unban:EMBED_SUCCESSFULL_UNBAN', {
-                         USER: member.user.username + "#" + member.user.discriminator
+                         USER: `${bot.codeBlock(member.user.username + "#" + member.user.discriminator)}`
                     }))
 
                return interaction.reply({
@@ -85,10 +84,10 @@ module.exports = class Unban extends Command {
                     ephemeral: true
                });
           } else {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorOrange)
                     .setDescription(bot.translate(settings.Language, 'Admin/unban:EMBED_ALREADY_UNBANNED', {
-                         USER: member.user.username + "#" + member.user.discriminator
+                         USER: `${bot.codeBlock(member.user.username + "#" + member.user.discriminator)}`
                     }))
 
                return interaction.reply({

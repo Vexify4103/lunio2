@@ -1,0 +1,394 @@
+15:09:23.871 INFO  Shard: 0 has became ready 
+15:09:26.657 INFO  MongoDB successfully connected 
+15:09:26.873 INFO  All guilds have been initialized 
+15:09:27.007 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:09:27.008 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+15:09:27.008 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:09:27.313 ERROR Lavalink node: 'lavalink.scpcl.site', has error: 'connect ECONNREFUSED 194.67.71.11:443'. 
+15:09:27.315 ERROR Lavalink node: lavalink.scpcl.site has disconnect, reason: unspecified. 
+15:09:59.600 ERROR Lavalink node: 'lavalink.scpcl.site', has error: 'connect ECONNREFUSED 194.67.71.11:443'. 
+15:09:59.601 ERROR Lavalink node: lavalink.scpcl.site has disconnect, reason: unspecified. 
+15:10:24.092 INFO  MongoDB successfully connected 
+15:10:24.465 INFO  Shard: 0 has became ready 
+15:10:24.529 INFO  All guilds have been initialized 
+15:10:24.653 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:10:24.653 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+15:10:24.653 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:10:26.813 ERROR Lavalink node: 'lavalink.scpcl.site', has error: 'connect ECONNREFUSED 194.67.71.11:443'. 
+15:10:26.815 ERROR Lavalink node: lavalink.scpcl.site has disconnect, reason: unspecified. 
+15:10:48.314 INFO  MongoDB successfully connected 
+15:10:48.790 INFO  Shard: 0 has became ready 
+15:10:48.843 INFO  All guilds have been initialized 
+15:10:48.961 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:10:48.961 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+15:10:48.961 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:10:51.100 ERROR Lavalink node: 'lavalink.scpcl.site', has error: 'connect ECONNREFUSED 194.67.71.11:443'. 
+15:10:51.101 ERROR Lavalink node: lavalink.scpcl.site has disconnect, reason: unspecified. 
+15:13:03.549 INFO  MongoDB successfully connected 
+15:13:04.313 INFO  Shard: 0 has became ready 
+15:13:04.370 INFO  All guilds have been initialized 
+15:13:04.503 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:13:04.504 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+15:13:04.504 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:13:05.203 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+15:14:05.204 ERROR Lavalink node: lavalink.oops.wtf has disconnect, reason: unspecified. 
+15:14:35.680 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+15:15:35.681 ERROR Lavalink node: lavalink.oops.wtf has disconnect, reason: unspecified. 
+15:16:06.134 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+15:17:06.136 ERROR Lavalink node: lavalink.oops.wtf has disconnect, reason: unspecified. 
+15:17:36.553 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+15:18:36.554 ERROR Lavalink node: lavalink.oops.wtf has disconnect, reason: unspecified. 
+15:19:07.023 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+15:20:07.023 ERROR Lavalink node: lavalink.oops.wtf has disconnect, reason: unspecified. 
+15:20:37.037 ERROR Lavalink node: 'lavalink.oops.wtf', has error: 'Unable to connect after 5 attempts.'. 
+19:12:11.995 INFO  Shard: 0 has became ready 
+19:12:12.795 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:12:16.840 INFO  MongoDB successfully connected 
+19:12:18.213 INFO  All guilds have been initialized 
+19:12:18.357 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:12:18.357 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:12:18.357 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:12:53.327 INFO  Shard: 0 has became ready 
+19:12:53.656 INFO  MongoDB successfully connected 
+19:12:54.331 INFO  All guilds have been initialized 
+19:12:54.401 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:12:54.469 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:12:54.469 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:12:54.470 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:15:04.942 INFO  Shard: 0 has became ready 
+19:15:07.191 INFO  MongoDB successfully connected 
+19:15:08.725 INFO  All guilds have been initialized 
+19:15:08.744 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:15:08.857 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:15:08.858 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:15:08.858 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:15:35.736 INFO  MongoDB successfully connected 
+19:15:36.394 INFO  Shard: 0 has became ready 
+19:15:36.462 INFO  All guilds have been initialized 
+19:15:36.920 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:15:37.031 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:15:37.032 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:15:37.032 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:16:02.451 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/823543363688464455/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+19:18:45.123 INFO  Shard: 0 has became ready 
+19:18:46.482 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:18:49.181 INFO  MongoDB successfully connected 
+19:18:50.046 INFO  All guilds have been initialized 
+19:18:50.289 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:18:50.289 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:18:50.290 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:18:56.611 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/823543363688464455/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+19:19:26.369 INFO  MongoDB successfully connected 
+19:19:26.644 INFO  Shard: 0 has became ready 
+19:19:28.121 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:19:29.734 INFO  All guilds have been initialized 
+19:19:29.869 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:19:29.870 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:19:29.870 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:20:27.904 ERROR Lavalink node: lavalink.oops.wtf has disconnect, reason: unspecified. 
+19:20:45.370 INFO  Shard: 0 has became ready 
+19:20:46.535 INFO  MongoDB successfully connected 
+19:20:46.615 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:20:48.415 INFO  All guilds have been initialized 
+19:20:48.574 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:20:48.574 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:20:48.575 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:20:52.059 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/823543363688464455/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+19:22:41.176 INFO  MongoDB successfully connected 
+19:22:41.781 INFO  Shard: 0 has became ready 
+19:22:41.941 INFO  All guilds have been initialized 
+19:22:42.086 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:22:42.086 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:22:42.086 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:22:42.677 INFO  Lavalink node: lavalink.oops.wtf has connected. 
+19:22:51.819 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/823543363688464455/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+19:28:17.305 INFO  Shard: 0 has became ready 
+19:28:18.659 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+19:28:20.543 INFO  MongoDB successfully connected 
+19:28:21.026 INFO  All guilds have been initialized 
+19:28:21.160 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:28:21.161 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:28:21.161 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:28:59.194 ERROR channel.awaitMessages is not a function
+{}
+TypeError: channel.awaitMessages is not a function
+    at Search.callback (D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\search.js:100:42)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async slashCreate.run (D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\custom\slashCreate.js:230:10) 
+19:28:59.197 ERROR Unhandled promise rejection: x.editReply is not a function. 
+19:33:13.652 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+19:33:24.371 INFO  MongoDB successfully connected 
+19:33:27.806 INFO  Shard: 0 has became ready 
+19:33:27.853 INFO  All guilds have been initialized 
+19:33:27.980 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:33:27.980 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:33:27.981 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:33:28.189 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+19:33:37.940 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/823543363688464455/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+19:34:24.151 INFO  MongoDB successfully connected 
+19:34:25.333 INFO  Shard: 0 has became ready 
+19:34:26.028 INFO  All guilds have been initialized 
+19:34:26.245 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:34:26.246 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:34:26.246 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:34:26.744 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+19:34:27.908 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/823543363688464455/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+19:34:31.080 ERROR Unhandled promise rejection: Unknown interaction. 
+19:38:36.539 INFO  MongoDB successfully connected 
+19:38:39.658 INFO  Shard: 0 has became ready 
+19:38:39.725 INFO  All guilds have been initialized 
+19:38:39.913 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:38:39.913 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers 
+19:38:39.913 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:38:46.254 ERROR Error creating player RangeError: No available nodes. 
+19:38:51.205 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+19:39:01.890 ERROR Unhandled promise rejection: Invalid Form Body
+data.embeds[0].description: This field is required. 
+20:42:55.164 INFO  MongoDB successfully connected 
+20:42:58.620 INFO  Shard: 0 has became ready 
+20:42:58.663 INFO  All guilds have been initialized 
+20:42:58.782 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:42:58.782 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+20:42:58.783 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:42:59.954 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+20:43:21.857 ERROR Target user is not connected to voice.
+{"name":"DiscordAPIError","message":"Target user is not connected to voice.","method":"patch","path":"/guilds/709832515577184287/members/945474723846950944","code":40032,"httpStatus":400,"requestData":{"json":{"deaf":true},"files":[]}}
+DiscordAPIError: Target user is not connected to voice.
+    at RequestHandler.execute (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async GuildMemberManager.edit (D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\discord.js\src\managers\GuildMemberManager.js:279:15) 
+20:44:36.279 INFO  MongoDB successfully connected 
+20:44:36.630 INFO  Shard: 0 has became ready 
+20:44:36.676 INFO  All guilds have been initialized 
+20:44:36.797 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:44:36.797 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+20:44:36.797 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:44:37.028 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+20:45:30.565 INFO  MongoDB successfully connected 
+20:45:31.029 INFO  Shard: 0 has became ready 
+20:45:31.081 INFO  All guilds have been initialized 
+20:45:31.199 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:45:31.200 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+20:45:31.200 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:45:31.401 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+20:47:21.911 INFO  MongoDB successfully connected 
+20:47:22.396 INFO  Shard: 0 has became ready 
+20:47:22.439 INFO  All guilds have been initialized 
+20:47:22.564 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:47:22.564 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+20:47:22.565 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:47:22.875 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:06:17.910 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+21:08:13.476 INFO  MongoDB successfully connected 
+21:08:14.033 INFO  Shard: 0 has became ready 
+21:08:14.077 INFO  All guilds have been initialized 
+21:08:14.209 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:08:14.209 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:08:14.210 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:08:14.563 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:08:17.974 ERROR Unhandled promise rejection: tempmsg.createMessageComponentCollector is not a function. 
+21:08:18.136 ERROR Unhandled promise rejection: Invalid Form Body
+components[0].components[4].custom_id: Component custom id cannot be duplicated. 
+21:09:51.451 INFO  MongoDB successfully connected 
+21:09:51.912 INFO  Shard: 0 has became ready 
+21:09:51.956 INFO  All guilds have been initialized 
+21:09:52.083 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:09:52.083 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:09:52.084 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:09:52.292 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:09:56.157 ERROR Unhandled promise rejection: interaction.createMessageComponentCollector is not a function. 
+21:19:14.286 INFO  MongoDB successfully connected 
+21:19:14.777 INFO  Shard: 0 has became ready 
+21:19:14.844 INFO  All guilds have been initialized 
+21:19:14.986 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:19:14.987 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:19:14.987 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:19:15.238 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:19:19.610 ERROR Unhandled promise rejection: The reply to this interaction has already been sent or deferred.. 
+21:19:19.614 ERROR Unhandled promise rejection: interaction.createMessageComponentCollector is not a function. 
+21:24:48.751 INFO  Shard: 0 has became ready 
+21:24:49.200 INFO  MongoDB successfully connected 
+21:24:49.215 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:24:49.485 INFO  All guilds have been initialized 
+21:24:49.632 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:24:49.633 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:24:49.633 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:24:57.362 ERROR Unhandled promise rejection: The reply to this interaction has already been sent or deferred.. 
+21:26:47.469 INFO  MongoDB successfully connected 
+21:26:48.161 INFO  Shard: 0 has became ready 
+21:26:48.589 INFO  All guilds have been initialized 
+21:26:49.055 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:26:49.056 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:26:49.056 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:26:49.418 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:27:44.423 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+21:28:14.823 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:29:09.859 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+21:29:16.378 ERROR Error creating player search command: RangeError: No available nodes. 
+21:29:16.379 ERROR Cannot read properties of undefined (reading 'search')
+{}
+TypeError: Cannot read properties of undefined (reading 'search')
+    at Search.callback (D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\search.js:66:35)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async slashCreate.run (D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\custom\slashCreate.js:229:10) 
+21:29:16.381 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'queue'). 
+21:29:26.769 INFO  MongoDB successfully connected 
+21:29:27.773 INFO  Shard: 0 has became ready 
+21:29:27.832 INFO  All guilds have been initialized 
+21:29:27.964 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:29:27.964 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:29:27.965 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:29:28.189 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:29:35.356 ERROR Unhandled promise rejection: Unknown Message. 
+21:42:45.494 INFO  MongoDB successfully connected 
+21:42:46.381 INFO  Shard: 0 has became ready 
+21:42:46.439 INFO  All guilds have been initialized 
+21:42:46.863 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:42:46.864 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:42:46.864 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:42:48.094 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:42:54.498 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'user'). 
+21:44:43.111 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+21:45:00.064 INFO  MongoDB successfully connected 
+21:45:05.767 INFO  Shard: 0 has became ready 
+21:45:05.819 INFO  All guilds have been initialized 
+21:45:05.962 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:45:05.962 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:45:05.962 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:45:06.954 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:46:01.968 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+21:46:32.391 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:47:07.157 INFO  Shard: 0 has became ready 
+21:47:08.407 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:47:13.912 INFO  MongoDB successfully connected 
+21:47:14.478 INFO  All guilds have been initialized 
+21:47:14.622 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:47:14.622 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:47:14.622 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:49:17.689 INFO  MongoDB successfully connected 
+21:49:18.060 INFO  Shard: 0 has became ready 
+21:49:18.125 INFO  All guilds have been initialized 
+21:49:18.294 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:49:18.294 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:49:18.294 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:49:19.582 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+21:50:13.470 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+21:50:43.967 INFO  MongoDB successfully connected 
+21:50:44.422 INFO  Shard: 0 has became ready 
+21:50:44.471 INFO  All guilds have been initialized 
+21:50:44.589 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:50:44.589 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+21:50:44.589 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:50:44.793 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:10:53.311 INFO  MongoDB successfully connected 
+22:10:53.793 INFO  Shard: 0 has became ready 
+22:10:53.872 INFO  All guilds have been initialized 
+22:10:53.996 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:10:53.996 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+22:10:53.996 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:10:54.196 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:16:49.205 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+22:17:20.817 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:18:15.848 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+22:18:46.322 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:19:41.318 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+22:20:11.730 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:21:07.264 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+22:21:37.666 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:22:32.688 ERROR Lavalink node: lavalink.jayden.sh has disconnect, reason: unspecified. 
+22:23:02.698 ERROR Lavalink node: 'lavalink.jayden.sh', has error: 'Unable to connect after 5 attempts.'. 
+22:37:27.936 INFO  MongoDB successfully connected 
+22:37:28.413 INFO  Shard: 0 has became ready 
+22:37:28.462 INFO  All guilds have been initialized 
+22:37:28.588 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:37:28.588 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:37:28.588 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:37:28.825 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:37:41.801 ERROR Unhandled promise rejection: color is not defined. 
+22:38:35.484 ERROR Unable to load command search.js: SyntaxError: missing ) after argument list 
+22:38:36.073 INFO  MongoDB successfully connected 
+22:38:36.642 INFO  Shard: 0 has became ready 
+22:38:36.708 INFO  All guilds have been initialized 
+22:38:36.832 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:38:36.832 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:38:36.832 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:38:37.033 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:39:11.646 ERROR Unable to load command search.js: SyntaxError: missing ) after argument list 
+22:39:12.216 INFO  MongoDB successfully connected 
+22:39:12.784 INFO  Shard: 0 has became ready 
+22:39:12.825 INFO  All guilds have been initialized 
+22:39:12.963 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:39:12.963 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:39:12.963 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:39:13.145 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:40:02.184 INFO  MongoDB successfully connected 
+22:40:02.662 INFO  Shard: 0 has became ready 
+22:40:02.714 INFO  All guilds have been initialized 
+22:40:02.854 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:40:02.855 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:40:02.855 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:40:03.059 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:41:40.794 INFO  MongoDB successfully connected 
+22:41:41.374 INFO  Shard: 0 has became ready 
+22:41:41.420 INFO  All guilds have been initialized 
+22:41:41.541 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:41:41.541 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:41:41.541 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:41:42.773 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:41:55.271 ERROR getaddrinfo ENOTFOUND lavalink.jayden.sh
+{"errno":-3008,"code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"lavalink.jayden.sh"}
+Error: getaddrinfo ENOTFOUND lavalink.jayden.sh
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:72:26) 
+22:41:55.274 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'colorWrong'). 
+22:42:19.597 INFO  MongoDB successfully connected 
+22:42:20.217 INFO  Shard: 0 has became ready 
+22:42:20.271 INFO  All guilds have been initialized 
+22:42:20.416 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:42:20.416 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:42:20.416 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:42:21.932 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:42:26.445 INFO  MongoDB successfully connected 
+22:42:27.021 INFO  Shard: 0 has became ready 
+22:42:27.076 INFO  All guilds have been initialized 
+22:42:27.208 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:42:27.209 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+22:42:27.209 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:42:27.404 INFO  Lavalink node: lavalink.jayden.sh has connected. 
+22:43:12.494 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'title'). 

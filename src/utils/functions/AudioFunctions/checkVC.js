@@ -1,9 +1,8 @@
 module.exports = (member, settings) => {
-     const { channel } = member.voice;
-     if (!channel) return false;
+     if (!member.voice.channel) return false;
 	// Check if the member has role to interact with music plugin
      if (settings.VCToggle) {
-          if (settings.VCs.includes(channel.id)) {
+          if (settings.VCs.includes(member.voice.channel.id)) {
                return true;
           } else {
                return false;

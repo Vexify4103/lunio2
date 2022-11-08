@@ -1,4 +1,5 @@
 // Dependencies
+const { InteractionType } = require('discord.js');
 const Event = require('../../structures/Event');
 
 module.exports = class Interaction extends Event {
@@ -11,12 +12,12 @@ module.exports = class Interaction extends Event {
 	// run event
 	async run(bot, interaction) {
 		// The interaction is a slash command
-		if (interaction.isCommand()) return bot.emit('slashCreate', interaction);
+		if (interaction.isChatInputCommand()) return bot.emit('slashCreate', interaction);
 
 		// The interaction is a button
 		if (interaction.isButton()) return bot.emit('clickButton', interaction);
 
 		// the interaction is an autocomplete field
-		if (interaction.isAutocomplete()) return bot.emit('autoComplete', interaction);
+		if (interaction.type === InteractionType.ApplicationCommandAutocomplete) return bot.emit('autoComplete', interaction);
 	}
 };

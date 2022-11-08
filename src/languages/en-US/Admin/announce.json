@@ -1,11 +1,7 @@
 {
-     "USAGE": "announce",
      "DESC": "Toggle sending of now playing messages on/off",
-     "PERMS": "Admin",
      
-     "METHOD_NAME_1": "delete",
      "METHOD_DESC_1": "Toggle deletion of now playing messages on/off",
-     "METHOD_PERMS_1": "Admin",
 
      "EMBED_DEL_TRUE": "Now playing messages will get deleted.",
      "EMBED_DEL_FALSE": "Now playing messages won't get deleted anymore.",

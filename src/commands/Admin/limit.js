@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 module.exports = class Limit extends Command {
      constructor(bot) {
@@ -9,7 +9,6 @@ module.exports = class Limit extends Command {
                name: 'limit',
                adminOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Show current set limits.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -99,16 +98,13 @@ module.exports = class Limit extends Command {
                     if (settings.SongUserLimit > 0) {
                          songLimit = settings.SongUserLimit
                     } else {
-                         songLimit = `${bot.translate(settings.Language, 'Admin/limit:NO_LIMIT_SET')}`
+                         songLimit = bot.translate(settings.Language, 'Admin/limit:NO_LIMIT_SET')
                     }
                     let title = `${bot.translate(settings.Language, 'Admin/limit:EMBED_LIMIT_TITLE')}`
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorOrange)
                          .setTitle(title)
-                         .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_LIMIT_SUMMARY', {
-                              timeLimit: timeLimit,
-                              songLimit: songLimit
-                         }))
+                         .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_LIMIT_SUMMARY', {timeLimit: `${bot.codeBlock(timeLimit)}`,songLimit: `${bot.codeBlock(songLimit)}`}))
 
                     return interaction.reply({
                          embeds: [embed],
@@ -116,7 +112,7 @@ module.exports = class Limit extends Command {
                     })
                case "song":
                     if (songamount === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_MINIMUM_SONGS'))
                               .setColor(bot.config.colorOrange)
 
@@ -131,10 +127,10 @@ module.exports = class Limit extends Command {
 
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_MAXIMUMG_SONGS', {
-                              songamount: songamount
+                              songamount: `${bot.codeBlock(songamount)}`
                          }))
 
                     return interaction.reply({
@@ -143,7 +139,7 @@ module.exports = class Limit extends Command {
                     })
                case "time":
                     if (!minutes || minutes === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_MINIMUM_TIME'))
 
@@ -163,10 +159,10 @@ module.exports = class Limit extends Command {
 
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_MAXIMUM_TIME', {
-                              TIME: bot.getduration(formatTime)
+                              TIME: `${bot.codeBlock(bot.getduration(formatTime))}`
                          }))
 
                     return interaction.reply({
@@ -175,7 +171,7 @@ module.exports = class Limit extends Command {
                     })
                case "song-reset":
                     if (settings.SongUserLimit === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_NO_SONG_LIMIT'))
 
@@ -191,7 +187,7 @@ module.exports = class Limit extends Command {
 
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_REMOVED_SONG_LIMIT'))
 
@@ -201,7 +197,7 @@ module.exports = class Limit extends Command {
                     })
                case "time-reset":
                     if (settings.SongTimeLimitMS === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_NO_TIME_LIMIT'))
 
@@ -217,7 +213,7 @@ module.exports = class Limit extends Command {
 
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_REMOVED_TIME_LIMIT'))
 
@@ -227,7 +223,7 @@ module.exports = class Limit extends Command {
                     })
                case "reset":
                     let title2 = `${bot.translate(settings.Language, 'Admin/limit:EMBED_LIMIT_TITLE')}`
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setTitle(title2)
                          .setDescription(bot.translate(settings.Language, 'Admin/limit:EMBED_LIMIT_RESET', {

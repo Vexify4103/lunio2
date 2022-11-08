@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Playlists extends Command {
@@ -11,7 +11,6 @@ module.exports = class Playlists extends Command {
                adminOnly: true,
                helpPerms: "Admin",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Toggle sending of now playing messages on/off',
                slash: true,
                usage: 'announce',
@@ -37,19 +36,19 @@ module.exports = class Playlists extends Command {
           });
      }
      async callback(bot, interaction, guild, args, settings) {
-          let deltrue = new MessageEmbed()
+          let deltrue = new EmbedBuilder()
                .setColor(bot.config.colorTrue)
                .setDescription(`✅ **__${bot.translate(settings.Language, 'Admin/announce:EMBED_DEL_TRUE')}__**`)
 
-          let delfalse = new MessageEmbed()
+          let delfalse = new EmbedBuilder()
                .setColor(bot.config.colorWrong)
                .setDescription(`:x: **__${bot.translate(settings.Language, 'Admin/announce:EMBED_DEL_FALSE')}__**`)
 
-          let announcetrue = new MessageEmbed()
+          let announcetrue = new EmbedBuilder()
                .setColor(bot.config.colorTrue)
                .setDescription(`✅ **__${bot.translate(settings.Language, 'Admin/announce:EMBED_ANNOUNCE_TRUE')}__**`)
 
-          let announcefalse = new MessageEmbed()
+          let announcefalse = new EmbedBuilder()
                .setColor(bot.config.colorWrong)
                .setDescription(`:x: **__${bot.translate(settings.Language, 'Admin/announce:EMBED_ANNOUNCE_FALSE')}__**`)
 

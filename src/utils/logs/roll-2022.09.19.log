@@ -1,0 +1,11 @@
+03:36:07.138 INFO  1 language(s) have loaded. (en-US) 
+03:36:07.485 INFO  MongoDB successfully connected 
+03:36:07.890 INFO  Shard: 0 has became ready 
+03:36:07.909 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+03:36:07.910 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+03:36:07.958 INFO  All guilds have been initialized 
+03:36:08.086 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:36:08.086 INFO  Void Music 2#3539, ready to serve [8] users in [3] servers 
+03:36:08.086 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:36:37.925 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+03:36:37.927 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 

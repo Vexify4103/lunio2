@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Playlists extends Command {
@@ -11,7 +11,6 @@ module.exports = class Playlists extends Command {
                adminOnly: true,
                helpPerms: "Admin",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Enables/disables the possibility of queueing playlists.',
                cooldown: 2000,
                slash: true,
@@ -34,11 +33,11 @@ module.exports = class Playlists extends Command {
      async callback(bot, interaction, guild, args, settings) {
           const option = interaction.options.getString('enable-playlists');
 
-          let embedyes = new MessageEmbed()
+          let embedyes = new EmbedBuilder()
                .setColor(bot.config.colorTrue)
                .setDescription(`✅ **__${bot.translate(settings.Language, 'Admin/playlists:EMBED_PLAYLISTS_ENABLED')}__**`)
 
-          let embedno = new MessageEmbed()
+          let embedno = new EmbedBuilder()
                .setColor(bot.config.colorWrong)
                .setDescription(`:x: **__${bot.translate(settings.Language, 'Admin/playlists:EMBED_PLAYLISTS_DISABLED')}__**`)
 

@@ -3,8 +3,7 @@ const { logger } = require('../utils'),
 	chalk = require('chalk'),
 	fetch = require('node-fetch'),
 	Discord = require('discord.js'),
-	Fortnite = require('fortnite'),
-	{ KSoftClient } = require('@ksoft/api');
+	Fortnite = require('fortnite')
 
 module.exports.run = async (config) => {
 	// This will check if the config is correct

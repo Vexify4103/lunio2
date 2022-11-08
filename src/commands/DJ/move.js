@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Move extends Command {
@@ -10,7 +10,6 @@ module.exports = class Move extends Command {
                name: 'move',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Move the selected song to the provided position.',
                slash: true,
                usage: 'move <from> <to>',
@@ -38,7 +37,7 @@ module.exports = class Move extends Command {
           let embed;
 
           if (player.queue.size <= 0) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.transalte(settings.Language, 'DJ/move:EMBED_NO_QUEUE'))
 
@@ -49,7 +48,7 @@ module.exports = class Move extends Command {
           }
 
           if (pos1 === 0) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'DJ/move:EMBED_PLAYING_THIS'))
 
@@ -65,7 +64,7 @@ module.exports = class Move extends Command {
 			player.queue.splice(pos1 - 1, 1);
 			player.queue.splice(0, 0, song);
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/move:EMBED_MOVED_SONG_POS1'))
 
@@ -82,9 +81,9 @@ module.exports = class Move extends Command {
 			player.queue.splice(pos1 - 1, 1);
 			player.queue.splice(pos2 - 1, 0, song);
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
-                    .setDescription(bot.transalte(settings.Language, 'DJ/move:EMBED_MOVED_SONG_POSX', {
+                    .setDescription(bot.translate(settings.Language, 'DJ/move:EMBED_MOVED_SONG_POSX', {
                          pos: pos2
                     }))
 

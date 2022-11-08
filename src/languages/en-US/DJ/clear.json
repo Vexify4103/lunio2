@@ -1,7 +1,5 @@
 {
-     "USAGE": "clear",
      "DESC": "Clears the current queue.",
-     "PERMS": "DJ",
 
      "EMBED_NO_QUEUE": "There is currently no song in the queue.",
      "EMBED_QUEUE_CLEARED": "The queue has been cleared."

@@ -1,7 +1,5 @@
 {
-     "USAGE": "stop",
      "DESC": "Stops the player and clear the queue.",
-     "PERMS": "DJ",
 
      "EMBED_STOPPED": "Music stopped & queue cleared."
 }

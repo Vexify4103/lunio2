@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Shuffle extends Command {
@@ -10,7 +10,6 @@ module.exports = class Shuffle extends Command {
                name: 'shuffle',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Shuffle the queue.',
                slash: true,
                usage: 'shuffle',
@@ -24,7 +23,7 @@ module.exports = class Shuffle extends Command {
           let embed;
 
           if (player.queue.size <= 2) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'DJ/shuffle:EMBED_NEED_3'))
 
@@ -36,7 +35,7 @@ module.exports = class Shuffle extends Command {
 
           player.queue.shuffle();
 
-          embed = new MessageEmbed()
+          embed = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(bot.translate(settings.Language, 'DJ/shuffle:EMBED_SHUFFLED_QUEUE'))
 

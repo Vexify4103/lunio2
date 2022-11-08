@@ -4,7 +4,7 @@ const {
      paginate
 } = require('../../utils');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Voteskip extends Command {
@@ -13,7 +13,6 @@ module.exports = class Voteskip extends Command {
                name: 'voteskip',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Lets you vote for skipping the current track.',
                slash: true,
                usage: 'voteskip',
@@ -31,7 +30,7 @@ module.exports = class Voteskip extends Command {
 
           // skipSong = ['USEERID1', 'USERID2']
           if (player.skipSong.includes(interaction.user.id)) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Everyone/voteksip:EMBED_ALREADY_VOTED'))
 
@@ -46,7 +45,7 @@ module.exports = class Voteskip extends Command {
           let required = Math.ceil(userInVC / 2);
           if (player.skipSong.length >= required) {
                await player.stop()
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'Everyone/voteskip:EMBED_SKIPPED_TRACK'))
 
@@ -55,11 +54,11 @@ module.exports = class Voteskip extends Command {
                     ephemeral: true
                })
           } else {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorOrange)
                     .setDescription(bot.translate(settings.Language, 'Everyone/votekip:EMBED_VOTING_REQUIRED', {
-                         size: player.skipSong.length,
-                         required: required
+                         VOTES: `${bot.codeBlock(player.skipSong.length)}`,
+                         REQUIRED: `${bot.codeBlock(required)}`
                     }))
 
                return await interaction.reply({

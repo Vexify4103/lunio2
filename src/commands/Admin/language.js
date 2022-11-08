@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 module.exports = class Language extends Command {
      constructor(bot) {
@@ -9,7 +9,6 @@ module.exports = class Language extends Command {
                name: 'language',
                adminOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Set the language on your server.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -32,7 +31,8 @@ module.exports = class Language extends Command {
                }],
                methods: [{
                     name: "list",
-                    description: "List all available languages."
+                    description: "List all available languages.",
+                    perms: 'Admin'
                }]
           });
      }
@@ -144,7 +144,7 @@ module.exports = class Language extends Command {
                     let obj = languageList.find(ln => ln.name === language)
 
                     if (!obj) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(bot.translate(settings.Language, 'Admin/language:EMBED_INVALID_LANGUAGE'))
 
@@ -159,10 +159,10 @@ module.exports = class Language extends Command {
                     }
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.color)
                          .setDescription(bot.translate(obj.name, 'Admin/language:EMBED_LANGUAGE_SET', {
-                              LANGUAGE: obj.name
+                              LANGUAGE: `${bot.codeBlock(obj.name)}`
                          }))
 
                     return interaction.reply({
@@ -175,7 +175,7 @@ module.exports = class Language extends Command {
                          str.push(`${bot.codeBlock(languageList[i].name)} - ${languageList[i].translation}`)
                     }
                     let footer = bot.translate(settings.Language, 'Admin/language:EMBED_AVAILABLE_LANGUAGES_FOOTER')
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorOrange)
                          .setDescription(`**__${bot.translate(settings.Language, 'Admin/language:EMBED_AVAILABLE_LANGUAGES')}__**\n${str.join("\n")}\n\n${bot.translate(settings.Language, 'Admin/language:EMBED_AVAILABLE_LANGUAGES_2', { LINK: bot.config.translationLink })}`)
                          .setFooter({

@@ -2,7 +2,7 @@
 const Command = require('../../structures/Command.js');
 const { paginate } = require('../../utils');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Queue extends Command {
@@ -11,7 +11,6 @@ module.exports = class Queue extends Command {
                name: 'queue',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Shows the queue.',
                slash: true,
                usage: 'queue',
@@ -43,7 +42,7 @@ module.exports = class Queue extends Command {
           let embed;
 
           if (queue.size == 0) {
-			embed = new MessageEmbed()
+			embed = new EmbedBuilder()
                     .setColor(bot.config.colorOrange)
                     .setDescription(bot.translate(settings.Language, 'Everyone/queue:EMBED_NO_SONGINQUEUE'))
 
@@ -74,14 +73,14 @@ module.exports = class Queue extends Command {
 		const pages = [];
 		for (let i = 0; i < pagesNum; i++) {
 			const str = songStrings.slice(i * 10, i * 10 + 10).join('');
-			embed = new MessageEmbed()
+			embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
 				.setDescription(`${str == '' ? '  Nothing' : '\n' + str }`)
                     .setFooter({ text: bot.translate(settings.Language, 'Everyone/queue:EMBED_SHOW_CURRENT_PAGE', {
-                         current: i + 1,
-                         total: pagesNum,
-                         size: player.queue.length,
-                         duration: parsedQueueDuration
+                         CURRENT: i + 1,
+                         TOTAL: pagesNum,
+                         SIZE: player.queue.length,
+                         DURATION: parsedQueueDuration
                     }) })
 			pages.push(embed);
 		}

@@ -1,0 +1,7 @@
+{
+     "DESC": "Toggle the bot to stay 24/7 in the voice channel.",
+
+     "EMBED_AUTOPLAY_ALREADY_TOGGLE": "Autoplay  is already set to: {{TOGGLE}}",
+     "EMBED_AUTOPLAY_ACTIVATED": "Autoplay mode is now activated.",
+     "EMBED_AUTOPLAY_DEACTIVATED": "Auto mode is now deactivated."
+}

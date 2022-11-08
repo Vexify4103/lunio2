@@ -1,0 +1,135 @@
+03:27:58.959 INFO  1 language(s) have loaded. (en-US) 
+03:27:59.336 INFO  MongoDB successfully connected 
+03:27:59.619 INFO  Shard: 0 has became ready 
+03:27:59.635 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+03:27:59.636 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+03:27:59.673 INFO  All guilds have been initialized 
+03:27:59.784 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:27:59.784 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+03:27:59.785 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:28:29.453 INFO  1 language(s) have loaded. (en-US) 
+03:28:29.780 INFO  MongoDB successfully connected 
+03:28:30.826 INFO  Shard: 0 has became ready 
+03:28:30.885 INFO  All guilds have been initialized 
+03:28:30.996 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:28:30.996 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+03:28:30.997 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:28:31.006 INFO  Lavalink node: 0.0.0.0 has connected. 
+03:28:50.814 ERROR running messageCreate: 709832515577184287 | TypeError: bot.refreshEmbed is not a function 
+03:29:21.072 INFO  1 language(s) have loaded. (en-US) 
+03:29:21.437 INFO  MongoDB successfully connected 
+03:29:21.773 INFO  Shard: 0 has became ready 
+03:29:21.794 INFO  Lavalink node: 0.0.0.0 has connected. 
+03:29:21.833 INFO  All guilds have been initialized 
+03:29:21.950 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:29:21.950 INFO  Void Music 2#3539, ready to serve [7] users in [3] servers 
+03:29:21.950 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:35:01.397 ERROR Unable to load command lyrics.js: TypeError: Class extends value undefined is not a constructor or null 
+14:35:01.403 ERROR Unable to load command playlist.js: TypeError: Class extends value undefined is not a constructor or null 
+14:35:01.438 ERROR Unable to load command queue.js: TypeError: Class extends value undefined is not a constructor or null 
+14:35:01.444 ERROR Unable to load command voteskip.js: TypeError: Class extends value undefined is not a constructor or null 
+14:35:01.474 ERROR Unable to load command unban.js: TypeError: Class extends value undefined is not a constructor or null 
+14:35:02.892 INFO  1 language(s) have loaded. (en-US) 
+14:35:03.245 INFO  MongoDB successfully connected 
+14:35:03.654 INFO  Shard: 0 has became ready 
+14:35:03.671 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+14:35:03.672 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+14:35:03.710 INFO  All guilds have been initialized 
+14:35:03.824 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:35:03.824 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+14:35:03.825 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:44:34.444 INFO  1 language(s) have loaded. (en-US) 
+14:44:34.767 INFO  MongoDB successfully connected 
+14:44:35.155 INFO  Shard: 0 has became ready 
+14:44:35.174 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+14:44:35.176 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+14:44:35.207 INFO  All guilds have been initialized 
+14:44:35.348 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:44:35.348 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+14:44:35.348 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:01:58.673 INFO  1 language(s) have loaded. (en-US) 
+15:01:59.002 INFO  MongoDB successfully connected 
+15:01:59.347 INFO  Shard: 0 has became ready 
+15:01:59.371 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+15:01:59.373 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+15:01:59.400 INFO  All guilds have been initialized 
+15:01:59.515 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:01:59.515 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+15:01:59.516 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+15:02:29.387 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+15:02:29.388 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+15:02:59.390 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+15:02:59.391 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+15:03:26.795 ERROR Bot encountered an error: Expected the value to be an object, but received string instead. 
+15:03:29.399 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+15:03:29.400 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:14:16.885 INFO  1 language(s) have loaded. (en-US) 
+16:14:17.241 INFO  MongoDB successfully connected 
+16:14:17.651 INFO  Shard: 0 has became ready 
+16:14:17.667 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:14:17.668 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:14:17.694 INFO  All guilds have been initialized 
+16:14:17.822 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:14:17.822 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+16:14:17.823 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:14:26.786 ERROR running slashCreate: 709832515577184287 | TypeError: embed.addField is not a function 
+16:23:19.665 INFO  1 language(s) have loaded. (en-US) 
+16:23:20.017 INFO  MongoDB successfully connected 
+16:23:20.436 INFO  Shard: 0 has became ready 
+16:23:20.453 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:23:20.455 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:23:20.481 INFO  All guilds have been initialized 
+16:23:20.606 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:23:20.607 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+16:23:20.607 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:23:50.468 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:23:50.469 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:24:20.477 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:24:20.477 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:24:50.488 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:24:50.489 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:25:20.505 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:25:20.506 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:25:50.520 ERROR Lavalink node: '0.0.0.0', has error: 'Unable to connect after 5 attempts.'. 
+16:31:08.098 INFO  1 language(s) have loaded. (en-US) 
+16:31:08.431 INFO  MongoDB successfully connected 
+16:31:08.831 INFO  Shard: 0 has became ready 
+16:31:08.847 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:31:08.849 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:31:08.881 INFO  All guilds have been initialized 
+16:31:09.017 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:31:09.017 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+16:31:09.017 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:31:17.899 ERROR running slashCreate: 709832515577184287 | Error: Received one or more errors 
+16:31:48.462 INFO  1 language(s) have loaded. (en-US) 
+16:31:48.768 INFO  MongoDB successfully connected 
+16:31:49.205 INFO  Shard: 0 has became ready 
+16:31:49.222 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:31:49.223 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:31:49.256 INFO  All guilds have been initialized 
+16:31:49.379 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:31:49.380 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+16:31:49.380 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:31:54.574 ERROR Bot encountered an error: interaction.isAutocomplete is not a function. 
+16:31:56.100 ERROR Bot encountered an error: interaction.isAutocomplete is not a function. 
+16:31:57.119 ERROR Bot encountered an error: interaction.isAutocomplete is not a function. 
+16:31:57.344 ERROR Bot encountered an error: interaction.isAutocomplete is not a function. 
+16:33:10.877 INFO  1 language(s) have loaded. (en-US) 
+16:33:11.278 INFO  MongoDB successfully connected 
+16:33:11.569 INFO  Shard: 0 has became ready 
+16:33:11.586 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:33:11.587 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:33:11.614 INFO  All guilds have been initialized 
+16:33:11.737 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:33:11.738 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+16:33:11.738 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:33:27.911 ERROR running slashCreate: 709832515577184287 | Error: Received one or more errors 
+16:35:02.877 INFO  1 language(s) have loaded. (en-US) 
+16:35:03.215 INFO  MongoDB successfully connected 
+16:35:03.606 INFO  Shard: 0 has became ready 
+16:35:03.628 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+16:35:03.629 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+16:35:03.659 INFO  All guilds have been initialized 
+16:35:03.773 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:35:03.773 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+16:35:03.773 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 

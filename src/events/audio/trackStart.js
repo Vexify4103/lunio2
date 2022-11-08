@@ -1,7 +1,9 @@
 const {
-	MessageEmbed
+	EmbedBuilder
 } = require('discord.js');
 const Event = require('../../structures/Event');
+const chalk = require('chalk');
+const moment = require('moment');
 
 class TrackStart extends Event {
 	constructor(...args) {
@@ -13,8 +15,12 @@ class TrackStart extends Event {
 	async run(bot, player, track) {
 		let settings = await bot.getGuildData(bot, player.guild);
 		var title = track.title;
-		var url = track.uri;
-		bot.logger.log(`${player.guild} started track: ${track.author} - ${track.title}`)
+		
+		//console.log(player)
+		bot.replaceTitle(bot, track)
+		const timestamp = `[${moment().format('HH:mm:ss')}]:`;
+		const content = `${player.guild} started track: ${title}`
+		console.log(`${timestamp} ${chalk.bgMagenta("PLAYING")} ${content} `)
 		if (player.timeout != null) return clearTimeout(player.timeout);
 		if (settings.CustomChannel) {
 			return await bot.musicembed(bot, player, settings);
@@ -22,12 +28,12 @@ class TrackStart extends Event {
 		if (settings.Announce) {
 			let description
 			if (settings.Requester) {
-				description = `[${title}](${url}) ~ <@${track.requester.id}>`
+				description = `${title} ~ <@${track.requester.id}>`
 			} else {
-				description = `[${title}](${url})`
+				description = `${title}`
 			}
 			let title2 = bot.translate(settings.Language, 'misc:NOW_PLAYING')
-			let embed = new MessageEmbed()
+			let embed = new EmbedBuilder()
 				.setColor(await bot.getColor(bot, player.guild))
 				.setTitle(title2)
 				.setDescription(description)

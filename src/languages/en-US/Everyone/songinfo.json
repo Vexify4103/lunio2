@@ -1,11 +1,7 @@
 {
-     "USAGE": "songinfo",
      "DESC": "Shows details of the song currently being played.",
-     "PERMS": "Everyone",
-     
-     "METHOD_NAME_1": "<song-number>",
+  
      "METHOD_DESC_1": "Shows the detail of a specific song in the queue.",
-     "METHOD_PERMS_1": "Everyone",
 
-     "EMBED": "~ Requested by {{requester}}\n{{progressbar}}"
+     "EMBED": "~ Requested by {{REQUESTER}}\n{{PROGRESSBAR}}"
 }

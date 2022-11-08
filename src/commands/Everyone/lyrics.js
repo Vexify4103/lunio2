@@ -2,7 +2,7 @@
 const { paginate } = require('../../utils'),
      Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 const { getSong } = require("genius-lyrics-api")
 
@@ -12,7 +12,6 @@ module.exports = class Lyrics extends Command {
                name: 'lyrics',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Shows lyrics for the currently playing song.',
                cooldown: 2000,
                slash: true,
@@ -57,7 +56,7 @@ module.exports = class Lyrics extends Command {
           }
           
           let title = bot.translate(settings.Language, 'Everyone/lyrics:LOADING_TITLE')
-          let embed = new MessageEmbed()
+          let embed = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setTitle(title)
                .setDescription(bot.translate(settings.Language, 'Everyone/lyrics:LOADING_DESC'))
@@ -69,7 +68,7 @@ module.exports = class Lyrics extends Command {
           // IF NO TITLE CHECK FOR PLAYER
           if (!song || song == "null") {
                if (artist) {
-                    let embed = new MessageEmbed()
+                    let embed = new EmbedBuilder()
                          .setColor(bot.config.colorWrong)
                          .setDescription(bot.translate(settings.Language, 'Everyone/lyrics:MISSING_SONGTITLE'))
 
@@ -81,7 +80,7 @@ module.exports = class Lyrics extends Command {
                     }, bot.ws.ping * 2) 
                }
                if (!player) {
-                    let embed = new MessageEmbed()
+                    let embed = new EmbedBuilder()
                          .setColor(bot.config.colorWrong)
                          .setDescription(bot.translate(settings.Language, 'Everyone/lyrics:NO_PLAYER'))
 
@@ -126,7 +125,7 @@ module.exports = class Lyrics extends Command {
                     let footerOptions = {
                          text: bot.translate(settings.Language, 'Everyone/lyrics:LYRICS_BY')
                     }
-                    let embed = new MessageEmbed()
+                    let embed = new EmbedBuilder()
                          .setTitle(options.title)
                          .setThumbnail(bot.config.geniusapilogo)
                          .setColor(await bot.getColor(bot, guild.id))
@@ -141,7 +140,7 @@ module.exports = class Lyrics extends Command {
                     }, bot.ws.ping * 2) 
 			}
 		} catch (error) {
-               let embed = new MessageEmbed()
+               let embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Everyone/lyrics:ERROR'))
 
@@ -175,7 +174,7 @@ module.exports = class Lyrics extends Command {
 
 		const pages = [];
 		for (let i = 0; i < pagesNum; i++) {
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setTitle(options.title)
                     .setThumbnail(bot.config.geniusapilogo)
                     .setColor(await bot.getColor(bot, guild.id))

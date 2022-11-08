@@ -1,6 +1,6 @@
 // Dependencies
 const {
-	MessageEmbed,
+	EmbedBuilder, ChannelType, PermissionsBitField,
 } = require('discord.js'),
 	Event = require('../../structures/Event');
 
@@ -13,51 +13,20 @@ module.exports = class GuildCreate extends Event {
 
 	// run event
 	async run(bot, guild) {
-		// // Apply server settings
 
-		// // try {
-		// // 	const newGuild = {
-		// // 		guildID: guild.id
-		// // 	};
+		let channelToSend;
 
-		// // 	// Create guild settings and fetch cache.
-		// // 	await bot.CreateGuild(newGuild);
-		// // 	await guild.fetchSettings();
-		// // } catch (err) {
-		// // 	bot.logger.error(`Event: '${this.config.name}' has error: ${err.message}.`);
-		// // }
-		// let settings = await bot.getGuildData(bot, guild.id)
-		// // get slash commands for category
-		// const enabledPlugins = settings.plugins;
-		// const data = [];
-		// for (let i = 0; i < enabledPlugins.length; i++) {
-		// 	const g = await bot.loadInteractionGroup(enabledPlugins[i], guild);
-		// 	if (Array.isArray(g)) data.push(...g);
-		// }
-		// // upload slash commands to guild
-		// try {
-		// 	await await bot.guilds.fetch(guild.id)?.commands.set(data)
-		// 	bot.logger.log('Loaded Interactions for guild: ' + guild.name)
-		// } catch (err) {
-		// 	bot.logger.error(`Failed to load interactions for guild: ${guild.id} due to: ${err.message}.`);
-		// }
+		guild.channels.cache.forEach(channel => {
+			if (channel.type === ChannelType.GuildText && !channelToSend && channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages)) channelToSend = channel;
+		});
+		if (!channelToSend) return;
 
-		// const modChannel = await bot.channels.fetch(bot.config.SupportServer.GuildChannel).catch(() => bot.logger.error(`Error fetching logs channel`));
-
-		// const embed = new MessageEmbed()
-		// 	.setColor(bot.config.colorTrue)
-		// 	.setTitle(`${check} Joined Guild`)
-		// 	.addField(`GuildID`, `${guild.id ?? 'undefined'}`)
-		// 	.addField(`Owner`, `**ID**: ${guild.ownerId}`)
-		// 	.addField(`MemberCount`, `${guild?.memberCount ?? 'undefined'}`)
-		// 	.setTimestamp()
-
-		// try {
-		// 	modChannel.send({
-		// 		embeds: [embed]
-		// 	})
-		// } catch (error) {
-		// 	bot.logger.error(message)
-		// }
+		const embed = new EmbedBuilder()
+			.setTitle("Listen to music with passion - Lunio")
+			.setDescription(`Thank you for inviting me!\n\nTo get started, join a voice channel and ${bot.codeBlock("/play")} a song.\nIf you prefer to have a unique songrequest channel, type ${bot.codeBlock("/setup")}\nTo get the list of all commands type ${bot.codeBlock("/help")}\n\nIf you need support feel free to join the [Support Server](${bot.config.SupportServer.link}).`)
+			.setColor(bot.config.color)
+		channelToSend.send({
+			embeds: [embed]
+		})
 	}
 };

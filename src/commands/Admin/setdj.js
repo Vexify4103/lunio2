@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 module.exports = class Setdj extends Command {
      constructor(bot) {
@@ -9,7 +9,6 @@ module.exports = class Setdj extends Command {
                name: 'setdj',
                adminOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Show the current DJ roles.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -55,7 +54,7 @@ module.exports = class Setdj extends Command {
           switch (Sub) {
                case "show":
                     if (!settings.MusicDJ) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/setdj:EMBED_NO_DJ'))
 
@@ -69,7 +68,7 @@ module.exports = class Setdj extends Command {
                          str.push(`<@&${settings.MusicDJRole[i]}>`)
                     }
                     let title = bot.translate(settings.Language, 'Admin/setdj:EMBED_DJ_TITLE')
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorOrange)
                          .setTitle(title)
                          .setDescription(`${str.join('\n')}`)
@@ -99,10 +98,10 @@ module.exports = class Setdj extends Command {
                          }
                          await bot.updateGuildSettings(guild.id, newSettings);
 
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(await bot.getColor(bot, guild.id))
                               .setDescription(bot.translate(settings.Language, 'Admin/setdj:EMBED_REMOVED_ROLE', {
-                                   ROLENAME: role.name
+                                   ROLENAME: `${bot.codeBlock(role.name)}`
                               }))
 
                          return interaction.reply({
@@ -118,10 +117,10 @@ module.exports = class Setdj extends Command {
                     }
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/setdj:EMBED_ADDED_ROLE', {
-                              ROLENAME: role.name
+                              ROLENAME: `${bot.codeBlock(role.name)}`
                          }))
 
                     return interaction.reply({
@@ -130,7 +129,7 @@ module.exports = class Setdj extends Command {
                     })
                case "reset":
                     if (!settings.MusicDJ) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/setdj:EMBED_NO_DJ'))
 
@@ -145,7 +144,7 @@ module.exports = class Setdj extends Command {
                     }
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/setdj:EMBED_RESET_ROLES'))
 

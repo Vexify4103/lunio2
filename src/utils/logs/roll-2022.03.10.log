@@ -1,0 +1,311 @@
+01:46:49.283 INFO  MongoDB successfully connected 
+01:46:49.577 INFO  Shard: 0 has became ready 
+01:46:49.631 INFO  All guilds have been initialized. 
+01:46:49.631 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:46:49.632 INFO  Void Music 2#3539, ready to serve [4] users in [3] servers. 
+01:46:49.632 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:46:50.143 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+01:52:20.596 INFO  MongoDB successfully connected 
+01:52:20.966 INFO  Shard: 0 has became ready 
+01:52:21.014 INFO  All guilds have been initialized. 
+01:52:21.015 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:52:21.015 INFO  Void Music 2#3539, ready to serve [4] users in [3] servers. 
+01:52:21.015 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:52:21.628 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+01:57:30.461 ERROR Lavalink node: lavalink.scpcl.site has disconnect, reason: unspecified. 
+01:58:01.014 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:11:35.128 INFO  MongoDB successfully connected 
+02:11:35.368 INFO  Shard: 0 has became ready 
+02:11:35.413 INFO  All guilds have been initialized. 
+02:11:35.413 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:11:35.414 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:11:35.414 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:11:35.927 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:12:24.247 INFO  MongoDB successfully connected 
+02:12:24.523 INFO  Shard: 0 has became ready 
+02:12:24.577 INFO  All guilds have been initialized. 
+02:12:24.577 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:12:24.578 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:12:24.578 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:12:25.024 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:36:44.952 ERROR Unable to load command playlist.js: SyntaxError: Identifier 'settings' has already been declared 
+02:36:45.571 INFO  MongoDB successfully connected 
+02:36:45.813 INFO  Shard: 0 has became ready 
+02:36:45.865 INFO  All guilds have been initialized. 
+02:36:45.865 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:36:45.866 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:36:45.866 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:37:25.210 INFO  MongoDB successfully connected 
+02:37:25.542 INFO  Shard: 0 has became ready 
+02:37:25.591 INFO  All guilds have been initialized. 
+02:37:25.592 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:37:25.592 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:37:25.592 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:37:26.592 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:38:38.352 ERROR Unhandled promise rejection: TrackUtils is not defined. 
+02:39:37.278 INFO  MongoDB successfully connected 
+02:39:37.529 INFO  Shard: 0 has became ready 
+02:39:37.575 INFO  All guilds have been initialized. 
+02:39:37.575 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:39:37.576 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:39:37.576 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:39:37.831 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:39:44.132 ERROR Unhandled promise rejection: The reply to this interaction has not been sent or deferred.. 
+02:41:47.502 INFO  MongoDB successfully connected 
+02:41:47.794 INFO  Shard: 0 has became ready 
+02:41:47.832 INFO  All guilds have been initialized. 
+02:41:47.832 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:41:47.833 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:41:47.833 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:41:48.349 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:41:51.319 ERROR Unhandled promise rejection: Unknown Message. 
+02:45:39.061 INFO  MongoDB successfully connected 
+02:45:39.377 INFO  Shard: 0 has became ready 
+02:45:39.425 INFO  All guilds have been initialized. 
+02:45:39.425 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:45:39.426 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:45:39.426 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:45:39.918 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+02:45:43.110 ERROR Unhandled promise rejection: Unknown Message. 
+02:46:18.641 INFO  MongoDB successfully connected 
+02:46:19.095 INFO  Shard: 0 has became ready 
+02:46:19.139 INFO  All guilds have been initialized. 
+02:46:19.140 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:46:19.140 INFO  Void Music 2#3539, ready to serve [2] users in [3] servers. 
+02:46:19.140 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:46:19.689 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:11:12.667 INFO  MongoDB successfully connected 
+13:11:12.979 INFO  Shard: 0 has became ready 
+13:11:13.050 INFO  All guilds have been initialized. 
+13:11:13.050 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:11:13.050 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:11:13.051 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:11:14.228 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:12:50.282 INFO  MongoDB successfully connected 
+13:12:50.715 INFO  Shard: 0 has became ready 
+13:12:50.763 INFO  All guilds have been initialized. 
+13:12:50.764 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:12:50.764 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:12:50.764 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:12:51.227 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:18:38.591 INFO  MongoDB successfully connected 
+13:18:38.995 INFO  Shard: 0 has became ready 
+13:18:39.037 INFO  All guilds have been initialized. 
+13:18:39.037 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:18:39.038 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:18:39.038 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:18:39.532 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:18:46.325 INFO  MongoDB successfully connected 
+13:18:46.616 INFO  Shard: 0 has became ready 
+13:18:46.663 INFO  All guilds have been initialized. 
+13:18:46.663 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:18:46.664 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:18:46.664 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:18:46.922 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:21:09.311 INFO  Shard: 0 has became ready 
+13:21:09.992 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:21:10.013 INFO  MongoDB successfully connected 
+13:21:10.314 INFO  All guilds have been initialized. 
+13:21:10.315 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:21:10.315 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:21:10.315 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:29:25.404 INFO  MongoDB successfully connected 
+13:29:25.778 INFO  Shard: 0 has became ready 
+13:29:25.826 INFO  All guilds have been initialized. 
+13:29:25.826 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:29:25.826 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:29:25.826 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:29:26.344 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:45:38.735 INFO  MongoDB successfully connected 
+13:45:39.055 INFO  Shard: 0 has became ready 
+13:45:39.170 INFO  All guilds have been initialized. 
+13:45:39.170 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:45:39.171 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:45:39.171 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:45:39.617 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:46:00.778 INFO  MongoDB successfully connected 
+13:46:01.165 INFO  Shard: 0 has became ready 
+13:46:01.215 INFO  All guilds have been initialized. 
+13:46:01.216 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:46:01.216 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:46:01.216 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:46:01.691 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:46:03.909 ERROR Unhandled promise rejection: Cannot read properties of null (reading '0'). 
+13:46:28.935 INFO  MongoDB successfully connected 
+13:46:29.776 INFO  Shard: 0 has became ready 
+13:46:29.835 INFO  All guilds have been initialized. 
+13:46:29.835 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:46:29.835 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:46:29.836 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:46:30.686 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+13:52:19.901 INFO  MongoDB successfully connected 
+13:52:20.143 INFO  Shard: 0 has became ready 
+13:52:20.197 INFO  All guilds have been initialized. 
+13:52:20.197 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:52:20.198 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+13:52:20.198 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+13:52:20.700 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+14:00:56.875 INFO  MongoDB successfully connected 
+14:00:57.146 INFO  Shard: 0 has became ready 
+14:00:57.223 INFO  All guilds have been initialized. 
+14:00:57.223 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:00:57.224 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+14:00:57.224 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:00:57.681 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+14:09:09.467 INFO  MongoDB successfully connected 
+14:09:09.723 INFO  Shard: 0 has became ready 
+14:09:09.777 INFO  All guilds have been initialized. 
+14:09:09.777 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:09:09.777 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+14:09:09.778 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:09:10.376 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+14:18:13.128 ERROR Unhandled promise rejection: i is not defined. 
+14:20:38.961 INFO  MongoDB successfully connected 
+14:20:39.281 INFO  Shard: 0 has became ready 
+14:20:39.331 INFO  All guilds have been initialized. 
+14:20:39.332 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:20:39.332 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+14:20:39.332 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:20:40.260 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+14:23:49.504 ERROR Unhandled promise rejection: Invalid Form Body
+data.embeds[0].description: This field is required. 
+14:25:03.014 INFO  MongoDB successfully connected 
+14:25:03.186 INFO  Shard: 0 has became ready 
+14:25:03.326 INFO  All guilds have been initialized. 
+14:25:03.327 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:25:03.327 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+14:25:03.327 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+14:25:04.214 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+16:59:12.262 INFO  MongoDB successfully connected 
+16:59:12.580 INFO  Shard: 0 has became ready 
+16:59:12.623 INFO  All guilds have been initialized. 
+16:59:12.623 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:59:12.624 INFO  Void Music 2#3539, ready to serve [1] users in [3] servers. 
+16:59:12.624 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:59:13.376 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:15:21.341 ERROR MongoDB disconnected 
+17:15:45.414 INFO  MongoDB successfully connected 
+17:39:40.629 INFO  MongoDB successfully connected 
+17:39:41.024 INFO  Shard: 0 has became ready 
+17:39:41.076 INFO  All guilds have been initialized. 
+17:39:41.076 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:39:41.077 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:39:41.077 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:39:41.588 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:39:54.437 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'colorTrue'). 
+17:40:13.098 INFO  MongoDB successfully connected 
+17:40:13.513 INFO  Shard: 0 has became ready 
+17:40:13.562 INFO  All guilds have been initialized. 
+17:40:13.563 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:40:13.563 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:40:13.563 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:40:14.382 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:40:28.810 INFO  MongoDB successfully connected 
+17:40:29.284 INFO  Shard: 0 has became ready 
+17:40:29.336 INFO  All guilds have been initialized. 
+17:40:29.336 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:40:29.337 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:40:29.337 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:40:29.595 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:40:45.134 INFO  MongoDB successfully connected 
+17:40:45.457 INFO  Shard: 0 has became ready 
+17:40:45.509 INFO  All guilds have been initialized. 
+17:40:45.510 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:40:45.510 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:40:45.510 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:40:46.452 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:41:13.033 INFO  MongoDB successfully connected 
+17:41:13.432 INFO  Shard: 0 has became ready 
+17:41:13.482 INFO  All guilds have been initialized. 
+17:41:13.482 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:41:13.483 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:41:13.483 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:41:14.459 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:41:38.150 INFO  MongoDB successfully connected 
+17:41:38.619 INFO  Shard: 0 has became ready 
+17:41:38.673 INFO  All guilds have been initialized. 
+17:41:38.673 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:41:38.673 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:41:38.674 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:41:38.964 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:44:08.844 INFO  MongoDB successfully connected 
+17:44:09.204 INFO  Shard: 0 has became ready 
+17:44:09.260 INFO  All guilds have been initialized. 
+17:44:09.260 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:44:09.260 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:44:09.260 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:44:09.863 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:46:15.859 ERROR Unhandled promise rejection: Unknown Message. 
+17:58:43.745 INFO  MongoDB successfully connected 
+17:58:44.119 INFO  Shard: 0 has became ready 
+17:58:44.166 INFO  All guilds have been initialized. 
+17:58:44.166 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:58:44.167 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:58:44.167 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:58:48.193 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+17:59:48.972 INFO  MongoDB successfully connected 
+17:59:49.984 INFO  Shard: 0 has became ready 
+17:59:50.030 INFO  All guilds have been initialized. 
+17:59:50.031 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:59:50.031 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+17:59:50.031 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:59:50.629 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:05:31.026 INFO  MongoDB successfully connected 
+18:05:31.386 INFO  Shard: 0 has became ready 
+18:05:31.442 INFO  All guilds have been initialized. 
+18:05:31.443 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:05:31.443 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+18:05:31.443 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:05:32.163 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:25:50.999 INFO  MongoDB successfully connected 
+18:25:51.320 INFO  Shard: 0 has became ready 
+18:25:51.375 INFO  All guilds have been initialized. 
+18:25:51.375 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:25:51.375 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+18:25:51.376 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:25:52.265 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:27:52.124 INFO  MongoDB successfully connected 
+18:27:52.654 INFO  Shard: 0 has became ready 
+18:27:52.710 INFO  All guilds have been initialized. 
+18:27:52.710 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:27:52.710 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+18:27:52.711 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:27:53.326 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:28:08.749 ERROR Unhandled promise rejection: Cannot read properties of null (reading '0'). 
+18:28:41.864 INFO  MongoDB successfully connected 
+18:28:42.408 INFO  Shard: 0 has became ready 
+18:28:42.451 INFO  All guilds have been initialized. 
+18:28:42.452 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:28:42.452 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+18:28:42.452 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:28:43.323 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:30:25.481 INFO  MongoDB successfully connected 
+18:30:25.846 INFO  Shard: 0 has became ready 
+18:30:25.893 INFO  All guilds have been initialized. 
+18:30:25.893 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:30:25.894 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+18:30:25.895 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:30:26.361 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:30:29.385 ERROR Cannot read properties of undefined (reading 'name')
+{}
+TypeError: Cannot read properties of undefined (reading 'name')
+    at D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\playlist.js:803:87
+    at D:\Bots\Discord Bots\Void Music\Void Music 2\node_modules\mongoose\lib\model.js:4987:18
+    at processTicksAndRejections (node:internal/process/task_queues:78:11) 
+18:30:45.545 INFO  MongoDB successfully connected 
+18:30:45.968 INFO  Shard: 0 has became ready 
+18:30:46.017 INFO  All guilds have been initialized. 
+18:30:46.017 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:30:46.017 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers. 
+18:30:46.018 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:30:46.993 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+18:32:51.384 ERROR Unhandled promise rejection: Unknown Message. 
+20:26:05.677 INFO  MongoDB successfully connected 
+20:26:06.072 INFO  Shard: 0 has became ready 
+20:26:06.132 INFO  All guilds have been initialized. 
+20:26:06.132 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:26:06.133 INFO  Void Music 2#3539, ready to serve [5] users in [3] servers. 
+20:26:06.133 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:26:07.202 INFO  Lavalink node: lavalink.scpcl.site has connected. 
+23:01:31.035 ERROR Lavalink node: lavalink.scpcl.site has disconnect, reason: unspecified. 
+23:02:02.230 INFO  Lavalink node: lavalink.scpcl.site has connected. 

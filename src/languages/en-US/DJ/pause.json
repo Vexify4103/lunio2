@@ -1,7 +1,5 @@
 {
-     "USAGE": "pause",
      "DESC": "Pauses the current playing song.",
-     "PERMS": "DJ",
 
      "EMBED_ALREADY_PAUSED": "Song already paused.",
      "EMBED_PAUSED_SONG": "Paused the song."

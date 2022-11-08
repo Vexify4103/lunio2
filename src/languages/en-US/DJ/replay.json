@@ -1,7 +1,5 @@
 {
-     "USAGE": "replay",
      "DESC": "Replay the current song.",
-     "PERMS": "DJ",
 
      "EMBED_REPLAYING_SONG": "Replaying the current song."
 }

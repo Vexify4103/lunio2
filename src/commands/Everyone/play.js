@@ -1,6 +1,6 @@
 // Dependencies
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require('discord.js');
 const Command = require('../../structures/Command.js');
 
@@ -10,11 +10,9 @@ module.exports = class Play extends Command {
                name: 'play',
                dirname: __dirname,
                aliases: ['p'],
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS', 'CONNECT_CHANNEL', 'SPEAK', 'VIEW_CHANNEL'],
                description: 'Plays a song or playlist.',
                helpPerms: "Everyone",
-               //usage: 'play <song name/url> [flags]',
-               usage: 'play <song name/url>',
+               usage: 'play <song name/url> [flags]',
                cooldown: 3000,
                slash: true,
                music: true,
@@ -64,7 +62,8 @@ module.exports = class Play extends Command {
                     guild: guild.id,
                     textChannel: textchannel.id,
                     voiceChannel: channel.id,
-                    selfDeafen: true
+                    selfDeafen: true,
+                    volume: settings.DefaultVol
                });
                if (player.state !== "CONNECTED") {
                     player.connect();
@@ -74,7 +73,7 @@ module.exports = class Play extends Command {
                return;
           }
           title = bot.translate(settings.Language, 'Everyone/play:LOADING_TITLE')
-          embed = new MessageEmbed()
+          embed = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setTitle(title)
                .setDescription(bot.translate(settings.Language, 'Everyone/play:LOADING_DESC'))
@@ -83,7 +82,9 @@ module.exports = class Play extends Command {
                embeds: [embed],
                ephemeral: true
           })
+          // await bot.refreshEmbed(bot, settings);
           bot.manager.search(search, member.user).then(async res => {
+               await bot.replaceTitle(bot, res);
                let color = await bot.getColor(bot, guild.id);
 
                if (settings.SongUserLimit > 0 && bot.checkDJ(member, settings)) {
@@ -96,7 +97,7 @@ module.exports = class Play extends Command {
                const track = res.tracks[0];
 
                if (!track || res.tracks.length === 0) {
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorWrong)
                          .setDescription(bot.translate(settings.Language, 'Everyone/play:NO_MATCHES'))
 
@@ -109,7 +110,7 @@ module.exports = class Play extends Command {
                }
                switch (res.loadType) {
                     case 'NO_MATCHES':
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(bot.translate(settings.Language, 'Everyone/play:NO_MATCHES'))
 
@@ -127,18 +128,18 @@ module.exports = class Play extends Command {
 
                          if (player.queue.length !== 0) {
                               title = bot.translate(settings.Language, 'Everyone/play:LOADED_TITLE_1', {
-                                   pos: player.queue.length
+                                   POS: player.queue.length
                               })
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(color)
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
                          } else {
                               title = bot.translate(settings.Language, 'Everyone/play:LOADED_TITLE_2')
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(color)
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
                          }
                          setTimeout(() => {
                               interaction.editReply({
@@ -160,18 +161,18 @@ module.exports = class Play extends Command {
                          if (!settings.CustomChannel) {
                               if (player.queue.length !== 0) {
                                    title = bot.translate(settings.Language, 'Everyone/play:LOADED_TITLE_1', {
-                                        pos: player.queue.length
+                                        POS: player.queue.length
                                    })
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(color)
                                         .setTitle(title)
-                                        .setDescription(`[${track.title}](${track.uri})`)
+                                        .setDescription(`${track.title}`)
                               } else {
                                    title = bot.translate(settings.Language, 'Everyone/play:LOADED_TITLE_2')
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(color)
                                         .setTitle(title)
-                                        .setDescription(`[${track.title}](${track.uri})`)
+                                        .setDescription(`${track.title}`)
                               }
 
                               setTimeout(() => {
@@ -183,18 +184,18 @@ module.exports = class Play extends Command {
                          } else {
                               if (player.queue.length !== 0) {
                                    title = bot.translate(settings.Language, 'Everyone/play:LOADED_TITLE_1', {
-                                        pos: player.queue.length
+                                        POS: player.queue.length
                                    })
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(color)
                                         .setTitle(title)
-                                        .setDescription(`[${track.title}](${track.uri})`)
+                                        .setDescription(`${track.title}`)
                               } else {
                                    title = bot.translate(settings.Language, 'Everyone/play:LOADED_TITLE_2')
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(color)
                                         .setTitle(title)
-                                        .setDescription(`[${track.title}](${track.uri})`)
+                                        .setDescription(`${track.title}`)
                               }
 
                               setTimeout(() => {
@@ -210,10 +211,10 @@ module.exports = class Play extends Command {
                     case "PLAYLIST_LOADED":
                          let PLAYLIST_LOADED;
                          if (search.includes("&list=RD")) {
-                              PLAYLIST_LOADED = new MessageEmbed()
+                              PLAYLIST_LOADED = new EmbedBuilder()
                                    .setColor(color)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_LOADED_DESC_1', {
-                                        playlistname: res.playlist.name
+                                        PLAYLISTNAME: `${bot.codeBlock(res.playlist.name)}`
                                    }))
 
                               player.queue.add(res.tracks[0]);
@@ -232,11 +233,11 @@ module.exports = class Play extends Command {
                                         case 'n':
                                              res.tracks.shift()
 
-                                             PLAYLIST_LOADED = new MessageEmbed()
+                                             PLAYLIST_LOADED = new EmbedBuilder()
                                                   .setColor(color)
                                                   .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_LOADED_DESC_2', {
-                                                       size: res.tracks.length - 1,
-                                                       playlistname: res.playlist.name
+                                                       SIZE: res.tracks.length - 1,
+                                                       PLAYLISTNAME: `${bot.codeBlock(res.playlist.name)}`
                                                   }))
 
                                              player.queue.add(res.tracks);
@@ -245,11 +246,11 @@ module.exports = class Play extends Command {
                                         case 's':
                                              shuffleArray(res.tracks);
 
-                                             PLAYLIST_LOADED = new MessageEmbed()
+                                             PLAYLIST_LOADED = new EmbedBuilder()
                                                   .setColor(color)
                                                   .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_LOADED_DESC_2', {
-                                                       size: res.tracks.length,
-                                                       playlistname: res.playlist.name
+                                                       SIZE: res.tracks.length,
+                                                       PLAYLISTNAME: `${bot.codeBlock(res.playlist.name)}`
                                                   }))
 
                                              player.queue.add(res.tracks);
@@ -258,22 +259,22 @@ module.exports = class Play extends Command {
                                         case 'r':
                                              res.tracks.reverse();
 
-                                             PLAYLIST_LOADED = new MessageEmbed()
+                                             PLAYLIST_LOADED = new EmbedBuilder()
                                                   .setColor(color)
                                                   .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_LOADED_DESC_2', {
-                                                       size: res.tracks.length,
-                                                       playlistname: res.playlist.name
+                                                       SIZE: res.tracks.length,
+                                                       PLAYLISTNAME: `${bot.codeBlock(res.playlist.name)}`
                                                   }))
 
                                              player.queue.add(res.tracks);
                                              if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) await player.play();
                                              break;
                                         default:
-                                             PLAYLIST_LOADED = new MessageEmbed()
+                                             PLAYLIST_LOADED = new EmbedBuilder()
                                                   .setColor(color)
                                                   .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_LOADED_DESC_2', {
-                                                       size: res.tracks.length,
-                                                       playlistname: res.playlist.name
+                                                       SIZE: res.tracks.length,
+                                                       PLAYLISTNAME: `${bot.codeBlock(res.playlist.name)}`
                                                   }))
 
                                              player.queue.add(res.tracks);
@@ -281,7 +282,7 @@ module.exports = class Play extends Command {
                                              break;
                                    }
                               } else {
-                                   PLAYLIST_LOADED = new MessageEmbed()
+                                   PLAYLIST_LOADED = new EmbedBuilder()
                                         .setColor(bot.config.colorOrange)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_NOT_ALLOWED'))
                               }

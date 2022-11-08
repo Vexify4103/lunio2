@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Pause extends Command {
@@ -10,7 +10,6 @@ module.exports = class Pause extends Command {
                name: 'pause',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Pauses the current playing song.',
                slash: true,
                usage: 'pause',
@@ -25,7 +24,7 @@ module.exports = class Pause extends Command {
 
 
           if (player.paused) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorOrange)
                     .setDescription(bot.translate(settings.Language, 'DJ/pause:EMBED_ALREADY_PAUSED'))
 
@@ -37,7 +36,7 @@ module.exports = class Pause extends Command {
 
           player.pause(true);
 
-          embed =  new MessageEmbed()
+          embed =  new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(bot.translate(settings.Language, 'DJ/pause:EMBED_PAUSED_SONG'))
 

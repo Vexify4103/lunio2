@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 module.exports = class Fix extends Command {
      constructor(bot) {
@@ -9,7 +9,6 @@ module.exports = class Fix extends Command {
                name: 'fix',
                adminOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Tries to fix the server region.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -32,7 +31,7 @@ module.exports = class Fix extends Command {
                await bot.delay(bot, 100);
                channel.setRTCRegion(null);
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'Admin/fix:EMBED_SUCCESS'))
 
@@ -43,7 +42,7 @@ module.exports = class Fix extends Command {
           } catch (error) {
                bot.logger.error(`Error changing RTCRegion: ${error}`)
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Admin/fix:EMBED_ERROR'))
 

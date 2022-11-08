@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Stop extends Command {
@@ -10,7 +10,6 @@ module.exports = class Stop extends Command {
                name: 'stop',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Stops the player and clear the queue.',
                slash: true,
                usage: 'stop',
@@ -23,7 +22,7 @@ module.exports = class Stop extends Command {
           const player = bot.manager.players.get(guild.id);
           let embed;
           
-          embed = new MessageEmbed()
+          embed = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(bot.translate(settings.Language, 'DJ/stop:EMBED_STOPPED'))
 

@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Remove extends Command {
@@ -10,7 +10,6 @@ module.exports = class Remove extends Command {
                name: 'remove',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Removes a song from the queue.',
                slash: true,
                usage: 'remove <from> <to>',
@@ -38,7 +37,7 @@ module.exports = class Remove extends Command {
           let embed;
 
           if (player.queue.size <= 0) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'DJ/remove:EMBED_NO_QUEUE'))
 
@@ -49,7 +48,7 @@ module.exports = class Remove extends Command {
           }
 
           if (pos1 === 0) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'DJ/remove:EMBED_NO_SONG'))
 
@@ -63,7 +62,7 @@ module.exports = class Remove extends Command {
           if (!pos2) {
                player.queue.splice(pos1 - 1, 1);
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/remove:EMBED_REMOVED_SONG'))
 
@@ -89,10 +88,10 @@ module.exports = class Remove extends Command {
                const after = player.queue.size
                const removedSongs = before - after
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/remove:EMBED_REMOVED_RANGE', {
-                         removedSongs: removedSongs
+                         removedSongs: `${bot.codeBlock(removedSongs)}`
                     }))
 
                interaction.reply({

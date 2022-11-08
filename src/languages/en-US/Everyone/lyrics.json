@@ -1,14 +1,8 @@
 {
-     "USAGE": "lyrics",
      "DESC": "Shows lyrics for the currently playing song.",
-     "PERMS": "Everyone",
      
-     "METHOD_NAME_1": "<song title>",
      "METHOD_DESC_1": "Shows lyrics for the provided song.",
-     "METHOD_PERMS_1": "Everyone",
-     "METHOD_NAME_2": "<song title> + <song artist>",
      "METHOD_DESC_2": "Helps searching the Lyrics for the song.",
-     "METHOD_PERMS_2": "Everyone",
 
      "LOADING_TITLE": "Searching lyrics",
      "LOADING_DESC": "This might take a while...",

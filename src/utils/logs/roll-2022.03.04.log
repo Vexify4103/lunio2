@@ -1,0 +1,186 @@
+00:41:11.978 INFO  MongoDB successfully connected 
+00:41:12.258 INFO  Shard: 0 has became ready 
+00:41:12.310 INFO  All guilds have been initialized. 
+00:41:12.310 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:41:12.310 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:41:12.311 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:41:12.675 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:41:23.691 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'cache'). 
+00:41:23.904 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'cache'). 
+00:42:14.061 INFO  MongoDB successfully connected 
+00:42:14.379 INFO  Shard: 0 has became ready 
+00:42:14.427 INFO  All guilds have been initialized. 
+00:42:14.427 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:42:14.428 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:42:14.428 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:42:14.693 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:42:34.322 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:42:34.463 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:44:29.330 INFO  MongoDB successfully connected 
+00:44:29.718 INFO  Shard: 0 has became ready 
+00:44:29.760 INFO  All guilds have been initialized. 
+00:44:29.761 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:44:29.761 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:44:29.761 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:44:30.021 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:44:36.671 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:44:36.814 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:44:53.751 INFO  MongoDB successfully connected 
+00:44:54.003 INFO  Shard: 0 has became ready 
+00:44:54.052 INFO  All guilds have been initialized. 
+00:44:54.052 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:44:54.053 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:44:54.053 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:44:54.269 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:44:57.393 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:44:57.540 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:46:08.009 INFO  MongoDB successfully connected 
+00:46:08.260 INFO  Shard: 0 has became ready 
+00:46:08.319 INFO  All guilds have been initialized. 
+00:46:08.320 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:46:08.320 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:46:08.320 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:46:08.574 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:46:11.247 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:46:11.393 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:53:45.551 INFO  MongoDB successfully connected 
+00:53:46.495 INFO  Shard: 0 has became ready 
+00:53:46.530 INFO  All guilds have been initialized. 
+00:53:46.530 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:53:46.531 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:53:46.531 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:53:46.797 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:53:54.363 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'members'). 
+00:53:54.501 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'members'). 
+00:55:10.170 INFO  MongoDB successfully connected 
+00:55:10.774 INFO  Shard: 0 has became ready 
+00:55:10.816 INFO  All guilds have been initialized. 
+00:55:10.816 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:55:10.817 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:55:10.817 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:55:11.045 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:55:13.009 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'members'). 
+00:55:13.150 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'members'). 
+00:56:49.023 INFO  MongoDB successfully connected 
+00:56:49.307 INFO  Shard: 0 has became ready 
+00:56:49.349 INFO  All guilds have been initialized. 
+00:56:49.349 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:56:49.350 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:56:49.350 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:56:49.625 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:56:56.709 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:56:56.850 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:58:44.581 INFO  MongoDB successfully connected 
+00:58:44.845 INFO  Shard: 0 has became ready 
+00:58:44.893 INFO  All guilds have been initialized. 
+00:58:44.894 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:58:44.894 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:58:44.895 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:58:45.125 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:58:49.464 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'members'). 
+00:58:49.617 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'members'). 
+00:59:51.275 INFO  MongoDB successfully connected 
+00:59:51.666 INFO  Shard: 0 has became ready 
+00:59:51.702 INFO  All guilds have been initialized. 
+00:59:51.703 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:59:51.703 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:59:51.703 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:59:51.959 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+00:59:56.488 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+00:59:56.628 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'fetch'). 
+01:02:05.681 INFO  MongoDB successfully connected 
+01:02:06.081 INFO  Shard: 0 has became ready 
+01:02:06.117 INFO  All guilds have been initialized. 
+01:02:06.117 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:02:06.117 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:02:06.118 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:02:06.382 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:02:17.880 INFO  MongoDB successfully connected 
+01:02:18.281 INFO  Shard: 0 has became ready 
+01:02:18.317 INFO  All guilds have been initialized. 
+01:02:18.318 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:02:18.318 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:02:18.318 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:02:18.539 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:04:48.129 INFO  MongoDB successfully connected 
+01:04:48.487 INFO  Shard: 0 has became ready 
+01:04:48.532 INFO  All guilds have been initialized. 
+01:04:48.533 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:48.533 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:04:48.533 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:48.923 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:05:10.050 ERROR Unhandled promise rejection: Invalid Form Body
+embeds[0].color: Value "{}" is not int.. 
+01:05:13.188 ERROR Unhandled promise rejection: nores is not defined. 
+01:05:13.784 ERROR Rate limit: /channels/949065182628433941/messages/:id (Cooldown: 545ms) 
+01:05:24.403 ERROR Unhandled promise rejection: nores is not defined. 
+01:08:28.987 ERROR Unhandled promise rejection: Invalid Form Body
+embeds[0].color: Value "{}" is not int.. 
+01:08:42.275 ERROR Unhandled promise rejection: Unknown Message. 
+01:12:20.322 INFO  MongoDB successfully connected 
+01:12:20.685 INFO  Shard: 0 has became ready 
+01:12:20.721 INFO  All guilds have been initialized. 
+01:12:20.722 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:12:20.722 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:12:20.722 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:12:20.997 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:12:23.708 ERROR Unhandled promise rejection: Invalid Form Body
+embeds[0].color: Value "{}" is not int.. 
+01:16:22.630 INFO  MongoDB successfully connected 
+01:16:22.979 INFO  Shard: 0 has became ready 
+01:16:23.021 INFO  All guilds have been initialized. 
+01:16:23.022 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:16:23.022 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:16:23.022 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:16:23.360 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:17:22.461 ERROR Unhandled promise rejection: Unknown Message. 
+01:19:22.661 INFO  MongoDB successfully connected 
+01:19:22.957 INFO  Shard: 0 has became ready 
+01:19:22.999 INFO  All guilds have been initialized. 
+01:19:22.999 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:19:22.999 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:19:23.000 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:19:23.335 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:20:50.386 ERROR Unhandled promise rejection: Unknown Message. 
+01:22:54.291 ERROR Unhandled promise rejection: Unknown Message. 
+17:01:56.100 INFO  MongoDB successfully connected 
+17:01:56.485 INFO  Shard: 0 has became ready 
+17:01:56.537 INFO  All guilds have been initialized. 
+17:01:56.537 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:01:56.538 INFO  Void Music 2#3539, ready to serve [1] users in [2] servers. 
+17:01:56.538 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:01:56.817 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+17:07:30.807 ERROR Unhandled promise rejection: Invalid Form Body
+embeds[0].color: Value "{}" is not int.. 
+17:08:12.151 INFO  MongoDB successfully connected 
+17:08:12.405 INFO  Shard: 0 has became ready 
+17:08:12.458 INFO  All guilds have been initialized. 
+17:08:12.458 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:08:12.459 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+17:08:12.459 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+17:08:12.756 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+17:14:41.561 ERROR Unhandled promise rejection: Unknown interaction. 
+17:15:24.125 ERROR Unhandled promise rejection: Unknown interaction. 
+23:48:14.623 INFO  MongoDB successfully connected 
+23:48:14.911 INFO  Shard: 0 has became ready 
+23:48:14.971 INFO  All guilds have been initialized. 
+23:48:14.971 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:48:14.971 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+23:48:14.972 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:48:15.219 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+23:55:58.319 INFO  MongoDB successfully connected 
+23:55:58.644 INFO  Shard: 0 has became ready 
+23:55:58.709 INFO  All guilds have been initialized. 
+23:55:58.709 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:55:58.710 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+23:55:58.710 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:55:59.014 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+23:56:38.377 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'edit'). 
+23:59:03.308 INFO  MongoDB successfully connected 
+23:59:03.641 INFO  Shard: 0 has became ready 
+23:59:03.695 INFO  All guilds have been initialized. 
+23:59:03.695 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:59:03.696 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+23:59:03.696 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:59:03.943 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+

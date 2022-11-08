@@ -1,0 +1,197 @@
+00:02:13.070 INFO  =-=-=-=-=-=-=- Loading shard(s) -=-=-=-=-=-=-= 
+00:02:14.633 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+00:02:14.653 INFO  Loading Command: help. 
+00:02:14.835 INFO  Loading Command: lyrics. 
+00:02:14.838 INFO  Loading Command: ping. 
+00:02:14.841 INFO  Loading Command: play. 
+00:02:14.844 INFO  Loading Command: premiumstatus. 
+00:02:14.846 INFO  Loading Command: queue. 
+00:02:14.851 INFO  Loading Command: docs. 
+00:02:14.852 INFO  Loading Command: eval. 
+00:02:14.855 INFO  Loading Command: lavalink. 
+00:02:14.899 INFO  Loading Command: node. 
+00:02:14.901 INFO  Loading Command: reload. 
+00:02:14.903 INFO  Loading Command: shutdown. 
+00:02:14.904 INFO  Loading Command: suggestion. 
+00:02:14.911 INFO  Loading Command: user. 
+00:02:14.917 INFO  Loading Command: ban. 
+00:02:14.920 INFO  Loading Command: playlists. 
+00:02:14.922 INFO  Loading Command: prefix. 
+00:02:14.925 INFO  Loading Command: setup. 
+00:02:14.927 INFO  Loading Command: test. 
+00:02:14.930 INFO  Loading Command: unban. 
+00:02:14.934 INFO  Loading Command: about. 
+00:02:14.936 INFO  Loading Command: invite. 
+00:02:14.939 INFO  Loading Command: shorturl. 
+00:02:14.940 INFO  Loading Command: status. 
+00:02:14.942 INFO  Loading Command: support. 
+00:02:14.944 INFO  Loading Command: uptime. 
+00:02:14.950 INFO  Loading Command: 247. 
+00:02:14.951 INFO  Loading Command: back. 
+00:02:14.952 INFO  Loading Command: bassboost. 
+00:02:14.953 INFO  Loading Command: dc. 
+00:02:14.954 INFO  Loading Command: fast-forward. 
+00:02:14.956 INFO  Loading Command: join. 
+00:02:14.958 INFO  Loading Command: loop. 
+00:02:14.964 INFO  Loading Command: lyrics12. 
+00:02:14.965 INFO  Loading Command: move. 
+00:02:14.967 INFO  Loading Command: nightcore. 
+00:02:14.970 INFO  Loading Command: np. 
+00:02:14.973 INFO  Loading Command: p-add. 
+00:02:14.975 INFO  Loading Command: p-create. 
+00:02:14.976 INFO  Loading Command: p-delete. 
+00:02:14.978 INFO  Loading Command: p-load. 
+00:02:14.980 INFO  Loading Command: p-remove. 
+00:02:14.981 INFO  Loading Command: p-view. 
+00:02:14.982 INFO  Loading Command: pause. 
+00:02:14.983 INFO  Loading Command: pitch. 
+00:02:14.985 INFO  Loading Command: play12. 
+00:02:14.986 INFO  Loading Command: previous. 
+00:02:14.987 INFO  Loading Command: queue12. 
+00:02:14.996 INFO  Loading Command: radio. 
+00:02:14.997 INFO  Loading Command: remove. 
+00:02:14.998 INFO  Loading Command: resume. 
+00:02:14.999 INFO  Loading Command: rewind. 
+00:02:15.001 INFO  Loading Command: search. 
+00:02:15.003 INFO  Loading Command: seek. 
+00:02:15.005 INFO  Loading Command: shuffle. 
+00:02:15.007 INFO  Loading Command: skip. 
+00:02:15.008 INFO  Loading Command: speed. 
+00:02:15.010 INFO  Loading Command: vaporwave. 
+00:02:15.011 INFO  Loading Command: volume. 
+00:02:15.012 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+00:02:15.249 INFO  Loading Event: debug 
+00:02:15.250 INFO  Loading Event: error 
+00:02:15.253 INFO  Loading Event: guildCreate 
+00:02:15.255 INFO  Loading Event: guildDelete 
+00:02:15.256 INFO  Loading Event: guildUnavailable 
+00:02:15.258 INFO  Loading Event: interactionCreate 
+00:02:15.262 INFO  Loading Event: messageCreate 
+00:02:15.263 INFO  Loading Event: rateLimit 
+00:02:15.265 INFO  Loading Event: raw 
+00:02:15.266 INFO  Loading Event: ready 
+00:02:15.268 INFO  Loading Event: warn 
+00:02:15.270 INFO  Loading Event: clickButton 
+00:02:15.273 INFO  Loading Event: slashCreate 
+00:02:15.275 INFO  Loading Event: shardDisconnect 
+00:02:15.276 INFO  Loading Event: shardError 
+00:02:15.277 INFO  Loading Event: shardReady 
+00:02:15.278 INFO  Loading Event: shardReconnecting 
+00:02:15.281 INFO  Loading Event: channelDelete 
+00:02:15.283 INFO  Loading Event: messageReactionAdd 
+00:02:15.284 INFO  Loading Event: voiceStateUpdate 
+00:02:15.742 INFO  MongoDB successfully connected 
+00:02:16.017 INFO  Shard: 0 has became ready 
+00:02:16.026 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+00:02:16.043 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+00:02:16.044 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: unspecified. 
+00:02:16.177 INFO  All guilds have been initialized. 
+00:02:16.177 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:02:16.177 INFO  Moody 2#6662, ready to serve [4] users in [3] servers. 
+00:02:16.177 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:02:16.260 INFO  Loaded Interactions for guild: Friends 
+00:02:16.344 INFO  Loaded Interactions for guild: Moody 
+00:02:16.387 INFO  Loaded Interactions for guild: TEST 
+02:47:15.976 INFO  =-=-=-=-=-=-=- Loading shard(s) -=-=-=-=-=-=-= 
+02:47:17.771 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+02:47:17.793 INFO  Loading Command: ban. 
+02:47:17.796 INFO  Loading Command: playlists. 
+02:47:17.799 INFO  Loading Command: prefix. 
+02:47:17.804 INFO  Loading Command: setup. 
+02:47:17.807 INFO  Loading Command: test. 
+02:47:17.809 INFO  Loading Command: unban. 
+02:47:17.816 INFO  Loading Command: help. 
+02:47:18.023 INFO  Loading Command: lyrics. 
+02:47:18.026 INFO  Loading Command: ping. 
+02:47:18.029 INFO  Loading Command: play. 
+02:47:18.032 INFO  Loading Command: premiumstatus. 
+02:47:18.036 INFO  Loading Command: queue. 
+02:47:18.041 INFO  Loading Command: docs. 
+02:47:18.042 INFO  Loading Command: eval. 
+02:47:18.044 INFO  Loading Command: lavalink. 
+02:47:18.097 INFO  Loading Command: node. 
+02:47:18.099 INFO  Loading Command: reload. 
+02:47:18.101 INFO  Loading Command: shutdown. 
+02:47:18.103 INFO  Loading Command: suggestion. 
+02:47:18.108 INFO  Loading Command: user. 
+02:47:18.113 INFO  Loading Command: about. 
+02:47:18.116 INFO  Loading Command: invite. 
+02:47:18.120 INFO  Loading Command: shorturl. 
+02:47:18.122 INFO  Loading Command: status. 
+02:47:18.123 INFO  Loading Command: support. 
+02:47:18.126 INFO  Loading Command: uptime. 
+02:47:18.130 INFO  Loading Command: 247. 
+02:47:18.132 INFO  Loading Command: back. 
+02:47:18.135 INFO  Loading Command: bassboost. 
+02:47:18.137 INFO  Loading Command: dc. 
+02:47:18.138 INFO  Loading Command: fast-forward. 
+02:47:18.143 INFO  Loading Command: join. 
+02:47:18.146 INFO  Loading Command: loop. 
+02:47:18.155 INFO  Loading Command: lyrics12. 
+02:47:18.157 INFO  Loading Command: move. 
+02:47:18.160 INFO  Loading Command: nightcore. 
+02:47:18.165 INFO  Loading Command: np. 
+02:47:18.167 INFO  Loading Command: p-add. 
+02:47:18.169 INFO  Loading Command: p-create. 
+02:47:18.171 INFO  Loading Command: p-delete. 
+02:47:18.176 INFO  Loading Command: p-load. 
+02:47:18.178 INFO  Loading Command: p-remove. 
+02:47:18.179 INFO  Loading Command: p-view. 
+02:47:18.182 INFO  Loading Command: pause. 
+02:47:18.185 INFO  Loading Command: pitch. 
+02:47:18.188 INFO  Loading Command: play12. 
+02:47:18.189 INFO  Loading Command: previous. 
+02:47:18.192 INFO  Loading Command: queue12. 
+02:47:18.210 INFO  Loading Command: radio. 
+02:47:18.212 INFO  Loading Command: remove. 
+02:47:18.214 INFO  Loading Command: resume. 
+02:47:18.215 INFO  Loading Command: rewind. 
+02:47:18.217 INFO  Loading Command: search. 
+02:47:18.222 INFO  Loading Command: seek. 
+02:47:18.226 INFO  Loading Command: shuffle. 
+02:47:18.229 INFO  Loading Command: skip. 
+02:47:18.231 INFO  Loading Command: speed. 
+02:47:18.238 INFO  Loading Command: vaporwave. 
+02:47:18.241 INFO  Loading Command: volume. 
+02:47:18.243 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+02:47:18.595 INFO  Loading Event: clickButton 
+02:47:18.598 INFO  Loading Event: slashCreate 
+02:47:18.600 INFO  Loading Event: debug 
+02:47:18.602 INFO  Loading Event: error 
+02:47:18.605 INFO  Loading Event: guildCreate 
+02:47:18.608 INFO  Loading Event: guildDelete 
+02:47:18.610 INFO  Loading Event: guildUnavailable 
+02:47:18.611 INFO  Loading Event: interactionCreate 
+02:47:18.616 INFO  Loading Event: messageCreate 
+02:47:18.618 INFO  Loading Event: rateLimit 
+02:47:18.620 INFO  Loading Event: raw 
+02:47:18.623 INFO  Loading Event: ready 
+02:47:18.625 INFO  Loading Event: warn 
+02:47:18.628 INFO  Loading Event: channelDelete 
+02:47:18.630 INFO  Loading Event: messageReactionAdd 
+02:47:18.633 INFO  Loading Event: voiceStateUpdate 
+02:47:18.636 INFO  Loading Event: shardDisconnect 
+02:47:18.638 INFO  Loading Event: shardError 
+02:47:18.640 INFO  Loading Event: shardReady 
+02:47:18.641 INFO  Loading Event: shardReconnecting 
+02:47:18.914 INFO  MongoDB successfully connected 
+02:47:19.274 INFO  Shard: 0 has became ready 
+02:47:19.285 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+02:47:19.309 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+02:47:19.310 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: unspecified. 
+02:47:19.374 INFO  All guilds have been initialized. 
+02:47:19.375 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:47:19.375 INFO  Moody 2#6662, ready to serve [3] users in [3] servers. 
+02:47:19.375 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:47:19.492 INFO  Loaded Interactions for guild: Friends 
+02:47:19.528 INFO  Loaded Interactions for guild: TEST 
+02:47:19.570 INFO  Loaded Interactions for guild: Moody 
+02:47:49.313 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+02:47:49.313 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: unspecified. 
+02:48:19.321 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+02:48:19.323 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: unspecified. 
+02:48:49.500 INFO  Lavalink node: 0.0.0.0 has connected. 
+04:10:35.323 INFO  Lavalink player created in guild: 709832515577184287. 
+04:10:35.395 INFO  Track Loaded: Thing of Beauty 
+04:10:58.975 INFO  Track Loaded: THATS WHAT I WANT 
+04:21:43.496 INFO  Lavalink player destroyed in guild: 709832515577184287. 

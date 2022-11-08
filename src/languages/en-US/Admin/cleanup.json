@@ -1,11 +1,9 @@
 {
-     "USAGE": "cleanup",
      "DESC": "Clear command and bot messages.",
-     "PERMS": "Admin",
 
      "EMBED_LOADING_TITLE": "Cleaning up",
      "EMBED_LOADING_DESC": "This might take a while...",
      "EMBED_NO_MESSAGES": "There are no messages to clean.",
-     "EMBED_SUCCESSFULL_DELETED": "Successfully deleted `{{SIZE}}` messages.",
+     "EMBED_SUCCESSFULL_DELETED": "Successfully deleted {{SIZE}} messages.",
      "EMBED_ERROR_DELETING": "Something went wrong cleaning up messages."
 }

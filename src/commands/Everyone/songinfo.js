@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Songinfo extends Command {
@@ -10,7 +10,6 @@ module.exports = class Songinfo extends Command {
                name: 'songinfo',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Shows details of the song currently being played.',
                slash: true,
                usage: 'songinfo',
@@ -48,12 +47,12 @@ module.exports = class Songinfo extends Command {
                          text: `[00:00/${bot.getduration(player.queue[songNumber - 1].duration)}]`
                     }
                }
-                    embed = new MessageEmbed()
-                         .setTitle(`${player?.queue[songNumber - 1]?.author || player.queue.current.author} - ${player?.queue[songNumber - 1]?.title || player.queue.current.author}`)
+                    embed = new EmbedBuilder()
+                         .setTitle(`${player?.queue[songNumber - 1]?.title || player.queue.current.author}`)
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Everyone/songinfo:EMBED', {
-                              requester: `<@${player?.queue[songNumber - 1]?.requester.id || player.queue.current.requester.id}>`,
-                              progressbar: bot.progressBar(player?.queue[songNumber - 1]?.duration || player.queue.current.duration, player.position || 0)
+                              REQUESTER: `<@${player?.queue[songNumber - 1]?.requester.id || player.queue.current.requester.id}>`,
+                              PROGRESSBAR: bot.progressBar(player?.queue[songNumber - 1]?.duration || player.queue.current.duration, player.position || 0)
                          }))
                          .setFooter(footer)
 
@@ -62,12 +61,12 @@ module.exports = class Songinfo extends Command {
                          ephemeral: true
                     })
           } else {
-               embed = new MessageEmbed()
-                    .setTitle(`${player.queue.current.author} - ${player.queue.current.title}`)
+               embed = new EmbedBuilder()
+                    .setTitle(`${player.queue.current.title}`)
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'Everyone/songinfo:EMBED', {
-                         requester: `<@${player.queue.current.requester.id}>`,
-                         progressbar: bot.progressBar(player.queue.current.duration, player.position || 0)
+                         REQUESTER: `<@${player.queue.current.requester.id}>`,
+                         PROGRESSBAR: bot.progressBar(player.queue.current.duration, player.position || 0)
                     }))
                     .setFooter({ text: `[${bot.getduration(player.position || 0) || '00:00'}/${bot.getduration(player.queue.current.duration) || '00:00'}]`})
           

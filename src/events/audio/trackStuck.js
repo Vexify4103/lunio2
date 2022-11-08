@@ -1,5 +1,5 @@
 const Event = require('../../structures/Event');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 class TrackStuck extends Event {
 	constructor(...args) {
@@ -11,10 +11,10 @@ class TrackStuck extends Event {
 	async run(bot, player, track, payload) {
 		bot.logger.log(`Track got stuck: ${track.author} - ${track.title} in guild: ${guild.id}`)
 		let title = bot.translate(settings.Language, 'misc:ERROR_TITLE')
-		let embed =  new MessageEmbed()
+		let embed =  new EmbedBuilder()
 				.setColor(bot.config.colorWrong)
 				.setTitle(title)
-				.setDescription(`[${track.title}](${track.uri})`)
+				.setDescription(`${track.title}`)
 
 			let channel = await bot.channels.fetch(player.textChannel)
 

@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Seek extends Command {
@@ -10,7 +10,6 @@ module.exports = class Seek extends Command {
                name: 'seek',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Seeks to a specific position in the current song.',
                slash: true,
                usage: 'seek mm:ss',
@@ -47,7 +46,7 @@ module.exports = class Seek extends Command {
           const timeToSeek = bot.read24hFormat(time)
 
           if (timeToSeek >= player.queue.current.duration) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'DJ/seek:EMBED_SEEK_NOT_POSSIBLE'))
 
@@ -59,10 +58,10 @@ module.exports = class Seek extends Command {
 
           player.seek(timeToSeek)
 
-          embed = new MessageEmbed()
+          embed = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(bot.translate(settings.Language, 'DJ/seek:EMBED_SEEKED_SONG', {
-                    timeToSeek: bot.getduration(timeToSeek)
+                    timeToSeek: `${bot.codeBlock(bot.getduration(timeToSeek))}`
                }))
           
           return interaction.reply({

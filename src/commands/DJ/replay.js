@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Replay extends Command {
@@ -10,7 +10,6 @@ module.exports = class Replay extends Command {
                name: 'replay',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Replay the current song.',
                slash: true,
                usage: 'replay',
@@ -24,7 +23,7 @@ module.exports = class Replay extends Command {
           let embed;
           
           
-          embed = new MessageEmbed()
+          embed = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(bot.translate(settings.Language, 'DJ/replay:EMBED_REPLAYING_SONG'))
 

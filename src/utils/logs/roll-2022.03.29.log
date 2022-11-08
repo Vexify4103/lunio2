@@ -1,0 +1,143 @@
+00:05:51.225 INFO  2 language(s) have loaded. (de-DE, en-US) 
+00:05:51.617 INFO  MongoDB successfully connected 
+00:05:51.987 INFO  Shard: 0 has became ready 
+00:05:52.044 INFO  All guilds have been initialized 
+00:05:52.058 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:05:52.157 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:05:52.158 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+00:05:52.158 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:06:11.034 INFO  2 language(s) have loaded. (de-DE, en-US) 
+00:06:11.634 INFO  MongoDB successfully connected 
+00:06:11.851 INFO  Shard: 0 has became ready 
+00:06:11.889 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:06:12.091 INFO  All guilds have been initialized 
+00:06:12.235 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:06:12.235 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+00:06:12.235 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:26:01.076 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:26:01.437 INFO  MongoDB successfully connected 
+01:26:01.697 INFO  Shard: 0 has became ready 
+01:26:01.741 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:26:01.795 INFO  All guilds have been initialized 
+01:26:01.915 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:26:01.915 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:26:01.916 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:26:26.812 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:26:27.073 INFO  MongoDB successfully connected 
+01:26:27.532 INFO  Shard: 0 has became ready 
+01:26:27.564 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:26:27.582 INFO  All guilds have been initialized 
+01:26:27.702 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:26:27.702 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:26:27.702 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:27:45.500 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:27:45.811 INFO  MongoDB successfully connected 
+01:27:46.081 INFO  Shard: 0 has became ready 
+01:27:46.113 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:27:46.125 INFO  All guilds have been initialized 
+01:27:46.248 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:27:46.249 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:27:46.249 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:28:07.323 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:28:07.574 INFO  MongoDB successfully connected 
+01:28:08.034 INFO  Shard: 0 has became ready 
+01:28:08.062 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:28:08.088 INFO  All guilds have been initialized 
+01:28:08.217 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:28:08.218 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:28:08.218 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:35:46.172 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:35:46.485 INFO  MongoDB successfully connected 
+01:35:46.798 INFO  Shard: 0 has became ready 
+01:35:46.831 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:35:46.858 INFO  All guilds have been initialized 
+01:35:46.985 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:35:46.985 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:35:46.985 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:39:40.326 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:39:40.664 INFO  MongoDB successfully connected 
+01:39:41.173 INFO  Shard: 0 has became ready 
+01:39:41.208 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:39:41.230 INFO  All guilds have been initialized 
+01:39:41.353 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:39:41.354 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:39:41.354 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:58:38.542 INFO  2 language(s) have loaded. (de-DE, en-US) 
+01:58:38.843 INFO  MongoDB successfully connected 
+01:58:39.125 INFO  Shard: 0 has became ready 
+01:58:39.158 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:58:39.173 INFO  All guilds have been initialized 
+01:58:39.290 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:58:39.291 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+01:58:39.291 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:04:15.678 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:04:16.007 INFO  MongoDB successfully connected 
+02:04:16.360 INFO  Shard: 0 has became ready 
+02:04:16.401 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:04:16.416 INFO  All guilds have been initialized 
+02:04:16.533 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:04:16.534 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:04:16.534 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:05:30.422 ERROR Unhandled promise rejection: settings is not defined. 
+02:15:29.602 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:15:29.904 INFO  MongoDB successfully connected 
+02:15:30.181 INFO  Shard: 0 has became ready 
+02:15:30.211 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:15:30.236 INFO  All guilds have been initialized 
+02:15:30.387 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:15:30.388 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:15:30.388 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:16:04.416 ERROR Unhandled promise rejection: Unknown interaction. 
+02:16:05.471 ERROR Unhandled promise rejection: Unknown interaction. 
+02:16:17.836 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:16:38.655 INFO  MongoDB successfully connected 
+02:17:13.527 INFO  Shard: 0 has became ready 
+02:17:13.560 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:17:13.589 INFO  All guilds have been initialized 
+02:17:13.721 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:17:13.722 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:17:13.722 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:25:58.209 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:25:58.554 INFO  MongoDB successfully connected 
+02:25:58.832 INFO  Shard: 0 has became ready 
+02:25:58.863 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:25:58.883 INFO  All guilds have been initialized 
+02:25:59.001 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:25:59.001 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:25:59.001 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:26:12.911 ERROR Unhandled promise rejection: bot.transtale is not a function. 
+02:26:30.443 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:26:30.667 INFO  MongoDB successfully connected 
+02:26:31.125 INFO  Shard: 0 has became ready 
+02:26:31.157 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:26:31.186 INFO  All guilds have been initialized 
+02:26:31.302 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:26:31.302 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:26:31.302 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:28:04.642 ERROR Unhandled promise rejection: Invalid Form Body
+data.embeds[0].description: This field is required. 
+02:31:37.332 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:31:37.635 INFO  MongoDB successfully connected 
+02:31:38.003 INFO  Shard: 0 has became ready 
+02:31:38.037 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:31:38.052 INFO  All guilds have been initialized 
+02:31:38.171 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:31:38.172 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:31:38.172 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:32:11.330 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:32:11.584 INFO  MongoDB successfully connected 
+02:32:12.080 INFO  Shard: 0 has became ready 
+02:32:12.120 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:32:12.136 INFO  All guilds have been initialized 
+02:32:12.251 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:32:12.251 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:32:12.252 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:36:21.600 INFO  2 language(s) have loaded. (de-DE, en-US) 
+02:36:21.946 INFO  MongoDB successfully connected 
+02:36:22.232 INFO  Shard: 0 has became ready 
+02:36:22.264 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:36:22.283 INFO  All guilds have been initialized 
+02:36:22.415 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:36:22.415 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:36:22.416 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:37:01.204 ERROR Unhandled promise rejection: Unknown Message. 

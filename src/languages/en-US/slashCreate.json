@@ -1,14 +1,15 @@
 {
      "REQUIRED_PERMS_SETUP": "I need the following Permissions to have the unique songrequest channel",
-     "MISSING_PERMISSION_SETUP": "Missing the permission `{{PERMISSION}}` in here which is required.",
+     "MISSING_PERMISSION_SETUP": "Missing the permission {{PERMISSION}} in here which is required.",
      "USER_NOT_VC": "You have to join a voice channel first.",
      "PLAYING_DIFFERENT_VC": "I'm already playing in a different voice channel!",
      "USER_BANNED": "You are banned from running commands in this server.",
      "COMMAND_PREMIUM": "This command requires a premium subscription!",
-     "COMMAND_VOTE": "",
-     "MISSING_READ_TEXT": "I am missing the `{{PERMISSION}}` permission in your voice channel!",
+     "MISSING_READ_TEXT": "I am missing the {{PERMISSION}} permission in your voice channel!",
      "VC_ALREADY_FULL": "I am not able to join your voice channel due to the configured user limit!",
-     "MISSING_PERM": "I am missing the permission `{{PERMISSION}}` to join your voice channel.",
+     "MISSING_PERM": "I am missing the permission {{PERMISSION}} to join your voice channel.",
      "USER_NO_DJ": "You are not a DJ in this server.",
-     "BOT_NOT_PLAYING": "The bot is currently not playing."
+     "BOT_NOT_PLAYING": "The bot is currently not playing.",
+     "USER_NOT_ADMIN": "You need admin permissions to use this command.",
+     "COMMAND_VOTE": ""
 }

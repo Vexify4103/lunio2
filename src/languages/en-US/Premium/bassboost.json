@@ -1,0 +1,6 @@
+{
+     "DESC": "Show the current bassboost level.",
+
+     "EMBED_DISPLAY_BASSBOOSTLEVEL": "Bassboost is set to `{{VALUE}}x`",
+     "EMBED_SET_NEW_BASSBOOSTLEVEL": "Bassboost is now set to `{{VALUE}}x`"
+}

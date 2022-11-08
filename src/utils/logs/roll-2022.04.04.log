@@ -1,0 +1,96 @@
+02:08:34.069 ERROR Error deleting message from void after time 
+02:23:46.625 INFO  1 language(s) have loaded. (en-US) 
+02:23:46.910 INFO  MongoDB successfully connected 
+02:23:47.334 INFO  Shard: 0 has became ready 
+02:23:47.357 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:23:47.373 INFO  All guilds have been initialized 
+02:23:47.492 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:23:47.492 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:23:47.493 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:25:18.375 INFO  1 language(s) have loaded. (en-US) 
+02:25:18.649 INFO  MongoDB successfully connected 
+02:25:19.050 INFO  Shard: 0 has became ready 
+02:25:19.069 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:25:19.089 INFO  All guilds have been initialized 
+02:25:19.208 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:25:19.208 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:25:19.209 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:26:21.206 INFO  1 language(s) have loaded. (en-US) 
+02:26:21.489 INFO  MongoDB successfully connected 
+02:26:21.851 INFO  Shard: 0 has became ready 
+02:26:21.874 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:26:21.891 INFO  All guilds have been initialized 
+02:26:22.005 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:26:22.005 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:26:22.005 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:27:40.600 INFO  1 language(s) have loaded. (en-US) 
+02:27:40.891 INFO  MongoDB successfully connected 
+02:27:41.237 INFO  Shard: 0 has became ready 
+02:27:41.255 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:27:41.275 INFO  All guilds have been initialized 
+02:27:41.391 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:27:41.392 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:27:41.392 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:27:42.432 ERROR running slashCreate: 866666289178869770 | ReferenceError: cmd is not defined 
+02:29:02.321 INFO  1 language(s) have loaded. (en-US) 
+02:29:02.640 INFO  MongoDB successfully connected 
+02:29:02.988 INFO  Shard: 0 has became ready 
+02:29:03.011 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:29:03.031 INFO  All guilds have been initialized 
+02:29:03.153 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:29:03.153 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+02:29:03.154 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+08:32:18.057 INFO  1 language(s) have loaded. (en-US) 
+08:32:18.403 INFO  MongoDB successfully connected 
+08:32:18.808 INFO  Shard: 0 has became ready 
+08:32:18.857 INFO  All guilds have been initialized 
+08:32:18.930 INFO  Lavalink node: 0.0.0.0 has connected. 
+08:32:18.972 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+08:32:18.972 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+08:32:18.973 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+08:33:18.314 INFO  1 language(s) have loaded. (en-US) 
+08:33:18.620 INFO  MongoDB successfully connected 
+08:33:18.949 INFO  Shard: 0 has became ready 
+08:33:18.971 INFO  Lavalink node: 0.0.0.0 has connected. 
+08:33:18.993 INFO  All guilds have been initialized 
+08:33:19.108 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+08:33:19.109 INFO  Void Music 2#3539, ready to serve [6] users in [3] servers 
+08:33:19.109 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:28:17.624 INFO  1 language(s) have loaded. (en-US) 
+22:28:18.048 INFO  MongoDB successfully connected 
+22:28:18.347 INFO  Shard: 0 has became ready 
+22:28:18.379 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:28:18.381 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:28:18.407 INFO  All guilds have been initialized 
+22:28:18.532 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:28:18.532 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+22:28:18.533 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:28:50.581 INFO  1 language(s) have loaded. (en-US) 
+22:28:50.860 INFO  MongoDB successfully connected 
+22:28:51.348 INFO  Shard: 0 has became ready 
+22:28:51.369 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:28:51.371 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:28:51.392 INFO  All guilds have been initialized 
+22:28:51.517 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:28:51.517 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+22:28:51.517 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:29:21.380 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:29:21.381 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:29:40.636 INFO  1 language(s) have loaded. (en-US) 
+22:29:41.016 INFO  MongoDB successfully connected 
+22:29:41.335 INFO  Shard: 0 has became ready 
+22:29:41.368 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:29:41.370 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:29:41.412 INFO  All guilds have been initialized 
+22:29:41.532 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:29:41.533 INFO  Void Music 2#3539, ready to serve [9] users in [3] servers 
+22:29:41.533 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:30:11.386 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:30:11.387 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:30:41.405 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:30:41.406 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:31:11.412 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:31:11.413 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:31:41.419 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+22:31:41.420 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+22:32:11.428 ERROR Lavalink node: '0.0.0.0', has error: 'Unable to connect after 5 attempts.'. 

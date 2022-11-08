@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 module.exports = class Cleanup extends Command {
      constructor(bot) {
@@ -9,7 +9,6 @@ module.exports = class Cleanup extends Command {
                name: 'cleanup',
                adminOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Clear command and bot messages.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -25,7 +24,7 @@ module.exports = class Cleanup extends Command {
 
           let i = [];
           let title = bot.translate(settings.Language, 'Admin/cleanup:EMBED_LOADING_TITLE')
-          embed = new MessageEmbed()
+          embed = new EmbedBuilder()
                .setTitle(title)
                .setDescription(bot.translate(settings.Language, 'Admin/cleanup:EMBED_LOADING_DESC'))
                .setColor(await bot.getColor(bot, guild.id))
@@ -49,7 +48,7 @@ module.exports = class Cleanup extends Command {
                     } = await channel.bulkDelete(filter, true);
 
                     if (size === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/cleanup:EMBED_NO_MESSAGES'))
 
@@ -58,10 +57,10 @@ module.exports = class Cleanup extends Command {
                               ephemeral: true
                          })
                     } else {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(await bot.getColor(bot, guild.id))
                               .setDescription(bot.translate(settings.Language, 'Admin/cleanup:EMBED_SUCCESSFULL_DELETED', {
-                                   SIZE: size
+                                   SIZE: `${bot.codeBlock(size)}`
                               }))
 
                          return interaction.editReply({
@@ -78,7 +77,7 @@ module.exports = class Cleanup extends Command {
                     } = await channel.bulkDelete(filter, true);
 
                     if (size === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/cleanup:EMBED_NO_MESSAGES'))
 
@@ -87,10 +86,10 @@ module.exports = class Cleanup extends Command {
                               ephemeral: true
                          })
                     } else {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(await bot.getColor(bot, guild.id))
                               .setDescription(bot.translate(settings.Language, 'Admin/cleanup:EMBED_SUCCESSFULL_DELETED', {
-                                   SIZE: size
+                                   SIZE: `${bot.codeBlock(size)}`
                               }))
 
                          return interaction.editReply({
@@ -102,7 +101,7 @@ module.exports = class Cleanup extends Command {
           } catch (error) {
                bot.logger.error(`Error deleting messages: ${error}`)
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Admin/cleanup:EMBED_ERROR_DELETING'))
 

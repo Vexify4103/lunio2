@@ -1,7 +1,5 @@
 {
-     "USAGE": "fix",
      "DESC": "Tries to fix the server region.",
-     "PERMS": "Admin",
 
      "EMBED_SUCCESS": "Server region got reset.",
      "EMBED_ERROR": "Something went wrong trying to fix the server region."

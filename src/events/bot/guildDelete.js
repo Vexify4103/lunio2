@@ -1,5 +1,5 @@
 // Dependencies
-const { MessageEmbed, MessageAttachment } = require('discord.js'),
+const { EmbedBuilder, MessageAttachment } = require('discord.js'),
 	Event = require('../../structures/Event');
 
 module.exports = class guildDelete extends Event {
@@ -18,7 +18,7 @@ module.exports = class guildDelete extends Event {
 		// }
 		// const modChannel = await bot.channels.fetch(bot.config.SupportServer.GuildChannel).catch(() => bot.logger.error(`Error fetching logs channel`));
 		
-		// const embed = new MessageEmbed()
+		// const embed = new EmbedBuilder()
 		// 	.setColor(bot.config.colorWrong)
 		// 	.setTitle(`${cross} Left Guild`)
 		// 	.addField(`GuildID`, `${guild.id ?? 'undefined'}`)

@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Skip extends Command {
@@ -10,7 +10,6 @@ module.exports = class Skip extends Command {
                name: 'skip',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Lets you skip the current song.',
                slash: true,
                usage: 'skip',
@@ -32,7 +31,7 @@ module.exports = class Skip extends Command {
 
           if (!amount || amount >= 1) {
                player.stop()
-               embed = new MessageEmbed()    
+               embed = new EmbedBuilder()    
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/skip:EMBED_SKIPPED_1'))
 
@@ -47,10 +46,10 @@ module.exports = class Skip extends Command {
                if (amount > player.queue.size) amount = player.queue.size;
                player.stop(amount)
 
-               embed = new MessageEmbed()    
+               embed = new EmbedBuilder()    
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/skip:EMBED_SKIPPED_X', {
-                         amount: amount
+                         AMOUNT: `${bot.codeBlock(amount)}`
                     }))
 
                     

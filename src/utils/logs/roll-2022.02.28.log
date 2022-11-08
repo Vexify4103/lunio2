@@ -1,0 +1,1204 @@
+00:41:41.466 INFO  =-=-=-=-=-=-=- Loading shard(s) -=-=-=-=-=-=-= 
+00:41:42.721 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+00:41:42.736 ERROR Unable to load command ban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\ban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.741 ERROR Unable to load command playlists.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\playlists.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.746 ERROR Unable to load command setup.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\setup.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.748 INFO  Loading Command: test. 
+00:41:42.753 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.761 ERROR Unable to load command help.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\help.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.891 INFO  Loading Command: lyrics. 
+00:41:42.893 INFO  Loading Command: ping. 
+00:41:42.898 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.904 ERROR Unable to load command premiumstatus.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\premiumstatus.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.910 ERROR Unable to load command queue.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\queue.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:42.943 INFO  Loading Command: docs. 
+00:41:42.944 INFO  Loading Command: eval. 
+00:41:42.946 INFO  Loading Command: lavalink. 
+00:41:42.978 INFO  Loading Command: node. 
+00:41:42.980 INFO  Loading Command: reload. 
+00:41:42.981 INFO  Loading Command: shutdown. 
+00:41:42.983 INFO  Loading Command: suggestion. 
+00:41:42.986 INFO  Loading Command: user. 
+00:41:42.987 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+00:41:43.190 ERROR Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Audio-Manager.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js
+{"code":"MODULE_NOT_FOUND","requireStack":["D:\\Bots\\Discord Bots\\Void Music\\Void Music 2\\src\\base\\Audio-Manager.js","D:\\Bots\\Discord Bots\\Void Music\\Void Music 2\\src\\bot.js"]}
+Error: Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Audio-Manager.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Audio-Manager.js:13:5)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19) 
+00:41:43.216 INFO  Loading Command: about. 
+00:41:43.217 INFO  Loading Command: invite. 
+00:41:43.219 INFO  Loading Command: shorturl. 
+00:41:43.220 INFO  Loading Command: status. 
+00:41:43.221 INFO  Loading Command: support. 
+00:41:43.223 INFO  Loading Command: uptime. 
+00:41:43.226 ERROR Unable to load command 247.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.229 ERROR Unable to load command back.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.233 ERROR Unable to load command bassboost.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.236 ERROR Unable to load command dc.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.238 ERROR Unable to load command fast-forward.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.240 INFO  Loading Command: join. 
+00:41:43.242 ERROR Unable to load command loop.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.245 INFO  Loading Command: lyrics12. 
+00:41:43.247 ERROR Unable to load command move.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.250 ERROR Unable to load command nightcore.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.253 INFO  Loading Command: np. 
+00:41:43.254 INFO  Loading Command: p-add. 
+00:41:43.256 INFO  Loading Command: p-create. 
+00:41:43.257 INFO  Loading Command: p-delete. 
+00:41:43.259 INFO  Loading Command: p-load. 
+00:41:43.260 INFO  Loading Command: p-remove. 
+00:41:43.262 INFO  Loading Command: p-view. 
+00:41:43.264 ERROR Unable to load command pause.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.270 ERROR Unable to load command pitch.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.277 INFO  Loading Command: play12. 
+00:41:43.282 INFO  Loading Command: previous. 
+00:41:43.287 INFO  Loading Command: queue12. 
+00:41:43.301 INFO  Loading Command: radio. 
+00:41:43.304 ERROR Unable to load command remove.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.307 ERROR Unable to load command resume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.310 ERROR Unable to load command rewind.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.311 INFO  Loading Command: search. 
+00:41:43.314 ERROR Unable to load command seek.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.317 ERROR Unable to load command shuffle.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.319 ERROR Unable to load command skip.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.322 ERROR Unable to load command speed.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.325 ERROR Unable to load command vaporwave.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.328 ERROR Unable to load command volume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:41:43.331 INFO  Loading Event: clickButton 
+00:41:43.334 ERROR Failed to load Event: slashCreate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\custom\slashCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.336 INFO  Loading Event: debug 
+00:41:43.338 INFO  Loading Event: error 
+00:41:43.341 ERROR Failed to load Event: guildCreate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\guildCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.345 ERROR Failed to load Event: guildDelete error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\guildDelete.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.347 INFO  Loading Event: guildUnavailable 
+00:41:43.348 INFO  Loading Event: interactionCreate 
+00:41:43.351 ERROR Failed to load Event: messageCreate error: Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\handlers\requestcmd.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\messageCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.352 INFO  Loading Event: rateLimit 
+00:41:43.353 INFO  Loading Event: raw 
+00:41:43.480 INFO  Loading Event: ready 
+00:41:43.481 INFO  Loading Event: warn 
+00:41:43.483 INFO  Loading Event: nodeConnect 
+00:41:43.484 ERROR Failed to load Event: nodeConnect error: Cannot read properties of undefined (reading 'on') 
+00:41:43.485 INFO  Loading Event: nodeDisconnect 
+00:41:43.485 ERROR Failed to load Event: nodeDisconnect error: Cannot read properties of undefined (reading 'on') 
+00:41:43.486 INFO  Loading Event: nodeError 
+00:41:43.487 ERROR Failed to load Event: nodeError error: Cannot read properties of undefined (reading 'on') 
+00:41:43.488 INFO  Loading Event: playerCreate 
+00:41:43.489 ERROR Failed to load Event: playerCreate error: Cannot read properties of undefined (reading 'on') 
+00:41:43.490 INFO  Loading Event: playerDestroy 
+00:41:43.490 ERROR Failed to load Event: playerDestroy error: Cannot read properties of undefined (reading 'on') 
+00:41:43.492 INFO  Loading Event: playerMove 
+00:41:43.493 ERROR Failed to load Event: playerMove error: Cannot read properties of undefined (reading 'on') 
+00:41:43.518 INFO  Loading Event: queueEnd 
+00:41:43.518 ERROR Failed to load Event: queueEnd error: Cannot read properties of undefined (reading 'on') 
+00:41:43.519 INFO  Loading Event: trackEnd 
+00:41:43.519 ERROR Failed to load Event: trackEnd error: Cannot read properties of undefined (reading 'on') 
+00:41:43.520 INFO  Loading Event: trackError 
+00:41:43.520 ERROR Failed to load Event: trackError error: Cannot read properties of undefined (reading 'on') 
+00:41:43.522 INFO  Loading Event: trackStart 
+00:41:43.522 ERROR Failed to load Event: trackStart error: Cannot read properties of undefined (reading 'on') 
+00:41:43.524 ERROR Failed to load Event: channelDelete error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\channelDelete.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.528 ERROR Failed to load Event: messageReactionAdd error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\messageReactionAdd.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.530 ERROR Failed to load Event: voiceStateUpdate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\voiceStateUpdate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:41:43.532 INFO  Loading Event: shardDisconnect 
+00:41:43.533 INFO  Loading Event: shardError 
+00:41:43.534 INFO  Loading Event: shardReady 
+00:41:43.535 INFO  Loading Event: shardReconnecting 
+00:41:43.861 INFO  MongoDB successfully connected 
+00:41:44.134 INFO  Shard: 0 has became ready 
+00:41:44.135 ERROR Audio manager failed to load due to error: Cannot read properties of undefined (reading 'init') 
+00:41:44.140 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+00:41:44.142 INFO  Started refreshing application (/) commands. 
+00:41:44.142 INFO  Started refreshing application (/) commands in: 823543363688464455 
+00:41:44.143 INFO  Started refreshing application (/) commands in: 866666289178869770 
+00:41:44.144 INFO  Successfully reloaded application (/) commands. 
+00:41:44.184 INFO  All guilds have been initialized. 
+00:41:44.184 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:41:44.184 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:41:44.185 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:54:20.610 INFO  =-=-=-=-=-=-=- Loading shard(s) -=-=-=-=-=-=-= 
+00:54:21.839 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+00:54:21.854 ERROR Unable to load command ban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\ban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:21.859 ERROR Unable to load command playlists.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\playlists.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:21.864 ERROR Unable to load command setup.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\setup.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:21.866 INFO  Loading Command: test. 
+00:54:21.871 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:21.902 INFO  Loading Command: docs. 
+00:54:21.903 INFO  Loading Command: eval. 
+00:54:21.905 INFO  Loading Command: lavalink. 
+00:54:21.933 INFO  Loading Command: node. 
+00:54:21.934 INFO  Loading Command: reload. 
+00:54:21.936 INFO  Loading Command: shutdown. 
+00:54:21.937 INFO  Loading Command: suggestion. 
+00:54:21.940 INFO  Loading Command: user. 
+00:54:21.946 ERROR Unable to load command help.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\help.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.059 INFO  Loading Command: lyrics. 
+00:54:22.060 INFO  Loading Command: ping. 
+00:54:22.065 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.069 ERROR Unable to load command premiumstatus.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\premiumstatus.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.074 ERROR Unable to load command queue.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\queue.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.077 INFO  Loading Command: about. 
+00:54:22.079 INFO  Loading Command: invite. 
+00:54:22.082 INFO  Loading Command: shorturl. 
+00:54:22.083 INFO  Loading Command: status. 
+00:54:22.084 INFO  Loading Command: support. 
+00:54:22.086 INFO  Loading Command: uptime. 
+00:54:22.089 ERROR Unable to load command 247.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.092 ERROR Unable to load command back.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.096 ERROR Unable to load command bassboost.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.099 ERROR Unable to load command dc.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.102 ERROR Unable to load command fast-forward.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.104 INFO  Loading Command: join. 
+00:54:22.106 ERROR Unable to load command loop.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.109 INFO  Loading Command: lyrics12. 
+00:54:22.111 ERROR Unable to load command move.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.114 ERROR Unable to load command nightcore.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.116 INFO  Loading Command: np. 
+00:54:22.118 INFO  Loading Command: p-add. 
+00:54:22.119 INFO  Loading Command: p-create. 
+00:54:22.120 INFO  Loading Command: p-delete. 
+00:54:22.123 INFO  Loading Command: p-load. 
+00:54:22.124 INFO  Loading Command: p-remove. 
+00:54:22.125 INFO  Loading Command: p-view. 
+00:54:22.129 ERROR Unable to load command pause.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.132 ERROR Unable to load command pitch.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.133 INFO  Loading Command: play12. 
+00:54:22.135 INFO  Loading Command: previous. 
+00:54:22.136 INFO  Loading Command: queue12. 
+00:54:22.142 INFO  Loading Command: radio. 
+00:54:22.145 ERROR Unable to load command remove.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.148 ERROR Unable to load command resume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.150 ERROR Unable to load command rewind.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.152 INFO  Loading Command: search. 
+00:54:22.155 ERROR Unable to load command seek.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.158 ERROR Unable to load command shuffle.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.160 ERROR Unable to load command skip.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.164 ERROR Unable to load command speed.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.167 ERROR Unable to load command vaporwave.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.171 ERROR Unable to load command volume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+00:54:22.175 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+00:54:22.398 ERROR Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Audio-Manager.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js
+{"code":"MODULE_NOT_FOUND","requireStack":["D:\\Bots\\Discord Bots\\Void Music\\Void Music 2\\src\\base\\Audio-Manager.js","D:\\Bots\\Discord Bots\\Void Music\\Void Music 2\\src\\bot.js"]}
+Error: Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Audio-Manager.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Audio-Manager.js:13:5)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19) 
+00:54:22.424 INFO  Loading Event: clickButton 
+00:54:22.426 ERROR Failed to load Event: slashCreate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\custom\slashCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.428 INFO  Loading Event: debug 
+00:54:22.429 INFO  Loading Event: error 
+00:54:22.431 ERROR Failed to load Event: guildCreate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\guildCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.434 ERROR Failed to load Event: guildDelete error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\guildDelete.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.436 INFO  Loading Event: guildUnavailable 
+00:54:22.437 INFO  Loading Event: interactionCreate 
+00:54:22.440 ERROR Failed to load Event: messageCreate error: Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\handlers\requestcmd.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\messageCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.441 INFO  Loading Event: rateLimit 
+00:54:22.443 INFO  Loading Event: raw 
+00:54:22.542 INFO  Loading Event: ready 
+00:54:22.543 INFO  Loading Event: warn 
+00:54:22.545 INFO  Loading Event: nodeConnect 
+00:54:22.545 ERROR Failed to load Event: nodeConnect error: Cannot read properties of undefined (reading 'on') 
+00:54:22.546 INFO  Loading Event: nodeDisconnect 
+00:54:22.546 ERROR Failed to load Event: nodeDisconnect error: Cannot read properties of undefined (reading 'on') 
+00:54:22.548 INFO  Loading Event: nodeError 
+00:54:22.548 ERROR Failed to load Event: nodeError error: Cannot read properties of undefined (reading 'on') 
+00:54:22.549 INFO  Loading Event: playerCreate 
+00:54:22.549 ERROR Failed to load Event: playerCreate error: Cannot read properties of undefined (reading 'on') 
+00:54:22.550 INFO  Loading Event: playerDestroy 
+00:54:22.550 ERROR Failed to load Event: playerDestroy error: Cannot read properties of undefined (reading 'on') 
+00:54:22.551 INFO  Loading Event: playerMove 
+00:54:22.552 ERROR Failed to load Event: playerMove error: Cannot read properties of undefined (reading 'on') 
+00:54:22.575 INFO  Loading Event: queueEnd 
+00:54:22.576 ERROR Failed to load Event: queueEnd error: Cannot read properties of undefined (reading 'on') 
+00:54:22.577 INFO  Loading Event: trackEnd 
+00:54:22.577 ERROR Failed to load Event: trackEnd error: Cannot read properties of undefined (reading 'on') 
+00:54:22.578 INFO  Loading Event: trackError 
+00:54:22.578 ERROR Failed to load Event: trackError error: Cannot read properties of undefined (reading 'on') 
+00:54:22.579 INFO  Loading Event: trackStart 
+00:54:22.580 ERROR Failed to load Event: trackStart error: Cannot read properties of undefined (reading 'on') 
+00:54:22.582 ERROR Failed to load Event: channelDelete error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\channelDelete.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.585 ERROR Failed to load Event: messageReactionAdd error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\messageReactionAdd.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.587 ERROR Failed to load Event: voiceStateUpdate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\voiceStateUpdate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+00:54:22.589 INFO  Loading Event: shardDisconnect 
+00:54:22.590 INFO  Loading Event: shardError 
+00:54:22.591 INFO  Loading Event: shardReady 
+00:54:22.592 INFO  Loading Event: shardReconnecting 
+00:54:22.832 INFO  MongoDB successfully connected 
+00:54:23.126 INFO  Shard: 0 has became ready 
+00:54:23.128 ERROR Audio manager failed to load due to error: Cannot read properties of undefined (reading 'init') 
+00:54:23.131 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+00:54:23.133 INFO  Started refreshing application (/) commands. 
+00:54:23.133 INFO  Started refreshing application (/) commands in: 823543363688464455 
+00:54:23.135 INFO  Started refreshing application (/) commands in: 866666289178869770 
+00:54:23.135 INFO  Successfully reloaded application (/) commands. 
+00:54:23.163 INFO  All guilds have been initialized. 
+00:54:23.163 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:54:23.163 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+00:54:23.164 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:36.493 INFO  =-=-=-=-=-=-=- Loading shard(s) -=-=-=-=-=-=-= 
+01:04:37.709 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+01:04:37.725 ERROR Unable to load command ban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\ban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.730 ERROR Unable to load command playlists.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\playlists.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.735 ERROR Unable to load command setup.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\setup.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.737 INFO  Loading Command: test. 
+01:04:37.742 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.773 INFO  Loading Command: docs. 
+01:04:37.774 INFO  Loading Command: eval. 
+01:04:37.776 INFO  Loading Command: lavalink. 
+01:04:37.804 INFO  Loading Command: node. 
+01:04:37.806 INFO  Loading Command: reload. 
+01:04:37.807 INFO  Loading Command: shutdown. 
+01:04:37.808 INFO  Loading Command: suggestion. 
+01:04:37.811 INFO  Loading Command: user. 
+01:04:37.818 ERROR Unable to load command help.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\help.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.929 INFO  Loading Command: lyrics. 
+01:04:37.930 INFO  Loading Command: ping. 
+01:04:37.934 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.940 ERROR Unable to load command premiumstatus.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\premiumstatus.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.946 ERROR Unable to load command queue.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\queue.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:37.949 INFO  Loading Command: about. 
+01:04:37.951 INFO  Loading Command: invite. 
+01:04:37.953 INFO  Loading Command: shorturl. 
+01:04:37.954 INFO  Loading Command: status. 
+01:04:37.956 INFO  Loading Command: support. 
+01:04:37.957 INFO  Loading Command: uptime. 
+01:04:37.961 ERROR Unable to load command 247.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.964 ERROR Unable to load command back.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.968 ERROR Unable to load command bassboost.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.970 ERROR Unable to load command dc.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.973 ERROR Unable to load command fast-forward.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.975 INFO  Loading Command: join. 
+01:04:37.977 ERROR Unable to load command loop.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.979 INFO  Loading Command: lyrics12. 
+01:04:37.982 ERROR Unable to load command move.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.985 ERROR Unable to load command nightcore.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:37.988 INFO  Loading Command: np. 
+01:04:37.990 INFO  Loading Command: p-add. 
+01:04:37.991 INFO  Loading Command: p-create. 
+01:04:37.992 INFO  Loading Command: p-delete. 
+01:04:37.994 INFO  Loading Command: p-load. 
+01:04:37.995 INFO  Loading Command: p-remove. 
+01:04:37.996 INFO  Loading Command: p-view. 
+01:04:37.999 ERROR Unable to load command pause.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.002 ERROR Unable to load command pitch.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.003 INFO  Loading Command: play12. 
+01:04:38.004 INFO  Loading Command: previous. 
+01:04:38.006 INFO  Loading Command: queue12. 
+01:04:38.012 INFO  Loading Command: radio. 
+01:04:38.015 ERROR Unable to load command remove.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.017 ERROR Unable to load command resume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.020 ERROR Unable to load command rewind.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.021 INFO  Loading Command: search. 
+01:04:38.024 ERROR Unable to load command seek.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.027 ERROR Unable to load command shuffle.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.030 ERROR Unable to load command skip.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.033 ERROR Unable to load command speed.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.035 ERROR Unable to load command vaporwave.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.038 ERROR Unable to load command volume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:04:38.041 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+01:04:38.275 ERROR Failed to load Event: channelDelete error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\channelDelete.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:38.279 ERROR Failed to load Event: messageReactionAdd error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\messageReactionAdd.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:38.281 ERROR Failed to load Event: voiceStateUpdate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\voiceStateUpdate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:38.283 INFO  Loading Event: nodeConnect 
+01:04:38.285 INFO  Loading Event: nodeDisconnect 
+01:04:38.286 INFO  Loading Event: nodeError 
+01:04:38.287 INFO  Loading Event: playerCreate 
+01:04:38.288 INFO  Loading Event: playerDestroy 
+01:04:38.289 INFO  Loading Event: playerMove 
+01:04:38.310 INFO  Loading Event: queueEnd 
+01:04:38.311 INFO  Loading Event: trackEnd 
+01:04:38.312 INFO  Loading Event: trackError 
+01:04:38.314 INFO  Loading Event: trackStart 
+01:04:38.316 INFO  Loading Event: debug 
+01:04:38.317 INFO  Loading Event: error 
+01:04:38.319 INFO  Loading Event: guildCreate 
+01:04:38.320 INFO  Loading Event: guildDelete 
+01:04:38.321 INFO  Loading Event: guildUnavailable 
+01:04:38.322 INFO  Loading Event: interactionCreate 
+01:04:38.325 ERROR Failed to load Event: messageCreate error: Cannot find module '../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\handlers\requestcmd.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\bot\messageCreate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:04:38.327 INFO  Loading Event: rateLimit 
+01:04:38.328 INFO  Loading Event: raw 
+01:04:38.432 INFO  Loading Event: ready 
+01:04:38.433 INFO  Loading Event: warn 
+01:04:38.434 INFO  Loading Event: clickButton 
+01:04:38.436 INFO  Loading Event: slashCreate 
+01:04:38.438 INFO  Loading Event: shardDisconnect 
+01:04:38.439 INFO  Loading Event: shardError 
+01:04:38.440 INFO  Loading Event: shardReady 
+01:04:38.441 INFO  Loading Event: shardReconnecting 
+01:04:38.710 INFO  MongoDB successfully connected 
+01:04:39.020 INFO  Shard: 0 has became ready 
+01:04:39.026 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+01:04:39.027 INFO  Started refreshing application (/) commands. 
+01:04:39.028 INFO  Started refreshing application (/) commands in: 823543363688464455 
+01:04:39.029 INFO  Started refreshing application (/) commands in: 866666289178869770 
+01:04:39.029 INFO  Successfully reloaded application (/) commands. 
+01:04:39.056 INFO  All guilds have been initialized. 
+01:04:39.056 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:39.057 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:04:39.057 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:39.316 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:13:42.266 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+01:13:42.297 INFO  Loading Command: docs. 
+01:13:42.298 INFO  Loading Command: eval. 
+01:13:42.303 INFO  Loading Command: lavalink. 
+01:13:42.335 INFO  Loading Command: node. 
+01:13:42.336 INFO  Loading Command: reload. 
+01:13:42.337 INFO  Loading Command: shutdown. 
+01:13:42.338 INFO  Loading Command: suggestion. 
+01:13:42.341 INFO  Loading Command: user. 
+01:13:42.351 ERROR Unable to load command help.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\help.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.476 INFO  Loading Command: lyrics. 
+01:13:42.478 INFO  Loading Command: ping. 
+01:13:42.483 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.488 ERROR Unable to load command premiumstatus.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\premiumstatus.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.493 ERROR Unable to load command queue.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\queue.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.502 ERROR Unable to load command ban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\ban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.507 ERROR Unable to load command playlists.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\playlists.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.512 ERROR Unable to load command setup.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\setup.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.514 INFO  Loading Command: test. 
+01:13:42.519 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:42.520 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+01:13:42.780 INFO  Loading Command: about. 
+01:13:42.781 INFO  Loading Command: invite. 
+01:13:42.784 INFO  Loading Command: shorturl. 
+01:13:42.785 INFO  Loading Command: status. 
+01:13:42.787 INFO  Loading Command: support. 
+01:13:42.788 INFO  Loading Command: uptime. 
+01:13:42.793 ERROR Unable to load command 247.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.797 ERROR Unable to load command back.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.801 ERROR Unable to load command bassboost.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.804 ERROR Unable to load command dc.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.807 ERROR Unable to load command fast-forward.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.809 INFO  Loading Command: join. 
+01:13:42.812 ERROR Unable to load command loop.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.814 INFO  Loading Command: lyrics12. 
+01:13:42.817 ERROR Unable to load command move.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.819 ERROR Unable to load command nightcore.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.823 INFO  Loading Command: np. 
+01:13:42.825 INFO  Loading Command: p-add. 
+01:13:42.826 INFO  Loading Command: p-create. 
+01:13:42.827 INFO  Loading Command: p-delete. 
+01:13:42.830 INFO  Loading Command: p-load. 
+01:13:42.831 INFO  Loading Command: p-remove. 
+01:13:42.833 INFO  Loading Command: p-view. 
+01:13:42.836 ERROR Unable to load command pause.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.839 ERROR Unable to load command pitch.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.841 INFO  Loading Command: play12. 
+01:13:42.842 INFO  Loading Command: previous. 
+01:13:42.844 INFO  Loading Command: queue12. 
+01:13:42.851 INFO  Loading Command: radio. 
+01:13:42.854 ERROR Unable to load command remove.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.857 ERROR Unable to load command resume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.860 ERROR Unable to load command rewind.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.862 INFO  Loading Command: search. 
+01:13:42.865 ERROR Unable to load command seek.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.868 ERROR Unable to load command shuffle.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.870 ERROR Unable to load command skip.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.873 ERROR Unable to load command speed.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.876 ERROR Unable to load command vaporwave.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:13:42.878 INFO  Loading Command: volume. 
+01:13:42.882 INFO  Loading Event: clickButton 
+01:13:42.885 INFO  Loading Event: slashCreate 
+01:13:42.887 INFO  Loading Event: debug 
+01:13:42.888 INFO  Loading Event: error 
+01:13:42.890 INFO  Loading Event: guildCreate 
+01:13:42.892 INFO  Loading Event: guildDelete 
+01:13:42.893 INFO  Loading Event: guildUnavailable 
+01:13:42.895 INFO  Loading Event: interactionCreate 
+01:13:42.898 INFO  Loading Event: messageCreate 
+01:13:42.899 INFO  Loading Event: rateLimit 
+01:13:42.901 INFO  Loading Event: raw 
+01:13:43.023 INFO  Loading Event: ready 
+01:13:43.025 INFO  Loading Event: warn 
+01:13:43.027 INFO  Loading Event: nodeConnect 
+01:13:43.029 INFO  Loading Event: nodeDisconnect 
+01:13:43.030 INFO  Loading Event: nodeError 
+01:13:43.033 INFO  Loading Event: playerCreate 
+01:13:43.034 INFO  Loading Event: playerDestroy 
+01:13:43.036 INFO  Loading Event: playerMove 
+01:13:43.091 INFO  Loading Event: queueEnd 
+01:13:43.092 INFO  Loading Event: trackEnd 
+01:13:43.093 INFO  Loading Event: trackError 
+01:13:43.095 INFO  Loading Event: trackStart 
+01:13:43.098 INFO  Loading Event: channelDelete 
+01:13:43.100 INFO  Loading Event: messageReactionAdd 
+01:13:43.102 ERROR Failed to load Event: voiceStateUpdate error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\events\guild\voiceStateUpdate.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:13:43.105 INFO  Loading Event: shardDisconnect 
+01:13:43.106 INFO  Loading Event: shardError 
+01:13:43.107 INFO  Loading Event: shardReady 
+01:13:43.109 INFO  Loading Event: shardReconnecting 
+01:13:43.465 INFO  MongoDB successfully connected 
+01:13:43.679 INFO  Shard: 0 has became ready 
+01:13:43.684 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+01:13:43.685 INFO  Started refreshing application (/) commands. 
+01:13:43.686 INFO  Started refreshing application (/) commands in: 823543363688464455 
+01:13:43.687 INFO  Started refreshing application (/) commands in: 866666289178869770 
+01:13:43.688 INFO  Successfully reloaded application (/) commands. 
+01:13:43.720 INFO  All guilds have been initialized. 
+01:13:43.721 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:13:43.721 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:13:43.721 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:13:43.945 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:14:45.842 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+01:14:45.857 ERROR Unable to load command ban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\ban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:45.862 ERROR Unable to load command playlists.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\playlists.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:45.868 ERROR Unable to load command setup.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\setup.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:45.870 INFO  Loading Command: test. 
+01:14:45.875 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:45.882 ERROR Unable to load command help.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\help.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:45.997 INFO  Loading Command: lyrics. 
+01:14:45.999 INFO  Loading Command: ping. 
+01:14:46.003 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:46.008 ERROR Unable to load command premiumstatus.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\premiumstatus.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:46.014 ERROR Unable to load command queue.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\queue.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:14:46.040 INFO  Loading Command: docs. 
+01:14:46.042 INFO  Loading Command: eval. 
+01:14:46.043 INFO  Loading Command: lavalink. 
+01:14:46.073 INFO  Loading Command: node. 
+01:14:46.074 INFO  Loading Command: reload. 
+01:14:46.075 INFO  Loading Command: shutdown. 
+01:14:46.076 INFO  Loading Command: suggestion. 
+01:14:46.079 INFO  Loading Command: user. 
+01:14:46.080 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+01:14:46.297 INFO  Loading Command: about. 
+01:14:46.298 INFO  Loading Command: invite. 
+01:14:46.300 INFO  Loading Command: shorturl. 
+01:14:46.301 INFO  Loading Command: status. 
+01:14:46.303 INFO  Loading Command: support. 
+01:14:46.304 INFO  Loading Command: uptime. 
+01:14:46.307 ERROR Unable to load command 247.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.309 ERROR Unable to load command back.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.312 ERROR Unable to load command bassboost.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.315 ERROR Unable to load command dc.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.318 ERROR Unable to load command fast-forward.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.320 INFO  Loading Command: join. 
+01:14:46.322 ERROR Unable to load command loop.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.324 INFO  Loading Command: lyrics12. 
+01:14:46.326 ERROR Unable to load command move.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.328 ERROR Unable to load command nightcore.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.332 INFO  Loading Command: np. 
+01:14:46.333 INFO  Loading Command: p-add. 
+01:14:46.335 INFO  Loading Command: p-create. 
+01:14:46.336 INFO  Loading Command: p-delete. 
+01:14:46.338 INFO  Loading Command: p-load. 
+01:14:46.339 INFO  Loading Command: p-remove. 
+01:14:46.340 INFO  Loading Command: p-view. 
+01:14:46.343 ERROR Unable to load command pause.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.346 ERROR Unable to load command pitch.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.348 INFO  Loading Command: play12. 
+01:14:46.349 INFO  Loading Command: previous. 
+01:14:46.350 INFO  Loading Command: queue12. 
+01:14:46.356 INFO  Loading Command: radio. 
+01:14:46.359 ERROR Unable to load command remove.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.362 ERROR Unable to load command resume.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.365 ERROR Unable to load command rewind.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.367 INFO  Loading Command: search. 
+01:14:46.370 ERROR Unable to load command seek.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.373 ERROR Unable to load command shuffle.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.376 ERROR Unable to load command skip.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.379 ERROR Unable to load command speed.js: TypeError: Cannot read properties of undefined (reading 'checkMusic') 
+01:14:46.380 INFO  Loading Command: vaporwave. 
+01:14:46.382 INFO  Loading Command: volume. 
+01:19:17.022 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+01:19:17.038 ERROR Unable to load command help.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\help.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.157 INFO  Loading Command: lyrics. 
+01:19:17.158 INFO  Loading Command: ping. 
+01:19:17.162 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.168 ERROR Unable to load command premiumstatus.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\premiumstatus.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.173 ERROR Unable to load command queue.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\queue.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.199 INFO  Loading Command: docs. 
+01:19:17.200 INFO  Loading Command: eval. 
+01:19:17.202 INFO  Loading Command: lavalink. 
+01:19:17.231 INFO  Loading Command: node. 
+01:19:17.232 INFO  Loading Command: reload. 
+01:19:17.234 INFO  Loading Command: shutdown. 
+01:19:17.235 INFO  Loading Command: suggestion. 
+01:19:17.238 INFO  Loading Command: user. 
+01:19:17.245 ERROR Unable to load command ban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\ban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.250 ERROR Unable to load command playlists.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\playlists.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.256 ERROR Unable to load command setup.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\setup.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.257 INFO  Loading Command: test. 
+01:19:17.262 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:19:17.265 INFO  Loading Command: about. 
+01:19:17.267 INFO  Loading Command: invite. 
+01:19:17.270 INFO  Loading Command: shorturl. 
+01:19:17.271 INFO  Loading Command: status. 
+01:19:17.272 INFO  Loading Command: support. 
+01:19:17.274 INFO  Loading Command: uptime. 
+01:19:17.275 INFO  Loading Command: 247. 
+01:19:17.277 INFO  Loading Command: back. 
+01:19:17.279 INFO  Loading Command: bassboost. 
+01:19:17.280 INFO  Loading Command: dc. 
+01:19:17.281 INFO  Loading Command: fast-forward. 
+01:19:17.283 INFO  Loading Command: join. 
+01:19:17.284 INFO  Loading Command: loop. 
+01:19:17.286 INFO  Loading Command: lyrics12. 
+01:19:17.288 INFO  Loading Command: move. 
+01:19:17.289 INFO  Loading Command: nightcore. 
+01:19:17.291 INFO  Loading Command: np. 
+01:19:17.293 INFO  Loading Command: p-add. 
+01:19:17.294 INFO  Loading Command: p-create. 
+01:19:17.296 INFO  Loading Command: p-delete. 
+01:19:17.298 INFO  Loading Command: p-load. 
+01:19:17.299 INFO  Loading Command: p-remove. 
+01:19:17.300 INFO  Loading Command: p-view. 
+01:19:17.302 INFO  Loading Command: pause. 
+01:19:17.303 INFO  Loading Command: pitch. 
+01:19:17.304 INFO  Loading Command: play12. 
+01:19:17.306 INFO  Loading Command: previous. 
+01:19:17.307 INFO  Loading Command: queue12. 
+01:19:17.314 INFO  Loading Command: radio. 
+01:19:17.315 INFO  Loading Command: remove. 
+01:19:17.316 INFO  Loading Command: resume. 
+01:19:17.318 INFO  Loading Command: rewind. 
+01:19:17.319 INFO  Loading Command: search. 
+01:19:17.321 INFO  Loading Command: seek. 
+01:19:17.322 INFO  Loading Command: shuffle. 
+01:19:17.323 INFO  Loading Command: skip. 
+01:19:17.324 INFO  Loading Command: speed. 
+01:19:17.325 INFO  Loading Command: vaporwave. 
+01:19:17.327 INFO  Loading Command: volume. 
+01:19:17.328 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+01:19:17.548 INFO  Loading Event: clickButton 
+01:19:17.550 INFO  Loading Event: slashCreate 
+01:19:17.552 INFO  Loading Event: nodeConnect 
+01:19:17.553 INFO  Loading Event: nodeDisconnect 
+01:19:17.554 INFO  Loading Event: nodeError 
+01:19:17.556 INFO  Loading Event: playerCreate 
+01:19:17.557 INFO  Loading Event: playerDestroy 
+01:19:17.558 INFO  Loading Event: playerMove 
+01:19:17.578 INFO  Loading Event: queueEnd 
+01:19:17.579 INFO  Loading Event: trackEnd 
+01:19:17.580 INFO  Loading Event: trackError 
+01:19:17.581 INFO  Loading Event: trackStart 
+01:19:17.583 INFO  Loading Event: channelDelete 
+01:19:17.585 INFO  Loading Event: messageReactionAdd 
+01:19:17.587 INFO  Loading Event: voiceStateUpdate 
+01:19:17.589 INFO  Loading Event: debug 
+01:19:17.590 INFO  Loading Event: error 
+01:19:17.592 INFO  Loading Event: guildCreate 
+01:19:17.593 INFO  Loading Event: guildDelete 
+01:19:17.594 INFO  Loading Event: guildUnavailable 
+01:19:17.595 INFO  Loading Event: interactionCreate 
+01:19:17.598 INFO  Loading Event: messageCreate 
+01:19:17.600 INFO  Loading Event: rateLimit 
+01:19:17.601 INFO  Loading Event: raw 
+01:19:17.705 INFO  Loading Event: ready 
+01:19:17.706 INFO  Loading Event: warn 
+01:19:17.708 INFO  Loading Event: shardDisconnect 
+01:19:17.709 INFO  Loading Event: shardError 
+01:19:17.710 INFO  Loading Event: shardReady 
+01:19:17.711 INFO  Loading Event: shardReconnecting 
+01:19:17.996 INFO  MongoDB successfully connected 
+01:19:18.301 INFO  Shard: 0 has became ready 
+01:19:18.306 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+01:19:18.307 INFO  Started refreshing application (/) commands. 
+01:19:18.307 INFO  Started refreshing application (/) commands in: 823543363688464455 
+01:19:18.309 INFO  Started refreshing application (/) commands in: 866666289178869770 
+01:19:18.309 INFO  Successfully reloaded application (/) commands. 
+01:19:18.336 INFO  All guilds have been initialized. 
+01:19:18.337 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:19:18.337 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:19:18.337 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:19:18.579 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:27:29.949 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+01:27:29.987 INFO  Loading Command: docs. 
+01:27:29.988 INFO  Loading Command: eval. 
+01:27:29.994 INFO  Loading Command: lavalink. 
+01:27:30.030 INFO  Loading Command: node. 
+01:27:30.031 INFO  Loading Command: reload. 
+01:27:30.033 INFO  Loading Command: shutdown. 
+01:27:30.035 INFO  Loading Command: suggestion. 
+01:27:30.038 INFO  Loading Command: user. 
+01:27:30.042 INFO  Loading Command: help. 
+01:27:30.177 INFO  Loading Command: lyrics. 
+01:27:30.178 INFO  Loading Command: ping. 
+01:27:30.185 ERROR Unable to load command play.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Everyone\play.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:27:30.187 INFO  Loading Command: premiumstatus. 
+01:27:30.189 INFO  Loading Command: queue. 
+01:27:30.192 INFO  Loading Command: ban. 
+01:27:30.193 INFO  Loading Command: playlists. 
+01:27:30.195 INFO  Loading Command: setup. 
+01:27:30.197 INFO  Loading Command: test. 
+01:27:30.202 ERROR Unable to load command unban.js: Error: Cannot find module '../../utils/functions'
+Require stack:
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\commands\Admin\unban.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\base\Void.js
+- D:\Bots\Discord Bots\Void Music\Void Music 2\src\bot.js 
+01:27:30.206 INFO  Loading Command: about. 
+01:27:30.208 INFO  Loading Command: invite. 
+01:27:30.211 INFO  Loading Command: shorturl. 
+01:27:30.213 INFO  Loading Command: status. 
+01:27:30.215 INFO  Loading Command: support. 
+01:27:30.217 INFO  Loading Command: uptime. 
+01:27:30.219 INFO  Loading Command: 247. 
+01:27:30.221 INFO  Loading Command: back. 
+01:27:30.223 INFO  Loading Command: bassboost. 
+01:27:30.224 INFO  Loading Command: dc. 
+01:27:30.226 INFO  Loading Command: fast-forward. 
+01:27:30.228 INFO  Loading Command: join. 
+01:27:30.229 INFO  Loading Command: loop. 
+01:27:30.231 INFO  Loading Command: lyrics12. 
+01:27:30.233 INFO  Loading Command: move. 
+01:27:30.234 INFO  Loading Command: nightcore. 
+01:27:30.239 INFO  Loading Command: np. 
+01:27:30.241 INFO  Loading Command: p-add. 
+01:27:30.243 INFO  Loading Command: p-create. 
+01:27:30.245 INFO  Loading Command: p-delete. 
+01:27:30.247 INFO  Loading Command: p-load. 
+01:27:30.248 INFO  Loading Command: p-remove. 
+01:27:30.250 INFO  Loading Command: p-view. 
+01:27:30.251 INFO  Loading Command: pause. 
+01:27:30.253 INFO  Loading Command: pitch. 
+01:27:30.255 INFO  Loading Command: play12. 
+01:27:30.257 INFO  Loading Command: previous. 
+01:27:30.258 INFO  Loading Command: queue12. 
+01:27:30.266 INFO  Loading Command: radio. 
+01:27:30.267 INFO  Loading Command: remove. 
+01:27:30.269 INFO  Loading Command: resume. 
+01:27:30.270 INFO  Loading Command: rewind. 
+01:27:30.271 INFO  Loading Command: search. 
+01:27:30.273 INFO  Loading Command: seek. 
+01:27:30.275 INFO  Loading Command: shuffle. 
+01:27:30.276 INFO  Loading Command: skip. 
+01:27:30.277 INFO  Loading Command: speed. 
+01:27:30.278 INFO  Loading Command: vaporwave. 
+01:27:30.280 INFO  Loading Command: volume. 
+01:27:30.281 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+01:27:30.536 INFO  Loading Event: clickButton 
+01:27:30.539 INFO  Loading Event: slashCreate 
+01:27:30.541 INFO  Loading Event: nodeConnect 
+01:27:30.542 INFO  Loading Event: nodeDisconnect 
+01:27:30.544 INFO  Loading Event: nodeError 
+01:27:30.546 INFO  Loading Event: playerCreate 
+01:27:30.548 INFO  Loading Event: playerDestroy 
+01:27:30.549 INFO  Loading Event: playerMove 
+01:27:30.573 INFO  Loading Event: queueEnd 
+01:27:30.574 INFO  Loading Event: trackEnd 
+01:27:30.576 INFO  Loading Event: trackError 
+01:27:30.577 INFO  Loading Event: trackStart 
+01:27:30.579 INFO  Loading Event: debug 
+01:27:30.581 INFO  Loading Event: error 
+01:27:30.583 INFO  Loading Event: guildCreate 
+01:27:30.585 INFO  Loading Event: guildDelete 
+01:27:30.586 INFO  Loading Event: guildUnavailable 
+01:27:30.588 INFO  Loading Event: interactionCreate 
+01:27:30.591 INFO  Loading Event: messageCreate 
+01:27:30.593 INFO  Loading Event: rateLimit 
+01:27:30.594 INFO  Loading Event: raw 
+01:27:30.710 INFO  Loading Event: ready 
+01:27:30.711 INFO  Loading Event: warn 
+01:27:30.712 INFO  Loading Event: channelDelete 
+01:27:30.714 INFO  Loading Event: messageReactionAdd 
+01:27:30.716 INFO  Loading Event: voiceStateUpdate 
+01:27:30.718 INFO  Loading Event: shardDisconnect 
+01:27:30.719 INFO  Loading Event: shardError 
+01:27:30.720 INFO  Loading Event: shardReady 
+01:27:30.721 INFO  Loading Event: shardReconnecting 
+01:27:31.000 INFO  MongoDB successfully connected 
+01:27:31.296 INFO  Shard: 0 has became ready 
+01:27:31.301 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+01:27:31.303 INFO  Started refreshing application (/) commands. 
+01:27:31.303 INFO  Started refreshing application (/) commands in: 823543363688464455 
+01:27:31.304 INFO  Started refreshing application (/) commands in: 866666289178869770 
+01:27:31.305 INFO  Successfully reloaded application (/) commands. 
+01:27:31.337 INFO  All guilds have been initialized. 
+01:27:31.337 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:27:31.338 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:27:31.338 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:27:31.616 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:28:16.482 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+01:28:16.512 INFO  Loading Command: docs. 
+01:28:16.514 INFO  Loading Command: eval. 
+01:28:16.518 INFO  Loading Command: lavalink. 
+01:28:16.547 INFO  Loading Command: node. 
+01:28:16.549 INFO  Loading Command: reload. 
+01:28:16.550 INFO  Loading Command: shutdown. 
+01:28:16.551 INFO  Loading Command: suggestion. 
+01:28:16.554 INFO  Loading Command: user. 
+01:28:16.558 INFO  Loading Command: help. 
+01:28:16.672 INFO  Loading Command: lyrics. 
+01:28:16.673 INFO  Loading Command: ping. 
+01:28:16.674 INFO  Loading Command: play. 
+01:28:16.676 INFO  Loading Command: premiumstatus. 
+01:28:16.677 INFO  Loading Command: queue. 
+01:28:16.680 INFO  Loading Command: ban. 
+01:28:16.681 INFO  Loading Command: playlists. 
+01:28:16.682 INFO  Loading Command: setup. 
+01:28:16.684 INFO  Loading Command: test. 
+01:28:16.686 INFO  Loading Command: unban. 
+01:28:16.688 INFO  Loading Command: about. 
+01:28:16.690 INFO  Loading Command: invite. 
+01:28:16.693 INFO  Loading Command: shorturl. 
+01:28:16.694 INFO  Loading Command: status. 
+01:28:16.695 INFO  Loading Command: support. 
+01:28:16.696 INFO  Loading Command: uptime. 
+01:28:16.697 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+01:28:16.913 INFO  Loading Command: 247. 
+01:28:16.914 INFO  Loading Command: back. 
+01:28:16.916 INFO  Loading Command: bassboost. 
+01:28:16.917 INFO  Loading Command: dc. 
+01:28:16.918 INFO  Loading Command: fast-forward. 
+01:28:16.919 INFO  Loading Command: join. 
+01:28:16.921 INFO  Loading Command: loop. 
+01:28:16.923 INFO  Loading Command: lyrics12. 
+01:28:16.924 INFO  Loading Command: move. 
+01:28:16.926 INFO  Loading Command: nightcore. 
+01:28:16.928 INFO  Loading Command: np. 
+01:28:16.930 INFO  Loading Command: p-add. 
+01:28:16.931 INFO  Loading Command: p-create. 
+01:28:16.932 INFO  Loading Command: p-delete. 
+01:28:16.934 INFO  Loading Command: p-load. 
+01:28:16.936 INFO  Loading Command: p-remove. 
+01:28:16.937 INFO  Loading Command: p-view. 
+01:28:16.938 INFO  Loading Command: pause. 
+01:28:16.939 INFO  Loading Command: pitch. 
+01:28:16.940 INFO  Loading Command: play12. 
+01:28:16.942 INFO  Loading Command: previous. 
+01:28:16.943 INFO  Loading Command: queue12. 
+01:28:16.949 INFO  Loading Command: radio. 
+01:28:16.951 INFO  Loading Command: remove. 
+01:28:16.952 INFO  Loading Command: resume. 
+01:28:16.953 INFO  Loading Command: rewind. 
+01:28:16.954 INFO  Loading Command: search. 
+01:28:16.956 INFO  Loading Command: seek. 
+01:28:16.957 INFO  Loading Command: shuffle. 
+01:28:16.958 INFO  Loading Command: skip. 
+01:28:16.959 INFO  Loading Command: speed. 
+01:28:16.960 INFO  Loading Command: vaporwave. 
+01:28:16.967 INFO  Loading Command: volume. 
+01:28:16.983 INFO  Loading Event: nodeConnect 
+01:28:16.989 INFO  Loading Event: nodeDisconnect 
+01:28:16.990 INFO  Loading Event: nodeError 
+01:28:16.992 INFO  Loading Event: playerCreate 
+01:28:16.994 INFO  Loading Event: playerDestroy 
+01:28:16.996 INFO  Loading Event: playerMove 
+01:28:17.018 INFO  Loading Event: queueEnd 
+01:28:17.019 INFO  Loading Event: trackEnd 
+01:28:17.019 INFO  Loading Event: trackError 
+01:28:17.020 INFO  Loading Event: trackStart 
+01:28:17.022 INFO  Loading Event: clickButton 
+01:28:17.024 INFO  Loading Event: slashCreate 
+01:28:17.026 INFO  Loading Event: channelDelete 
+01:28:17.028 INFO  Loading Event: messageReactionAdd 
+01:28:17.029 INFO  Loading Event: voiceStateUpdate 
+01:28:17.031 INFO  Loading Event: debug 
+01:28:17.032 INFO  Loading Event: error 
+01:28:17.034 INFO  Loading Event: guildCreate 
+01:28:17.035 INFO  Loading Event: guildDelete 
+01:28:17.036 INFO  Loading Event: guildUnavailable 
+01:28:17.037 INFO  Loading Event: interactionCreate 
+01:28:17.040 INFO  Loading Event: messageCreate 
+01:28:17.042 INFO  Loading Event: rateLimit 
+01:28:17.043 INFO  Loading Event: raw 
+01:28:17.154 INFO  Loading Event: ready 
+01:28:17.155 INFO  Loading Event: warn 
+01:28:17.157 INFO  Loading Event: shardDisconnect 
+01:28:17.158 INFO  Loading Event: shardError 
+01:28:17.160 INFO  Loading Event: shardReady 
+01:28:17.161 INFO  Loading Event: shardReconnecting 
+01:28:17.372 INFO  MongoDB successfully connected 
+01:28:18.422 INFO  Shard: 0 has became ready 
+01:28:18.427 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+01:28:18.428 INFO  Started refreshing application (/) commands. 
+01:28:18.429 INFO  Started refreshing application (/) commands in: 823543363688464455 
+01:28:18.430 INFO  Started refreshing application (/) commands in: 866666289178869770 
+01:28:18.430 INFO  Successfully reloaded application (/) commands. 
+01:28:18.457 INFO  All guilds have been initialized. 
+01:28:18.458 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:28:18.458 INFO  Void Music 2#3539, ready to serve [2] users in [2] servers. 
+01:28:18.458 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:28:18.683 INFO  Lavalink node: losingtime.dpaste.org has connected. 
+01:28:26.078 ERROR Rate limit: /channels/947651408499445811/messages/:id/reactions (Cooldown: 249ms) 
+01:28:26.484 ERROR Rate limit: /channels/947651408499445811/messages/:id/reactions (Cooldown: 250ms) 
+01:28:26.913 ERROR Rate limit: /channels/947651408499445811/messages/:id/reactions (Cooldown: 250ms) 
+01:28:27.564 ERROR Rate limit: /channels/947651408499445811/messages/:id/reactions (Cooldown: 250ms) 
+01:28:28.073 ERROR Rate limit: /channels/947651408499445811/messages/:id/reactions (Cooldown: 250ms) 
+01:28:28.511 ERROR Rate limit: /channels/947651408499445811/messages/:id/reactions (Cooldown: 249ms) 
+01:28:47.650 ERROR Unhandled promise rejection: Cannot read properties of undefined (reading 'length'). 
+22:54:07.970 INFO  =-=-=-=-=-=-=- Loading commands -=-=-=-=-=-=-= 
+22:54:07.976 INFO  Loading Command: ban. 
+22:54:07.977 INFO  Loading Command: playlists. 
+22:54:07.979 INFO  Loading Command: setup. 
+22:54:07.980 INFO  Loading Command: test. 
+22:54:07.986 INFO  Loading Command: unban. 
+22:54:07.990 INFO  Loading Command: help. 
+22:54:08.309 INFO  Loading Command: lyrics. 
+22:54:08.310 INFO  Loading Command: ping. 
+22:54:08.312 INFO  Loading Command: play. 
+22:54:08.313 INFO  Loading Command: premiumstatus. 
+22:54:08.315 INFO  Loading Command: queue. 
+22:54:08.419 INFO  Loading Command: docs. 
+22:54:08.420 INFO  Loading Command: eval. 
+22:54:08.421 INFO  Loading Command: lavalink. 
+22:54:08.483 INFO  Loading Command: node. 
+22:54:08.485 INFO  Loading Command: reload. 
+22:54:08.486 INFO  Loading Command: shutdown. 
+22:54:08.487 INFO  Loading Command: suggestion. 
+22:54:08.491 INFO  Loading Command: user. 
+22:54:08.491 INFO  =-=-=-=-=-=-=- Loading events -=-=-=-=-=-=-= 
+22:54:09.140 INFO  Loading Command: about. 
+22:54:09.141 INFO  Loading Command: invite. 
+22:54:09.153 INFO  Loading Command: shorturl. 
+22:54:09.155 INFO  Loading Command: status. 
+22:54:09.156 INFO  Loading Command: support. 
+22:54:09.158 INFO  Loading Command: uptime. 
+22:54:09.160 INFO  Loading Command: 247. 
+22:54:09.161 INFO  Loading Command: back. 
+22:54:09.163 INFO  Loading Command: bassboost. 
+22:54:09.164 INFO  Loading Command: dc. 
+22:54:09.166 INFO  Loading Command: fast-forward. 
+22:54:09.168 INFO  Loading Command: join. 
+22:54:09.169 INFO  Loading Command: loop. 
+22:54:09.172 INFO  Loading Command: lyrics12. 
+22:54:09.173 INFO  Loading Command: move. 
+22:54:09.174 INFO  Loading Command: nightcore. 
+22:54:09.190 INFO  Loading Command: np. 
+22:54:09.192 INFO  Loading Command: p-add. 
+22:54:09.194 INFO  Loading Command: p-create. 
+22:54:09.195 INFO  Loading Command: p-delete. 
+22:54:09.197 INFO  Loading Command: p-load. 
+22:54:09.198 INFO  Loading Command: p-remove. 
+22:54:09.199 INFO  Loading Command: p-view. 
+22:54:09.201 INFO  Loading Command: pause. 
+22:54:09.202 INFO  Loading Command: pitch. 
+22:54:09.204 INFO  Loading Command: play12. 
+22:54:09.205 INFO  Loading Command: previous. 
+22:54:09.206 INFO  Loading Command: queue12. 
+22:54:09.248 INFO  Loading Command: radio. 
+22:54:09.249 INFO  Loading Command: remove. 
+22:54:09.250 INFO  Loading Command: resume. 
+22:54:09.251 INFO  Loading Command: rewind. 
+22:54:09.252 INFO  Loading Command: search. 
+22:54:09.254 INFO  Loading Command: seek. 
+22:54:09.255 INFO  Loading Command: shuffle. 
+22:54:09.256 INFO  Loading Command: skip. 
+22:54:09.257 INFO  Loading Command: speed. 
+22:54:09.259 INFO  Loading Command: vaporwave. 
+22:54:09.261 INFO  Loading Command: volume. 
+22:54:09.265 INFO  Loading Event: clickButton 
+22:54:09.268 INFO  Loading Event: slashCreate 
+22:54:09.269 INFO  Loading Event: debug 
+22:54:09.270 INFO  Loading Event: error 
+22:54:09.272 INFO  Loading Event: guildCreate 
+22:54:09.274 INFO  Loading Event: guildDelete 
+22:54:09.275 INFO  Loading Event: guildUnavailable 
+22:54:09.276 INFO  Loading Event: interactionCreate 
+22:54:09.278 INFO  Loading Event: messageCreate 
+22:54:09.279 INFO  Loading Event: rateLimit 
+22:54:09.280 INFO  Loading Event: raw 
+22:54:09.799 INFO  Loading Event: ready 
+22:54:09.803 INFO  Loading Event: warn 
+22:54:09.805 INFO  Loading Event: channelDelete 
+22:54:09.808 INFO  Loading Event: messageReactionAdd 
+22:54:09.810 INFO  Loading Event: voiceStateUpdate 
+22:54:09.811 INFO  Loading Event: nodeConnect 
+22:54:09.813 INFO  Loading Event: nodeDisconnect 
+22:54:09.814 INFO  Loading Event: nodeError 
+22:54:09.816 INFO  Loading Event: playerCreate 
+22:54:09.817 INFO  Loading Event: playerDestroy 
+22:54:09.819 INFO  Loading Event: playerMove 
+22:54:09.919 INFO  Loading Event: queueEnd 
+22:54:09.921 INFO  Loading Event: trackEnd 
+22:54:09.922 INFO  Loading Event: trackError 
+22:54:09.923 INFO  Loading Event: trackStart 
+22:54:09.925 INFO  Loading Event: shardDisconnect 
+22:54:09.926 INFO  Loading Event: shardError 
+22:54:09.927 INFO  Loading Event: shardReady 
+22:54:09.928 INFO  Loading Event: shardReconnecting 
+22:54:10.194 INFO  MongoDB successfully connected 
+22:54:10.576 INFO  Shard: 0 has became ready 
+22:54:10.583 INFO  =-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-= 
+22:54:10.584 INFO  Started refreshing application (/) commands. 
+22:54:10.585 INFO  Started refreshing application (/) commands in: 823543363688464455 
+22:54:10.586 INFO  Started refreshing application (/) commands in: 866666289178869770 
+22:54:10.586 INFO  Successfully reloaded application (/) commands. 
+22:54:10.616 INFO  All guilds have been initialized. 
+22:54:10.616 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:54:10.616 INFO  Void Music 2#3539, ready to serve [1] users in [2] servers. 
+22:54:10.617 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:54:10.857 INFO  Lavalink node: losingtime.dpaste.org has connected. 

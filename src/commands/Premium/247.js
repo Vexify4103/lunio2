@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 module.exports = class TwentyFourSeven extends Command {
      constructor(bot) {
@@ -10,7 +10,6 @@ module.exports = class TwentyFourSeven extends Command {
                adminOnly: true,
                premiumOnly: true,
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Toggle the bot to stay 24/7 in the voice channel.',
                cooldown: 2000,
                helpPerms: "Premium, Admin",
@@ -36,15 +35,16 @@ module.exports = class TwentyFourSeven extends Command {
      async callback(bot, interaction, guild, args, settings) {
           const player = bot.manager.players.get(guild.id);
           const choice = interaction.options.getString('toggle');
-          const channel = bot.channels.fetch(interaction.channel.id);
           const TwentyFourSeven = player?.twentyFourSeven;
           let embed;
 
           if (choice === 'on') {
                if (TwentyFourSeven) {
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorOrange)
-                         .setDescription(`24/7 mode is already set to: ${bot.codeBlock(choice)}`)
+                         .setDescription(bot.translate(settings.Language, 'Premium/247:EMBED_247_ALREADY_TOGGLE', {
+                              TOGGLE: `${bot.codeBlock(choice)}`
+                         }))
 
                     return interaction.reply({
                          embeds: [embed],
@@ -53,9 +53,9 @@ module.exports = class TwentyFourSeven extends Command {
                }
                player.twentyFourSeven = true;
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
-                    .setDescription(`24/7 mode is now activated.`)
+                    .setDescription(bot.translate(settings.Language, 'Premium/247:EMBED_247_ACTIVATED'))
 
                return interaction.reply({
                     embeds: [embed],
@@ -64,9 +64,11 @@ module.exports = class TwentyFourSeven extends Command {
           }
           if (choice === 'off') {
                if (!TwentyFourSeven) {
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorOrange)
-                         .setDescription(`24/7 mode is already set to: ${bot.codeBlock(choice)}`)
+                         .setDescription(bot.translate(settings.Language, 'Premium/247:EMBED_247_ALREADY_TOGGLE', {
+                              TOGGLE: `${bot.codeBlock(choice)}`
+                         }))
 
                     return interaction.reply({
                          embeds: [embed],
@@ -75,9 +77,9 @@ module.exports = class TwentyFourSeven extends Command {
                }
                player.twentyFourSeven = false;
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
-                    .setDescription(`24/7 mode is now deactivated.`)
+                    .setDescription(bot.translate(settings.Language, 'Premium/247:EMBED_247_DEACTIVATED'))
 
                if (!player.queue.current) player.destroy()
                return interaction.reply({

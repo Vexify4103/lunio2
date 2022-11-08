@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Clear extends Command {
@@ -10,7 +10,6 @@ module.exports = class Clear extends Command {
                name: 'clear',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Clears the current queue.',
                slash: true,
                usage: 'clear',
@@ -24,7 +23,7 @@ module.exports = class Clear extends Command {
           let embed;
 
           if (player.queue.size <= 0) {
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'DJ/clear:EMBED_NO_QUEUE'))
 
@@ -34,7 +33,7 @@ module.exports = class Clear extends Command {
                })
           }
 
-          embed =  new MessageEmbed()
+          embed =  new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(bot.translate(settings.Language, 'DJ/clear:EMBED_QUEUE_CLEARED'))
 

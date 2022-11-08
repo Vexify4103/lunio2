@@ -1,3 +1,7 @@
+const {
+     ChannelType,
+     PermissionsBitField
+} = require('discord.js');
 const Event = require('../../structures/Event');
 module.exports = class channelDelete extends Event {
      constructor(...args) {
@@ -9,7 +13,7 @@ module.exports = class channelDelete extends Event {
           let settings = await bot.getGuildData(bot, channel.guild.id);
           let irc = await bot.isrequestchannel(channel.id, settings);
           try {
-               if (channel.type === "voice") {
+               if (channel.type === ChannelType.GuildVoice) {
                     if (channel.members.has(bot.user.id)) {
                          var player = bot.music.players.get(channel.guild.id)
                          if (!player) return;
@@ -30,7 +34,8 @@ module.exports = class channelDelete extends Event {
                     let settingsREMOVE = {
                          CustomChannel: false,
                          mChannelID: "",
-                         mChannelEmbedID: ""
+                         mChannelEmbedID: "",
+                         mChannelBannerID: ""
                     }
                     if (!player) {
                          return await bot.updateGuildSettings(channel.guild.id, settingsREMOVE);
@@ -39,7 +44,7 @@ module.exports = class channelDelete extends Event {
                          let channeltosend;
                          let guild = channel.guild
                          guild.channels.cache.forEach((channel1) => {
-                              if (channel1.type === "text" && !channeltosend && channel1.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+                              if (channel1.type === ChannelType.GuildText && !channeltosend && channel1.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages)) {
                                    channeltosend = channel1
                               }
                          });

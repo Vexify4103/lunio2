@@ -1,9 +1,10 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed,
-     MessageActionRow,
-     MessageButton
+     EmbedBuilder,
+     ActionRowBuilder,
+     ButtonBuilder,
+     ButtonStyle
 } = require("discord.js");
 const dayjs = require('dayjs');
 const duration = require('dayjs/plugin/duration');
@@ -15,7 +16,6 @@ module.exports = class Premium extends Command {
                name: 'premium',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'See and manage your premium subscription.',
                slash: true,
                usage: 'premium status',
@@ -61,17 +61,17 @@ module.exports = class Premium extends Command {
           const Premium10 = '951826481204580382';
           const Premium15 = '951826570249666560';
 
-          const linkRow = new MessageActionRow()
+          const linkRow = new ActionRowBuilder()
                .addComponents(
-                    new MessageButton()
+                    new ButtonBuilder()
                          .setURL(bot.config.premiumLink)
                          .setLabel('Premium')
-                         .setStyle('LINK'),
+                         .setStyle(ButtonStyle.Link),
 
-                    new MessageButton()
+                    new ButtonBuilder()
                          .setURL(bot.config.premiumLink)
                          .setLabel('Premium')
-                         .setStyle('Manage Upgrade')
+                         .setStyle(ButtonStyle.Link)
                )
                
           switch (Sub) {
@@ -80,11 +80,11 @@ module.exports = class Premium extends Command {
                     try {
                          user = await supportServer.members.fetch(member.user.id);
                     } catch (error) {
-                         let embed = new MessageEmbed()
+                         let embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(settings.Language, 'Everyone/premium:EMBED_MANAGE_PREMIUM', {
-                                   SupportServer: bot.config.SupportServer.link,
-                                   ConnectLink: bot.config.connectLink
+                                   SUPPORTSERVER: bot.config.SupportServer.link,
+                                   CONNECTLINK: bot.config.connectLink
                               })
 
                          return interaction.reply({
@@ -113,25 +113,25 @@ module.exports = class Premium extends Command {
                               userSubscription = bot.translate(settings.Language, 'Everyone/premium:NO_PREMIUM')
                          }
                     }
-                    let embed2 = new MessageEmbed()
+                    let embed2 = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
 
                     let usesLeft = userSettings.premiumUses;
 
                     if (settings.permpremium) {
                          embed2.setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_PERMPREMIUM', {
-                              userSubscription: userSubscription,
-                              usesLeft: usesLeft,
-                              premiumLink: bot.config.premiumLink,
-                              SupportServer: bot.config.SupportServer.link
+                              USERSUBSCRIPTION: `${bot.codeBlock(userSubscription)}`,
+                              USESLEFT: usesLeft,
+                              PREMIUMLINK: bot.config.premiumLink,
+                              SUPPORTSERVER: bot.config.SupportServer.link
                          }))
                     } else {
                          embed2.setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_NORMALPREMIUM', {
-                              userSubscription: userSubscription,
-                              usesLeft: usesLeft,
-                              premiumStatus: settings.premium ? `Promoted` : `Not Promoted`,
-                              premiumLink: bot.config.premiumLink,
-                              SupportServer: bot.config.SupportServer.link
+                              USERSUBSCRIPTION: `${bot.codeBlock(userSubscription)}`,
+                              USESLEFT: `${bot.codeBlock(usesLeft)}`,
+                              PREMIUMSTATUS: `${bot.codeBlock(settings.premium ? `Promoted` : `Not Promoted`)}`,
+                              PREMIUMLINK: bot.config.premiumLink,
+                              SUPPORTSERVER: bot.config.SupportServer.link
                          }))
                     
                     }
@@ -144,7 +144,7 @@ module.exports = class Premium extends Command {
                case "upgrade": //ID required
                     let embed;
                     if (!userSettings.premium) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_PREMIUM_REQUIRED'))
 
@@ -155,7 +155,7 @@ module.exports = class Premium extends Command {
                          })
                     }
                     if (userSettings.premiumUses === 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_NO_USES_LEFT'))
 
@@ -169,11 +169,11 @@ module.exports = class Premium extends Command {
                     try {
                          server = await bot.guilds.fetch(ID);
                     } catch (error) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(`Could not find a guild by the ID: ${bot.codeBlock(ID)}.`)
                               .setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_NO_GUILDID', {
-                                   ID: ID
+                                   ID: `${bot.codeBlock(ID)}`
                               }))
 
                          return interaction.reply({
@@ -185,7 +185,7 @@ module.exports = class Premium extends Command {
                          let serverSettings = await bot.getGuildData(bot, server.id);
 
                          if (serverSettings.premium || serverSettings.permpremium) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_GUILD_ALREADY_PREMIUM'))
 
@@ -212,11 +212,11 @@ module.exports = class Premium extends Command {
 
                          await bot.updateGuildSettings(server.id, newGuildSettings);
 
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorTrue)
                               .setDescription(bot.translate(settings.Language, 'Everyone/premium:EMBED_SUCCESS_UPGRADE', {
-                                   serverName: server.name,
-                                   premiumUsesLeft: userSettings.premiumUses - 1
+                                   SERVERNAME: `${bot.codeBlock(server.name)}`,
+                                   PREMIUMUSESLEFT: `${bot.codeBlock(userSettings.premiumUses - 1)}`
                               }))
 
                          return interaction.reply({

@@ -1,7 +1,5 @@
 {
-     "USAGE": "leave",
      "DESC": "Disconnects the bot from its current voice channel.",
-     "PERMS": "DJ",
 
      "EMBED_NO_VC": "Currently not connected to any voice channel.",
      "EMBED_LEFT_VC": "Successfully left the voice channel."

@@ -1,6 +1,6 @@
 // Dependencies
 const {
-	MessageEmbed
+	EmbedBuilder
 } = require('discord.js');
 const Command = require('../../structures/Command.js');
 
@@ -10,7 +10,6 @@ module.exports = class Help extends Command {
 			name: 'help',
 			helpPerms: "Everyone",
 			dirname: __dirname,
-			botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
 			description: 'Shows the help menu.',
 			usage: 'help',
 			cooldown: 2000,
@@ -20,6 +19,7 @@ module.exports = class Help extends Command {
 				description: 'Name of command to look up.',
 				type: 3,
 				required: false,
+				autocomplete: true,
 			}],
 		});
 	}
@@ -33,8 +33,9 @@ module.exports = class Help extends Command {
 
 	// create Help embed
 	async createEmbed(bot, guild, command, settings) {
-		const authorOptions = {
-			name: "Help Command",
+		let authorOptions;
+		authorOptions = {
+			name: `help command`,
 			iconURL: bot.user.displayAvatarURL({
 				format: 'png'
 			})
@@ -44,11 +45,10 @@ module.exports = class Help extends Command {
 		}
 		if (!command) {
 			// Show default help page
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(bot.config.color)
 				.setAuthor(authorOptions)
 				.setFooter(footerOptions)
-
 			const categories = bot.commands.map(c => c.help.category).filter((v, i, a) => settings.plugins.includes(v) && a.indexOf(v) === i);
 			categories
 				.sort((a, b) => a.category - b.category)
@@ -57,7 +57,7 @@ module.exports = class Help extends Command {
 						.filter(c => c.help.category === category)
 						.sort((a, b) => a.help.name - b.help.name)
 						.map(c => `\`${c.help.name}\``).join(', ');
-					embed.addField(`${category} commands`, commands);
+					embed.addFields([{name: `${category} commands`, value: commands}]);
 				});
 			return embed;
 		} else if (command) {
@@ -66,17 +66,22 @@ module.exports = class Help extends Command {
 				// arg was a command
 				const cmd = bot.commands.get(command);
 
-				let flags = cmd.help.flags
+				authorOptions = {
+					name: `${cmd.help.name} command`,
+					iconURL: bot.user.displayAvatarURL({
+						format: 'png'
+					})
+				}
 				// Check if the command is allowed on the server
 				if (settings.plugins.includes(cmd.help.category)) {
-					const embed = new MessageEmbed()
+					const embed = new EmbedBuilder()
 						.setColor(bot.config.color)
 						.setAuthor(authorOptions)
-						.addField(`/${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:USAGE`)}`, `${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:DESC`)}\n\`[${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:PERMS`)}]\`\n‏‏‎ `)
+						.addFields([{name: `/${cmd.help.usage}`, value: `${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:DESC`)}\n${bot.codeBlock(`[${cmd.help.helpPerms}]`)}\n‏‏‎ `}])
 
 					if (cmd.help.methods.length > 0) {
 						for (let i = 0; i < cmd.help.methods.length; i++) {
-							embed.addField(`/${cmd.help.name} ${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:METHOD_NAME_${i + 1}`)}`, `${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:METHOD_DESC_${i + 1}`)}\n${bot.codeBlock(`[${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:METHOD_PERMS_${i + 1}`)}]`)}\n‏‏‎ `)
+							embed.addFields([{name: `/${cmd.help.name} ${cmd.help.methods[i].name}`, value: `${bot.translate(settings.Language, `${cmd.help.category}/${cmd.help.name}:METHOD_DESC_${i + 1}`)}\n${bot.codeBlock(`[${cmd.help.methods[i].perms}]`)}\n‏‏‎ `}])
 						}
 					}
 					return embed;
@@ -84,7 +89,7 @@ module.exports = class Help extends Command {
 					return;
 				}
 			} else {
-				const embed = new MessageEmbed()
+				const embed = new EmbedBuilder()
 					.setColor(bot.config.color)
 					.setAuthor(authorOptions)
 					.setFooter(footerOptions)
@@ -97,7 +102,7 @@ module.exports = class Help extends Command {
 							.filter(c => c.help.category === category)
 							.sort((a, b) => a.help.name - b.help.name)
 							.map(c => `\`${c.help.name}\``).join(', ');
-						embed.addField(`${category} commands`, commands);
+						embed.addFields([{name: `${category} commands`, value: commands}]);
 					});
 				return embed;
 			}

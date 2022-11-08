@@ -1,0 +1,143 @@
+00:06:38.384 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+02:17:01.323 INFO  1 language(s) have loaded. (en-US) 
+02:17:01.686 INFO  MongoDB successfully connected 
+02:17:02.930 INFO  Shard: 0 has became ready 
+02:17:02.988 INFO  All guilds have been initialized 
+02:17:03.095 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:17:03.108 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:17:03.109 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+02:17:03.109 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:17:24.724 INFO  1 language(s) have loaded. (en-US) 
+02:17:25.031 INFO  MongoDB successfully connected 
+02:17:25.460 INFO  Shard: 0 has became ready 
+02:17:25.482 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:17:25.510 INFO  All guilds have been initialized 
+02:17:25.638 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:17:25.638 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+02:17:25.638 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:17:33.958 INFO  1 language(s) have loaded. (en-US) 
+02:17:34.276 INFO  MongoDB successfully connected 
+02:17:34.664 INFO  Shard: 0 has became ready 
+02:17:34.694 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:17:34.726 INFO  All guilds have been initialized 
+02:17:34.851 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:17:34.851 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+02:17:34.852 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:46:21.809 INFO  1 language(s) have loaded. (en-US) 
+02:46:22.128 INFO  MongoDB successfully connected 
+02:46:22.795 INFO  Shard: 0 has became ready 
+02:46:22.816 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:46:22.842 INFO  All guilds have been initialized 
+02:46:22.962 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:46:22.962 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+02:46:22.962 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:51:09.034 INFO  1 language(s) have loaded. (en-US) 
+02:51:09.349 INFO  MongoDB successfully connected 
+02:51:09.745 INFO  Shard: 0 has became ready 
+02:51:09.768 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:51:09.801 INFO  All guilds have been initialized 
+02:51:09.931 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:51:09.931 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+02:51:09.932 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:52:23.236 INFO  1 language(s) have loaded. (en-US) 
+02:52:23.559 INFO  MongoDB successfully connected 
+02:52:23.950 INFO  Shard: 0 has became ready 
+02:52:23.975 INFO  Lavalink node: 0.0.0.0 has connected. 
+02:52:24.001 INFO  All guilds have been initialized 
+02:52:24.119 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+02:52:24.119 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+02:52:24.120 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+03:11:40.645 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+19:21:35.958 INFO  1 language(s) have loaded. (en-US) 
+19:21:36.353 INFO  MongoDB successfully connected 
+19:21:36.792 INFO  Shard: 0 has became ready 
+19:21:36.824 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+19:21:36.825 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+19:21:36.854 INFO  All guilds have been initialized 
+19:21:36.990 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:21:36.990 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:21:36.991 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:21:37.109 ERROR Unhandled promise rejection: Invalid Form Body
+options[1][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+options[2][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types 
+19:21:37.346 ERROR Unhandled promise rejection: Invalid Form Body
+options[1][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+options[2][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types 
+19:21:37.578 ERROR Unhandled promise rejection: Invalid Form Body
+options[1][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types
+options[2][APPLICATION_COMMAND_OPTIONS_TYPE_INVALID]: Sub-command and sub-command group option types are mutually exclusive to all other types 
+20:09:17.220 INFO  1 language(s) have loaded. (en-US) 
+20:09:17.596 INFO  MongoDB successfully connected 
+20:09:17.992 INFO  Shard: 0 has became ready 
+20:09:18.031 ERROR Lavalink node: '0.0.0.0', has error: 'connect ECONNREFUSED 0.0.0.0:69'. 
+20:09:18.033 ERROR Lavalink node: 0.0.0.0 has disconnect, reason: . 
+20:09:18.098 INFO  All guilds have been initialized 
+20:09:18.268 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:09:18.268 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:09:18.268 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:09:48.318 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:10:26.843 INFO  1 language(s) have loaded. (en-US) 
+20:10:27.186 INFO  MongoDB successfully connected 
+20:10:27.758 INFO  Shard: 0 has became ready 
+20:10:27.783 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:10:27.828 INFO  All guilds have been initialized 
+20:10:27.953 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:10:27.954 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:10:27.955 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:15:00.075 INFO  1 language(s) have loaded. (en-US) 
+20:15:00.443 INFO  MongoDB successfully connected 
+20:15:00.932 INFO  Shard: 0 has became ready 
+20:15:00.956 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:15:00.984 INFO  All guilds have been initialized 
+20:15:01.109 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:15:01.110 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:15:01.110 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:15:49.807 INFO  1 language(s) have loaded. (en-US) 
+20:15:50.131 INFO  MongoDB successfully connected 
+20:15:50.626 INFO  Shard: 0 has became ready 
+20:15:50.651 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:15:50.681 INFO  All guilds have been initialized 
+20:15:50.804 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:15:50.804 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:15:50.805 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:16:55.466 ERROR running slashCreate: 709832515577184287 | TypeError: player.setVolme is not a function 
+20:17:24.307 INFO  1 language(s) have loaded. (en-US) 
+20:17:24.703 INFO  MongoDB successfully connected 
+20:17:25.120 INFO  Shard: 0 has became ready 
+20:17:25.152 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:17:25.179 INFO  All guilds have been initialized 
+20:17:25.299 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:17:25.299 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:17:25.300 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:19:11.912 INFO  1 language(s) have loaded. (en-US) 
+20:19:12.279 INFO  MongoDB successfully connected 
+20:19:12.741 INFO  Shard: 0 has became ready 
+20:19:12.771 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:19:12.796 INFO  All guilds have been initialized 
+20:19:12.931 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:19:12.932 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:19:12.932 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:25:15.634 INFO  1 language(s) have loaded. (en-US) 
+20:25:15.984 INFO  MongoDB successfully connected 
+20:25:16.413 INFO  Shard: 0 has became ready 
+20:25:16.436 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:25:16.460 INFO  All guilds have been initialized 
+20:25:16.615 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:25:16.615 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:25:16.616 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:25:35.843 INFO  1 language(s) have loaded. (en-US) 
+20:25:36.182 INFO  MongoDB successfully connected 
+20:25:36.690 INFO  Shard: 0 has became ready 
+20:25:36.717 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:25:36.745 INFO  All guilds have been initialized 
+20:25:36.871 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:25:36.871 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:25:36.871 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:26:35.402 INFO  1 language(s) have loaded. (en-US) 
+20:26:35.756 INFO  MongoDB successfully connected 
+20:26:36.229 INFO  Shard: 0 has became ready 
+20:26:36.258 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:26:36.286 INFO  All guilds have been initialized 
+20:26:36.414 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:26:36.414 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:26:36.414 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 

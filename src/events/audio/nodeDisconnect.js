@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const Event = require('../../structures/Event');
 
 class NodeDisconnect extends Event {
@@ -20,7 +20,7 @@ class NodeDisconnect extends Event {
 						try {
 							let customch = await bot.channels.fetch(settings.mChannelID);
 
-							embed = new MessageEmbed()
+							embed = new EmbedBuilder()
 								.setColor(bot.config.colorWrong)
 								.setDescription(bot.translate(settings.Language, 'misc:PLAYER_ERROR'))
 
@@ -35,7 +35,7 @@ class NodeDisconnect extends Event {
 					} else {
 						let channel = await bot.channels.fetch(player.textChannel);
 
-						embed = new MessageEmbed()
+						embed = new EmbedBuilder()
 							.setColor(bot.config.colorWrong)
 							.setDescription(bot.translate(settings.Language, 'misc:PLAYER_ERROR'))
 

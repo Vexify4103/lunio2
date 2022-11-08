@@ -8,7 +8,6 @@ class Command {
 		guildOnly = false,
 		dirname = false,
 		aliases = new Array(),
-		botPermissions = new Array(),
 		userPermissions = new Array(),
 		helpPerms = '',
 		nsfw = false,
@@ -30,7 +29,7 @@ class Command {
 		flags = new Array()
 	}) {
 		const category = (dirname ? dirname.split(path.sep)[parseInt(dirname.split(path.sep).length - 1, 10)] : 'Other');
-		this.conf = { guildOnly, userPermissions, botPermissions, nsfw, ownerOnly, premiumOnly, adminOnly, prv, music, reqplayer, reqvc, cooldown, slash, options, methods, defaultPermission, helpPerms, usage, reqVote, flags };
+		this.conf = { guildOnly, userPermissions, nsfw, ownerOnly, premiumOnly, adminOnly, prv, music, reqplayer, reqvc, cooldown, slash, options, methods, defaultPermission, helpPerms, usage, reqVote, flags };
 		this.help = { name, category, aliases, description, options, methods, helpPerms, usage, reqVote, flags };
 	}
 

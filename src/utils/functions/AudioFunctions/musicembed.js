@@ -1,4 +1,10 @@
-const { MessageEmbed } = require("discord.js");
+const {
+	EmbedBuilder,
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	PermissionsBitField
+} = require("discord.js");
 const getduration = require('./getduration');
 
 module.exports = async (bot, player, settings) => {
@@ -8,7 +14,9 @@ module.exports = async (bot, player, settings) => {
 
 	if (!player) return await bot.musicoff(bot, settings);
 
+	// await bot.refreshEmbed(bot, settings)
 	//console.log(player.queue)
+	
 	const queue = player.queue
 	const track = player.queue.current
 	const multiple = 15;
@@ -22,7 +30,6 @@ module.exports = async (bot, player, settings) => {
 
 	let thumbnail = bot.config.music_playing_banner;
 
-
 	let footer = {
 		text: bot.translate(settings.Language, 'musicembed:FOOTER', {
 			QUEUEAMOUNT: `${queue.length || 0}`,
@@ -31,13 +38,11 @@ module.exports = async (bot, player, settings) => {
 			PAUSED: `${player.paused ? `| ${bot.translate(settings.Language, 'musicembed:SONG_PAUSED')}` : ""}`
 		})
 	}
-	// text: `${queue.length || 0} Songs in queue | Volume: ${player.volume}% ${player.queueRepeat ? "| Loop: queue" : player.trackRepeat ? "| Loop: song" : ""} ${player.paused ? "| Song paused" : ""}`
-	
 	const channel = await bot.channels.fetch(channelid);
 	const guild = await bot.guilds.fetch(player.guild);
-	
-	if (!channel.permissionsFor(guild.me).has('')) {
-		const ERROR = new MessageEmbed()
+
+	if (!channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.ReadMessageHistory)) {
+		const ERROR = new EmbedBuilder()
 			.setDescription(`I need the permission: ${bot.codeBlock('Read History')} in here which is required.`)
 			.setColor(bot.config.colorWrong)
 
@@ -47,18 +52,19 @@ module.exports = async (bot, player, settings) => {
 	}
 
 	const embed = await channel.messages.fetch(embedid);
-	let color = guild.me.displayHexColor;
+	let color = guild.members.me.displayHexColor;
 
 	if (color === '#000000') {
 		color = bot.config.color;
 	}
 
-     let Author = {
-          name: `[${getduration(track.duration)}] - ${track.title}`,
-          iconURL: bot.user.displayAvatarURL({ format: 'png' }),
-          url:  track.uri
-     }
-	const MUSIC = new MessageEmbed()
+	let Author = {
+		name: `[${getduration(track.duration)}] - ${track.title}`,
+		iconURL: bot.user.displayAvatarURL({
+			format: 'png'
+		}),
+	}
+	const MUSIC = new EmbedBuilder()
 		.setAuthor(Author)
 		.setImage(thumbnail)
 		.setColor(color)
@@ -68,15 +74,67 @@ module.exports = async (bot, player, settings) => {
 		MUSIC.setDescription(bot.translate(settings.Language, 'musicembed:REQUESTED_BY', {
 			REQUESTER: track.requester
 		}))
-		queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].author} - ${trackM[i].title} [${getduration(trackM[i].duration)}] ~ <@${trackM[i].requester.id}>`).join("\n")
+		queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].title} [${getduration(trackM[i].duration)}] ~ <@${trackM[i].requester.id}>`).join("\n")
 	} else {
-		queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].author} - ${trackM[i].title} [${getduration(trackM[i].duration)}]`).join("\n")
+		queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].title} [${getduration(trackM[i].duration)}]`).join("\n")
 	}
+
+	// if (requester) {
+	// 	MUSIC.setDescription(bot.translate(settings.Language, 'musicembed:REQUESTED_BY', {
+	// 		REQUESTER: track.requester
+	// 	}))
+	// 	queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].author} - ${trackM[i].title} [${getduration(trackM[i].duration)}] ~ <@${trackM[i].requester.id}>`).join("\n")
+	// } else {
+	// 	queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].author} - ${trackM[i].title} [${getduration(trackM[i].duration)}]`).join("\n")
+	// }
+
+	let pausemode;
+	let pausemodeemoji;
+	let loopmode;
+	let loopemoji;
+	let components;
+
+	if (!player.trackRepeat && !player.queueRepeat) {
+		loopmode = "loop";
+		loopemoji = "999694398579277886";
+	}
+	if (player.queueRepeat && !player.trackRepeat) {
+		loopmode = "loopqueue";
+		loopemoji = "999694399661420554";
+	}
+	if (player.trackRepeat && !player.queueRepeat) {
+		loopmode = "loopsong";
+		loopemoji = "999694400772915320";
+	}
+	//
+
+	if (player.paused) {
+		pausemode = "play";
+		pausemodeemoji = "999694402966519878";
+	} else {
+		pausemode = "pause";
+		pausemodeemoji = "999694401494331454";
+	}
+
+	components = [
+		new ActionRowBuilder().addComponents([
+			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji(`${pausemodeemoji}`).setCustomId(`${pausemode}`),
+			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694406321963068').setCustomId('skip'),
+			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694397337776171').setCustomId('clear'),
+			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji(`${loopemoji}`).setCustomId(`${loopmode}`),
+			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694405218865172').setCustomId('shuffle'),
+		]),
+		new ActionRowBuilder().addComponents([
+			new ButtonBuilder().setStyle(ButtonStyle.Success).setLabel('Add to Playlist').setCustomId('atp'),
+			new ButtonBuilder().setStyle(ButtonStyle.Danger).setLabel('Remove from Playlist').setCustomId('rfp'),
+		])
+	]
 
 	if (queueLength > multiple) {
 		return embed.edit({
 			content: `‏‏‎‏‏‎ \n__**${bot.translate(settings.Language, 'musicembed:QUEUE_LIST')}:**__\n\n${bot.translate(settings.Language, 'musicembed:AND_MORE', { AMOUNT: queueLength - multiple })}\n${queueArray}`,
 			embeds: [MUSIC],
+			components: components,
 			allowedMentions: {
 				repliedUser: false,
 				parse: ["everyone"]
@@ -88,6 +146,7 @@ module.exports = async (bot, player, settings) => {
 		return embed.edit({
 			content: ` \n__**${bot.translate(settings.Language, 'musicembed:QUEUE_LIST')}:**__\n${queueArray}`,
 			embeds: [MUSIC],
+			components: components,
 			allowedMentions: {
 				repliedUser: false,
 				parse: ["everyone"]
@@ -97,6 +156,7 @@ module.exports = async (bot, player, settings) => {
 		return embed.edit({
 			content: `‏‏‎‏‏‎ \n__**${bot.translate(settings.Language, 'musicembed:QUEUE_LIST')}:**__\n${bot.translate(settings.Language, 'musicembed:JOIN_AND_PLAY')}`,
 			embeds: [MUSIC],
+			components: components,
 			allowedMentions: {
 				repliedUser: false,
 				parse: ["everyone"]

@@ -1,7 +1,1 @@
-node_modules/
-Lavalink/
-src/commands/command.example.js
-src/utils/logs/
-src/slashcommandlist.json
-*.bat
-
+node_modules

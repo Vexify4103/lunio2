@@ -19,7 +19,7 @@ class NodeError extends Event {
 						try {
 							let customch = await bot.channels.fetch(settings.mChannelID);
 
-							embed = new MessageEmbed()
+							embed = new EmbedBuilder()
 								.setColor(bot.config.colorWrong)
 								.setDescription(bot.translate(settings.Language, 'misc:PLAYER_ERROR'))
 
@@ -34,7 +34,7 @@ class NodeError extends Event {
 					} else {
 						let channel = await bot.channels.fetch(player.textChannel);
 
-						embed = new MessageEmbed()
+						embed = new EmbedBuilder()
 							.setColor(bot.config.colorWrong)
 							.setDescription(bot.translate(settings.Language, 'misc:PLAYER_ERROR'))
 

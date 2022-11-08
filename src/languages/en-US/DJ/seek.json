@@ -1,8 +1,6 @@
 {
-     "USAGE": "seek mm:ss",
      "DESC": "Seeks to a specific position in the current song.",
-     "PERMS": "DJ",
 
      "EMBED_SEEK_NOT_POSSIBLE": "Cannot seek to that time.",
-     "EMBED_SEEKED_SONG": "Seeked to `{{timeToSeek}}`."
+     "EMBED_SEEKED_SONG": "Seeked to `{{timeToSeek}}`"
 }

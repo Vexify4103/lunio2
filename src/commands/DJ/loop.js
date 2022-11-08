@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Loop extends Command {
@@ -10,7 +10,6 @@ module.exports = class Loop extends Command {
                name: 'loop',
                helpPerms: "DJ",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Cycles through all three loop modes (queue, song, off).',
                slash: true,
                usage: 'loop',
@@ -48,7 +47,7 @@ module.exports = class Loop extends Command {
                     player.setQueueRepeat(false);
                }
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/loop:EMBED_LOOPING_DISABLED'))
 
@@ -61,7 +60,7 @@ module.exports = class Loop extends Command {
           }
           if (choice === 'queue') {
                if (player.queue.size <= 0) {
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorWrong)
                          .setDescription(bot.translate(settings.Language, 'DJ/loop:EMBED_NO_QUEUE'))
      
@@ -72,7 +71,7 @@ module.exports = class Loop extends Command {
                }
                player.setQueueRepeat(true)
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/loop:EMBED_LOOPING_QUEUE'))
 
@@ -86,7 +85,7 @@ module.exports = class Loop extends Command {
           if (choice === 'song') {
                player.setTrackRepeat(true)
 
-               embed = new MessageEmbed()
+               embed = new EmbedBuilder()
                     .setColor(await bot.getColor(bot, guild.id))
                     .setDescription(bot.translate(settings.Language, 'DJ/loop:EMBED_LOOPING_SONG'))
                

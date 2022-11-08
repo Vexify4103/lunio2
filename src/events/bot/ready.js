@@ -8,12 +8,10 @@ const {
 } = require('@discordjs/rest');
 const {
 	Routes
-} = require('discord-api-types/v9');
+} = require('discord-api-types/v10');
 const dayjs = require('dayjs');
 const duration = require('dayjs/plugin/duration');
 dayjs.extend(duration)
-// const date = dayjs().add(dayjs.duration({'months' : 1}))
-// console.log(date.$d)
 module.exports = class Ready extends Event {
 	constructor(...args) {
 		super(...args, {
@@ -38,7 +36,7 @@ module.exports = class Ready extends Event {
 		bot.logger.log('=-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-=');
 
 		const rest = new REST({
-			version: '9'
+			version: '10'
 		}).setToken(bot.config.token);
 
 		const data = [];

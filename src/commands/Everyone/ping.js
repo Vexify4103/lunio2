@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder
 } = require("discord.js");
 
 module.exports = class Ping extends Command {
@@ -10,7 +10,6 @@ module.exports = class Ping extends Command {
                name: 'ping',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Shows the latency of the bot.',
                cooldown: 2000,
                slash: true,
@@ -52,7 +51,7 @@ module.exports = class Ping extends Command {
      }
      async callback(bot, interaction, guild, args) {
 
-          let Ping = new MessageEmbed()
+          let Ping = new EmbedBuilder()
 
           const type = interaction.options.getString('type');
           let ms = bot.codeBlock(Math.round(bot.ws.ping) + "ms");
@@ -69,19 +68,21 @@ module.exports = class Ping extends Command {
                     Ping.setColor("#FF3A00")
                     Ping.setDescription(`🔴 ${ms}`)
                }
-               return await bot.send(interaction, {
+               return await interaction.reply({
                     embeds: [Ping],
                     ephemeral: true
-               });
+               })
           }
           if (type == 'rst') {
                const channel = await bot.channels.fetch(bot.config.SupportServer.GuildChannel);
 
-               const Pinging = new MessageEmbed()
+               const Pinging = new EmbedBuilder()
                     .setAuthor({ name: 'Running ping command', iconURL: bot.user.displayAvatarURL({ format: 'png' })})
                     .setColor(bot.config.colorOrange)
-                    .addField('guildID', guild.id)
-                    .addField('userID', interaction.user.id)
+                    .addFields([
+                         {name: `guildID`, value: `${guild.id}`},
+                         {name: `userID`, value: `${interaction.user.id}`}
+                    ])
                     .setTimestamp();
 
                const m = await channel.send({ embeds: [Pinging]})
@@ -96,10 +97,10 @@ module.exports = class Ping extends Command {
                     Ping.setColor("#FF3A00")
                     Ping.setDescription(`🔴 ${resttime}`)
                }
-               return await bot.send(interaction, {
+               return await interaction.reply({
                     embeds: [Ping],
                     ephemeral: true
-               });
+               })
           }
           if (type == "dtb") {
                if (mongoosePing < 100) {
@@ -112,10 +113,10 @@ module.exports = class Ping extends Command {
                     Ping.setColor("#FF3A00")
                     Ping.setDescription(`🔴 ${ms2}`)
                }
-               return await bot.send(interaction, {
+               return await interaction.reply({
                     embeds: [Ping],
                     ephemeral: true
-               });
+               })
           }
      }
 };

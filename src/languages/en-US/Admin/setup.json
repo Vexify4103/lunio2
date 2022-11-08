@@ -1,7 +1,5 @@
 {
-     "USAGE": "setup",
      "DESC": "Setup the unique songrequest channel.",
-     "PERMS": "Admin",
 
      "EMBED_ALREADY_SETUP": "Already setup in <#{{CHANNELID}}>",
      "EMBED_CHANNEL_CREATED_TITLE": "Song request channel has been created!",

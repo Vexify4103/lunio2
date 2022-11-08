@@ -4,7 +4,7 @@ const {
      paginate
 } = require('../../utils');
 const {
-     MessageEmbed,
+     EmbedBuilder,
 } = require("discord.js");
 const {
      PlaylistSchema
@@ -19,7 +19,6 @@ module.exports = class Playlist extends Command {
                name: 'playlist',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'Play your saved default playlist.',
                slash: true,
                usage: 'playlist load',
@@ -126,7 +125,7 @@ module.exports = class Playlist extends Command {
                }, {
                     // COMMAND #9 / PREMIUM
                     name: 'default',
-                    description: 'Switch the default playlist (used when no playlist name is provided).',
+                    description: 'Switch the default playlist. (used when no playlist name is provided)',
                     type: 1,
                     options: [{
                          name: 'playlist-name',
@@ -176,7 +175,7 @@ module.exports = class Playlist extends Command {
                     perms: 'Premium'
                }, {
                     name: 'default <playlist-name>',
-                    description: 'Switch the default playlist (used when no playlist name is provided).',
+                    description: 'Switch the default playlist. (used when no playlist name is provided)',
                     perms: 'Premium'
                }, {
                     name: 'share <playlist-name>',
@@ -204,7 +203,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -215,7 +214,7 @@ module.exports = class Playlist extends Command {
                          }
 
                          if (!p[0]) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
                               return interaction.reply({
@@ -228,7 +227,7 @@ module.exports = class Playlist extends Command {
                               p.map(pl => {
                                    str.push(`${count += 1}. ${bot.codeBlock(pl.name)} created: ${pl.timeCreated}\n\n`)
                               });
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setDescription(`${str.join("")}`)
 
@@ -244,7 +243,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
                               return interaction.reply({
@@ -254,7 +253,7 @@ module.exports = class Playlist extends Command {
                          }
 
                          if (!p[0]) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
                               return interaction.reply({
@@ -281,15 +280,15 @@ module.exports = class Playlist extends Command {
                                    for (let i = 0; i < pagesNum; i++) {
                                         const str = `${p.songs.slice(i * 10, i * 10 + 10).map(song => `${n++}. ${song.author} - ${song.title} \`[${bot.getduration(song.duration)}]\``).join('\n')}`;
 
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(await bot.getColor(bot, guild.id))
                                              .setDescription(str)
                                              .setFooter({
                                                   text: bot.translate(settings.Language, 'Everyone/playlist:EMBED_SHOW_CURRENT_PAGE', {
-                                                       current: i + 1,
-                                                       total: pagesNum,
-                                                       size: p.songs.length,
-                                                       duration: bot.getduration(totalQueueDuration)
+                                                       CURRENT: i + 1,
+                                                       TOTAL: pagesNum,
+                                                       SIZE: p.songs.length,
+                                                       DURATION: bot.getduration(totalQueueDuration)
                                                   }),
                                              })
                                         pages.push(embed);
@@ -309,7 +308,7 @@ module.exports = class Playlist extends Command {
                                         })
                                    }
                               } else {
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorWrong)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLISTNAME_FOUND', {
                                              name: PlaylistName
@@ -344,10 +343,10 @@ module.exports = class Playlist extends Command {
                          }
                          await bot.createPlaylist(bot, plsettings);
 
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_CREATED_NEW_DEFAULT', {
-                                   name: plsettings.name
+                                   NAME: `${bot.codeBlock(plsettings.name)}`
                               }))
 
                          return interaction.reply({
@@ -360,7 +359,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -372,8 +371,9 @@ module.exports = class Playlist extends Command {
 
                          if (p) {
                               let res = await bot.manager.search(ULR, member.user);
+                              await bot.replaceTitle(bot, res);
                               if ((p.songs.length >= 15 && !userSettings.premium) || (p.songs.length >= 100 && userSettings.premium)) {
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorOrange)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT'))
 
@@ -383,7 +383,7 @@ module.exports = class Playlist extends Command {
                                    })
                               }
                               if (res.loadType === "NO_MATCHES") {
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorOrange)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_SONGS_FOUND'))
 
@@ -395,10 +395,10 @@ module.exports = class Playlist extends Command {
                                    if (ULR.includes("&list=RD")) {
                                         p.songs.push(res.tracks[0])
                                         p.duration = p.duration + res.tracks[0].duration;
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(bot.config.colorTrue)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_SONGSAVE_LOADED', {
-                                                  name: res.playlist.name
+                                                  NAME: `${bot.codeBlock(res.playlist.name)}`
                                              }))
 
                                         interaction.reply({
@@ -407,7 +407,7 @@ module.exports = class Playlist extends Command {
                                         })
                                         return await p.save();
                                    } else {
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(bot.config.colorWrong)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_AT_LEAST_1SONG'))
 
@@ -419,12 +419,11 @@ module.exports = class Playlist extends Command {
                               } else if (res.loadType === "TRACK_LOADED" || res.loadType === "SEARCH_RESULT") {
                                    p.songs.push(res.tracks[0])
                                    p.duration = p.duration + res.tracks[0].duration;
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorTrue)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_ADDED_TRACK_TO_PLAYLIST', {
-                                             author: res.tracks[0].author,
-                                             title: res.tracks[0].title,
-                                             playlistname: p.name
+                                             TRACK: `${bot.codeBlock(`${res.tracks[0].author} - ${res.tracks[0].title}`)}`,
+                                             PLAYLISTNAME: `${bot.codeBlock(p.name)}`
                                         }))
 
                                    interaction.reply({
@@ -434,7 +433,7 @@ module.exports = class Playlist extends Command {
                                    return await p.save();
                               }
                          } else {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -448,7 +447,7 @@ module.exports = class Playlist extends Command {
                     break;
                case "song-delete": // SONGID required, PlaylistName not required
                     if (!exist) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -462,7 +461,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
                               return interaction.reply({
@@ -474,11 +473,11 @@ module.exports = class Playlist extends Command {
                               try {
                                    p.songs.splice(SongId - 1, 1);
 
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorTrue)
                                         .setDescription(`Successfully removed song at position ${bot.codeBlock(SongId)}.`)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REMOVED_TRACK_FROM_PLAYLIST', {
-                                             songID: SongId
+                                             SONGID: `${bot.codeBlock(SongId)}`
                                         }))
 
                                    await interaction.reply({
@@ -490,7 +489,7 @@ module.exports = class Playlist extends Command {
                                    bot.logger.error(error)
                               }
                          } else {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -505,7 +504,7 @@ module.exports = class Playlist extends Command {
 
                     // CHECK IF PLAYLIST ARE ALLOWED
                     if (!settings.Playlists) {
-                         let embed = new MessageEmbed()
+                         let embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/play:PL_NOT_ALLOWED'))
 
@@ -519,7 +518,7 @@ module.exports = class Playlist extends Command {
                          // ALL CHECKS BEORE PLAYING (DJ ROLE, RESTRICTED VC, SAME VC)
                          // CHECK FOR DJ
                          if (!bot.checkDJ(member, settings)) {
-                              let embed = new MessageEmbed()
+                              let embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_A_DJ'))
 
@@ -532,7 +531,7 @@ module.exports = class Playlist extends Command {
                               channel
                          } = member.voice;
                          if (!channel) {
-                              let embed = new MessageEmbed()
+                              let embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_VC'))
 
@@ -543,7 +542,7 @@ module.exports = class Playlist extends Command {
                          }
                          // CHECK IF USER IS IN *SAME* VC
                          if (player && (channel.id !== player.voiceChannel)) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone:playlist:EMBED_NOT_SAME_VC'))
 
@@ -559,7 +558,7 @@ module.exports = class Playlist extends Command {
                                    str.push(`<#${v}>`)
                               });
 
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(`${bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_ALLOWED_TO_JOIN')} ${str.join("\n")}`)
 
@@ -574,7 +573,7 @@ module.exports = class Playlist extends Command {
                               creator: interaction.user.id
                          }, async (err, p) => {
                               if (err) {
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorWrong)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_COULDNT_FIND_DEFAULT'))
 
@@ -586,7 +585,7 @@ module.exports = class Playlist extends Command {
                               if (p) {
                                    let player;
                                    let title = bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADING_PLAYLIST_TITLE')
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(await bot.getColor(bot, guild.id))
                                         .setTitle(title)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADING_PLAYLIST_DESC'))
@@ -602,6 +601,7 @@ module.exports = class Playlist extends Command {
                                              voiceChannel: member.voice.channel.id,
                                              textChannel: interaction.channel.id,
                                              selfDeafen: true,
+                                             volume: settings.DefaultVol
                                         });
                                         player.connect();
                                         new Promise(async function (resolve) {
@@ -616,11 +616,11 @@ module.exports = class Playlist extends Command {
                                              }
                                         });
 
-                                        const loaded = new MessageEmbed()
+                                        const loaded = new EmbedBuilder()
                                              .setColor(await bot.getColor(bot, guild.id))
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADED_PALYLIST', {
-                                                  size: p.songs.length,
-                                                  playlistname: p.name
+                                                  SIZE: p.songs.length,
+                                                  PLAYLISTNAME: p.name`${bot.codeBlock(p.name)}`
                                              }))
 
                                         interaction.editReply({
@@ -631,7 +631,7 @@ module.exports = class Playlist extends Command {
                                         bot.logger.error(error)
                                    }
                               } else {
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorWrong)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -644,7 +644,7 @@ module.exports = class Playlist extends Command {
                     } else {
                          // CHECK FOR USER PREMIUM
                          if (!userSettings.premium) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REQUIRES_PREMIUM'))
 
@@ -656,7 +656,7 @@ module.exports = class Playlist extends Command {
                          // ALL CHECKS BEORE PLAYING (DJ ROLE, RESTRICTED VC, SAME VC)
                          // CHECK FOR DJ
                          if (!bot.checkDJ(member, settings)) {
-                              let embed = new MessageEmbed()
+                              let embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_A_DJ'))
 
@@ -669,7 +669,7 @@ module.exports = class Playlist extends Command {
                               channel
                          } = member.voice;
                          if (!channel) {
-                              let embed = new MessageEmbed()
+                              let embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_VC'))
 
@@ -680,7 +680,7 @@ module.exports = class Playlist extends Command {
                          }
                          // CHECK IF USER IS IN *SAME* VC
                          if (player && (channel.id !== player.voiceChannel)) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_SAME_VC'))
 
@@ -696,7 +696,7 @@ module.exports = class Playlist extends Command {
                                    str.push(`<#${v}>`)
                               });
 
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(`${bot.translate(settings.Language, 'Everyone/playlist:EMBED_NOT_ALLOWED_TO_JOIN')} ${str.join("\n")}`)
 
@@ -711,7 +711,7 @@ module.exports = class Playlist extends Command {
                                    _id: PlaylistName.slice(4)
                               }, async (err, p) => {
                                    if (err) {
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(bot.config.colorWrong)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST'))
 
@@ -723,7 +723,7 @@ module.exports = class Playlist extends Command {
                                    if (p) {
                                         let player;
                                         let title = bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADING_PLAYLIST_TITLE')
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(await bot.getColor(bot, guild.id))
                                              .setTitle(title)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADING_PLAYLIST_DESC'))
@@ -739,6 +739,7 @@ module.exports = class Playlist extends Command {
                                                   voiceChannel: member.voice.channel.id,
                                                   textChannel: interaction.channel.id,
                                                   selfDeafen: true,
+                                                  volume: settings.DefaultVol
                                              });
                                              player.connect();
                                              const content = new Promise(async function (resolve) {
@@ -753,11 +754,11 @@ module.exports = class Playlist extends Command {
                                                   }
                                              });
 
-                                             const loaded = new MessageEmbed()
+                                             const loaded = new EmbedBuilder()
                                                   .setColor(await bot.getColor(bot, guild.id))
                                                   .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADED_PALYLIST', {
-                                                       size: p.songs.length,
-                                                       playlistname: p.name
+                                                       SIZE: p.songs.length,
+                                                       PLAYLISTNAME: `${bot.codeBlock(p.name)}`
                                                   }))
 
                                              interaction.editReply({
@@ -768,7 +769,7 @@ module.exports = class Playlist extends Command {
                                              bot.logger.error(`Error creating player ${error}`)
                                         }
                                    } else {
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(bot.config.colorWrong)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -784,7 +785,7 @@ module.exports = class Playlist extends Command {
                                    creator: interaction.user.id
                               }, async (err, p) => {
                                    if (err) {
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(bot.config.colorWrong)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST'))
 
@@ -796,7 +797,7 @@ module.exports = class Playlist extends Command {
                                    if (p) {
                                         let player;
                                         let title = bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADING_PLAYLIST_TITLE')
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(await bot.getColor(bot, guild.id))
                                              .setTitle(title)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADING_PLAYLIST_DESC'))
@@ -812,6 +813,7 @@ module.exports = class Playlist extends Command {
                                                   voiceChannel: member.voice.channel.id,
                                                   textChannel: interaction.channel.id,
                                                   selfDeafen: true,
+                                                  volume: settings.DefaultVol
                                              });
                                              player.connect();
                                              const content = new Promise(async function (resolve) {
@@ -826,11 +828,11 @@ module.exports = class Playlist extends Command {
                                                   }
                                              });
 
-                                             const loaded = new MessageEmbed()
+                                             const loaded = new EmbedBuilder()
                                                   .setColor(await bot.getColor(bot, guild.id))
                                                   .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_LOADED_PALYLIST', {
-                                                       size: p.songs.length,
-                                                       playlistname: p.name
+                                                       SIZE: p.songs.length,
+                                                       PLAYLISTNAME: `${bot.codeBlock(p.name)}`
                                                   }))
 
                                              interaction.editReply({
@@ -841,7 +843,7 @@ module.exports = class Playlist extends Command {
                                              bot.logger.error(error)
                                         }
                                    } else {
-                                        embed = new MessageEmbed()
+                                        embed = new EmbedBuilder()
                                              .setColor(bot.config.colorWrong)
                                              .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -857,7 +859,7 @@ module.exports = class Playlist extends Command {
                     break;
                case "save": // PlaylistName required
                     if (!userSettings.premium) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REQUIRES_PREMIUM'))
 
@@ -867,7 +869,7 @@ module.exports = class Playlist extends Command {
                          })
                     }
                     if (!player) {
-                         let embed = new MessageEmbed()
+                         let embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_BOT_NOT_PLAYING'))
 
@@ -879,7 +881,7 @@ module.exports = class Playlist extends Command {
 
                     let queue = player.queue;
                     if (queue.size == 0) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_SONG_IN_QUEUE'))
 
@@ -894,7 +896,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_ERROR_CREATING_PLAYLIST'))
 
@@ -904,7 +906,7 @@ module.exports = class Playlist extends Command {
                               });
                          }
                          if (!p) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -914,7 +916,7 @@ module.exports = class Playlist extends Command {
                               });
                          } else {
                               if ((p.songs.length >= 15 && !userSettings.premium) || (p.songs.length >= 100 && userSettings.premium)) {
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorOrange)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT'))
 
@@ -939,11 +941,11 @@ module.exports = class Playlist extends Command {
                                    })
                                    await p.save()
 
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorTrue)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_SAVED_CURRENT_QUEUE_AS_PLAYLIST', {
-                                             size: songstopush.length + 1,
-                                             playlistname: p.name
+                                             SIZE: songstopush.length + 1,
+                                             PLAYLISTNAME: `${bot.codeBlock(p.name)}`
                                         }))
                                    return interaction.reply({
                                         embeds: [embed],
@@ -951,7 +953,7 @@ module.exports = class Playlist extends Command {
                                    })
                               } catch (error) {
                                    bot.logger.error(`Error saving current queue to paylist ${error}`)
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorWrong)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_ERROR_DELETING_PLAYLIST'))
 
@@ -965,7 +967,7 @@ module.exports = class Playlist extends Command {
                     break;
                case "create": // PlaylistName required
                     if (!userSettings.premium) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REQUIRES_PREMIUM'))
 
@@ -978,7 +980,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_ERROR_CREATING_PLAYLIST'))
 
@@ -988,7 +990,7 @@ module.exports = class Playlist extends Command {
                               });
                          }
                          if (p.length >= 5) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorOrange)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT'))
                               return interaction.reply({
@@ -1001,10 +1003,10 @@ module.exports = class Playlist extends Command {
                                    creator: interaction.user.id
                               }
                               await bot.createPlaylist(bot, plsettings);
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorTrue)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_SUCCESS_CREATING_PLAYLIST', {
-                                        playlistname: PlaylistName
+                                        PLAYLISTNAME: `${bot.codeBlock(PlaylistName)}`
                                    }))
 
                               return interaction.reply({
@@ -1016,7 +1018,7 @@ module.exports = class Playlist extends Command {
                     break;
                case "delete": // PlaylistName required
                     if (!userSettings.premium) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REQUIRES_PREMIUM'))
 
@@ -1031,7 +1033,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST'))
 
@@ -1042,7 +1044,7 @@ module.exports = class Playlist extends Command {
 
                          }
                          if (!p) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -1058,9 +1060,11 @@ module.exports = class Playlist extends Command {
                                    await bot.deletePlaylist(interaction.user.id, p.name);
                                    await bot.updateUserSettings(interaction.user, xsettings);
 
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorTrue)
-                                        .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_SUCCESS_DELETING_PLAYLIST'))
+                                        .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_SUCCESS_DELETING_PLAYLIST', {
+                                             PLAYLISTNAME: PlaylistName
+                                        }))
 
                                    return interaction.reply({
                                         embeds: [embed],
@@ -1068,7 +1072,7 @@ module.exports = class Playlist extends Command {
                                    })
                               } catch (error) {
                                    bot.logger.error(error)
-                                   embed = new MessageEmbed()
+                                   embed = new EmbedBuilder()
                                         .setColor(bot.config.colorWrong)
                                         .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_ERROR_DELETING_PLAYLIST'))
 
@@ -1082,7 +1086,7 @@ module.exports = class Playlist extends Command {
                     break;
                case "default": // PlaylistName required
                     if (!userSettings.premium) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REQUIRES_PREMIUM'))
 
@@ -1097,7 +1101,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST'))
 
@@ -1107,7 +1111,7 @@ module.exports = class Playlist extends Command {
                               });
                          }
                          if (!p[0]) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -1122,11 +1126,11 @@ module.exports = class Playlist extends Command {
                               }
                               await bot.updateUserSettings(interaction.user, settingsToUpdate);
 
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorTrue)
                                    .setDescription(`Updated your default playlist to ${bot.codeBlock(PlaylistName)}.`)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_UPDATED_DEFAULT_PLAYLIST', {
-                                        playlistname: PlaylistName
+                                        PLAYLISTNAME: `${bot.codeBlock(PlaylistName)}`
                                    }))
 
                               return interaction.reply({
@@ -1134,7 +1138,7 @@ module.exports = class Playlist extends Command {
                                    ephemeral: true
                               })
                          } else {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -1147,7 +1151,7 @@ module.exports = class Playlist extends Command {
                     break;
                case "share": // PlaylistName required
                     if (!userSettings.premium) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_REQUIRES_PREMIUM'))
 
@@ -1162,7 +1166,7 @@ module.exports = class Playlist extends Command {
                          creator: interaction.user.id
                     }, async (err, p) => {
                          if (err) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translaet('Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST'))
 
@@ -1172,7 +1176,7 @@ module.exports = class Playlist extends Command {
                               });
                          }
                          if (!p[0]) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 
@@ -1182,12 +1186,12 @@ module.exports = class Playlist extends Command {
                               });
                          }
                          if (p) {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorTrue)
                                    .setDescription(`Playlist ${bot.codeBlock(p[0].name)} can be shared via ${bot.codeBlock(`/playlist load _id:${p[0]._id}`)}`)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_SHARE_PLAYLIST', {
-                                        playlistname: p[0].name,
-                                        id: p[0]._id
+                                        PLAYLISTNAME: `${bot.codeBlock(p[0].name)}`,
+                                        ID: p[0]._id
                                    }))
 
                               return interaction.reply({
@@ -1195,7 +1199,7 @@ module.exports = class Playlist extends Command {
                                    ephemeral: true
                               })
                          } else {
-                              embed = new MessageEmbed()
+                              embed = new EmbedBuilder()
                                    .setColor(bot.config.colorWrong)
                                    .setDescription(bot.translate(settings.Language, 'Everyone/playlist:EMBED_NO_PLAYLIST_DESC'))
 

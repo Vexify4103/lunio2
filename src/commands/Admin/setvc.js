@@ -1,7 +1,7 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed
+     EmbedBuilder, ChannelType
 } = require("discord.js");
 module.exports = class Setvc extends Command {
      constructor(bot) {
@@ -9,7 +9,6 @@ module.exports = class Setvc extends Command {
                name: 'setvc',
                dirname: __dirname,
                adminOnly: true,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
                description: 'List all restricted voice channels.',
                cooldown: 2000,
                helpPerms: "Admin",
@@ -64,7 +63,7 @@ module.exports = class Setvc extends Command {
           switch (Sub) {
                case "show":
                     if (!settings.VCToggle) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_NO_VC'))
 
@@ -78,7 +77,7 @@ module.exports = class Setvc extends Command {
                          str.push(`<#${settings.VCs[i]}>`)
                     }
                     let title = bot.translate(settings.Language, 'Admin/setvc:EMBED_VC_TITLE')
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(bot.config.colorOrange)
                          .setTitle(title)
                          .setDescription(`${str.join('\n')}`)
@@ -88,9 +87,8 @@ module.exports = class Setvc extends Command {
                          ephemeral: true
                     })
                case "voice-channel":
-                    // if (voiceChannel.type !== 'GUILD_VOICE' && voiceChannel.type !== 'GUILD_STAGE_VOICE')
-                    if (voiceChannel.type !== 'GUILD_VOICE' && voiceChannel.type !== 'GUILD_STAGE_VOICE') {
-                         embed = new MessageEmbed()
+                    if (voiceChannel.type !== ChannelType.GuildVoice && voiceChannel.type !== ChannelType.GuildStageVoice) {
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_VC_NOT_FOUND'))
 
@@ -119,9 +117,9 @@ module.exports = class Setvc extends Command {
                          }
                          await bot.updateGuildSettings(guild.id, newSettings);
 
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(await bot.getColor(bot, guild.id))
-                              .setDescription(bot.translate(settings.Language, 'Admin/setcv:EMBED_REMOVED_VC', {
+                              .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_REMOVED_VC', {
                                    VCID: voiceChannel.id
                               }))
 
@@ -138,7 +136,7 @@ module.exports = class Setvc extends Command {
                     }
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_ADDED_VC', {
                               VCID: voiceChannel.id
@@ -151,7 +149,7 @@ module.exports = class Setvc extends Command {
                case "current":
                     const { channel } = member.voice
                     if (!channel) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorWrong)
                               .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_VC_NOT_FOUND'))
 
@@ -161,7 +159,7 @@ module.exports = class Setvc extends Command {
                          })
                     }
                     if (settings.VCs.includes(channel.id)) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_VC_EXISTS', {
                                    VCID: channel.id
@@ -182,7 +180,7 @@ module.exports = class Setvc extends Command {
                     }
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_ADDED_VC', {
                               VCID: channel.id
@@ -194,7 +192,7 @@ module.exports = class Setvc extends Command {
                     })
                case "reset":
                     if (!settings.VCToggle) {
-                         embed = new MessageEmbed()
+                         embed = new EmbedBuilder()
                               .setColor(bot.config.colorOrange)
                               .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_NO_VC'))
 
@@ -209,7 +207,7 @@ module.exports = class Setvc extends Command {
                     }
                     await bot.updateGuildSettings(guild.id, newSettings);
 
-                    embed = new MessageEmbed()
+                    embed = new EmbedBuilder()
                          .setColor(await bot.getColor(bot, guild.id))
                          .setDescription(bot.translate(settings.Language, 'Admin/setvc:EMBED_RESET_VCS'))
 

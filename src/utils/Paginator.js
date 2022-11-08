@@ -1,54 +1,64 @@
 // variables
-const {
-	MessageActionRow,
-	MessageButton,
-} = require('discord.js'),
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, CommandInteraction, ComponentType } = require('discord.js');
 	timeout = 118000; // TEST: 10000 // REAL: 118000
 
-module.exports = async (bot, interaction, pages, userID) => {
+module.exports = async (bot, type, pages, userID) => {
 	let page = 0;
 
-	const row = new MessageActionRow()
+	const row = new ActionRowBuilder()
 		.addComponents(
-			new MessageButton()
+			new ButtonBuilder()
 			.setCustomId('1')
 			.setLabel('⏮')
-			.setStyle('SECONDARY'),
-			new MessageButton()
+			.setStyle(ButtonStyle.Secondary),
+			new ButtonBuilder()
 			.setCustomId('2')
 			.setLabel('◀️')
-			.setStyle('SECONDARY'),
-			new MessageButton()
+			.setStyle(ButtonStyle.Secondary),
+			new ButtonBuilder()
 			.setCustomId('3')
 			.setLabel('▶️')
-			.setStyle('SECONDARY'),
-			new MessageButton()
+			.setStyle(ButtonStyle.Secondary),
+			new ButtonBuilder()
 			.setCustomId('4')
 			.setLabel('⏭')
-			.setStyle('SECONDARY'),
+			.setStyle(ButtonStyle.Secondary),
 		);
 
 	let curPage;
-	if (interaction.replied) {
-		curPage = await interaction.editReply({
-			embeds: [pages[page]],
-			components: [row],
-			fetchReply: true,
-			ephemeral: true
-		});
+	console.log(type.replied)
+	if (type instanceof CommandInteraction) {
+		if (type.replied) {
+			curPage = await type.editReply({ embeds: [pages[page]], ephemeral: true, components: [row], fetchReply: true });
+		} else {
+			curPage = await type.reply({ embeds: [pages[page]], ephemeral: true, components: [row], fetchReply: true });
+		}
 	} else {
-		curPage = await interaction.reply({
-			embeds: [pages[page]],
-			components: [row],
-			fetchReply: true,
-			ephemeral: true
-		});
+		if (type.replied) {
+			curPage = await type.editReply({ embeds: [pages[page]], ephemeral: true, components: [row], fetchReply: true });
+		} else {
+			curPage = await type.send({ embeds: [pages[page]], ephemeral: true, components: [row], fetchReply: true });
+		}
 	}
 
-	const buttonCollector = await curPage.createMessageComponentCollector({
-		componentType: 'BUTTON',
-		time: timeout
-	});
+	
+	// if (interaction.replied) {
+	// 	curPage = await interaction.editReply({
+	// 		embeds: [pages[page]],
+	// 		components: [row],
+	// 		fetchReply: true,
+	// 		ephemeral: true
+	// 	});
+	// } else {
+	// 	curPage = await interaction.reply({
+	// 		embeds: [pages[page]],
+	// 		components: [row],
+	// 		fetchReply: true,
+	// 		ephemeral: true
+	// 	});
+	// }
+	
+	const buttonCollector = await curPage.createMessageComponentCollector({ componentType: ComponentType.Button });
 
 	// find out what emoji was reacted on to update pages
 	buttonCollector.on('collect', (i) => {
@@ -74,17 +84,13 @@ module.exports = async (bot, interaction, pages, userID) => {
 			ephemeral: true
 		});
 	});
-	// when timer runs out remove all reactions to show end of pageinator
-	try {
-		buttonCollector.on('end', async () => {
-			return interaction.editReply({
-				embeds: [pages[page]],
-				components: []
-			})
 
+	// when timer runs out remove all reactions to show end of pageinator
+	buttonCollector.on('end', async () => {
+		return interaction.editReply({
+			embeds: [pages[page]],
+			components: []
 		})
-	} catch (error) {
-		console.log(`Error removing buttons from lyrics embed: ${error}`)
-	}
+	});
 	return curPage;
 };

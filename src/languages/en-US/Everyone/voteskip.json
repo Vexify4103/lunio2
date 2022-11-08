@@ -1,9 +1,7 @@
 {
-     "USAGE": "voteskip",
      "DESC": "Lets you vote for skipping the current track.",
-     "PERMS": "Everyone",
 
      "EMBED_ALREADY_VOTED": "You already voted for skippig this track.",
      "EMBED_SKIPPED_TRACK": "Skipped current track.",
-     "EMBED_VOTING_REQUIRED": "Voting required: `{{size}}`/`{{required}}`"
+     "EMBED_VOTING_REQUIRED": "Voting required: {{VOTES}}/{{REQUIRED}}"
 }

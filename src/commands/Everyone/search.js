@@ -1,9 +1,10 @@
 // Dependencies
 const Command = require('../../structures/Command.js');
 const {
-     MessageEmbed,
-     MessageButton,
-     MessageActionRow,
+     EmbedBuilder,
+     ButtonBuilder,
+     ActionRowBuilder,
+     ButtonStyle
 } = require("discord.js");
 
 module.exports = class Search extends Command {
@@ -12,7 +13,6 @@ module.exports = class Search extends Command {
                name: 'search',
                helpPerms: "Everyone",
                dirname: __dirname,
-               botPermissions: ['SEND_MESSAGES', 'EMBED_LINKS', 'CONNECT_CHANNEL', 'SPEAK', 'VIEW_CHANNEL'],
                description: 'Searches and lets you choose a song.',
                slash: true,
                usage: 'search <song name>',
@@ -40,7 +40,7 @@ module.exports = class Search extends Command {
           let res;
           // SEARCH AND CREATE PLAYER IF NONE EXISTING
           let title = bot.translate(settings.Language, 'Everyone/search:EMBED_SEARCHING_TITLE')
-          const embed1 = new MessageEmbed()
+          const embed1 = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setTitle(title)
                .setDescription(bot.translate(settings.Language, 'Everyone/search:EMBED_SEARCHING_DESC'))
@@ -55,7 +55,8 @@ module.exports = class Search extends Command {
                     guild: guild.id,
                     textChannel: textchannel.id,
                     voiceChannel: channel.id,
-                    selfDeafen: true
+                    selfDeafen: true,
+                    volume: settings.DefaultVol
                });
                if (player.state !== 'CONNECTED') player.connect();
           } catch (error) {
@@ -67,7 +68,7 @@ module.exports = class Search extends Command {
                if (res.loadType === 'NO_MATCHES') {
                     if (!player.queue.current) player.destroy();
 
-                    const embed2 = new MessageEmbed()
+                    const embed2 = new EmbedBuilder()
                          .setColor(bot.config.colorWrong)
                          .setDescription(bot.translate(settings.Language, 'Everyone/search:EMBED_NO_SONGS_FOUND'))
 
@@ -79,7 +80,7 @@ module.exports = class Search extends Command {
                if (res.loadType === 'LOAD_FAILED') {
                     if (!player.queue.current) player.destroy();
 
-                    const embed6 = new MessageEmbed()
+                    const embed6 = new EmbedBuilder()
                          .setColor(bot.config.colorWrong)
                          .setDescription(bot.translate(settings.Language, 'Everyone/search:EMBED_NO_SONGS_FOUND'))
 
@@ -92,7 +93,7 @@ module.exports = class Search extends Command {
                bot.logger.error(error)
                if (!player.queue.current) player.destroy();
 
-               const embed3 = new MessageEmbed()
+               const embed3 = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Everyone/search:EMBED_NO_SONGS_FOUND'))
 
@@ -110,17 +111,17 @@ module.exports = class Search extends Command {
           if (res.tracks.length < max) max = res.tracks.length;
           const results = res.tracks.slice(0, max).map((track, index) => `${index + 1}. ${track.author || "Author Unknown"} - ${track.title}`).join('\n');
 
-          const embed4 = new MessageEmbed()
+          const embed4 = new EmbedBuilder()
                .setColor(await bot.getColor(bot, guild.id))
                .setDescription(`${results}`)
 
-          let row = new MessageActionRow()
+          let row = new ActionRowBuilder()
                .addComponents(
-                    new MessageButton().setStyle("SECONDARY").setCustomId("1").setEmoji("1️⃣"),
-                    new MessageButton().setStyle("SECONDARY").setCustomId("2").setEmoji("2️⃣"),
-                    new MessageButton().setStyle("SECONDARY").setCustomId("3").setEmoji("3️⃣"),
-                    new MessageButton().setStyle("SECONDARY").setCustomId("4").setEmoji("4️⃣"),
-                    new MessageButton().setStyle("SECONDARY").setCustomId("5").setEmoji("5️⃣"),
+                    new ButtonBuilder().setStyle("SECONDARY").setCustomId("1").setEmoji("1️⃣"),
+                    new ButtonBuilder().setStyle("SECONDARY").setCustomId("2").setEmoji("2️⃣"),
+                    new ButtonBuilder().setStyle("SECONDARY").setCustomId("3").setEmoji("3️⃣"),
+                    new ButtonBuilder().setStyle("SECONDARY").setCustomId("4").setEmoji("4️⃣"),
+                    new ButtonBuilder().setStyle("SECONDARY").setCustomId("5").setEmoji("5️⃣"),
                )
           interaction.editReply({
                components: [row],
@@ -145,10 +146,10 @@ module.exports = class Search extends Command {
                          let a;
                          if (!player.playing && !player.paused && !player.queue.size) {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE')
-                              a = new MessageEmbed()
+                              a = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               player.play();
                               interaction.editReply({
@@ -158,12 +159,12 @@ module.exports = class Search extends Command {
                               });
                          } else {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE_2', {
-                                   size: player.queue.length
+                                   SIZE: player.queue.length
                               })
-                              a = new MessageEmbed()
+                              a = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               interaction.editReply({
                                    embeds: [a],
@@ -181,10 +182,10 @@ module.exports = class Search extends Command {
                          let b;
                          if (!player.playing && !player.paused && !player.queue.size) {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE')
-                              b = new MessageEmbed()
+                              b = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               player.play();
                               interaction.editReply({
@@ -194,12 +195,12 @@ module.exports = class Search extends Command {
                               });
                          } else {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE_2', {
-                                   size: player.queue.length
+                                   SIZE: player.queue.length
                               })
-                              b = new MessageEmbed()
+                              b = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               interaction.editReply({
                                    embeds: [b],
@@ -217,10 +218,10 @@ module.exports = class Search extends Command {
                          let c;
                          if (!player.playing && !player.paused && !player.queue.size) {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE')
-                              c = new MessageEmbed()
+                              c = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               player.play();
                               interaction.editReply({
@@ -230,12 +231,12 @@ module.exports = class Search extends Command {
                               });
                          } else {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE_2', {
-                                   size: player.queue.length
+                                   SIZE: player.queue.length
                               })
-                              c = new MessageEmbed()
+                              c = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               interaction.editReply({
                                    embeds: [c],
@@ -253,10 +254,10 @@ module.exports = class Search extends Command {
                          let d;
                          if (!player.playing && !player.paused && !player.queue.size) {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE')
-                              d = new MessageEmbed()
+                              d = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               player.play();
                               interaction.editReply({
@@ -266,12 +267,12 @@ module.exports = class Search extends Command {
                               });
                          } else {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE_2', {
-                                   size: player.queue.length
+                                   SIZE: player.queue.length
                               })
-                              d = new MessageEmbed()
+                              d = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               interaction.editReply({
                                    embeds: [d],
@@ -289,10 +290,10 @@ module.exports = class Search extends Command {
                          let e;
                          if (!player.playing && !player.paused && !player.queue.size) {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE')
-                              e = new MessageEmbed()
+                              e = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               player.play();
                               interaction.editReply({
@@ -302,12 +303,12 @@ module.exports = class Search extends Command {
                               });
                          } else {
                               let title = bot.translate(settings.Language, 'Everyone/search:EMBED_TRACK_QUEUED_TITLE_2', {
-                                   size: player.queue.length
+                                   SIZE: player.queue.length
                               })
-                              e = new MessageEmbed()
+                              e = new EmbedBuilder()
                                    .setColor(await bot.getColor(bot, guild.id))
                                    .setTitle(title)
-                                   .setDescription(`[${track.title}](${track.uri})`)
+                                   .setDescription(`${track.title}`)
 
                               interaction.editReply({
                                    embeds: [e],
@@ -324,7 +325,7 @@ module.exports = class Search extends Command {
           })
           collector.on('end', async collected => {
                if (pressed) return;
-               const embed5 = new MessageEmbed()
+               const embed5 = new EmbedBuilder()
                     .setColor(bot.config.colorWrong)
                     .setDescription(bot.translate(settings.Language, 'Everyone/search:EMBED_TIMELIMIT_REACHED'))
 
