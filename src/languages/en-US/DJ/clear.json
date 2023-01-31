@@ -1,6 +1,6 @@
 {
-     "DESC": "Clears the current queue.",
+	"DESC": "Clears the current queue.",
 
-     "EMBED_NO_QUEUE": "There is currently no song in the queue.",
-     "EMBED_QUEUE_CLEARED": "The queue has been cleared."
+	"EMBED_NO_QUEUE": "There is currently no song in the queue.",
+	"EMBED_QUEUE_CLEARED": "The queue has been cleared."
 }

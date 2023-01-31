@@ -1,5 +1,5 @@
 // Dependencies
-const	Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 module.exports = class Error extends Event {
 	constructor(...args) {
@@ -10,7 +10,8 @@ module.exports = class Error extends Event {
 
 	// run event
 	async run(bot, err) {
-		console.log(err);
-		bot.logger.error(`Bot encountered an error: ${err.message}.`);
+		//console.log(err);
+		const errorMessage = `${err.message} -- in file ${__filename} at line ${err.lineNumber}`;
+		bot.logger.error(`Error occured: ${errorMessage}.`);
 	}
 };

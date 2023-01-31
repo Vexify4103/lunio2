@@ -1,10 +1,10 @@
-const { PlaylistSchema } = require('../../../database/models')
+const { PlaylistSchema } = require("../../../database/models");
 
 module.exports = async (userId, playlistName) => {
-     try {
+	try {
 		await PlaylistSchema.findOneAndRemove({
 			name: playlistName,
-               creator: userId
+			creator: userId,
 		});
 		return true;
 	} catch (error) {

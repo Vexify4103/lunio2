@@ -3,80 +3,122 @@ const {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-	PermissionsBitField
+	PermissionsBitField,
 } = require("discord.js");
-const getduration = require('./getduration');
+const getduration = require("./getduration");
 
 module.exports = async (bot, player, settings) => {
-	const channelid = settings.mChannelID
-	const embedid = settings.mChannelEmbedID
-	const requester = settings.Requester
+	const channelid = settings.mChannelID;
+	const embedid = settings.mChannelEmbedID;
+	const requester = settings.Requester;
 
 	if (!player) return await bot.musicoff(bot, settings);
 
-	// await bot.refreshEmbed(bot, settings)
 	//console.log(player.queue)
-	
-	const queue = player.queue
-	const track = player.queue.current
+
+	const queue = player.queue;
+	const track = player.queue.current;
 	const multiple = 15;
-	const page = 1
+	const page = 1;
 	const end = page * multiple;
 	const start = end - multiple;
 	const tracksnormal = queue.slice(start, end);
-	const tracks = tracksnormal.reverse()
-	const queueLength = queue.length
+	const tracks = tracksnormal.reverse();
+	const queueLength = queue.length;
 	let queueArray;
 
 	let thumbnail = bot.config.music_playing_banner;
 
 	let footer = {
-		text: bot.translate(settings.Language, 'musicembed:FOOTER', {
+		text: bot.translate(settings.Language, "musicembed:FOOTER", {
 			QUEUEAMOUNT: `${queue.length || 0}`,
 			PLAYERVOLUME: player.volume,
-			PLAYERREPEAT: `${player.queueRepeat ? `| ${bot.translate(settings.Language, 'musicembed:LOOP_QUEUE')}` : player.trackRepeat ? `| ${bot.translate(settings.Language, 'musicembed:LOOP_SONG')}` : ""}`,
-			PAUSED: `${player.paused ? `| ${bot.translate(settings.Language, 'musicembed:SONG_PAUSED')}` : ""}`
-		})
-	}
+			PLAYERREPEAT: `${
+				player.queueRepeat
+					? `| ${bot.translate(
+							settings.Language,
+							"musicembed:LOOP_QUEUE"
+					  )}`
+					: player.trackRepeat
+					? `| ${bot.translate(
+							settings.Language,
+							"musicembed:LOOP_SONG"
+					  )}`
+					: ""
+			}`,
+			PAUSED: `${
+				player.paused
+					? `| ${bot.translate(
+							settings.Language,
+							"musicembed:SONG_PAUSED"
+					  )}`
+					: ""
+			}`,
+		}),
+	};
 	const channel = await bot.channels.fetch(channelid);
 	const guild = await bot.guilds.fetch(player.guild);
 
-	if (!channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.ReadMessageHistory)) {
+	if (
+		!channel
+			.permissionsFor(guild.members.me)
+			.has(PermissionsBitField.Flags.ReadMessageHistory)
+	) {
 		const ERROR = new EmbedBuilder()
-			.setDescription(`I need the permission: ${bot.codeBlock('Read History')} in here which is required.`)
-			.setColor(bot.config.colorWrong)
+			.setDescription(
+				`I need the permission: ${bot.codeBlock(
+					"Read History"
+				)} in here which is required.`
+			)
+			.setColor(bot.config.colorWrong);
 
 		return channel.send({
-			embeds: [embed]
-		})
+			embeds: [embed],
+		});
 	}
 
 	const embed = await channel.messages.fetch(embedid);
 	let color = guild.members.me.displayHexColor;
 
-	if (color === '#000000') {
+	if (color === "#000000") {
 		color = bot.config.color;
 	}
 
 	let Author = {
 		name: `[${getduration(track.duration)}] - ${track.title}`,
 		iconURL: bot.user.displayAvatarURL({
-			format: 'png'
+			format: "png",
 		}),
-	}
+	};
 	const MUSIC = new EmbedBuilder()
 		.setAuthor(Author)
 		.setImage(thumbnail)
 		.setColor(color)
-		.setFooter(footer)
+		.setFooter(footer);
 
 	if (requester) {
-		MUSIC.setDescription(bot.translate(settings.Language, 'musicembed:REQUESTED_BY', {
-			REQUESTER: track.requester
-		}))
-		queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].title} [${getduration(trackM[i].duration)}] ~ <@${trackM[i].requester.id}>`).join("\n")
+		MUSIC.setDescription(
+			bot.translate(settings.Language, "musicembed:REQUESTED_BY", {
+				REQUESTER: track.requester,
+			})
+		);
+		queueArray = tracks
+			.map(
+				(_, i, trackM) =>
+					`${trackM.length - i}. ${trackM[i].title} [${getduration(
+						trackM[i].duration
+					)}] ~ <@${trackM[i].requester.id}>`
+			)
+			.join("\n");
 	} else {
-		queueArray = tracks.map((_, i, trackM) => `${trackM.length - i}. ${trackM[i].title} [${getduration(trackM[i].duration)}]`).join("\n")
+		queueArray = tracks
+			.map(
+				(_, i, trackM) =>
+					`${trackM.length - i}. ${trackM[i].title} [${getduration(
+						trackM[i].duration
+					)}]`
+			)
+			.join("\n");
 	}
 
 	// if (requester) {
@@ -118,49 +160,87 @@ module.exports = async (bot, player, settings) => {
 
 	components = [
 		new ActionRowBuilder().addComponents([
-			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji(`${pausemodeemoji}`).setCustomId(`${pausemode}`),
-			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694406321963068').setCustomId('skip'),
-			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694397337776171').setCustomId('clear'),
-			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji(`${loopemoji}`).setCustomId(`${loopmode}`),
-			new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694405218865172').setCustomId('shuffle'),
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Secondary)
+				.setEmoji(`${pausemodeemoji}`)
+				.setCustomId(`${pausemode}`),
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Secondary)
+				.setEmoji("999694406321963068")
+				.setCustomId("skip"),
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Secondary)
+				.setEmoji("999694397337776171")
+				.setCustomId("clear"),
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Secondary)
+				.setEmoji(`${loopemoji}`)
+				.setCustomId(`${loopmode}`),
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Secondary)
+				.setEmoji("999694405218865172")
+				.setCustomId("shuffle"),
 		]),
 		new ActionRowBuilder().addComponents([
-			new ButtonBuilder().setStyle(ButtonStyle.Success).setLabel('Add to Playlist').setCustomId('atp'),
-			new ButtonBuilder().setStyle(ButtonStyle.Danger).setLabel('Remove from Playlist').setCustomId('rfp'),
-		])
-	]
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Success)
+				.setLabel("Add to Playlist")
+				.setCustomId("atp"),
+			new ButtonBuilder()
+				.setStyle(ButtonStyle.Danger)
+				.setLabel("Remove from Playlist")
+				.setCustomId("rfp"),
+		]),
+	];
 
 	if (queueLength > multiple) {
 		return embed.edit({
-			content: `‏‏‎‏‏‎ \n__**${bot.translate(settings.Language, 'musicembed:QUEUE_LIST')}:**__\n\n${bot.translate(settings.Language, 'musicembed:AND_MORE', { AMOUNT: queueLength - multiple })}\n${queueArray}`,
+			content: `‏‏‎‏‏‎ \n__**${bot.translate(
+				settings.Language,
+				"musicembed:QUEUE_LIST"
+			)}:**__\n\n${bot.translate(
+				settings.Language,
+				"musicembed:AND_MORE",
+				{
+					AMOUNT: queueLength - multiple,
+				}
+			)}\n${queueArray}`,
 			embeds: [MUSIC],
 			components: components,
 			allowedMentions: {
 				repliedUser: false,
-				parse: ["everyone"]
+				parse: ["everyone"],
 			},
-
-		})
+		});
 	}
 	if (queueLength !== 0 && queueLength <= multiple) {
 		return embed.edit({
-			content: ` \n__**${bot.translate(settings.Language, 'musicembed:QUEUE_LIST')}:**__\n${queueArray}`,
+			content: ` \n__**${bot.translate(
+				settings.Language,
+				"musicembed:QUEUE_LIST"
+			)}:**__\n${queueArray}`,
 			embeds: [MUSIC],
 			components: components,
 			allowedMentions: {
 				repliedUser: false,
-				parse: ["everyone"]
+				parse: ["everyone"],
 			},
-		})
+		});
 	} else {
 		return embed.edit({
-			content: `‏‏‎‏‏‎ \n__**${bot.translate(settings.Language, 'musicembed:QUEUE_LIST')}:**__\n${bot.translate(settings.Language, 'musicembed:JOIN_AND_PLAY')}`,
+			content: `‏‏‎‏‏‎ \n__**${bot.translate(
+				settings.Language,
+				"musicembed:QUEUE_LIST"
+			)}:**__\n${bot.translate(
+				settings.Language,
+				"musicembed:JOIN_AND_PLAY"
+			)}`,
 			embeds: [MUSIC],
 			components: components,
 			allowedMentions: {
 				repliedUser: false,
-				parse: ["everyone"]
+				parse: ["everyone"],
 			},
-		})
+		});
 	}
 };

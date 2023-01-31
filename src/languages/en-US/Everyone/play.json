@@ -1,12 +1,11 @@
 {
-     "DESC": "Plays a song or playlist",
-     
-     "LOADING_TITLE": "Loading tracks",
-     "LOADING_DESC": "This might take a while...",
-     "NO_MATCHES": "Could not find any songs.",
-     "LOADED_TITLE_1": "Track queued - Position {{POS}}",
-     "LOADED_TITLE_2": "Track queued",
-     "PL_LOADED_DESC_1": "1 track queued from {{PLAYLISTNAME}}",
-     "PL_LOADED_DESC_2": "{{SIZE}} tracks queued from {{PLAYLISTNAME}}",
-     "PL_NOT_ALLOWED": "Playlists are disabled on this server.\nAn administrator can toggle it on/off via `/playlists`"
+	"DESC": "Plays a song or playlist",
+
+	"LOADING_TITLE": "Loading tracks",
+	"NO_MATCHES": "Could not find any songs.",
+	"LOADED_TITLE_1": "Track queued - Position {{POS}}",
+	"LOADED_TITLE_2": "Track queued",
+	"PL_LOADED_DESC_1": "1 track queued from {{PLAYLISTNAME}}",
+	"PL_LOADED_DESC_2": "{{SIZE}} tracks queued from {{PLAYLISTNAME}}",
+	"PL_NOT_ALLOWED": "Playlists are disabled on this server.\nAn administrator can toggle it on/off via `/playlists`"
 }

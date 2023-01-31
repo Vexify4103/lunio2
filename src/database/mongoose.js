@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 module.exports = {
 	init: (bot) => {
@@ -11,14 +11,16 @@ module.exports = {
 		};
 		mongoose.connect(bot.config.MongoDBURl, dbOptions);
 		mongoose.Promise = global.Promise;
-		mongoose.connection.on('connected', () => {
-			bot.logger.ready('MongoDB successfully connected');
+		mongoose.connection.on("connected", () => {
+			bot.logger.ready("MongoDB successfully connected");
 		});
-		mongoose.connection.on('err', (err) => {
-			bot.logger.error(`MongoDB has encountered an error: \n ${err.stack}`);
+		mongoose.connection.on("err", (err) => {
+			bot.logger.error(
+				`MongoDB has encountered an error: \n ${err.stack}`
+			);
 		});
-		mongoose.connection.on('disconnected', () => {
-			bot.logger.error('MongoDB disconnected');
+		mongoose.connection.on("disconnected", () => {
+			bot.logger.error("MongoDB disconnected");
 		});
 	},
 	async ping() {

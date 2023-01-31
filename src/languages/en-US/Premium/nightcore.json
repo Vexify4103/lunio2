@@ -1,0 +1,6 @@
+{
+	"DESC": "Toggles the nightcore filter.",
+
+	"EMBED_DISPLAY_NIGHTCORESTATUS": "Nightcore-filter is currently set to `{{TOGGLE}}`",
+	"EMBED_DISPLAY_NEW_NIGHTCORESTATUS": "Nightcore-filter is now set to `{{TOGGLE}}`"
+}

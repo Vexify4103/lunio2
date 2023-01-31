@@ -1,12 +1,12 @@
-const { GuildSchema } = require('../../../database/models')
+const { GuildSchema } = require("../../../database/models");
 
 module.exports = async (guildId) => {
-     try {
+	try {
 		await GuildSchema.findByIdAndRemove({
-		    guildID: guildId
+			guildID: guildId,
 		});
 		return true;
-	 } catch (error) {
+	} catch (error) {
 		return false;
-	 }
+	}
 };

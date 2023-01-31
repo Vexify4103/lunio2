@@ -1,51 +1,62 @@
 // Dependencies
-const Command = require('../../structures/Command.js');
+const Command = require("../../structures/Command.js");
 const {
-     EmbedBuilder,
-     Channel,
-     ActionRowBuilder,
-     ButtonBuilder,
-     ButtonStyle
+	EmbedBuilder,
+	Channel,
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
 } = require("discord.js");
 
+const lyricsSearcher = require("lyrics-searcher");
+
 module.exports = class Test extends Command {
-     constructor(bot) {
-          super(bot, {
-               name: 'test',
-               adminOnly: true,
-               userPermissions: ["ADMINISTRATOR"],
-               description: 'TEST COMMAND',
-               cooldown: 2000,
-               slash: true,
-          });
-     }
-     async callback(bot, interaction, guild, args, settings) {
-          // const channel = await bot.channels.fetch('866678034298568745');
-          // const msg = await channel.messages.fetch('948647803213721632');
+	constructor(bot) {
+		super(bot, {
+			name: "test",
+			adminOnly: true,
+			userPermissions: ["ADMINISTRATOR"],
+			description: "TEST COMMAND",
+			cooldown: 2000,
+			slash: true,
+			options: [
+				{
+					name: "test",
+					description: "test",
+					type: 3,
+					required: true,
+				},
+				{
+					name: "test2",
+					description: "test2",
+					type: 3,
+					required: false,
+				},
+			],
+		});
+	}
+	async callback(bot, interaction, guild, args, settings) {
+		// const channel = await bot.channels.fetch('866678034298568745');
+		// const msg = await channel.messages.fetch('948647803213721632');
 
-          let embed = new EmbedBuilder()
-               .setTitle('TEST TITLE')
-               .setDescription('TEST DESCRIPTION FOR TEST')
-               .setColor(bot.config.colorWrong)
+		const test = interaction.options.getString("test");
+		const test2 = interaction.options.getString("test2");
+		await interaction.deferReply({ ephemeral: true });
 
-          //▶️⏸️⏭️⏹️🔄🔀
-          let components = [
-               new ActionRowBuilder().addComponents([
-                    new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694402966519878').setCustomId('play-pause'),
-                    new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694406321963068').setCustomId('skip'),
-                    new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694397337776171').setCustomId('clear'),
-                    new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694398579277886').setCustomId('loop'),
-                    new ButtonBuilder().setStyle(ButtonStyle.Secondary).setEmoji('999694405218865172').setCustomId('shuffle'),
-               ]),
-               new ActionRowBuilder().addComponents([
-                    new ButtonBuilder().setStyle(ButtonStyle.Success).setLabel('Add to Playlist').setCustomId('atp'),
-                    new ButtonBuilder().setStyle(ButtonStyle.Danger).setLabel('Remove from Playlist').setCustomId('rfp'),
-               ])
-          ]
+		lyricsSearcher(test, "")
+			.then((lyrics) => {
+				console.log(lyrics);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 
-          return interaction.reply({
-               embeds: [embed],
-               components: components
-          })
-     }
+		let embed = new EmbedBuilder()
+			.setColor(bot.config.colorOrange)
+			.setDescription("TeStTT");
+
+		return interaction.editReply({
+			embeds: [embed],
+		});
+	}
 };

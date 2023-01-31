@@ -1,4 +1,4 @@
-const Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 class PlayerCreate extends Event {
 	constructor(...args) {
@@ -8,15 +8,20 @@ class PlayerCreate extends Event {
 	}
 
 	async run(bot, player) {
-		if (bot.config.debug) bot.logger.log(`Lavalink player created in guild: ${player.guild}.`);
+		if (bot.config.debug)
+			bot.logger.log(
+				`Lavalink player created in guild: ${player.guild}.`
+			);
 		var guild = await bot.guilds.fetch(player.guild);
 
 		if (!guild.members.me.voice.serverDeaf) {
 			setTimeout(() => {
 				guild.members.me.voice.setDeaf(true).catch((err) => {
-					bot.logger.error(`trying to selfDeaf: ${player.guild} | ${err}`)
+					bot.logger.error(
+						`trying to selfDeaf: ${player.guild} | ${err}`
+					);
 				});
-			}, bot.ws.ping * 2)
+			}, bot.ws.ping * 2);
 		}
 	}
 }

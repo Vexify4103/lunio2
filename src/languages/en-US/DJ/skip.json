@@ -1,6 +1,6 @@
 {
-     "DESC": "Lets you skip the current song.",
+	"DESC": "Lets you skip the current song.",
 
-     "EMBED_SKIPPED_1": "Skipped `1` track.",
-     "EMBED_SKIPPED_X": "Skipped {{AMOUNT}} of tracks."
+	"EMBED_SKIPPED_1": "Skipped `1` track.",
+	"EMBED_SKIPPED_X": "Skipped {{AMOUNT}} of tracks."
 }

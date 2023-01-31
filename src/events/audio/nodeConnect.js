@@ -1,4 +1,4 @@
-const Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 class NodeConnect extends Event {
 	constructor(...args) {
@@ -7,7 +7,9 @@ class NodeConnect extends Event {
 		});
 	}
 	async run(bot, node) {
-		bot.logger.ready(`Lavalink node: ${node.options.identifier} has connected.`);
+		bot.logger.ready(
+			`Lavalink node: ${node.options.identifier} has connected.`
+		);
 	}
 }
 

@@ -1,5 +1,5 @@
 // Dependencies
-const	Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 module.exports = class Raw extends Event {
 	constructor(...args) {

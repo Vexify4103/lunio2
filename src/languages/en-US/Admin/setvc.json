@@ -1,15 +1,15 @@
 {
-     "DESC": "List all restricted voice channels.",
-     
-     "METHOD_DESC_1": "Add/Remove a DJ role.",
-     "METHOD_DESC_2": "Add your current voice channel to the restricted voice channels.",
-     "METHOD_DESC_3": "Reset the DJ roles.",
+	"DESC": "List all restricted voice channels.",
 
-     "EMBED_NO_VC": "There are no restricted voice channels set.",
-     "EMBED_VC_TITLE": "Configured voice channels.",
-     "EMBED_VC_NOT_FOUND": "Voice channel not found!",
-     "EMBED_REMOVED_VC": "Removed <#{{VCID}}> from the restricted voice channels.",
-     "EMBED_ADDED_VC": "Added <#{{VCID}}> to the restricted voice channels.",
-     "EMBED_VC_EXISTS": "The voice channel <#{{VCID}}> is already added.",
-     "EMBED_RESET_VCS": "Voice channel restriction has been reset."
+	"METHOD_DESC_1": "Add/Remove a DJ role.",
+	"METHOD_DESC_2": "Add your current voice channel to the restricted voice channels.",
+	"METHOD_DESC_3": "Reset the DJ roles.",
+
+	"EMBED_NO_VC": "There are no restricted voice channels set.",
+	"EMBED_VC_TITLE": "Configured voice channels.",
+	"EMBED_VC_NOT_FOUND": "Voice channel not found!",
+	"EMBED_REMOVED_VC": "Removed <#{{VCID}}> from the restricted voice channels.",
+	"EMBED_ADDED_VC": "Added <#{{VCID}}> to the restricted voice channels.",
+	"EMBED_VC_EXISTS": "The voice channel <#{{VCID}}> is already added.",
+	"EMBED_RESET_VCS": "Voice channel restriction has been reset."
 }

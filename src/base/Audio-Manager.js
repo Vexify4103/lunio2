@@ -1,11 +1,11 @@
 const { Manager } = require("erela.js"),
-  Deezer = require("erela.js-deezer"),
-  Spotify = require("erela.js-spotify"),
-  Facebook = require("erela.js-facebook"),
-  {
-    lavalink: nodes,
-    api_keys: { spotify },
-  } = require("../config");
+	Deezer = require("erela.js-deezer"),
+	Spotify = require("erela.js-spotify"),
+	Facebook = require("erela.js-facebook"),
+	{
+		lavalink: nodes,
+		api_keys: { spotify },
+	} = require("../config");
 require("../structures/Player");
 
 /**
@@ -13,22 +13,25 @@ require("../structures/Player");
  * @extends {Manager}
  */
 class AudioManager extends Manager {
-  constructor(bot) {
-    super({
-      nodes: nodes,
-      plugins: [
-        new Deezer({ playlistLimit: 1, albumLimit: 1 }),
-        new Facebook(),
-        new Spotify({ clientID: spotify.iD, clientSecret: spotify.secret }),
-        //new Spotify({ convertUnresolved: true, useSpotifyMetadata: true, clientID: spotify.iD, clientSecret: spotify.secret }),
-      ],
-      autoPlay: true,
-      send(id, payload) {
-        const guild = bot.guilds.cache.get(id);
-        if (guild) guild.shard.send(payload);
-      },
-    });
-  }
+	constructor(bot) {
+		super({
+			nodes: nodes,
+			plugins: [
+				new Deezer({ playlistLimit: 1, albumLimit: 1 }),
+				new Facebook(),
+				new Spotify({
+					clientID: spotify.iD,
+					clientSecret: spotify.secret,
+				}),
+				//new Spotify({ convertUnresolved: true, useSpotifyMetadata: true, clientID: spotify.iD, clientSecret: spotify.secret }),
+			],
+			autoPlay: true,
+			send(id, payload) {
+				const guild = bot.guilds.cache.get(id);
+				if (guild) guild.shard.send(payload);
+			},
+		});
+	}
 }
 
 module.exports = AudioManager;

@@ -1,18 +1,22 @@
-const { userSchema } = require('../../../database/models');
+const { userSchema } = require("../../../database/models");
 
 module.exports = async (userId, guildId) => {
-     try {
-		await userSchema.findOneAndUpdate({
-			userID: userId,
-		}, {
-			$push: {
-				guilds: guildId
+	try {
+		await userSchema.findOneAndUpdate(
+			{
+				userID: userId,
 			},
-		}, {
-			upsert: true
-		});
+			{
+				$push: {
+					guilds: guildId,
+				},
+			},
+			{
+				upsert: true,
+			}
+		);
 		return true;
-	} catch(error) {
+	} catch (error) {
 		return false;
 	}
 };

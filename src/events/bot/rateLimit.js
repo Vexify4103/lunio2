@@ -1,5 +1,5 @@
 // Dependencies
-const	Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 module.exports = class RateLimit extends Event {
 	constructor(...args) {
@@ -10,6 +10,7 @@ module.exports = class RateLimit extends Event {
 
 	// run event
 	async run(bot, { route, timeout }) {
-		if (bot.config.debug) bot.logger.error(`Rate limit: ${route} (Cooldown: ${timeout}ms)`);
+		if (bot.config.debug)
+			bot.logger.error(`Rate limit: ${route} (Cooldown: ${timeout}ms)`);
 	}
 };

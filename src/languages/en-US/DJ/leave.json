@@ -1,6 +1,6 @@
 {
-     "DESC": "Disconnects the bot from its current voice channel.",
+	"DESC": "Disconnects the bot from its current voice channel.",
 
-     "EMBED_NO_VC": "Currently not connected to any voice channel.",
-     "EMBED_LEFT_VC": "Successfully left the voice channel."
+	"EMBED_NO_VC": "Currently not connected to any voice channel.",
+	"EMBED_LEFT_VC": "Successfully left the voice channel."
 }

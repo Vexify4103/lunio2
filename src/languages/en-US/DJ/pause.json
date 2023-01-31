@@ -1,6 +1,6 @@
 {
-     "DESC": "Pauses the current playing song.",
+	"DESC": "Pauses the current playing song.",
 
-     "EMBED_ALREADY_PAUSED": "Song already paused.",
-     "EMBED_PAUSED_SONG": "Paused the song."
+	"EMBED_ALREADY_PAUSED": "Song already paused.",
+	"EMBED_PAUSED_SONG": "Paused the song."
 }

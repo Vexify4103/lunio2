@@ -1,0 +1,8 @@
+{
+	"DESC": "Clears the current queue.",
+
+	"EMBED_NO_QUEUE": "There is currently no song in the queue.",
+	"EMBED_PLAYING_THIS": "The bot is currently playing this song.",
+	"EMBED_MOVED_SONG_POS1": "Song moved to position 1",
+	"EMBED_MOVED_SONG_POSX": "Song moved to position {{pos}}"
+}

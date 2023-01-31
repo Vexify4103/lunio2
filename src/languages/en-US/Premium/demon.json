@@ -1,0 +1,6 @@
+{
+	"DESC": "Toggles the demon filter.",
+
+	"EMBED_DISPLAY_DEMONSTATUS": "Demon-filter is currently set to `{{TOGGLE}}`",
+	"EMBED_DISPLAY_NEW_DEMONSTATUS": "Demon-filter is now set to `{{TOGGLE}}`"
+}

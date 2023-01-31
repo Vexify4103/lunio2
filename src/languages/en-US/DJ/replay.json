@@ -1,5 +1,5 @@
 {
-     "DESC": "Replay the current song.",
+	"DESC": "Replay the current song.",
 
-     "EMBED_REPLAYING_SONG": "Replaying the current song."
+	"EMBED_REPLAYING_SONG": "Replaying the current song."
 }

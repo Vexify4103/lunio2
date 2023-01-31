@@ -1,8 +1,8 @@
 {
-     "DESC": "Cycles through all three loop modes (queue, song, off).",
+	"DESC": "Cycles through all three loop modes (queue, song, off).",
 
-     "EMBED_LOOPING_DISABLED": "There is currently no song in the queue.",
-     "EMBED_NO_QUEUE": "There is currently no song in the queue.",
-     "EMBED_LOOPING_QUEUE": "Looping the queue activated.",
-     "EMBED_LOOPING_SONG": "Looping the current song enabled."
+	"EMBED_LOOPING_DISABLED": "There is currently no song in the queue.",
+	"EMBED_NO_QUEUE": "There is currently no song in the queue.",
+	"EMBED_LOOPING_QUEUE": "Looping the queue activated.",
+	"EMBED_LOOPING_SONG": "Looping the current song enabled."
 }

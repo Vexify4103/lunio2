@@ -1,0 +1,6 @@
+{
+	"DESC": "Speeds up the player.",
+
+	"EMBED_DISPLAY_SPEEDLEVEL": "The speed is set to `{{VALUE}}x`",
+	"EMBED_SET_NEW_SPEEDLEVEL": "The speed is now set to `{{VALUE}}x`"
+}

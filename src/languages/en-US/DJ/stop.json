@@ -1,5 +1,5 @@
 {
-     "DESC": "Stops the player and clear the queue.",
+	"DESC": "Stops the player and clear the queue.",
 
-     "EMBED_STOPPED": "Music stopped & queue cleared."
+	"EMBED_STOPPED": "Music stopped & queue cleared."
 }

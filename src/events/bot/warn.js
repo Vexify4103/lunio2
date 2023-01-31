@@ -1,5 +1,5 @@
 // Dependencies
-const	Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 module.exports = class Warn extends Event {
 	constructor(...args) {
@@ -10,7 +10,6 @@ module.exports = class Warn extends Event {
 
 	// run event
 	async run(bot, info) {
-		console.log('warn:');
-		console.log(info);
+		bot.logger.error("Warning: " + info)
 	}
 };

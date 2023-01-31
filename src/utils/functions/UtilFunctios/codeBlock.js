@@ -1,5 +1,5 @@
 module.exports = (x) => {
-  let codeBlockToExport = `\`${x}\``
+	let codeBlockToExport = `\`${x}\``;
 
-  return codeBlockToExport;
+	return codeBlockToExport;
 };

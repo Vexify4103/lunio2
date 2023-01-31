@@ -1,4 +1,4 @@
-const Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 class PlayerDestroy extends Event {
 	constructor(...args) {
@@ -8,8 +8,8 @@ class PlayerDestroy extends Event {
 	}
 
 	async run(bot, player) {
-		bot.logger.log(`Lavalink player destroyed in guild: ${player.guild}.`);
-		const settings = bot.getGuildData(bot, player.guild)
+		bot.logger.log(`Lavalink player destroyed in guild: ${player.guild}`);
+		const settings = bot.getGuildData(bot, player.guild);
 
 		if (settings.CustomChannel) {
 			return await bot.musicoff(bot, settings);

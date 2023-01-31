@@ -1,4 +1,4 @@
-const Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 class PlayerMove extends Event {
 	constructor(...args) {
@@ -28,7 +28,7 @@ class PlayerMove extends Event {
 					player.pause(true);
 					setTimeout(() => {
 						player.pause(false);
-					}, bot.ws.ping)
+					}, bot.ws.ping);
 				}, bot.ws.ping);
 			} else {
 				return;

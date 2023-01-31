@@ -1,9 +1,9 @@
-const { userSchema } = require('../../../database/models')
+const { userSchema } = require("../../../database/models");
 
 module.exports = async (userId) => {
-     try {
+	try {
 		await userSchema.findOneAndRemove({
-			userID: userId
+			userID: userId,
 		});
 		return true;
 	} catch (error) {

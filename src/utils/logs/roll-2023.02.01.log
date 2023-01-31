@@ -1,0 +1,26 @@
+00:21:51.333 INFO  1 language(s) have loaded. (en-US) 
+00:21:51.664 INFO  MongoDB successfully connected 
+00:21:52.038 INFO  Shard: 0 has became ready 
+00:21:52.087 INFO  All guilds have been initialized 
+00:21:52.158 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:21:52.201 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:21:52.202 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+00:21:52.202 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:22:07.333 ERROR Error occured: Unknown Message -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+00:22:20.465 INFO  1 language(s) have loaded. (en-US) 
+00:22:20.750 INFO  MongoDB successfully connected 
+00:22:21.212 INFO  Shard: 0 has became ready 
+00:22:21.239 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:22:21.265 INFO  All guilds have been initialized 
+00:22:21.381 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:22:21.382 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+00:22:21.382 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:32:45.768 ERROR Shard: 0 disconnected with error: Authentication failed. 
+00:35:59.157 INFO  1 language(s) have loaded. (en-US) 
+00:35:59.476 INFO  MongoDB successfully connected 
+00:35:59.997 INFO  Shard: 0 has became ready 
+00:36:00.029 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:36:00.053 INFO  All guilds have been initialized 
+00:36:00.168 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:36:00.168 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+00:36:00.168 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 

@@ -1,10 +1,10 @@
 {
-     "FOOTER": "{{QUEUEAMOUNT}} Songs in queue | Volume: {{PLAYERVOLUME}}% {{PLAYERREPEAT}} {{PAUSED}}",
-     "LOOP_QUEUE": "Loop: queue",
-     "LOOP_SONG": "Loop: song",
-     "SONG_PAUSED": "Song paused",
-     "REQUESTED_BY": "Requested by: <@{{REQUESTER}}>",
-     "QUEUE_LIST": "Queue list",
-     "AND_MORE": "And **{{AMOUNT}}** more...",
-     "JOIN_AND_PLAY": "Join a voice channel and queue songs by name or url in here."
+	"FOOTER": "{{QUEUEAMOUNT}} Songs in queue | Volume: {{PLAYERVOLUME}}% {{PLAYERREPEAT}} {{PAUSED}}",
+	"LOOP_QUEUE": "Loop: queue",
+	"LOOP_SONG": "Loop: song",
+	"SONG_PAUSED": "Song paused",
+	"REQUESTED_BY": "Requested by: <@{{REQUESTER}}>",
+	"QUEUE_LIST": "Queue list",
+	"AND_MORE": "And **{{AMOUNT}}** more...",
+	"JOIN_AND_PLAY": "Join a voice channel and queue songs by name or url in here."
 }

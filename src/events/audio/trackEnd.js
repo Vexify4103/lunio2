@@ -1,6 +1,6 @@
-const Event = require('../../structures/Event');
-const chalk = require('chalk');
-const moment = require('moment');
+const Event = require("../../structures/Event");
+const chalk = require("chalk");
+const moment = require("moment");
 
 class TrackEnd extends Event {
 	constructor(...args) {
@@ -10,11 +10,11 @@ class TrackEnd extends Event {
 	}
 
 	async run(bot, player, track) {
-		const timestamp = `[${moment().format('HH:mm:ss')}]:`;
-		const content = `${player.guild} finished track: ${track.title}`
-		console.log(`${timestamp} ${chalk.bgYellow("FINISHED")} ${content} `)
+		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
+		const content = `${player.guild} finished track: ${track.title}`;
+		console.log(`${timestamp} ${chalk.bgYellow("FINISHED")} ${content} `);
 		player.addPreviousSong(track);
-		player.removeSkip()
+		player.removeSkip();
 	}
 }
 

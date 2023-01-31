@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 // const dayjs = require('dayjs');
 // const duration = require('dayjs/plugin/duration');
 // dayjs.extend(duration);
@@ -6,11 +6,11 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = Schema({
 	//IDENTIFIER
-	userID: { type: String, default: "N/A"},
-	userNAME: { type: String, default: "N/A"},
+	userID: { type: String, default: "N/A" },
+	userNAME: { type: String, default: "N/A" },
 	// VOTED
 	hasVoted: { type: Boolean, default: false },
-	votedTime: { type: Number, default: 0},
+	votedTime: { type: Number, default: 0 },
 	//PREMIUM USER SETTINGS
 	permpremium: { type: Boolean, default: false },
 	premium: { type: Boolean, default: false },
@@ -22,7 +22,7 @@ const userSchema = Schema({
 	// USER BANNED SETTINGS
 	guilds: { type: Array, default: [] },
 	// Will be used for the website
-	Language: { type: String, default: 'en-US' },
+	Language: { type: String, default: "en-US" },
 });
 
-module.exports = model('Users', userSchema);
+module.exports = model("Users", userSchema);

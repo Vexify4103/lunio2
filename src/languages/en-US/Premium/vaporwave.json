@@ -1,0 +1,6 @@
+{
+	"DESC": "Toggles the vaporwave filter.",
+
+	"EMBED_DISPLAY_VAPORWAVESTATUS": "Vaporwave-filter is currently set to `{{TOGGLE}}`",
+    "EMBED_DISPLAY_NEW_VAPORWAVESTATUS": "Vaporwave-filter is now set to `{{TOGGLE}}`"
+}

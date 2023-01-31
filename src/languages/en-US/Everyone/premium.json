@@ -1,21 +1,21 @@
 {
-     "DESC": "See and manage your premium subscription.",
-     
-     "METHOD_DESC_1": "ID of the server you want to be upgraded.",
+	"DESC": "See and manage your premium subscription.",
 
-     "EMBED_MANAGE_PREMIUM": "To view / manage your premium subscription you `need` to [join]({{SUPPORTSERVER}}) the support server and [connect]({{CONNECTLINK}}) your Discord account with patreon.",
-     "SUPPORTER_PREMIUM": "Supporter",
-     "1_SERVER_PREMIUM": "1 Server Premium",
-     "3_SERVER_PREMIUM": "3 Server Premium",
-     "6_SERVER_PREMIUM": "6 Server Premium",
-     "10_SERVER_PREMIUM": "10 Server Premium",
-     "15_SERVER_PREMIUM": "15 Server Premium",
-     "NO_PREMIUM": "N/A",
-     "EMBED_PERMPREMIUM": "Your Subscripton: {{USERSUBSCRIPTION}}\nUpgareds left: {{USESLEFT}}\nServer Premium Status: `∞ Promoted`\n[Purchase]({{PREMIUMLINK}}) | [Manage]({{SUPPORTSERVER}})",
-     "EMBED_NORMALPREMIUM": "Your Subscripton: {{USERSUBSCRIPTION}}\nUpgareds left: {{USESLEFT}}\nServer Premium Status: {{PREMIUMSTATUS}}\n[Purchase]({{PREMIUMLINK}}) | [Manage]({{SUPPORTSERVER}})",
-     "EMBED_PREMIUM_REQUIRED": "This command requires a premium subscription!",
-     "EMBED_NO_USES_LEFT": "You have already used all your server upgrades!",
-     "EMBED_NO_GUILDID": "Could not find a guild by the ID: {{ID}}",
-     "EMBED_GUILD_ALREADY_PREMIUM": "This guild is already upgraded!",
-     "EMBED_SUCCESS_UPGRADE": "Successfully upgraded Server {{SERVERNAME}}!\nYou have {{PREMIUMUSESLEFT}} upgrades left!\n\nThank you for supporting us!"
+	"METHOD_DESC_1": "ID of the server you want to be upgraded.",
+
+	"EMBED_MANAGE_PREMIUM": "To view / manage your premium subscription you `need` to [join]({{SUPPORTSERVER}}) the support server and [connect]({{CONNECTLINK}}) your Discord account with patreon.",
+	"SUPPORTER_PREMIUM": "Supporter",
+	"1_SERVER_PREMIUM": "1 Server Premium",
+	"3_SERVER_PREMIUM": "3 Server Premium",
+	"6_SERVER_PREMIUM": "6 Server Premium",
+	"10_SERVER_PREMIUM": "10 Server Premium",
+	"15_SERVER_PREMIUM": "15 Server Premium",
+	"NO_PREMIUM": "N/A",
+	"EMBED_PERMPREMIUM": "Your Subscripton: {{USERSUBSCRIPTION}}\nUpgareds left: {{USESLEFT}}\nServer Premium Status: `∞ Promoted`\n[Purchase]({{PREMIUMLINK}}) | [Manage]({{SUPPORTSERVER}})",
+	"EMBED_NORMALPREMIUM": "Your Subscripton: {{USERSUBSCRIPTION}}\nUpgareds left: {{USESLEFT}}\nServer Premium Status: {{PREMIUMSTATUS}}\n[Purchase]({{PREMIUMLINK}}) | [Manage]({{SUPPORTSERVER}})",
+	"EMBED_PREMIUM_REQUIRED": "This command requires a premium subscription!",
+	"EMBED_NO_USES_LEFT": "You have already used all your server upgrades!",
+	"EMBED_NO_GUILDID": "Could not find a guild by the ID: {{ID}}",
+	"EMBED_GUILD_ALREADY_PREMIUM": "This guild is already upgraded!",
+	"EMBED_SUCCESS_UPGRADE": "Successfully upgraded Server {{SERVERNAME}}!\nYou have {{PREMIUMUSESLEFT}} upgrades left!\n\nThank you for supporting us!"
 }

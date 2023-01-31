@@ -1,12 +1,12 @@
 {
-     "DESC": "Show the current DJ roles.",
-     
-     "METHOD_DESC_1": "Add/Remove a DJ role.",
-     "METHOD_DESC_2": "Reset the DJ roles.",
+	"DESC": "Show the current DJ roles.",
 
-     "EMBED_NO_DJ": "There is no DJ role set.",
-     "EMBED_DJ_TITLE": "Configured DJ roles.",
-     "EMBED_REMOVED_ROLE": "Removed {{ROLENAME}} from the DJ roles.",
-     "EMBED_ADDED_ROLE": "Added {{ROLENAME}} to the DJ roles.",
-     "EMBED_RESET_ROLES": "DJ roles got reset."
+	"METHOD_DESC_1": "Add/Remove a DJ role.",
+	"METHOD_DESC_2": "Reset the DJ roles.",
+
+	"EMBED_NO_DJ": "There is no DJ role set.",
+	"EMBED_DJ_TITLE": "Configured DJ roles.",
+	"EMBED_REMOVED_ROLE": "Removed {{ROLENAME}} from the DJ roles.",
+	"EMBED_ADDED_ROLE": "Added {{ROLENAME}} to the DJ roles.",
+	"EMBED_RESET_ROLES": "DJ roles got reset."
 }

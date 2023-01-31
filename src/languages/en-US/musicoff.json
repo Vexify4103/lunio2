@@ -1,7 +1,7 @@
 {
-     "FOOTER": "Listening to: /",
-     "TITLE": "No song playing currently",
-     "DESCRIPTION": "[Invite]({{INVLINK}}) | [Support]({{SUPPLINK}})",
-     "QUEUE_LIST": "Queue list",
-     "JOIN_AND_PLAY": "Join a voice channel and queue songs by name or url in here."
+	"FOOTER": "Listening to: /",
+	"TITLE": "No song playing currently",
+	"DESCRIPTION": "[Invite]({{INVLINK}}) | [Support]({{SUPPLINK}})",
+	"QUEUE_LIST": "Queue list",
+	"JOIN_AND_PLAY": "Join a voice channel and queue songs by name or url in here."
 }

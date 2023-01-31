@@ -1,7 +1,7 @@
 {
-     "DESC": "Setup the unique songrequest channel.",
+	"DESC": "Setup the unique songrequest channel.",
 
-     "EMBED_ALREADY_SETUP": "Already setup in <#{{CHANNELID}}>",
-     "EMBED_CHANNEL_CREATED_TITLE": "Song request channel has been created!",
-     "EMBED_CHANNEL_CREATED_DESC": "\nChannel: <#{{CHANNELID}}>\n*You can rename and move this channel if you want to.*\n Most of my commands will only work in <#{{CHANNELID}}> from now on."
+	"EMBED_ALREADY_SETUP": "Already setup in <#{{CHANNELID}}>",
+	"EMBED_CHANNEL_CREATED_TITLE": "Song request channel has been created!",
+	"EMBED_CHANNEL_CREATED_DESC": "\nChannel: <#{{CHANNELID}}>\n*You can rename and move this channel if you want to.*\n Most of my commands will only work in <#{{CHANNELID}}> from now on."
 }

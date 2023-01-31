@@ -1,0 +1,208 @@
+00:29:32.125 INFO  1 language(s) have loaded. (en-US) 
+00:29:32.491 INFO  MongoDB successfully connected 
+00:29:32.876 INFO  Shard: 0 has became ready 
+00:29:32.904 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:29:32.930 INFO  All guilds have been initialized 
+00:29:33.057 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:29:33.057 INFO  Lunio 2#3539, ready to serve [8] users in [3] servers 
+00:29:33.059 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:29:55.151 ERROR running slashCreate: 709832515577184287 | TypeError: interaction.getString is not a function 
+00:30:11.788 INFO  1 language(s) have loaded. (en-US) 
+00:30:12.148 INFO  MongoDB successfully connected 
+00:30:12.462 INFO  Shard: 0 has became ready 
+00:30:12.484 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:30:12.509 INFO  All guilds have been initialized 
+00:30:12.627 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:30:12.627 INFO  Lunio 2#3539, ready to serve [8] users in [3] servers 
+00:30:12.628 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:30:21.916 ERROR running slashCreate: 709832515577184287 | ReferenceError: embed is not defined 
+00:32:02.900 INFO  1 language(s) have loaded. (en-US) 
+00:32:03.233 INFO  MongoDB successfully connected 
+00:32:03.705 INFO  Shard: 0 has became ready 
+00:32:03.729 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:32:03.752 INFO  All guilds have been initialized 
+00:32:03.870 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:32:03.870 INFO  Lunio 2#3539, ready to serve [8] users in [3] servers 
+00:32:03.871 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:32:18.121 ERROR running slashCreate: 709832515577184287 | ReferenceError: components is not defined 
+00:34:12.102 INFO  1 language(s) have loaded. (en-US) 
+00:34:12.474 INFO  MongoDB successfully connected 
+00:34:12.824 INFO  Shard: 0 has became ready 
+00:34:12.849 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:34:12.871 INFO  All guilds have been initialized 
+00:34:12.989 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:34:12.989 INFO  Lunio 2#3539, ready to serve [8] users in [3] servers 
+00:34:12.990 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:38:22.532 INFO  1 language(s) have loaded. (en-US) 
+00:38:22.874 INFO  MongoDB successfully connected 
+00:38:23.425 INFO  Shard: 0 has became ready 
+00:38:23.456 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:38:23.478 INFO  All guilds have been initialized 
+00:38:23.598 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:38:23.598 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+00:38:23.598 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:39:53.026 INFO  1 language(s) have loaded. (en-US) 
+00:39:53.358 INFO  MongoDB successfully connected 
+00:39:53.795 INFO  Shard: 0 has became ready 
+00:39:53.827 INFO  Lavalink node: 0.0.0.0 has connected. 
+00:39:53.851 INFO  All guilds have been initialized 
+00:39:53.982 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:39:53.982 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+00:39:53.982 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+00:40:05.600 ERROR Unhandled promise rejection: "[0]" must not be a sparse array item 
+00:40:31.895 ERROR Unhandled promise rejection: "[0]" must not be a sparse array item 
+01:01:38.609 INFO  1 language(s) have loaded. (en-US) 
+01:01:38.969 INFO  MongoDB successfully connected 
+01:01:39.328 INFO  Shard: 0 has became ready 
+01:01:39.364 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:01:39.389 INFO  All guilds have been initialized 
+01:01:39.520 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:01:39.520 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:01:39.520 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:02:21.587 INFO  1 language(s) have loaded. (en-US) 
+01:02:21.923 INFO  MongoDB successfully connected 
+01:02:22.295 INFO  Shard: 0 has became ready 
+01:02:22.322 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:02:22.347 INFO  All guilds have been initialized 
+01:02:22.463 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:02:22.463 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:02:22.463 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:03:40.578 INFO  1 language(s) have loaded. (en-US) 
+01:03:40.916 INFO  MongoDB successfully connected 
+01:03:41.236 INFO  Shard: 0 has became ready 
+01:03:41.267 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:03:41.305 INFO  All guilds have been initialized 
+01:03:41.439 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:03:41.439 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:03:41.440 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:46.670 INFO  1 language(s) have loaded. (en-US) 
+01:04:47.028 INFO  MongoDB successfully connected 
+01:04:47.467 INFO  Shard: 0 has became ready 
+01:04:47.492 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:04:47.522 INFO  All guilds have been initialized 
+01:04:47.646 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:04:47.646 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:04:47.646 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:05:41.803 INFO  1 language(s) have loaded. (en-US) 
+01:05:42.122 INFO  MongoDB successfully connected 
+01:05:42.531 INFO  Shard: 0 has became ready 
+01:05:42.558 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:05:42.589 INFO  All guilds have been initialized 
+01:05:42.706 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:05:42.707 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:05:42.707 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:08:06.191 INFO  1 language(s) have loaded. (en-US) 
+01:08:06.528 INFO  MongoDB successfully connected 
+01:08:06.892 INFO  Shard: 0 has became ready 
+01:08:06.915 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:08:06.944 INFO  All guilds have been initialized 
+01:08:07.059 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:08:07.059 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:08:07.059 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:09:25.504 INFO  1 language(s) have loaded. (en-US) 
+01:09:25.834 INFO  MongoDB successfully connected 
+01:09:26.559 INFO  Shard: 0 has became ready 
+01:09:26.584 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:09:26.608 INFO  All guilds have been initialized 
+01:09:26.748 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:09:26.749 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:09:26.749 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:10:11.735 INFO  1 language(s) have loaded. (en-US) 
+01:10:12.065 INFO  MongoDB successfully connected 
+01:10:12.449 INFO  Shard: 0 has became ready 
+01:10:12.471 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:10:12.497 INFO  All guilds have been initialized 
+01:10:12.619 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:10:12.620 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:10:12.620 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:10:37.668 INFO  1 language(s) have loaded. (en-US) 
+01:10:38.003 INFO  MongoDB successfully connected 
+01:10:38.405 INFO  Shard: 0 has became ready 
+01:10:38.427 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:10:38.453 INFO  All guilds have been initialized 
+01:10:38.568 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:10:38.568 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:10:38.569 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:10:45.612 ERROR Unhandled promise rejection: The reply to this interaction has already been sent or deferred. 
+01:13:15.678 INFO  1 language(s) have loaded. (en-US) 
+01:13:16.013 INFO  MongoDB successfully connected 
+01:13:16.393 INFO  Shard: 0 has became ready 
+01:13:16.418 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:13:16.444 INFO  All guilds have been initialized 
+01:13:16.601 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:13:16.602 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:13:16.602 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:13:21.589 ERROR Unhandled promise rejection: The reply to this interaction has already been sent or deferred. 
+01:14:11.517 INFO  1 language(s) have loaded. (en-US) 
+01:14:11.825 INFO  MongoDB successfully connected 
+01:14:12.314 INFO  Shard: 0 has became ready 
+01:14:12.348 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:14:12.372 INFO  All guilds have been initialized 
+01:14:12.492 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:14:12.493 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:14:12.493 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:14:46.138 ERROR running slashCreate: 709832515577184287 | ReferenceError: title is not defined 
+01:15:18.851 INFO  1 language(s) have loaded. (en-US) 
+01:15:19.180 INFO  MongoDB successfully connected 
+01:15:19.579 INFO  Shard: 0 has became ready 
+01:15:19.603 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:15:19.627 INFO  All guilds have been initialized 
+01:15:19.752 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:15:19.753 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:15:19.753 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:16:45.279 INFO  1 language(s) have loaded. (en-US) 
+01:16:45.648 INFO  MongoDB successfully connected 
+01:16:46.050 INFO  Shard: 0 has became ready 
+01:16:46.070 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:16:46.094 INFO  All guilds have been initialized 
+01:16:46.236 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:16:46.237 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:16:46.237 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:24:30.748 INFO  1 language(s) have loaded. (en-US) 
+01:24:31.085 INFO  MongoDB successfully connected 
+01:24:31.471 INFO  Shard: 0 has became ready 
+01:24:31.502 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:24:31.529 INFO  All guilds have been initialized 
+01:24:31.658 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:24:31.658 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:24:31.659 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:28:52.497 INFO  1 language(s) have loaded. (en-US) 
+01:28:52.848 INFO  MongoDB successfully connected 
+01:28:53.173 INFO  Shard: 0 has became ready 
+01:28:53.206 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:28:53.232 INFO  All guilds have been initialized 
+01:28:53.349 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:28:53.350 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:28:53.350 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:34:31.873 INFO  1 language(s) have loaded. (en-US) 
+01:34:32.222 INFO  MongoDB successfully connected 
+01:34:32.624 INFO  Shard: 0 has became ready 
+01:34:32.660 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:34:32.687 INFO  All guilds have been initialized 
+01:34:32.842 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:34:32.843 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:34:32.843 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:37:20.969 INFO  1 language(s) have loaded. (en-US) 
+01:37:21.316 INFO  MongoDB successfully connected 
+01:37:21.765 INFO  Shard: 0 has became ready 
+01:37:21.803 INFO  Lavalink node: 0.0.0.0 has connected. 
+01:37:21.824 INFO  All guilds have been initialized 
+01:37:21.943 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+01:37:21.943 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+01:37:21.943 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+04:16:00.468 INFO  1 language(s) have loaded. (en-US) 
+04:16:00.804 INFO  MongoDB successfully connected 
+04:16:01.268 INFO  Shard: 0 has became ready 
+04:16:01.290 INFO  Lavalink node: 0.0.0.0 has connected. 
+04:16:01.314 INFO  All guilds have been initialized 
+04:16:01.431 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+04:16:01.432 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+04:16:01.432 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+04:17:50.307 INFO  1 language(s) have loaded. (en-US) 
+04:17:50.636 INFO  MongoDB successfully connected 
+04:17:51.009 INFO  Shard: 0 has became ready 
+04:17:51.030 INFO  Lavalink node: 0.0.0.0 has connected. 
+04:17:51.056 INFO  All guilds have been initialized 
+04:17:51.175 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+04:17:51.175 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
+04:17:51.175 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 

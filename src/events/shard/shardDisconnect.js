@@ -1,5 +1,5 @@
 // Dependencies
-const Event = require('../../structures/Event');
+const Event = require("../../structures/Event");
 
 module.exports = class shardDisconnect extends Event {
 	constructor(...args) {
@@ -10,6 +10,8 @@ module.exports = class shardDisconnect extends Event {
 
 	// run event
 	async run(bot, event, shardID) {
-		bot.logger.error(`Shard: ${shardID} disconnected with error: ${event.reason}`);
+		bot.logger.error(
+			`Shard: ${shardID} disconnected with error: ${event.reason}`
+		);
 	}
 };

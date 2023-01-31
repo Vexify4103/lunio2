@@ -1,5 +1,3 @@
-const { PlaylistSchema } = require('../../../database/models')
+const { PlaylistSchema } = require("../../../database/models");
 
-module.exports = async () => {
-     
-};
+module.exports = async () => {};

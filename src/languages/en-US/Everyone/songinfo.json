@@ -1,7 +1,7 @@
 {
-     "DESC": "Shows details of the song currently being played.",
-  
-     "METHOD_DESC_1": "Shows the detail of a specific song in the queue.",
+	"DESC": "Shows details of the song currently being played.",
 
-     "EMBED": "~ Requested by {{REQUESTER}}\n{{PROGRESSBAR}}"
+	"METHOD_DESC_1": "Shows the detail of a specific song in the queue.",
+
+	"EMBED": "~ Requested by {{REQUESTER}}\n{{PROGRESSBAR}}"
 }

@@ -1,6 +1,6 @@
 {
-     "DESC": "Tries to fix the server region.",
+	"DESC": "Tries to fix the server region.",
 
-     "EMBED_SUCCESS": "Server region got reset.",
-     "EMBED_ERROR": "Something went wrong trying to fix the server region."
+	"EMBED_SUCCESS": "Server region got reset.",
+	"EMBED_ERROR": "Something went wrong trying to fix the server region."
 }

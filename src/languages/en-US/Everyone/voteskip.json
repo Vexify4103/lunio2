@@ -1,7 +1,7 @@
 {
-     "DESC": "Lets you vote for skipping the current track.",
+	"DESC": "Lets you vote for skipping the current track.",
 
-     "EMBED_ALREADY_VOTED": "You already voted for skippig this track.",
-     "EMBED_SKIPPED_TRACK": "Skipped current track.",
-     "EMBED_VOTING_REQUIRED": "Voting required: {{VOTES}}/{{REQUIRED}}"
+	"EMBED_ALREADY_VOTED": "You already voted for skippig this track.",
+	"EMBED_SKIPPED_TRACK": "Skipped current track.",
+	"EMBED_VOTING_REQUIRED": "Voting required: {{VOTES}}/{{REQUIRED}}"
 }
