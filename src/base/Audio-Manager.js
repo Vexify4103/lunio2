@@ -25,6 +25,7 @@ class AudioManager extends Manager {
 				}),
 				//new Spotify({ convertUnresolved: true, useSpotifyMetadata: true, clientID: spotify.iD, clientSecret: spotify.secret }),
 			],
+			trackPartial: ["title", "author", "duration", "uri", "requester"],
 			autoPlay: true,
 			send(id, payload) {
 				const guild = bot.guilds.cache.get(id);

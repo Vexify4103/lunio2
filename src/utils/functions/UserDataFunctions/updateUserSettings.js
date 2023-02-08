@@ -1,18 +1,18 @@
 const { userSchema } = require("../../../database/models");
 
-module.exports = async (user, settings) => {
+module.exports = async (userID, settings) => {
 	try {
 		await userSchema.findOneAndUpdate(
 			{
-				userID: user.id,
-				userNAME: user.username + "#" + user.discriminator,
+				userID: userID,
 			},
 			settings,
 			{
 				upsert: true,
 			}
 		);
+		return true;
 	} catch (error) {
-		console.log(error);
+		return false;
 	}
 };

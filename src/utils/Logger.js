@@ -12,9 +12,6 @@ exports.log = (content, type = "log") => {
 	if (content == "error") return;
 	const timestamp = `[${moment().format("HH:mm:ss")}]:`;
 	switch (type) {
-		// case 'play':
-		// 	console.log(`${timestamp} ${chalk.bgMagenta(type.toUpperCase())} ${content} `)
-		// 	break;
 		case "log":
 			log.log(content);
 			console.log(

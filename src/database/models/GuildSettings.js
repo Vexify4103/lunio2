@@ -26,6 +26,7 @@ const guildSchema = Schema({
 	mChannelID: { type: String, default: "none" },
 	mChannelEmbedID: { type: String, default: "none" },
 	mChannelBannerID: { type: String, default: "none" },
+	mChannelUpdateInProgress: { type: Boolean, default: false},
 	// PREMIUM
 	permpremium: { type: Boolean, default: false },
 	premium: { type: Boolean, default: false },

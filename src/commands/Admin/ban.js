@@ -86,7 +86,7 @@ module.exports = class Ban extends Command {
 					member.user.username + "#" + member.user.discriminator,
 				guilds: newGuilds,
 			};
-			await bot.updateUserSettings(member.user, newsettings);
+			await bot.updateUserSettings(member.user.id, newsettings);
 
 			embed = new EmbedBuilder()
 				.setColor(bot.config.colorTrue)

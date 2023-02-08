@@ -39,6 +39,7 @@ class QueueEnd extends Event {
 				else channel.send({ embeds: [embed] });
 				player.destroy();
 			}, bot.config.LeaveTimeout); //bot.config.LeaveTimeout
+			
 			player.playing = false;
 			player.paused = false;
 			let res;
@@ -49,7 +50,7 @@ class QueueEnd extends Event {
 					}`,
 					requester
 				);
-				await bot.replaceTitle(bot, res);
+				res = await bot.replaceTitle(bot, res);
 				if (res.loadType === "LOAD_FAILED") {
 					if (!player.queue.current) player.destroy();
 					throw res.exception;

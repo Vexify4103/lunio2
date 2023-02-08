@@ -20,6 +20,7 @@ module.exports = class Remove extends Command {
 					description: "Song position in the queue.",
 					type: 4,
 					required: true,
+					autocomplete: true
 				},
 				{
 					name: "to",
@@ -27,6 +28,7 @@ module.exports = class Remove extends Command {
 						"Second song position in the queue. (range removal)",
 					type: 4,
 					required: false,
+					autocomplete: true
 				},
 			],
 		});
@@ -63,7 +65,7 @@ module.exports = class Remove extends Command {
 			});
 		}
 
-		if (pos1 > player.queue.size) pos1 = player.queue.size;
+		if (pos1 >= player.queue.size) pos1 = player.queue.size;
 		if (!pos2) {
 			player.queue.splice(pos1 - 1, 1);
 
@@ -84,7 +86,6 @@ module.exports = class Remove extends Command {
 				await bot.musicembed(bot, player, settings);
 			return;
 		} else if (pos2) {
-			if (pos2 === 0) pos2 = 1;
 			if (pos2 > player.queue.size) pos2 = player.queue.size - 1;
 			if (pos1 > pos2) {
 				pos1 = pos1 + pos2;

@@ -8,6 +8,7 @@ module.exports = async (userId, playlistName) => {
 		});
 		return true;
 	} catch (error) {
+		console.error(error);
 		return false;
 	}
 };

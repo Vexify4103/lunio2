@@ -115,8 +115,6 @@ module.exports = class voiceStateUpdate extends Event {
 					setTimeout(() => {
 						player.pause(false);
 					}, bot.ws.ping * 2);
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
 					if (player.timeout) clearTimeout(player.timeout);
 					return;
 				}
@@ -130,8 +128,6 @@ module.exports = class voiceStateUpdate extends Event {
 						player.pause(true);
 					}, bot.ws.ping * 2);
 					player.pause(true);
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
 					bot.manager.emit(
 						"queueEnd",
 						player,

@@ -35,13 +35,15 @@ module.exports = class Playlist extends Command {
 							description: "Name of the playlist.",
 							type: 3,
 							required: true,
+							autocomplete: true,
 						},
 						{
 							name: "page-number",
 							description:
 								"Shows a specific page of the provided playlist.",
-							type: 4,
+							type: 10,
 							required: false,
+							min_value: 1,
 						},
 					],
 				},
@@ -53,17 +55,18 @@ module.exports = class Playlist extends Command {
 					type: 1,
 					options: [
 						{
-							name: "url",
-							description:
-								"Please provide URL to save to your playlist.",
+							name: "track",
+							description: "The link or title of the track.",
 							type: 3,
 							required: true,
+							autocomplete: true,
 						},
 						{
 							name: "playlist-name",
 							description: "Name of the playlist.",
 							type: 3,
-							required: false,
+							required: true,
+							autocomplete: true,
 						},
 					],
 				},
@@ -75,24 +78,26 @@ module.exports = class Playlist extends Command {
 					type: 1,
 					options: [
 						{
-							name: "song-id",
-							description:
-								"Song-ID (Number) you want to be removed out of the provided playlist.",
-							type: 4,
-							required: true,
-						},
-						{
 							name: "playlist-name",
 							description: "Name of the playlist.",
 							type: 3,
-							required: false,
+							required: true,
+							autocomplete: true,
+						},
+						{
+							name: "song-id",
+							description:
+								"Song-ID (Number) you want to be removed out of the provided playlist.",
+							type: 10,
+							min_value: 1,
+							required: true,
 						},
 					],
 				},
 				{
 					// COMMAND #5 / 0.5*premium 0.5*everyone
 					name: "load",
-					description: "Play the provided saved playlist.",
+					description: "Play the provided or default playlist.",
 					type: 1,
 					options: [
 						{
@@ -100,6 +105,7 @@ module.exports = class Playlist extends Command {
 							description: "Name of the playlist.",
 							type: 3,
 							required: false,
+							autocomplete: true,
 						},
 					],
 				},
@@ -115,6 +121,7 @@ module.exports = class Playlist extends Command {
 							description: "Name of the playlist.",
 							type: 3,
 							required: true,
+							autocomplete: true,
 						},
 					],
 				},
@@ -143,6 +150,22 @@ module.exports = class Playlist extends Command {
 							description: "Name of the playlist.",
 							type: 3,
 							required: true,
+							autocomplete: true,
+						},
+					],
+				},
+				{
+					// COMMAND #10 / PREMIUM
+					name: "share",
+					description: "Share your saved playlists with others.",
+					type: 1,
+					options: [
+						{
+							name: "playlist-name",
+							description: "Name of the playlist.",
+							type: 3,
+							required: true,
+							autocomplete: true,
 						},
 					],
 				},
@@ -158,20 +181,7 @@ module.exports = class Playlist extends Command {
 							description: "Name of the playlist.",
 							type: 3,
 							required: true,
-						},
-					],
-				},
-				{
-					// COMMAND #10 / PREMIUM
-					name: "share",
-					description: "Share your saved playlists with others.",
-					type: 1,
-					options: [
-						{
-							name: "playlist-name",
-							description: "Name of the playlist.",
-							type: 3,
-							required: true,
+							autocomplete: true,
 						},
 					],
 				},
@@ -188,16 +198,20 @@ module.exports = class Playlist extends Command {
 					perms: "Everyone",
 				},
 				{
-					name: "song save <url> [playlist-name]",
+					name: "song save <title/url> <playlist-name>",
 					description:
 						"Save a song to your default or provided playlist.",
 					perms: "Everyone",
 				},
 				{
-					name: "song delete <songId> [playlist-name]",
-					description:
-						"Delete a song from your default or provided playlist.",
+					name: "song delete <songID> <playlist-name>",
+					description: "Delete a song from your playlist.",
 					perms: "Everyone",
+				},
+				{
+					name: "load [playlist-name]",
+					description: "Loads the given or your default playlist.",
+					perms: "Premium",
 				},
 				{
 					name: "save <playlist-name>",
@@ -216,14 +230,14 @@ module.exports = class Playlist extends Command {
 					perms: "Premium",
 				},
 				{
-					name: "default <playlist-name>",
-					description:
-						"Switch the default playlist. (used when no playlist name is provided)",
+					name: "share <playlist-name>",
+					description: "Share your saved playlists with others.",
 					perms: "Premium",
 				},
 				{
-					name: "share <playlist-name>",
-					description: "Share your saved playlists with others.",
+					name: "default <playlist-name>",
+					description:
+						"Switch the default playlist. (used when no playlist name is provided)",
 					perms: "Premium",
 				},
 			],
@@ -244,407 +258,25 @@ module.exports = class Playlist extends Command {
 			"share",
 		]);
 		let embed;
-		const userSettings = await bot.getUserData(bot, interaction.user.id);
-		const member = guild.members.cache.get(interaction.user.id);
-		const PlaylistName = interaction.options.getString("playlist-name");
-		const ULR = interaction.options.getString("url");
-		const Page = interaction.options.getInteger("page-number");
-		const SongId = interaction.options.getInteger("song-id");
-		const exist = await bot.existPlaylist(
-			interaction.user.id,
-			PlaylistName || userSettings.defaultPlaylist
-		);
-		const player = bot.manager.players.get(guild.id);
-
+		let userSettings = await bot.getUserData(bot, interaction.user.id);
+		let member = await guild.members.fetch(interaction.user.id);
+		let playlistName = interaction.options.getString("playlist-name");
+		let track = interaction.options.getString("track");
+		let pageNumber = interaction.options.getNumber("page-number");
+		let songID = interaction.options.getNumber("song-id");
+		let player = bot.manager?.players?.get(guild.id);
+		let maxSongsInPlaylist = userSettings.maxSongsInPlaylist;
 		await interaction.deferReply({ ephemeral: true });
+		let playlistArray;
 
-		// #region SwitchCase
 		switch (Sub) {
-			// #region listCommand
 			case "list": // NOTHING REQUIRED
-				PlaylistSchema.find(
-					{
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-
-						if (!p[0]) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							let str = [];
-							let count = 0;
-							p.map((pl) => {
-								str.push(
-									`${(count += 1)}. ${bot.codeBlock(
-										pl.name
-									)} created: ${pl.timeCreated}\n\n`
-								);
-							});
-							embed = new EmbedBuilder()
-								.setColor(await bot.getColor(bot, guild.id))
-								.setDescription(`${str.join("")}`);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-					}
-				);
-				break;
-			// #endregion
-			// #region showCommand
-			case "show": // PLAYLIST NAME REQUIRED, PAGE NOT REQUIRED
-				PlaylistSchema.find(
-					{
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-
-						if (!p[0]) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							let playlistNames = p.map((pl) => pl.name);
-
-							if (playlistNames.includes(PlaylistName)) {
-								p = p.find((obj) => obj.name == PlaylistName);
-
-								// Show information on that playlist
-								let pagesNum = Math.ceil(p.songs.length / 10);
-								if (pagesNum === 0) pagesNum = 1;
-
-								// Get total playlist duration
-								const totalQueueDuration = p.songs.reduce(
-									(a, b) => a + b.duration,
-									0
-								);
-
-								const pages = [];
-								let n = 1;
-								if (pagesNum === 0) pagesNum = 1;
-
-								for (let i = 0; i < pagesNum; i++) {
-									const str = `${p.songs
-										.slice(i * 10, i * 10 + 10)
-										.map(
-											(song) =>
-												`${n++}. ${song.author} - ${
-													song.title
-												} \`[${bot.getduration(
-													song.duration
-												)}]\``
-										)
-										.join("\n")}`;
-
-									embed = new EmbedBuilder()
-										.setColor(
-											await bot.getColor(bot, guild.id)
-										)
-										.setDescription(str)
-										.setFooter({
-											text: bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_SHOW_CURRENT_PAGE",
-												{
-													CURRENT: i + 1,
-													TOTAL: pagesNum,
-													SIZE: p.songs.length,
-													DURATION:
-														bot.getduration(
-															totalQueueDuration
-														),
-												}
-											),
-										});
-									pages.push(embed);
-								}
-
-								if (!Page || Page == "null") {
-									paginate(
-										bot,
-										interaction,
-										pages,
-										interaction.user.id
-									);
-								} else {
-									if (Page > pagesNum) {
-										Page = pagesNum;
-									}
-									let pageNum = Page == 0 ? 1 : Page - 1;
-
-									return interaction.editReply({
-										embeds: [pages[pageNum]],
-										ephemeral: true,
-									});
-								}
-							} else {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_NO_PLAYLISTNAME_FOUND",
-											{
-												name: PlaylistName,
-											}
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-						}
-					}
-				);
-				break;
-			// #endregion
-			// #region song-saveCommand
-			case "song-save": // URL required, PlaylistName not required
-				if (exist === false) {
-					let plsettings;
-
-					if (userSettings.premium) {
-						plsettings = {
-							name: PlaylistName || "Songs",
-							creator: interaction.user.id,
-						};
-						let updateUser = {
-							defaultPlaylist: PlaylistName,
-						};
-						await bot.updateUserSettings(
-							interaction.user,
-							updateUser
-						);
-					} else {
-						plsettings = {
-							name: "Songs",
-							creator: interaction.user.id,
-						};
-					}
-					await bot.createPlaylist(bot, plsettings);
-
-					embed = new EmbedBuilder()
-						.setColor(bot.config.colorOrange)
-						.setDescription(
-							bot.translate(
-								settings.Language,
-								"Everyone/playlist:EMBED_CREATED_NEW_DEFAULT",
-								{
-									NAME: `${bot.codeBlock(plsettings.name)}`,
-								}
-							)
-						);
-
-					return interaction.editReply({
-						embeds: [embed],
-						ephemeral: true,
-					});
-				}
-				PlaylistSchema.findOne(
-					{
-						name: PlaylistName || userSettings.defaultPlaylist,
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-
-						if (p) {
-							let res = await bot.manager.search(
-								ULR,
-								member.user
-							);
-							await bot.replaceTitle(bot, res);
-							if (
-								(p.songs.length >= 15 &&
-									!userSettings.premium) ||
-								(p.songs.length >= 100 && userSettings.premium)
-							) {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorOrange)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-							if (res.loadType === "NO_MATCHES") {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorOrange)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_NO_SONGS_FOUND"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							} else if (res.loadType === "PLAYLIST_LOADED") {
-								if (ULR.includes("&list=RD")) {
-									p.songs.push(res.tracks[0]);
-									p.duration =
-										p.duration + res.tracks[0].duration;
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorTrue)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_SONGSAVE_LOADED",
-												{
-													NAME: `${bot.codeBlock(
-														res.playlist.name
-													)}`,
-												}
-											)
-										);
-
-									interaction.editReply({
-										embeds: [embed],
-										ephemeral: true,
-									});
-									return await p.save();
-								} else {
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorWrong)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_AT_LEAST_1SONG"
-											)
-										);
-
-									return interaction.editReply({
-										embeds: [embed],
-										ephemeral: true,
-									});
-								}
-							} else if (
-								res.loadType === "TRACK_LOADED" ||
-								res.loadType === "SEARCH_RESULT"
-							) {
-								p.songs.push(res.tracks[0]);
-								p.duration =
-									p.duration + res.tracks[0].duration;
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorTrue)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_ADDED_TRACK_TO_PLAYLIST",
-											{
-												TRACK: `${bot.codeBlock(
-													`${res.tracks[0].author} - ${res.tracks[0].title}`
-												)}`,
-												PLAYLISTNAME: `${bot.codeBlock(
-													p.name
-												)}`,
-											}
-										)
-									);
-
-								interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-								return await p.save();
-							}
-						} else {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-					}
-				);
-				break;
-			// #endregion
-			// #region song-deleteCommand
-			case "song-delete": // SONGID required, PlaylistName not required
-				if (!exist) {
+				playlistArray = await PlaylistSchema.find({
+					creator: interaction.user.id,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
 					embed = new EmbedBuilder()
 						.setColor(bot.config.colorWrong)
 						.setDescription(
@@ -659,64 +291,281 @@ module.exports = class Playlist extends Command {
 						ephemeral: true,
 					});
 				}
-				PlaylistSchema.findOne(
-					{
-						name: PlaylistName || userSettings.defaultPlaylist,
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
+
+				let str = [];
+				let count = 0;
+				playlistArray.map((pl) => {
+					str.push(
+						`${(count += 1)}. ${bot.codeBlock(
+							pl.name
+						)} ${bot.translate(
+							settings.Language,
+							"Everyone/playlist:LIST_PLAYLISTS"
+						)}: ${pl.timeCreated}\n\n`
+					);
+				});
+				embed = new EmbedBuilder()
+					.setColor(await bot.getColor(bot, guild.id))
+					.setDescription(`${str.join("")}`);
+
+				return interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+				break;
+			case "show": // PLAYLIST NAME REQUIRED, PAGE NOT REQUIRED
+				playlistArray = await PlaylistSchema.find({
+					creator: interaction.user.id,
+					name: playlistName,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
+				// CHECK IF PLAYLIST HAS ANY SONGS
+				if (playlistArray.songs.length <= 0) {
+					// RETURN ERROR IF NO SONGS IN THIS PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_PLAYLIST_EMPTY"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// Show information on that playlist
+				let pagesNum = Math.ceil(playlistArray.songs.length / 10);
+				if (pagesNum === 0) pagesNum = 1;
+
+				// Get total playlist duration
+				const totalQueueDuration = playlistArray.songs.reduce(
+					(a, b) => a + b.duration,
+					0
+				);
+
+				const pagesArray = [];
+				let n = 1;
+				if (pagesNum === 0) pagesNum = 1;
+
+				for (let i = 0; i < pagesNum; i++) {
+					const str = `${playlistArray.songs
+						.slice(i * 10, i * 10 + 10)
+						.map(
+							(song) =>
+								`${n++}. ${song.author} - ${
+									song.title
+								} \`[${bot.getduration(song.duration)}]\``
+						)
+						.join("\n")}`;
+
+					embed = new EmbedBuilder()
+						.setColor(await bot.getColor(bot, guild.id))
+						.setDescription(str)
+						.setFooter({
+							text: bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_SHOW_CURRENT_PAGE",
+								{
+									CURRENT: i + 1,
+									TOTAL: pagesNum,
+									SIZE: playlistArray.songs.length,
+									DURATION:
+										bot.getduration(totalQueueDuration),
+								}
+							),
+						});
+					pagesArray.push(embed);
+				}
+
+				if (!pageNumber || pageNumber == null) {
+					paginate(bot, interaction, pagesArray, interaction.user.id);
+				} else {
+					if (pageNumber > pagesNum) pageNumber = pagesNum;
+
+					let pageNum = pageNumber == 0 ? 1 : pageNumber - 1;
+
+					return interaction.editReply({
+						embeds: [pagesArray[pageNum]],
+						ephemeral: true,
+					});
+				}
+				break;
+			case "song-save": // URL-TRACK required, playlistName required
+				playlistArray = await PlaylistSchema.find({
+					creator: interaction.user.id,
+					name: playlistName,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
+
+				// Search for song using userInput
+				let res = await bot.manager.search(track, member.user);
+				res = await bot.replaceTitle(bot, res);
+				// CHECK IF USER HAS ENOUGH SPACE IN PLAYLIST
+				if (
+					(playlistArray.songs.length >=
+						bot.config.changeableSettings.maxSongsInPlaylist &&
+						!userSettings.premium) ||
+					(playlistArray.songs.length >= maxSongsInPlaylist &&
+						userSettings.premium)
+				) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				if (res.loadType === "NO_MATCHES") {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_SONGS_FOUND"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				} else if (res.loadType === "PLAYLIST_LOADED") {
+					if (track.includes("&list=RD")) {
+						playlistArray.songs.push(res.tracks[0]);
+						playlistArray.duration += res.tracks[0].duration;
+						embed = new EmbedBuilder()
+							.setColor(await bot.getColor(bot, guild.id))
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/playlist:EMBED_SONGSAVE_LOADED",
+									{
+										NAME: res.playlist.name,
+									}
+								)
+							);
+
+						interaction.editReply({
+							embeds: [embed],
+							ephemeral: true,
+						});
+						return await playlistArray.save();
+					} else {
+						embed = new EmbedBuilder()
+							.setColor(bot.config.colorWrong)
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/playlist:EMBED_ONLY_1SONG"
+								)
+							);
+
+						return interaction.editReply({
+							embeds: [embed],
+							ephemeral: true,
+						});
+					}
+				} else if (
+					res.loadType === "TRACK_LOADED" ||
+					res.loadType === "SEARCH_RESULT"
+				) {
+					let finalResult = await bot.manager.search(
+						`${res.tracks[0].title} - ${res.tracks[0].author}`,
+						member.user
+					);
+					res = await bot.replaceTitle(bot, finalResult);
+
+					if (finalResult.loadType === "NO_MATCHES") {
+						embed = new EmbedBuilder()
+							.setColor(bot.config.colorOrange)
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/playlist:EMBED_NO_SONGS_FOUND"
+								)
+							);
+
+						return interaction.editReply({
+							embeds: [embed],
+							ephemeral: true,
+						});
+					} else if (finalResult.loadType === "PLAYLIST_LOADED") {
+						if (track.includes("&list=RD")) {
+							playlistArray.songs.push(finalResult.tracks[0]);
+							playlistArray.duration +=
+								finalResult.tracks[0].duration;
 							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
+								.setColor(await bot.getColor(bot, guild.id))
 								.setDescription(
 									bot.translate(
 										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+										"Everyone/playlist:EMBED_SONGSAVE_LOADED",
+										{
+											NAME: `${bot.codeBlock(
+												finalResult.playlist.name
+											)}`,
+										}
 									)
 								);
-							return interaction.editReply({
+
+							interaction.editReply({
 								embeds: [embed],
 								ephemeral: true,
 							});
-						}
-						if (p) {
-							try {
-								p.songs.splice(SongId - 1, 1);
-
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorTrue)
-									.setDescription(
-										`Successfully removed song at position ${bot.codeBlock(
-											SongId
-										)}.`
-									)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_REMOVED_TRACK_FROM_PLAYLIST",
-											{
-												SONGID: `${bot.codeBlock(
-													SongId
-												)}`,
-											}
-										)
-									);
-
-								await interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-								return await p.save();
-							} catch (error) {
-								bot.logger.error(error);
-							}
+							return await playlistArray.save();
 						} else {
 							embed = new EmbedBuilder()
 								.setColor(bot.config.colorWrong)
 								.setDescription(
 									bot.translate(
 										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+										"Everyone/playlist:EMBED_ONLY_1SONG"
 									)
 								);
 
@@ -726,11 +575,103 @@ module.exports = class Playlist extends Command {
 							});
 						}
 					}
-				);
+
+					playlistArray.songs.push(finalResult.tracks[0]);
+					playlistArray.duration += finalResult.tracks[0].duration;
+
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorTrue)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_ADDED_TRACK_TO_PLAYLIST",
+								{
+									TRACK: `${finalResult.tracks[0].author} - ${finalResult.tracks[0].title}`,
+									PLAYLISTNAME: playlistArray.name,
+								}
+							)
+						);
+
+					interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+					return await playlistArray.save();
+				}
 				break;
-			// #endregion
-			// #region loadCommand
-			case "load": // PlaylistName required
+			case "song-delete": // SONGID required, playlistName required
+				playlistArray = await PlaylistSchema.find({
+					creator: interaction.user.id,
+					name: playlistName,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
+
+				// RETURN ERROR IF SONG DOES NOT EXIST IN THE PLAYLIST
+				if (songID > playlistArray.songs.length) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_TRACK_NOT_EXIST_IN_PLAYLIST"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// TRY REMOVING SONG WITH ID
+				try {
+					//console.log(playlistArray.songs[songID - 1].title);
+
+					("Successfully removed song `{{SONGTITLE}}` at position `{{SONGID}}`");
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorTrue)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_REMOVED_TRACK_FROM_PLAYLIST",
+								{
+									SONGTITLE:
+										playlistArray.songs[songID - 1].title,
+									SONGID: songID,
+								}
+							)
+						);
+
+					playlistArray.duration -=
+						playlistArray.songs[songID - 1].duration;
+					playlistArray.songs.splice(songID - 1, 1);
+					await playlistArray.save();
+					await interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				} catch (error) {
+					bot.logger.error(error);
+				}
+				break;
+			case "load": // playlistName not required
 				// CHECK IF PLAYLIST ARE ALLOWED
 				if (!settings.Playlists) {
 					let embed = new EmbedBuilder()
@@ -748,185 +689,167 @@ module.exports = class Playlist extends Command {
 					});
 				}
 
-				if (!PlaylistName) {
-					// ALL CHECKS BEORE PLAYING (DJ ROLE, RESTRICTED VC, SAME VC)
-					await checkMusic(
-						bot,
-						interaction,
-						settings,
-						member,
-						player
-					);
-
-					// RUN COMMAND
-					PlaylistSchema.findOne(
-						{
-							name: userSettings.defaultPlaylist,
-							creator: interaction.user.id,
-						},
-						async (err, p) => {
-							if (err) {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_COULDNT_FIND_DEFAULT"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-							if (p) {
-								await playMusic(bot, interaction, settings, guild, member);
-							} else {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-						}
-					);
+				if (!playlistName || playlistName == "null")
+					playlistName = userSettings.defaultPlaylist;
+				// IF PLAYLIST IS A SHARED ONE
+				if (playlistName.startsWith("_id:")) {
+					playlistArray = await PlaylistSchema.findById({
+						_id: playlistName.slice(4),
+					}).exec();
 				} else {
-					// CHECK FOR USER PREMIUM
-					if (!userSettings.premium) {
-						embed = new EmbedBuilder()
-							.setColor(bot.config.colorOrange)
-							.setDescription(
-								bot.translate(
-									settings.Language,
-									"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
-								)
-							);
-
-						return interaction.editReply({
-							embeds: [embed],
-							ephemeral: true,
-						});
-					}
-					// ALL CHECKS BEORE PLAYING (DJ ROLE, RESTRICTED VC, SAME VC)
-					await checkMusic(
-						bot,
-						interaction,
-						settings,
-						member,
-						player
-					);
-					//RUN COMMAND
-					if (PlaylistName.startsWith("_id:")) {
-						PlaylistSchema.findById(
-							{
-								_id: PlaylistName.slice(4),
-							},
-							async (err, p) => {
-								if (err) {
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorWrong)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST"
-											)
-										);
-
-									return interaction.editReply({
-										embeds: [embed],
-										ephemeral: true,
-									});
-								}
-								if (p) {
-									await playMusic(
-										bot,
-										interaction,
-										settings,
-										guild,
-										member
-									);
-								} else {
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorWrong)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-											)
-										);
-
-									return interaction.editReply({
-										embeds: [embed],
-										ephemeral: true,
-									});
-								}
-							}
+					playlistArray = await PlaylistSchema.find({
+						creator: interaction.user.id,
+						name: playlistName,
+					}).exec();
+					// GET INTO THE FIRST PLAYLIST THAT MATCHES
+					playlistArray = playlistArray[0];
+				}
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
 						);
-					} else {
-						PlaylistSchema.findOne(
-							{
-								name:
-									PlaylistName ||
-									userSettings.defaultPlaylist,
-								creator: interaction.user.id,
-							},
-							async (err, p) => {
-								if (err) {
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorWrong)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST"
-											)
-										);
 
-									return interaction.editReply({
-										embeds: [embed],
-										ephemeral: true,
-									});
-								}
-								if (p) {
-									await playMusic(
-										bot,
-										interaction,
-										settings,
-										guild,
-										member
-									);
-								} else {
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorWrong)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-											)
-										);
-
-									return interaction.editReply({
-										embeds: [embed],
-										ephemeral: true,
-									});
-								}
-							}
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// CHECK IF PLAYLIST HAS ANY SONGS
+				if (playlistArray.songs.length <= 0) {
+					// RETURN ERROR IF NO SONGS IN THIS PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_PLAYLIST_EMPTY"
+							)
 						);
-					}
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
 				}
 
+				await checkMusic(bot, interaction, settings, member, player);
+
+				try {
+					player = bot.manager.create({
+						guild: guild.id,
+						voiceChannel: member.voice.channel.id,
+						textChannel: interaction.channel.id,
+						selfDeafen: true,
+						volume: settings.DefaultVol,
+					});
+					if (player.state !== "CONNECTED") {
+						player.connect();
+					}
+
+					// ADD ALL SONGS TO QUEUE
+					let failedSongsArray = [];
+
+					for (let i = 0; i < playlistArray.songs.length; i++) {
+						const song = playlistArray.songs[i];
+						try {
+							bot.manager
+								.search(
+									`${song.title} - ${song.author}`,
+									member.user
+								)
+								.then(async (res) => {
+									res = await bot.replaceTitle(bot, res);
+									await bot.delay(bot, 100);
+
+									let track = res.tracks[0];
+									// console.log(track);
+									switch (res.loadType) {
+										case "NO_MATCHES":
+											failedSongsArray.push(song.title);
+											break;
+										case "TRACK_LOADED":
+											bot.logger.log(
+												`Track Loaded: ${track.title}`
+											);
+											player.queue.add(track);
+											if (
+												!player.playing &&
+												!player.paused &&
+												!player.queue.size
+											) {
+												await player.play();
+											}
+											break;
+										case "SEARCH_RESULT":
+											bot.logger.log(
+												`Track found: ${track.title}`
+											);
+											player.queue.add(track);
+											if (
+												!player.playing &&
+												!player.paused &&
+												!player.queue.size
+											) {
+												await player.play();
+											}
+											break;
+										case "PLAYLIST_LOADED":
+											bot.logger.log(
+												`Playlist loaded: ${track.title}`
+											);
+											player.queue.add(track);
+											if (
+												!player.playing &&
+												!player.paused &&
+												!player.queue.size
+											) {
+												await player.play();
+											}
+											break;
+									}
+								});
+						} catch (error) {
+							failedSongsArray.push(song.title);
+							bot.logger.error(error);
+						}
+					}
+
+					if (settings.CustomChannel) {
+						await bot.delay(bot, 500);
+						await bot.musicembed(bot, player, settings);
+					}
+					embed = new EmbedBuilder()
+						.setColor(await bot.getColor(bot, guild.id))
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_LOADED_PALYLIST",
+								{
+									SIZE:
+										playlistArray.songs.length -
+										failedSongsArray.length,
+									PLAYLISTNAME: playlistArray.name,
+								}
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				} catch (error) {
+					bot.logger.error(error);
+				}
 				break;
-			// #endregion
-			// #region saveCommand
-			case "save": // PlaylistName required
+			case "save": // playlistName required
+				// CHECK IF USER HAS PREMIUM
 				if (!userSettings.premium) {
 					embed = new EmbedBuilder()
 						.setColor(bot.config.colorOrange)
@@ -942,6 +865,7 @@ module.exports = class Playlist extends Command {
 						ephemeral: true,
 					});
 				}
+				// CHECK IF PLAYER EXISTS
 				if (!player) {
 					let embed = new EmbedBuilder()
 						.setColor(bot.config.colorWrong)
@@ -957,8 +881,8 @@ module.exports = class Playlist extends Command {
 						ephemeral: true,
 					});
 				}
-
 				let queue = player.queue;
+				// CHECK IF PLAYER HAS A QUEUE
 				if (queue.size == 0) {
 					embed = new EmbedBuilder()
 						.setColor(bot.config.colorOrange)
@@ -975,130 +899,19 @@ module.exports = class Playlist extends Command {
 					});
 				}
 
-				PlaylistSchema.findOne(
-					{
-						name: PlaylistName,
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_ERROR_CREATING_PLAYLIST"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (!p) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							if (
-								(p.songs.length >= 15 &&
-									!userSettings.premium) ||
-								(p.songs.length >= 100 && userSettings.premium)
-							) {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorOrange)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-							try {
-								let current = {
-									requester: member.user,
-									title: queue.current.title,
-									author: queue.current.author,
-									duration: queue.current.duration,
-								};
-								p.songs.push(current);
-								let songstopush = queue.slice(
-									0,
-									userSettings.premium ? 99 : 14
-								);
-
-								songstopush.map((track) => {
-									p.songs.push(track);
-									p.duration += track.duration;
-								});
-								await p.save();
-
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorTrue)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_SAVED_CURRENT_QUEUE_AS_PLAYLIST",
-											{
-												SIZE: songstopush.length + 1,
-												PLAYLISTNAME: `${bot.codeBlock(
-													p.name
-												)}`,
-											}
-										)
-									);
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							} catch (error) {
-								bot.logger.error(
-									`Error saving current queue to paylist ${error}`
-								);
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_ERROR_DELETING_PLAYLIST"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-						}
-					}
-				);
-				break;
-			// #endregion
-			// #region createCommand
-			case "create": // PlaylistName required
-				if (!userSettings.premium) {
+				playlistArray = await PlaylistSchema.find({
+					name: playlistName,
+					creator: interaction.user.id,
+				}).exec();
+				// CHECK IF USER HAS A PLAYLIST
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
 					embed = new EmbedBuilder()
-						.setColor(bot.config.colorOrange)
+						.setColor(bot.config.colorWrong)
 						.setDescription(
 							bot.translate(
 								settings.Language,
-								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
 							)
 						);
 
@@ -1107,77 +920,16 @@ module.exports = class Playlist extends Command {
 						ephemeral: true,
 					});
 				}
-				PlaylistSchema.find(
-					{
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_ERROR_CREATING_PLAYLIST"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (p.length >= 5) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorOrange)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
-									)
-								);
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							let plsettings = {
-								name: PlaylistName,
-								creator: interaction.user.id,
-							};
-							await bot.createPlaylist(bot, plsettings);
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorTrue)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_SUCCESS_CREATING_PLAYLIST",
-										{
-											PLAYLISTNAME: `${bot.codeBlock(
-												PlaylistName
-											)}`,
-										}
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-					}
-				);
-				break;
-			// #endregion
-			// #region deleteCommand
-			case "delete": // PlaylistName required
-				if (!userSettings.premium) {
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
+				// CHECK IF USER HAS ENOUGH SPACE IN HIS PLAYLIST
+				if (playlistArray.songs.length >= maxSongsInPlaylist) {
 					embed = new EmbedBuilder()
 						.setColor(bot.config.colorOrange)
 						.setDescription(
 							bot.translate(
 								settings.Language,
-								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
+								"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
 							)
 						);
 
@@ -1187,101 +939,36 @@ module.exports = class Playlist extends Command {
 					});
 				}
 
-				PlaylistSchema.findOne(
-					{
-						name: PlaylistName,
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST"
-									)
-								);
+				let pushedAmount = 1;
+				let durationToAdd = 0;
+				// TRY TO SAVE QUEUE AS A PLAYLIST
+				try {
+					let current = player.queue.current;
 
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (!p) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
+					playlistArray.songs.push(current);
+					durationToAdd + current.duration;
 
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							try {
-								let xsettings = {
-									defaultPlaylist: "Songs",
-								};
-								await bot.deletePlaylist(
-									interaction.user.id,
-									p.name
-								);
-								await bot.updateUserSettings(
-									interaction.user,
-									xsettings
-								);
-
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorTrue)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_SUCCESS_DELETING_PLAYLIST",
-											{
-												PLAYLISTNAME: PlaylistName,
-											}
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							} catch (error) {
-								bot.logger.error(error);
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/playlist:EMBED_ERROR_DELETING_PLAYLIST"
-										)
-									);
-
-								return interaction.editReply({
-									embeds: [embed],
-									ephemeral: true,
-								});
-							}
-						}
+					let maxSongsToPush = Math.min(
+						maxSongsInPlaylist - playlistArray.songs.length,
+						player.queue.length
+					);
+					for (let i = 0; i < maxSongsToPush; i++) {
+						pushedAmount += 1;
+						const song = player.queue[i];
+						playlistArray.songs.push(song);
+						durationToAdd += song.duration;
 					}
-				);
-				break;
-			// #endregion
-			// #region defaultCommand
-			case "default": // PlaylistName required
-				if (!userSettings.premium) {
+					playlistArray.duration += durationToAdd;
+				} catch (error) {
+					bot.logger.error(
+						`Error saving current queue to paylist ${error}`
+					);
 					embed = new EmbedBuilder()
-						.setColor(bot.config.colorOrange)
+						.setColor(bot.config.colorWrong)
 						.setDescription(
 							bot.translate(
 								settings.Language,
-								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
+								"Everyone/playlist:EMBED_ERROR_SAVING_TO_PLAYLIST"
 							)
 						);
 
@@ -1290,273 +977,291 @@ module.exports = class Playlist extends Command {
 						ephemeral: true,
 					});
 				}
-
-				PlaylistSchema.find(
-					{
-						name: PlaylistName,
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (!p[0]) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (p) {
-							let settingsToUpdate = {
-								defaultPlaylist: PlaylistName,
-							};
-							await bot.updateUserSettings(
-								interaction.user,
-								settingsToUpdate
-							);
-
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorTrue)
-								.setDescription(
-									`Updated your default playlist to ${bot.codeBlock(
-										PlaylistName
-									)}.`
-								)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_UPDATED_DEFAULT_PLAYLIST",
-										{
-											PLAYLISTNAME: `${bot.codeBlock(
-												PlaylistName
-											)}`,
-										}
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-					}
-				);
-				break;
-			// #endregion
-			// #region shareCommand
-			case "share": // PlaylistName required
-				if (!userSettings.premium) {
-					embed = new EmbedBuilder()
-						.setColor(bot.config.colorOrange)
-						.setDescription(
-							bot.translate(
-								settings.Language,
-								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
-							)
-						);
-
-					return interaction.editReply({
-						embeds: [embed],
-						ephemeral: true,
-					});
-				}
-
-				PlaylistSchema.find(
-					{
-						name: PlaylistName,
-						creator: interaction.user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translaet(
-										"Everyone/playlist:EMBED_COULDNT_FIND_PLAYLIST"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (!p[0]) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-						if (p) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorTrue)
-								.setDescription(
-									`Playlist ${bot.codeBlock(
-										p[0].name
-									)} can be shared via ${bot.codeBlock(
-										`/playlist load _id:${p[0]._id}`
-									)}`
-								)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_SHARE_PLAYLIST",
-										{
-											PLAYLISTNAME: `${bot.codeBlock(
-												p[0].name
-											)}`,
-											ID: p[0]._id,
-										}
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						} else {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
-									)
-								);
-
-							return interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}
-					}
-				);
-				break;
-			// #endregion
-			default:
-				break;
-		}
-		// #endregion
-
-		async function playMusic(bot, interaction, settings, guild, member) {
-               let player;
-				let title = bot.translate(
-					settings.Language,
-					"Everyone/playlist:EMBED_LOADING_PLAYLIST_TITLE"
-				);
+				await playlistArray.save();
 				embed = new EmbedBuilder()
-					.setColor(await bot.getColor(bot, guild.id))
-					.setTitle(title)
+					.setColor(bot.config.colorTrue)
 					.setDescription(
 						bot.translate(
 							settings.Language,
-							"Everyone/playlist:EMBED_LOADING_PLAYLIST_DESC"
+							"Everyone/playlist:EMBED_SAVED_CURRENT_QUEUE_AS_PLAYLIST",
+							{
+								SIZE: pushedAmount,
+								PLAYLISTNAME: playlistArray.name,
+							}
 						)
 					);
-
-				await interaction.editReply({
+				return interaction.editReply({
 					embeds: [embed],
 					ephemeral: true,
-					fetchReply: true,
 				});
-				try {
-					player = bot.manager.create({
-						guild: guild.id,
-						voiceChannel: member.voice.channel.id,
-						textChannel: interaction.channel.id,
-						selfDeafen: true,
-						volume: settings.DefaultVol,
-					});
-					player.connect();
-					new Promise(async function (resolve) {
-						for (let i = 0; i < p.songs.length; i++) {
-							player.queue.add(
-								TrackUtils.buildUnresolved(
-									{
-										title: p.songs[i].title,
-										author: p.songs[i].author,
-										duration: p.songs[i].duration,
-									},
-									member.user
-								)
-							);
-							if (
-								!player.playing &&
-								!player.paused &&
-								!player.queue.length
-							)
-								player.play();
-							if (i == p.songs.length - 1) resolve();
-						}
-					});
-
-					const loaded = new EmbedBuilder()
-						.setColor(await bot.getColor(bot, guild.id))
+			case "create": // playlistName required
+				// CHECK FOR USER PREMIUM
+				if (!userSettings.premium) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
 						.setDescription(
 							bot.translate(
 								settings.Language,
-								"Everyone/playlist:EMBED_LOADED_PALYLIST",
-								{
-									SIZE: p.songs.length,
-									PLAYLISTNAME: p.name`${bot.codeBlock(
-										p.name
-									)}`,
-								}
+								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
 							)
 						);
 
-					interaction.editReply({
-						embeds: [loaded],
+					return interaction.editReply({
+						embeds: [embed],
 						ephemeral: true,
 					});
-				} catch (error) {
-					bot.logger.error(error);
 				}
-          }
+				// CHECK IF USER HAS REACHED MAX AMOUNT OF PLAYLISTS
+				playlistArray = await PlaylistSchema.find({
+					creator: interaction.user.id,
+				}).exec();
+
+				if (playlistArray.length >= 5) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
+							)
+						);
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+
+				let plsettings = {
+					name: playlistName,
+					creator: interaction.user.id,
+				};
+				await bot.createPlaylist(bot, plsettings);
+				embed = new EmbedBuilder()
+					.setColor(bot.config.colorTrue)
+					.setDescription(
+						bot.translate(
+							settings.Language,
+							"Everyone/playlist:EMBED_SUCCESS_CREATING_PLAYLIST",
+							{
+								PLAYLISTNAME: playlistName,
+							}
+						)
+					);
+
+				return interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+			case "delete": // playlistName required
+				if (!userSettings.premium) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				playlistArray = await PlaylistSchema.find({
+					name: playlistName,
+					creator: interaction.user.id,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// CHECK IF USER WANTS TO DELETE DEFAULTPLAYLIST
+				if (playlistName == userSettings.defaultPlaylist) {
+					let newSettings = {
+						defaultPlaylist:
+							bot.config.defaultUserSettings.defaultPlaylist,
+					};
+					await bot.updateUserSettings(
+						interaction.user.id,
+						newSettings
+					);
+				}
+				let success = await bot.deletePlaylist(
+					interaction.user.id,
+					playlistName
+				);
+
+				if (!success) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_ERROR_DELETING_PLAYLIST"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				embed = new EmbedBuilder()
+					.setColor(bot.config.colorTrue)
+					.setDescription(
+						bot.translate(
+							settings.Language,
+							"Everyone/playlist:EMBED_SUCCESS_DELETING_PLAYLIST",
+							{
+								PLAYLISTNAME: playlistName,
+							}
+						)
+					);
+
+				return interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+			case "default": // playlistName required
+				// CHECK FOR USER PREMIUM
+				if (!userSettings.premium) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+
+				playlistArray = await PlaylistSchema.find({
+					name: playlistName,
+					creator: interaction.user.id,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+
+				if (playlistArray) {
+					let settingsToUpdate = {
+						defaultPlaylist: playlistName,
+					};
+					await bot.updateUserSettings(
+						interaction.user.id,
+						settingsToUpdate
+					);
+				}
+				embed = new EmbedBuilder()
+					.setColor(bot.config.colorTrue)
+					.setDescription(
+						bot.translate(
+							settings.Language,
+							"Everyone/playlist:EMBED_UPDATED_DEFAULT_PLAYLIST",
+							{
+								PLAYLISTNAME: playlistName,
+							}
+						)
+					);
+
+				return interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+			case "share": // playlistName required
+				// CHECK FOR USER PREMIUM
+				if (!userSettings.premium) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_REQUIRES_PREMIUM"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+
+				playlistArray = await PlaylistSchema.find({
+					name: playlistName,
+					creator: interaction.user.id,
+				}).exec();
+				// CHECK IF ANY PLAYLISTS FOUND
+				if (playlistArray.length <= 0) {
+					// RETURN ERROR THAT IT FOUND NO PLAYLIST
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_NO_PLAYLIST_DESC"
+							)
+						);
+
+					return interaction.editReply({
+						embeds: [embed],
+						ephemeral: true,
+					});
+				}
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
+				embed = new EmbedBuilder()
+					.setColor(await bot.getColor(bot, guild.id))
+					.setDescription(
+						bot.translate(
+							settings.Language,
+							"Everyone/playlist:EMBED_SHARE_PLAYLIST",
+							{
+								PLAYLISTNAME: playlistArray.name,
+								ID: playlistArray._id,
+							}
+						)
+					);
+
+				return interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+				break;
+		}
+
 		async function checkMusic(bot, interaction, settings, member, player) {
 			// CHECK FOR DJ
 			if (!bot.checkDJ(member, settings)) {

@@ -134,6 +134,7 @@ module.exports = class Setup extends Command {
 		});
 
 		await createChannel(bot, settings, banner, createdChannel);
+		await bot.delay(bot, 1500);
 		if (player) await bot.musicembed(bot, player, settings);
 		return;
 
@@ -197,6 +198,7 @@ module.exports = class Setup extends Command {
 					};
 					await bot.updateGuildSettings(guildId, newsettings);
 				});
+			
 		}
 	}
 };

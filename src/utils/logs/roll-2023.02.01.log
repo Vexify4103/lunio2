@@ -24,3 +24,287 @@
 00:36:00.168 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
 00:36:00.168 INFO  Lunio 2#3539, ready to serve [6] users in [3] servers 
 00:36:00.168 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:52:13.740 INFO  1 language(s) have loaded. (en-US) 
+16:52:14.084 INFO  MongoDB successfully connected 
+16:52:14.597 INFO  Shard: 0 has became ready 
+16:52:14.647 INFO  All guilds have been initialized 
+16:52:14.762 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:52:14.763 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+16:52:14.763 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+16:52:14.773 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:19:29.315 ERROR Error occured: Unknown Message -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:23:19.348 INFO  1 language(s) have loaded. (en-US) 
+18:23:19.675 INFO  MongoDB successfully connected 
+18:23:20.135 INFO  Shard: 0 has became ready 
+18:23:20.173 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:23:20.198 INFO  All guilds have been initialized 
+18:23:20.315 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:23:20.316 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:23:20.316 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:32:59.657 INFO  1 language(s) have loaded. (en-US) 
+18:32:59.963 INFO  MongoDB successfully connected 
+18:33:00.411 INFO  Shard: 0 has became ready 
+18:33:00.440 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:33:00.469 INFO  All guilds have been initialized 
+18:33:00.585 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:33:00.586 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:33:00.586 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:33:23.482 ERROR Unhandled promise rejection: Invalid Form Body
+data.choices[LIST_TYPE_CONVERT]: Only iterables may be used in a ListType 
+18:33:23.766 ERROR Unhandled promise rejection: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType 
+18:33:34.934 ERROR Unhandled promise rejection: Invalid Form Body
+data.choices[LIST_TYPE_CONVERT]: Only iterables may be used in a ListType 
+18:33:35.164 ERROR Unhandled promise rejection: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType 
+18:40:44.740 INFO  1 language(s) have loaded. (en-US) 
+18:40:45.071 INFO  MongoDB successfully connected 
+18:40:45.526 INFO  Shard: 0 has became ready 
+18:40:45.558 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:40:45.582 INFO  All guilds have been initialized 
+18:40:45.704 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:40:45.704 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:40:45.704 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:40:48.208 ERROR Error occured: interaction.options.getFocused(...).value.filter is not a function -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:40:49.192 ERROR Error occured: interaction.options.getFocused(...).value.filter is not a function -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:41:54.873 INFO  1 language(s) have loaded. (en-US) 
+18:41:55.195 INFO  MongoDB successfully connected 
+18:41:55.753 INFO  Shard: 0 has became ready 
+18:41:55.783 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:41:55.806 INFO  All guilds have been initialized 
+18:41:55.922 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:41:55.922 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:41:55.922 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:42:09.091 ERROR Error occured: input.filter is not a function -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:42:27.922 ERROR Error occured: input.filter is not a function -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:42:57.264 INFO  1 language(s) have loaded. (en-US) 
+18:42:57.573 INFO  MongoDB successfully connected 
+18:42:58.000 INFO  Shard: 0 has became ready 
+18:42:58.029 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:42:58.054 INFO  All guilds have been initialized 
+18:42:58.176 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:42:58.177 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:42:58.177 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:43:20.626 ERROR Error occured: Information is not defined -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:43:39.226 ERROR Error occured: Information is not defined -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:43:40.207 ERROR Error occured: Information is not defined -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:43:44.938 ERROR Error occured: Information is not defined -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:43:45.859 ERROR Error occured: Information is not defined -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:49:53.983 INFO  1 language(s) have loaded. (en-US) 
+18:49:54.311 INFO  MongoDB successfully connected 
+18:49:54.957 INFO  Shard: 0 has became ready 
+18:49:54.985 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:49:55.009 INFO  All guilds have been initialized 
+18:49:55.129 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:49:55.129 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:49:55.129 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:50:08.061 ERROR Error occured: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:50:27.381 ERROR Error occured: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:52:37.178 INFO  1 language(s) have loaded. (en-US) 
+18:52:37.500 INFO  MongoDB successfully connected 
+18:52:37.875 INFO  Shard: 0 has became ready 
+18:52:37.908 INFO  Lavalink node: 0.0.0.0 has connected. 
+18:52:37.933 INFO  All guilds have been initialized 
+18:52:38.048 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:52:38.049 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+18:52:38.049 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+18:52:43.821 ERROR Error occured: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:52:43.822 ERROR ############################## 
+18:52:43.822 ERROR Full error: DiscordAPIError[50035]: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType 
+18:52:50.346 ERROR Error occured: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+18:52:50.347 ERROR ############################## 
+18:52:50.347 ERROR Full error: DiscordAPIError[50035]: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType 
+19:00:03.702 INFO  1 language(s) have loaded. (en-US) 
+19:00:04.188 INFO  MongoDB successfully connected 
+19:00:04.533 INFO  Shard: 0 has became ready 
+19:00:04.559 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:00:04.581 INFO  All guilds have been initialized 
+19:00:04.698 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:00:04.698 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:00:04.698 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:02:07.754 ERROR Error occured: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+19:02:39.293 INFO  1 language(s) have loaded. (en-US) 
+19:02:39.625 INFO  MongoDB successfully connected 
+19:02:40.079 INFO  Shard: 0 has became ready 
+19:02:40.102 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:02:40.126 INFO  All guilds have been initialized 
+19:02:40.243 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:02:40.244 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:02:40.244 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:09:24.982 INFO  1 language(s) have loaded. (en-US) 
+19:09:25.316 INFO  MongoDB successfully connected 
+19:09:25.696 INFO  Shard: 0 has became ready 
+19:09:25.725 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:09:25.751 INFO  All guilds have been initialized 
+19:09:25.885 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:09:25.885 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:09:25.886 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:09:31.490 ERROR Error occured: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+19:14:52.118 INFO  1 language(s) have loaded. (en-US) 
+19:14:52.448 INFO  MongoDB successfully connected 
+19:14:52.823 INFO  Shard: 0 has became ready 
+19:14:52.851 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:14:52.874 INFO  All guilds have been initialized 
+19:14:52.996 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:14:52.997 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:14:52.997 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:15:22.709 ERROR Track error: undefined **undefined** in guild: 709832515577184287 for this song: Tiësto - Lay Low . 
+19:19:01.825 INFO  1 language(s) have loaded. (en-US) 
+19:19:02.183 INFO  MongoDB successfully connected 
+19:19:02.565 INFO  Shard: 0 has became ready 
+19:19:02.594 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:19:02.628 INFO  All guilds have been initialized 
+19:19:02.755 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:19:02.756 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:19:02.756 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:19:09.558 ERROR Error occured: Invalid Form Body
+data.choices[0].value[NUMBER_TYPE_COERCE]: Value "{'track': 'QAAAnQIAOE5vcmEgVmFuIEVsa2VuIC0gRG9uJ3QgUGFuaWMgKGZlYXQuIEJlc29tb3JwaCAmIEphbnRpbmUpAAtDeXR1cyBNdXNpYwAAAAAAAh74AAtQTGF1OVFBWkpJSQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PVBMYXU5UUFaSklJAAd5b3V0dWJlAAAAAAAAAAA=', 'title': "Nora Van Elken - Don't Panic (feat. Besomorph & Jantine)", 'identifier': 'PLau9QAZJII', 'author': 'Cytus Music', 'duration': 139000, 'isSeekable': True, 'isStream': False, 'uri': 'https://www.youtube.com/watch?v=PLau9QAZJII', 'thumbnail': 'https://img.youtube.com/vi/PLau9QAZJII/default.jpg', 'requester': {'id': '337568120028004362', 'bot': False, 'system': False, 'flags': 4194368, 'username': 'Vexify', 'discriminator': '2507', 'avatar': '42b0bfe6eb07235dcf69188901c5fe41', 'createdTimestamp': 1500552911527, 'defaultAvatarURL': 'https://cdn.discordapp.com/embed/avatars/2.png', 'tag': 'Vexify#2507', 'avatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp', 'displayAvatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp'}}" is not int.
+data.choices[1].value[NUMBER_TYPE_COERCE]: Value "{'track': 'QAAAmgIAOVRpw6tzdG8gLSAxMDozNSAoZmVhdC4gVGF0ZSBNY1JhZSkgKE9mZmljaWFsIE11c2ljIFZpZGVvKQAHVGnDq3N0bwAAAAAAAsbwAAtFWElXbFJya2pLRQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUVYSVdsUnJraktFAAd5b3V0dWJlAAAAAAAAAAA=', 'title': 'Tiësto - 10:35 (feat. Tate McRae) ', 'identifier': 'EXIWlRrkjKE', 'author': 'Tiësto', 'duration': 182000, 'isSeekable': True, 'isStream': False, 'uri': 'https://www.youtube.com/watch?v=EXIWlRrkjKE', 'thumbnail': 'https://img.youtube.com/vi/EXIWlRrkjKE/default.jpg', 'requester': {'id': '337568120028004362', 'bot': False, 'system': False, 'flags': 4194368, 'username': 'Vexify', 'discriminator': '2507', 'avatar': '42b0bfe6eb07235dcf69188901c5fe41', 'createdTimestamp': 1500552911527, 'defaultAvatarURL': 'https://cdn.discordapp.com/embed/avatars/2.png', 'tag': 'Vexify#2507', 'avatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp', 'displayAvatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp'}}" is not int. -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+19:19:17.647 ERROR Error occured: Invalid Form Body
+data.choices[0].value[NUMBER_TYPE_COERCE]: Value "{'track': 'QAAAnQIAOE5vcmEgVmFuIEVsa2VuIC0gRG9uJ3QgUGFuaWMgKGZlYXQuIEJlc29tb3JwaCAmIEphbnRpbmUpAAtDeXR1cyBNdXNpYwAAAAAAAh74AAtQTGF1OVFBWkpJSQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PVBMYXU5UUFaSklJAAd5b3V0dWJlAAAAAAAAAAA=', 'title': "Nora Van Elken - Don't Panic (feat. Besomorph & Jantine)", 'identifier': 'PLau9QAZJII', 'author': 'Cytus Music', 'duration': 139000, 'isSeekable': True, 'isStream': False, 'uri': 'https://www.youtube.com/watch?v=PLau9QAZJII', 'thumbnail': 'https://img.youtube.com/vi/PLau9QAZJII/default.jpg', 'requester': {'id': '337568120028004362', 'bot': False, 'system': False, 'flags': 4194368, 'username': 'Vexify', 'discriminator': '2507', 'avatar': '42b0bfe6eb07235dcf69188901c5fe41', 'createdTimestamp': 1500552911527, 'defaultAvatarURL': 'https://cdn.discordapp.com/embed/avatars/2.png', 'tag': 'Vexify#2507', 'avatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp', 'displayAvatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp'}}" is not int.
+data.choices[1].value[NUMBER_TYPE_COERCE]: Value "{'track': 'QAAAmgIAOVRpw6tzdG8gLSAxMDozNSAoZmVhdC4gVGF0ZSBNY1JhZSkgKE9mZmljaWFsIE11c2ljIFZpZGVvKQAHVGnDq3N0bwAAAAAAAsbwAAtFWElXbFJya2pLRQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUVYSVdsUnJraktFAAd5b3V0dWJlAAAAAAAAAAA=', 'title': 'Tiësto - 10:35 (feat. Tate McRae) ', 'identifier': 'EXIWlRrkjKE', 'author': 'Tiësto', 'duration': 182000, 'isSeekable': True, 'isStream': False, 'uri': 'https://www.youtube.com/watch?v=EXIWlRrkjKE', 'thumbnail': 'https://img.youtube.com/vi/EXIWlRrkjKE/default.jpg', 'requester': {'id': '337568120028004362', 'bot': False, 'system': False, 'flags': 4194368, 'username': 'Vexify', 'discriminator': '2507', 'avatar': '42b0bfe6eb07235dcf69188901c5fe41', 'createdTimestamp': 1500552911527, 'defaultAvatarURL': 'https://cdn.discordapp.com/embed/avatars/2.png', 'tag': 'Vexify#2507', 'avatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp', 'displayAvatarURL': 'https://cdn.discordapp.com/avatars/337568120028004362/42b0bfe6eb07235dcf69188901c5fe41.webp'}}" is not int. -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+19:24:51.676 INFO  1 language(s) have loaded. (en-US) 
+19:24:52.011 INFO  MongoDB successfully connected 
+19:24:52.490 INFO  Shard: 0 has became ready 
+19:24:52.515 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:24:52.539 INFO  All guilds have been initialized 
+19:24:52.655 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:24:52.656 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:24:52.656 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:25:40.131 INFO  1 language(s) have loaded. (en-US) 
+19:25:40.428 INFO  MongoDB successfully connected 
+19:25:40.946 INFO  Shard: 0 has became ready 
+19:25:40.977 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:25:41.029 INFO  All guilds have been initialized 
+19:25:41.149 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:25:41.149 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:25:41.149 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:27:47.286 INFO  1 language(s) have loaded. (en-US) 
+19:27:47.670 INFO  MongoDB successfully connected 
+19:27:48.192 INFO  Shard: 0 has became ready 
+19:27:48.241 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:27:48.264 INFO  All guilds have been initialized 
+19:27:48.399 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:27:48.399 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:27:48.400 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:28:05.216 INFO  1 language(s) have loaded. (en-US) 
+19:28:05.526 INFO  MongoDB successfully connected 
+19:28:06.148 INFO  Shard: 0 has became ready 
+19:28:06.175 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:28:06.202 INFO  All guilds have been initialized 
+19:28:06.331 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:28:06.332 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:28:06.332 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:32:33.944 INFO  1 language(s) have loaded. (en-US) 
+19:32:34.278 INFO  MongoDB successfully connected 
+19:32:34.702 INFO  Shard: 0 has became ready 
+19:32:34.724 INFO  Lavalink node: 0.0.0.0 has connected. 
+19:32:34.750 INFO  All guilds have been initialized 
+19:32:34.868 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+19:32:34.868 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+19:32:34.868 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:02:28.902 INFO  1 language(s) have loaded. (en-US) 
+20:02:29.242 INFO  MongoDB successfully connected 
+20:02:29.685 INFO  Shard: 0 has became ready 
+20:02:29.707 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:02:29.738 INFO  All guilds have been initialized 
+20:02:29.851 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:02:29.852 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:02:29.852 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:05:09.346 INFO  1 language(s) have loaded. (en-US) 
+20:05:09.701 INFO  MongoDB successfully connected 
+20:05:10.238 INFO  Shard: 0 has became ready 
+20:05:10.257 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:05:10.281 INFO  All guilds have been initialized 
+20:05:10.401 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:05:10.401 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:05:10.402 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:26:54.703 INFO  1 language(s) have loaded. (en-US) 
+20:26:55.049 INFO  MongoDB successfully connected 
+20:26:55.502 INFO  Shard: 0 has became ready 
+20:26:55.525 INFO  Lavalink node: 0.0.0.0 has connected. 
+20:26:55.551 INFO  All guilds have been initialized 
+20:26:55.669 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+20:26:55.669 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+20:26:55.669 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+21:30:00.299 ERROR Track error: undefined **undefined** in guild: 709832515577184287 for this song: Can't Slow Me Down (Instrumental) // 배경음악 // VALORANT. 
+22:50:38.634 INFO  1 language(s) have loaded. (en-US) 
+22:50:38.998 INFO  MongoDB successfully connected 
+22:50:39.347 INFO  Shard: 0 has became ready 
+22:50:39.373 INFO  Lavalink node: 0.0.0.0 has connected. 
+22:50:39.399 INFO  All guilds have been initialized 
+22:50:39.521 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:50:39.522 INFO  Lunio 2#3539, ready to serve [9] users in [3] servers 
+22:50:39.522 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+22:51:23.949 ERROR Error occured: Unknown Message -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+23:40:54.198 INFO  1 language(s) have loaded. (en-US) 
+23:40:54.610 INFO  MongoDB successfully connected 
+23:40:55.055 INFO  Shard: 0 has became ready 
+23:40:55.081 INFO  Lavalink node: 0.0.0.0 has connected. 
+23:40:55.109 INFO  All guilds have been initialized 
+23:40:55.232 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:40:55.233 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+23:40:55.233 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:43:30.550 INFO  1 language(s) have loaded. (en-US) 
+23:43:30.921 INFO  MongoDB successfully connected 
+23:43:31.305 INFO  Shard: 0 has became ready 
+23:43:31.335 INFO  Lavalink node: 0.0.0.0 has connected. 
+23:43:31.358 INFO  All guilds have been initialized 
+23:43:31.476 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:43:31.476 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+23:43:31.477 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:43:50.773 ERROR Unhandled promise rejection: Invalid Form Body
+data.choices[0][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType
+data.choices[1][MODEL_TYPE_CONVERT]: Only dictionaries may be used in a ModelType 
+23:46:23.350 INFO  1 language(s) have loaded. (en-US) 
+23:46:23.674 INFO  MongoDB successfully connected 
+23:46:24.117 INFO  Shard: 0 has became ready 
+23:46:24.151 INFO  Lavalink node: 0.0.0.0 has connected. 
+23:46:24.178 INFO  All guilds have been initialized 
+23:46:24.292 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:46:24.292 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+23:46:24.292 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:46:38.041 ERROR Error occured: Invalid Form Body
+data.choices[0].value[STRING_TYPE_CONVERT]: Could not interpret "0" as string. -- in file D:\Program Files\Bots\Discord Bots\Lunio\Lunio 2\src\events\bot\error.js at line undefined. 
+23:48:16.957 INFO  1 language(s) have loaded. (en-US) 
+23:48:17.367 INFO  MongoDB successfully connected 
+23:48:17.720 INFO  Shard: 0 has became ready 
+23:48:17.758 INFO  Lavalink node: 0.0.0.0 has connected. 
+23:48:17.782 INFO  All guilds have been initialized 
+23:48:17.904 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:48:17.904 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+23:48:17.904 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:49:18.914 INFO  1 language(s) have loaded. (en-US) 
+23:49:19.242 INFO  MongoDB successfully connected 
+23:49:19.598 INFO  Shard: 0 has became ready 
+23:49:19.621 INFO  Lavalink node: 0.0.0.0 has connected. 
+23:49:19.645 INFO  All guilds have been initialized 
+23:49:19.760 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:49:19.760 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+23:49:19.761 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:51:58.211 INFO  1 language(s) have loaded. (en-US) 
+23:51:58.523 INFO  MongoDB successfully connected 
+23:51:58.911 INFO  Shard: 0 has became ready 
+23:51:58.933 INFO  Lavalink node: 0.0.0.0 has connected. 
+23:51:58.957 INFO  All guilds have been initialized 
+23:51:59.140 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+23:51:59.140 INFO  Lunio 2#3539, ready to serve [7] users in [3] servers 
+23:51:59.140 INFO  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 

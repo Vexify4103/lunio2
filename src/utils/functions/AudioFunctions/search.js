@@ -35,8 +35,10 @@ module.exports = async (bot, msg, search, settings, member) => {
 	const channel = await bot.channels.fetch(settings.mChannelID);
 	const message = await channel.messages.fetch(settings.mChannelEmbedID);
 
+
 	bot.manager.search(search, member.user).then(async (res) => {
-		await bot.replaceTitle(bot, res);
+		res = await bot.replaceTitle(bot, res);
+		await bot.delay(bot, 100);
 		let color = await bot.getColor(bot, msg.guild.id);
 		if (settings.SongUserLimit > 0 && bot.checkDJ(member, settings)) {
 			res.tracks = res.tracks.slice(0, settings.SongUserLimit);

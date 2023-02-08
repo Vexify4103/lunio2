@@ -23,80 +23,86 @@ module.exports = class clickButton extends Event {
 		const guild = await bot.guilds.fetch(button.guildId);
 		const user = button.user;
 		let embed;
-
 		// GETTING GUILD SETTINGS
 		let settings = await bot.getGuildData(bot, guild.id);
 		if (Object.keys(settings).length == 0) return button.deferUpdate();
 		if (!settings.CustomChannel) return button.deferUpdate();
-
 		// GETTING USER SETTINGS
 		let userSettings = await bot.getUserData(bot, user.id);
 		if (Object.keys(userSettings).length == 0) return button.deferUpdate();
-
 		// FETCHING MEMBER
 		const member = await guild.members.fetch(user.id);
-
+		// GET PLAYER
+		let player = bot.manager?.players?.get(guild.id);
 		// IF THE USER IS IN NO VOICE CHANNEL RETURN
 		if (!member.voice.channel) return button.deferUpdate();
-
-		// GET PLAYER
-		const player = bot.manager.players.get(guild.id);
-
+		// IF USER IS NOT IN SAME CHANNEL RETURN
+		if (player && member.voice.channel.id !== player?.voiceChannel)
+			return button.deferUpdate();
 		// CHECK IF USER IS BANNED
 		if (userSettings.guilds.includes(guild.id)) return button.deferUpdate();
-
 		// CHECK FOR USER DJ
 		if (
-			(settings.MusicDJ && button.customId === "play") ||
-			"pause" ||
-			"skip" ||
-			"clear" ||
-			"loop" ||
-			"loopqueue" ||
-			"loopsong" ||
-			"shuffle" ||
-			"atp" ||
-			"rfp"
+			settings.MusicDJ &&
+			(button.customId === "play" ||
+				"pause" ||
+				"skip" ||
+				"clear" ||
+				"loop" ||
+				"loopqueue" ||
+				"loopsong" ||
+				"shuffle" ||
+				"atp" ||
+				"rfp")
 		) {
 			if (!bot.checkDJ(member, settings)) return;
 		}
-		// RUN AFTER CHECKED USER FOR EVERYTHING
-		if (!player) return button.deferUpdate();
 
 		const message = button.message;
 		let exist;
-		let plsettings;
+		let playlistArray;
+		let defaultSettings = {
+			name: bot.config.defaultUserSettings.defaultPlaylist,
+			creator: user.id,
+		};
 		switch (button.customId) {
 			case "play":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				player.pause(false);
-				await bot.musicembed(bot, player, settings);
-
-				break;
+				return await bot.musicembed(bot, player, settings);
 			case "pause":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				player.pause(true);
-				await bot.musicembed(bot, player, settings);
-
-				break;
+				return await bot.musicembed(bot, player, settings);
 			case "skip":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				player.stop();
-				await bot.musicembed(bot, player, settings);
-
-				break;
+				return await bot.musicembed(bot, player, settings);
 			case "clear":
 				button.deferUpdate();
-				if (!player.queue.current && player.queue.size === 0) return;
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
+				if (
+					!player ||
+					(!player.queue.current && player.queue.size === 0)
+				)
+					return;
 				player.queue.clear();
 				player.stop();
-
-				break;
+				return await bot.musicoff(bot, settings);
 			case "loop":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				embed = new EmbedBuilder()
 					.setColor(await bot.getColor(bot, guild.id))
@@ -104,13 +110,13 @@ module.exports = class clickButton extends Event {
 
 				player.setQueueRepeat(true);
 				await bot.musicembed(bot, player, settings);
-				message.reply({
+				return message.reply({
 					embeds: [embed],
 				});
-
-				break;
 			case "loopqueue":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				embed = new EmbedBuilder()
 					.setColor(await bot.getColor(bot, guild.id))
@@ -118,13 +124,13 @@ module.exports = class clickButton extends Event {
 
 				player.setTrackRepeat(true);
 				await bot.musicembed(bot, player, settings);
-				message.reply({
+				return message.reply({
 					embeds: [embed],
 				});
-
-				break;
 			case "loopsong":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				embed = new EmbedBuilder()
 					.setColor(await bot.getColor(bot, guild.id))
@@ -132,293 +138,303 @@ module.exports = class clickButton extends Event {
 
 				player.setTrackRepeat(false);
 				await bot.musicembed(bot, player, settings);
-				message.reply({
+				return message.reply({
 					embeds: [embed],
 				});
-
-				break;
 			case "shuffle":
 				button.deferUpdate();
+				// RUN AFTER CHECKED USER FOR EVERYTHING
+				if (!player) return await bot.musicoff(bot, settings);
 				if (!player.queue.current && player.queue.size === 0) return;
 				player.queue.shuffle();
-				await bot.musicembed(bot, player, settings);
-
-				break;
+				return await bot.musicembed(bot, player, settings);
 			case "atp":
 				button.deferUpdate();
-				// REQUIRE VOTE FOR THIS!
-				//////////////////////////
+				// FIND THE PLAYLIST
+				playlistArray = await PlaylistSchema.find({
+					name: userSettings.defaultPlaylist,
+					creator: user.id,
+				}).exec();
+				// CHECK IF PLAYLIST EXISTS
+				if (playlistArray.length <= 0)
+					await bot.createPlaylist(bot, defaultSettings);
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
 
-				// IF BOT IS PLAYING IN OTHER CHANNEL THAN USER RETURN
-				if (player?.playing && guild?.me?.voice?.channel?.id !== member.voice.channel.id) return;
-				// IF BOT IS IN CHANNEL AND IS NOT PLAYING CREATE PLAYER AND RUN PLAYLIST
-				if ((guild.members.me.voice.channel && !player) || (player && !player.playing) || (!player && !guild.members.me.voice.channel)) {
-					if (player?.voiceChannel !== member.voice.channel.id) return;
-					PlaylistSchema.findOne(
-						{
-							name: userSettings.defaultPlaylist,
-							creator: user.id,
-						},
-						async (err, p) => {
-							if (err) {
-								//TRY LOADING PLAYLIST
-								exist = await bot.existPlaylist(
-									user.id,
-									userSettings.defaultPlaylist
-								);
-
-								if (!exist) {
-									plsettings = {
-										name: "Songs",
-										creator: user.id,
-									};
-									await bot.createPlaylist(bot, plsettings);
-									await bot.delay(bot, 1500);
-								}
-							}
-							if (p) {
-								await playMusic(
-									bot,
-									message,
-									settings,
-									guild,
-									member
-								);
-							} else {
-								plsettings = {
-									name: "Songs",
-									creator: user.id,
-								};
-								await bot.createPlaylist(bot, plsettings);
-							}
+				if (!player && settings.Playlists) {
+					// 1. Check if there is no player and settings.Playlists is true
+					if (!player && settings.Playlists) {
+						// Check if playlist has any songs
+						if (playlistArray.songs.length <= 0) {
+							return;
 						}
-					);
-					return;
-				}
-				// IF BOT IS PLAYING ADD TO DEFAULT PLAYLIST -> CREATE ONE IF NECCESSARY
-				if (player?.playing) {
-					//TRY LOADING PLAYLIST
-					exist = await bot.existPlaylist(
-						user.id,
-						userSettings.defaultPlaylist
-					);
-
-					if (!exist) {
-						plsettings = {
-							name: "Songs",
-							creator: user.id,
-						};
-						await bot.createPlaylist(bot, plsettings);
-						await bot.delay(bot, 1500);
-					}
-
-					PlaylistSchema.findOne(
-						{
-							name: userSettings.defaultPlaylist,
-							creator: user.id,
-						},
-						async (err, p) => {
-							if (err) {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										`Could not find any playlists.`
-									);
-
-								return message.reply({
-									embeds: [embed],
-								});
+						// Try and create player
+						try {
+							player = bot.manager.create({
+								guild: guild.id,
+								voiceChannel: member.voice.channel.id,
+								textChannel: button.channelId,
+								selfDeafen: true,
+								volume: settings.DefaultVol,
+							});
+							if (player.state !== "CONNECTED") {
+								player.connect();
 							}
-							if (p) {
-								if (
-									(p.songs.length >= 15 &&
-										!userSettings.premium) ||
-									(p.songs.length >= 100 &&
-										userSettings.premium)
-								) {
-									embed = new EmbedBuilder()
-										.setColor(bot.config.colorOrange)
-										.setDescription(
-											`You reached the maximum amount of tracks in your playlist.`
+						} catch (error) {
+							bot.logger.error(
+								`Failed to create player: ${error}`
+							);
+							return;
+						}
+
+						// Add all songs to queue
+						let failedSongsArray = [];
+
+						for (const song of playlistArray.songs) {
+							try {
+								const searchResult = await bot.manager.search(
+									`${song.title} - ${song.author}`,
+									user
+								);
+
+								switch (searchResult.loadType) {
+									case "NO_MATCHES":
+										failedSongsArray.push(song.title);
+										break;
+
+									case "TRACK_LOADED":
+									case "SEARCH_RESULT":
+									case "PLAYLIST_LOADED":
+										const track = searchResult.tracks[0];
+										bot.logger.log(
+											`Track loaded: ${track.title}`
 										);
+										player.queue.add(track);
 
-									return message.reply({
-										embeds: [embed],
-									});
+										if (
+											!player.playing &&
+											!player.paused &&
+											!player.queue.size
+										) {
+											await player.play();
+										}
+										break;
+									default:
+										break;
 								}
-								let current = {
-									requester: user,
-									title: player.queue.current.title,
-									author: player.queue.current.author,
-									duration: player.queue.current.duration,
-								};
-								p.songs.push(current);
-								p.duration =
-									p.duration + player.queue.current.duration;
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorTrue)
-									.setDescription(
-										`Successfully added track ${bot.codeBlock(
-											player.queue.current.author +
-												" - " +
-												player.queue.current.title
-										)} to the playlist ${bot.codeBlock(
-											p.name
-										)}.`
-									);
-
-								message.reply({
-									embeds: [embed],
-								});
-								return await p.save();
-							} else {
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorWrong)
-									.setDescription(
-										`Could not find any playlists.`
-									);
-
-								return message.reply({
-									embeds: [embed],
-								});
+							} catch (error) {
+								bot.logger.error(
+									`Failed to search and add song: ${error}`
+								);
+								failedSongsArray.push(song);
 							}
 						}
-					);
+						await bot.delay(bot, 500);
+						await bot.musicembed(bot, player, settings);
+
+						embed = new EmbedBuilder()
+							.setColor(await bot.getColor(bot, guild.id))
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/playlist:EMBED_LOADED_PALYLIST",
+									{
+										SIZE:
+											playlistArray.songs.length -
+											failedSongsArray.length,
+										PLAYLISTNAME: playlistArray.name,
+									}
+								)
+							);
+						return message.reply({
+							embeds: [embed],
+						});
+					}
+					return;
+				} else if (player && settings.Playlists && !player.playing) {
+					// 2. Check if there is currently a player, settings.Playlists is true but the bot is not playing anything
+					// Add all songs to queue
+					let failedSongsArray = [];
+
+					for (const song of playlistArray.songs) {
+						try {
+							const searchResult = await bot.manager.search(
+								`${song.title} - ${song.author}`,
+								user
+							);
+
+							switch (searchResult.loadType) {
+								case "NO_MATCHES":
+									failedSongsArray.push(song.title);
+									break;
+
+								case "TRACK_LOADED":
+								case "SEARCH_RESULT":
+								case "PLAYLIST_LOADED":
+									const track = searchResult.tracks[0];
+									bot.logger.log(
+										`Track loaded: ${track.title}`
+									);
+									player.queue.add(track);
+
+									if (
+										!player.playing &&
+										!player.paused &&
+										!player.queue.size
+									) {
+										await player.play();
+									}
+									break;
+								default:
+									break;
+							}
+						} catch (error) {
+							bot.logger.error(
+								`Failed to search and add song: ${error}`
+							);
+							failedSongsArray.push(song);
+						}
+					}
+					await bot.delay(bot, 1500);
+					await bot.musicembed(bot, player, settings);
+
+					embed = new EmbedBuilder()
+						.setColor(await bot.getColor(bot, guild.id))
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_LOADED_PALYLIST",
+								{
+									SIZE:
+										playlistArray.songs.length -
+										failedSongsArray.length,
+									PLAYLISTNAME: playlistArray.name,
+								}
+							)
+						);
+					return message.reply({
+						embeds: [embed],
+					});
+				} else if (player && settings.Playlists && player.playing) {
+					// 3. If the bot is playing something and there is a player
+					// CHECK IF USER HAS ENOUGH SPACE IN PLAYLIST
+					if (
+						(playlistArray.songs.length >=
+							bot.config.changeableSettings.maxSongsInPlaylist &&
+							!userSettings.premium) ||
+						(playlistArray.songs.length >=
+							userSettings.maxSongsInPlaylist &&
+							userSettings.premium)
+					) {
+						embed = new EmbedBuilder()
+							.setColor(bot.config.colorOrange)
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/playlist:EMBED_REACHED_MAX_AMMOUNT"
+								)
+							);
+
+						return message.reply({
+							embeds: [embed],
+						});
+					}
+					let current = player.queue.current;
+					playlistArray.songs.push(current);
+					playlistArray.duration += current.duration;
+					await playlistArray.save();
+
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorTrue)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/playlist:EMBED_SAVED_CURRENT_QUEUE_AS_PLAYLIST",
+								{
+									SIZE: 1,
+									PLAYLISTNAME: playlistArray.name,
+								}
+							)
+						);
+					return message.reply({
+						embeds: [embed],
+					});
 				}
-				break;
 			case "rfp":
 				button.deferUpdate();
 				// CHECK IF VOTE
-				//////////////////////////////////////////
-				// IF NO PLAYER RETURN
-				if (!player.queue.current && player.queue.length === 0) return;
+				// CHECK IF PLAYER EXISTS OR NOTHING IS CURRENTLY BEING PLAYED
+				if (!player || !player.queue.current) {
+					embed = new EmbedBuilder()
+						.setColor(bot.config.colorWrong)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"slashCreate:BOT_NOT_PLAYING"
+							)
+						);
 
-				// IF NOT SAME VC RETURN
-				if (player?.voiceChannel !== member.voice.channel.id) return;
+					return message.reply({
+						embeds: [embed],
+					});
+				}
+				// FIND THE PLAYLIST
+				playlistArray = await PlaylistSchema.find({
+					name: userSettings.defaultPlaylist,
+					creator: user.id,
+				}).exec();
+				// CHECK IF PLAYLIST EXISTS
+				if (playlistArray.length <= 0)
+					await bot.createPlaylist(bot, defaultSettings);
+				// GET INTO THE FIRST PLAYLIST THAT MATCHES
+				playlistArray = playlistArray[0];
+				// FILTER
+				const currentSong = {
+					track: player.queue.current.track,
+					uri: player.queue.current.uri,
+					title: player.queue.current.title,
+					author: player.queue.current.author,
+				};
+				const songIndex = playlistArray.songs.findIndex((song) => {
+					return (
+						song.track === currentSong.track ||
+						song.uri === currentSong.uri ||
+						(song.author === currentSong.author &&
+							song.title === currentSong.title)
+					);
+				});
+				// GET THE POSITION OF THE SONG IN THE PLAYLIST
+				if (songIndex !== -1) {
+					const songToRemove = playlistArray.songs[songIndex];
 
-				// IF PLAYER.QUEUE.CURRENT RETURN
-				if (!player.queue.current) return;
+					if (songToRemove && songToRemove.title) {
+						embed = new EmbedBuilder()
+							.setColor(bot.config.colorTrue)
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/playlist:EMBED_REMOVED_TRACK_FROM_PLAYLIST",
+									{
+										SONGTITLE: songToRemove.title,
+										SONGID: songIndex + 1,
+									}
+								)
+							);
+						playlistArray.duration -= songToRemove.duration;
+						playlistArray.songs.splice(songIndex, 1);
+						await playlistArray.save();
 
-				// TRY FINDING SONG BY SONG TITLE
-				exist = await bot.existPlaylist(
-					user.id,
-					userSettings.defaultPlaylist
-				);
-				if (!exist) return;
-
-				PlaylistSchema.findOne(
-					{
-						name: userSettings.defaultPlaylist,
-						creator: user.id,
-					},
-					async (err, p) => {
-						if (err) {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(`Error finding your playlist.`);
-							return message.reply({
-								embeds: [embed],
-							});
-						}
-						if (p) {
-							// const songIndex = searchAndDestroy(player.queue.current.title, player.queue.current.author, p)
-							// console.log(`SongIndex: ${songIndex}`)
-							let found = 0;
-							for (let i = 0; i < p.songs.length; i++) {
-								if (
-									p.songs[i].title ==
-										player.queue.current.title &&
-									p.songs[i].author ==
-										player.queue.current.author
-								) {
-									found = i;
-									break;
-								}
-							}
-							try {
-								p.songs.splice(found, 1);
-
-								embed = new EmbedBuilder()
-									.setColor(bot.config.colorTrue)
-									.setDescription(
-										`Successfully removed song at position ${bot.codeBlock(
-											found + 1
-										)}.`
-									);
-
-								message.reply({
-									embeds: [embed],
-								});
-								return await p.save();
-							} catch (error) {
-								bot.logger.error(error);
-							}
-						} else {
-							embed = new EmbedBuilder()
-								.setColor(bot.config.colorWrong)
-								.setDescription(
-									`Could not find any playlists.`
-								);
-
-							return message.reply({
-								embeds: [embed],
-							});
-						}
+						return message.reply({
+							embeds: [embed],
+						});
+					} else {
+						return;
 					}
-				);
+				}
 				break;
 			default:
 				break;
 		}
-		return;
-		async function playMusic(bot, message, settings, guild, member) {
-			let player;
-			try {
-				player = bot.manager.create({
-					guild: guild.id,
-					voiceChannel: member.voice.channel.id,
-					textChannel: settings.mChannelID,
-					selfDeafen: true,
-					volume: settings.DefaultVol,
-				});
-				player.connect();
-				new Promise(async function (resolve) {
-					for (let i = 0; i < p.songs.length; i++) {
-						player.queue.add(
-							TrackUtils.buildUnresolved(
-								{
-									title: p.songs[i].title,
-									author: p.songs[i].author,
-									duration: p.songs[i].duration,
-								},
-								member.user
-							)
-						);
-						if (
-							!player.playing &&
-							!player.paused &&
-							!player.queue.length
-						)
-							player.play();
-						if (i == p.songs.length - 1) resolve();
-					}
-				});
-
-				embed = new EmbedBuilder()
-					.setColor(await bot.getColor(bot, guild.id))
-					.setDescription(
-						`${p.songs.length} tracks queued from ${bot.codeBlock(
-							p.name
-						)}.`
-					);
-
-				return message.reply({
-					embeds: [embed],
-				});
-			} catch (error) {
-				bot.logger.error(error);
-			}
-		}
+		return undefined;
 	}
-
 };

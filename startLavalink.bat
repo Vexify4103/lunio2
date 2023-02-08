@@ -1,0 +1,2 @@
+cd .\Lavalink\
+.\runLavalink.bat

@@ -23,6 +23,10 @@ module.exports = class slashCreate extends Event {
 		let usersettings = await bot.getUserData(bot, interaction.user.id);
 		if (Object.keys(usersettings).length == 0) return;
 
+		await bot.updateUserSettings(interaction.user.id, {
+			userNAME: member.user.username + "#" + member.user.discriminator,
+		});
+		
 		if (!channel || !member)
 			return bot.logger.error(
 				"Error running / command cause channel or member are undefined."
@@ -244,7 +248,7 @@ module.exports = class slashCreate extends Event {
 					premiumUses: 0,
 					expireDate: 0,
 				};
-				await bot.updateUserSettings(interaction.user, newUserSettings);
+				await bot.updateUserSettings(interaction.user.id, newUserSettings);
 			}
 		}
 		// CHECK PREMIUM EXPIRE DATES FOR GUILD

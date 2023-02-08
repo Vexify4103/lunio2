@@ -50,7 +50,7 @@ module.exports = class Play extends Command {
 	async callback(bot, interaction, guild, args, settings) {
 		let player;
 		let embed;
-		const member = guild.members.cache.get(interaction.user.id);
+		const member = await guild.members.fetch(interaction.user.id);
 		const textchannel = guild.channels.cache.get(interaction.channelId);
 
 		// reply to interaciton
@@ -77,7 +77,8 @@ module.exports = class Play extends Command {
 		}
 
 		bot.manager.search(search, member.user).then(async (res) => {
-			await bot.replaceTitle(bot, res);
+			res = await bot.replaceTitle(bot, res);
+			await bot.delay(bot, 500);
 			let color = await bot.getColor(bot, guild.id);
 
 			if (settings.SongUserLimit > 0 && bot.checkDJ(member, settings)) {

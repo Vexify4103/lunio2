@@ -78,7 +78,7 @@ module.exports = class Unban extends Command {
 				guilds: newGuilds,
 			};
 
-			await bot.updateUserSettings(member.user, newsettings);
+			await bot.updateUserSettings(member.user.id, newsettings);
 
 			embed = new EmbedBuilder()
 				.setColor(bot.config.colorTrue)

@@ -11,18 +11,22 @@ class TrackStart extends Event {
 	}
 
 	async run(bot, player, track) {
+		if (player.timeout != "null") clearTimeout(player.timeout);
 		let settings = await bot.getGuildData(bot, player.guild);
 		var title = track.title;
 
 		//console.log(player)
-		if (settings.CustomChannel) {
-			return await bot.musicembed(bot, player, settings);
-		}
-		await bot.replaceTitle(bot, track);
 		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
 		const content = `${player.guild} started track: ${title}`;
-		console.log(`${timestamp} ${chalk.bgMagenta("PLAYING")} ${content} `);
-		if (player.timeout != null) return clearTimeout(player.timeout);
+		console.log(`${timestamp} ${chalk.bgMagenta("PLAYING")} ${content}`);
+		if (settings.CustomChannel) {
+			if (settings.mChannelUpdateInProgress) {
+				await bot.delay(bot, 1500);
+				settings = await bot.getGuildData(bot, player.guild);
+			} 
+			return await bot.musicembed(bot, player, settings);
+		}
+		track = await bot.replaceTitle(bot, track);
 		if (settings.Announce) {
 			let description;
 			if (settings.Requester) {
@@ -62,7 +66,6 @@ class TrackStart extends Event {
 					});
 			}
 		}
-
 		return;
 	}
 }

@@ -280,7 +280,7 @@ module.exports = class Premium extends Command {
 						premiumUses: userSettings.premiumUses - 1,
 					};
 					await bot.updateUserSettings(
-						interaction.user,
+						interaction.user.id,
 						newUserSettings
 					);
 

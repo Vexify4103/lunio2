@@ -30,7 +30,7 @@ module.exports = class Message extends Event {
 					.delete()
 					.catch((e) =>
 						bot.logger.error(
-							`Error deleting message not from Lunio: ${e}`
+							`Error deleting bot message not from Lunio: ${e}`
 						)
 					);
 			return;
@@ -115,28 +115,18 @@ module.exports = class Message extends Event {
 				});
 			}
 		}
-		if (irc) {
-			// REFRESH EMBED IF ITS OLDER THAN 3 HOURS
-			let settings = await bot.getGuildData(bot, msg.guild.id);
-			if (Object.keys(settings).length == 0) return;
-			let usersettings = await bot.getUserData(bot, msg.author.id);
-			if (Object.keys(usersettings).length == 0) return;
+		if (irc && !settings.mChannelUpdateInProgress) {
 			const channel = await bot.channels.fetch(settings.mChannelID);
-			const message = await channel.messages.fetch(
-				settings.mChannelEmbedID
-			);
-			
 			//console.log(msg.mentions.users > 0) return console.log("user mentioned")
 			const player = bot.manager.players.get(msg.guild.id);
 
+			if (global.messageUpdateInProgress) return;
 			if (msg.id === settings.mChannelEmbedID) return;
-
 			// IF MSG IS FROM Lunio AND IS NORMAL MESSAGE => DELETE AFTER TIME
 			if (
 				msg.author.id === bot.user.id &&
 				msg.type !== MessageType.ChatInputCommand
 			) {
-				// if (msg.id === settings.mChannelEmbedID) return;
 				return setTimeout(async () => {
 					await msg
 						.delete()
@@ -190,26 +180,6 @@ module.exports = class Message extends Event {
 						)
 					);
 			}
-
-			const oldTime = message.createdTimestamp;
-			const newTime = oldTime + 1000 * 60 * 60 * 3;
-			// const newTime = oldTime + 1000 * 60;
-
-			// IF DATE NOW IS OLDER THAN OLD TIME + 3 HOURS
-			if (newTime < Date.now()) {
-				await message.delete().catch((e) => {
-					bot.logger.error(
-						"Error deleting old embed to refresh with new one"
-					);
-				});
-				await bot.refreshEmbed(bot, settings);
-			}
-
-			settings = await bot.getGuildData(bot, msg.guild.id);
-			if (Object.keys(settings).length == 0) return;
-			usersettings = await bot.getUserData(bot, msg.author.id);
-			if (Object.keys(usersettings).length == 0) return;
-
 			// CUSTOMCHANNEL PERMISSION CHECK
 			if (
 				!msg.guild.members.me.permissions.has(
@@ -432,7 +402,9 @@ module.exports = class Message extends Event {
 
 			try {
 				// await bot.refreshEmbed(bot, settings);
+				global.messageUpdateInProgress = false;
 				bot.logger.log("Searching for song using search function");
+				global.messageUpdateInProgress = false;
 				return await bot.search(
 					bot,
 					msg,
@@ -445,12 +417,25 @@ module.exports = class Message extends Event {
 					`running messageCreate: ${msg.guild.id} | ${error}`
 				);
 			}
-		} else {
+		} else if (irc && settings.mChannelUpdateInProgress) {
+			await bot.delay(bot, 5000);
+			let channel = await bot.channels.fetch(settings.mChannelID);
+			let messages = await channel.messages.fetch();
+			settings = await bot.getGuildData(bot, msg.guild.id);
+			try {
+				let filter = messages.filter((m) => {
+					return (
+						m.id !== settings.mChannelBannerID &&
+						m.id !== settings.mChannelEmbedID
+					);
+				});
+				await channel.bulkDelete(filter, true);
+			} catch (error) {
+				bot.logger.error(
+					`Error deleting messages after new embed was created: ${error}`
+				);
+			}
 			return;
-		}
-
-		function delay(ms) {
-			return new Promise((resolve) => setTimeout(resolve, ms));
 		}
 	}
 };

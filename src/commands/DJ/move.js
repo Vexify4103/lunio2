@@ -21,12 +21,14 @@ module.exports = class Move extends Command {
 						'The initial position of the song. (if no "to" position, it will always move to no. 1)',
 					type: 4,
 					required: true,
+					autocomplete: true,
 				},
 				{
 					name: "to",
 					description: "The new position of the song.",
 					type: 4,
 					required: false,
+					autocomplete: true,
 				},
 			],
 		});

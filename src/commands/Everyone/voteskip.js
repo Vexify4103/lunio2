@@ -31,7 +31,7 @@ module.exports = class Voteskip extends Command {
 				.setDescription(
 					bot.translate(
 						settings.Language,
-						"Everyone/voteksip:EMBED_ALREADY_VOTED"
+						"Everyone/voteskip:EMBED_ALREADY_VOTED"
 					)
 				);
 
@@ -65,7 +65,7 @@ module.exports = class Voteskip extends Command {
 				.setDescription(
 					bot.translate(
 						settings.Language,
-						"Everyone/votekip:EMBED_VOTING_REQUIRED",
+						"Everyone/voteskip:EMBED_VOTING_REQUIRED",
 						{
 							VOTES: `${bot.codeBlock(player.skipSong.length)}`,
 							REQUIRED: `${bot.codeBlock(required)}`,

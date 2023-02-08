@@ -8,16 +8,36 @@ const {
 const getduration = require("./getduration");
 
 module.exports = async (bot, player, settings) => {
-	const channelid = settings.mChannelID;
-	const embedid = settings.mChannelEmbedID;
-	const requester = settings.Requester;
+	let channelid = settings.mChannelID;
+	let embedid = settings.mChannelEmbedID;
+	let requester = settings.Requester;
+	let channel = await bot.channels.fetch(channelid);
+	let guild = await bot.guilds.fetch(player.guild);
+	let embed = await channel.messages.fetch(embedid);
+
+	const oldTime = embed.createdTimestamp;
+	const newTime = oldTime + bot.config.changeableSettings.refreshEmbedTime;
+
+	// IF DATE NOW IS OLDER THAN OLD TIME + 3 HOURS
+	if (newTime < Date.now()) {
+		await bot.refreshEmbed(bot, settings);
+		settings = await bot.getGuildData(bot, player.guild);
+		channelid = settings.mChannelID;
+		embedid = settings.mChannelEmbedID;
+		requester = settings.Requester;
+		channel = await bot.channels.fetch(channelid);
+		guild = await bot.guilds.fetch(player.guild);
+		embed = await channel.messages.fetch(embedid);
+	}
 
 	if (!player) return await bot.musicoff(bot, settings);
 
 	//console.log(player.queue)
-
+	//player.queue = await bot.replaceTitle(bot, player.queue);
 	const queue = player.queue;
 	const track = player.queue.current;
+	let modifiedTitle = await bot.replaceTitle(bot, player.queue.current);
+	//console.log(test)
 	const multiple = 15;
 	const page = 1;
 	const end = page * multiple;
@@ -56,8 +76,6 @@ module.exports = async (bot, player, settings) => {
 			}`,
 		}),
 	};
-	const channel = await bot.channels.fetch(channelid);
-	const guild = await bot.guilds.fetch(player.guild);
 
 	if (
 		!channel
@@ -73,11 +91,10 @@ module.exports = async (bot, player, settings) => {
 			.setColor(bot.config.colorWrong);
 
 		return channel.send({
-			embeds: [embed],
+			embeds: [ERROR],
 		});
 	}
 
-	const embed = await channel.messages.fetch(embedid);
 	let color = guild.members.me.displayHexColor;
 
 	if (color === "#000000") {
@@ -85,7 +102,9 @@ module.exports = async (bot, player, settings) => {
 	}
 
 	let Author = {
-		name: `[${getduration(track.duration)}] - ${track.title}`,
+		name: `[${getduration(track.duration)}] - ${track.author} - ${
+			modifiedTitle
+		}`,
 		iconURL: bot.user.displayAvatarURL({
 			format: "png",
 		}),
@@ -105,18 +124,20 @@ module.exports = async (bot, player, settings) => {
 		queueArray = tracks
 			.map(
 				(_, i, trackM) =>
-					`${trackM.length - i}. ${trackM[i].title} [${getduration(
-						trackM[i].duration
-					)}] ~ <@${trackM[i].requester.id}>`
+					`${trackM.length - i}. ${trackM[i].author} - ${
+						trackM[i].title
+					} [${getduration(trackM[i].duration)}] ~ <@${
+						trackM[i].requester.id
+					}>`
 			)
 			.join("\n");
 	} else {
 		queueArray = tracks
 			.map(
 				(_, i, trackM) =>
-					`${trackM.length - i}. ${trackM[i].title} [${getduration(
-						trackM[i].duration
-					)}]`
+					`${trackM.length - i}. ${trackM[i].author} - ${
+						trackM[i].title
+					} [${getduration(trackM[i].duration)}]`
 			)
 			.join("\n");
 	}

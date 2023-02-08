@@ -16,7 +16,8 @@ const userSchema = Schema({
 	premium: { type: Boolean, default: false },
 	expireDate: { type: Number, default: 0 },
 	// PLAYLIS COMMANDS
-	defaultPlaylist: { type: String, default: "Songs" },
+	defaultPlaylist: { type: String, default: "songs" },
+	maxSongsInPlaylist: { type: Number, default: 100 },
 	//PREMIUM GUILD SETTINGS
 	premiumUses: { type: Number, default: 0 },
 	// USER BANNED SETTINGS

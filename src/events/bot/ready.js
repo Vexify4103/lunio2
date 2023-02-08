@@ -137,6 +137,7 @@ module.exports = class Ready extends Event {
 		// console.log(date.$d)
 		bot.logger.log(`Setting 15min interval for updating user Premium`);
 		setInterval(async () => {
+			
 			bot.logger.log(`Updating user Premium`);
 			USERS.map(async (user) => {
 				const userSettings = await bot.getUserData(bot, user.user.id);
@@ -149,7 +150,7 @@ module.exports = class Ready extends Event {
 							expireDate: date.$d,
 						};
 						return await bot.updateUserSettings(
-							user.user,
+							user.id,
 							settings
 						);
 					}
@@ -161,7 +162,7 @@ module.exports = class Ready extends Event {
 							premiumUses: 1,
 						};
 						return await bot.updateUserSettings(
-							user.user,
+							user.id,
 							settings
 						);
 					}
@@ -173,7 +174,7 @@ module.exports = class Ready extends Event {
 							premiumUses: 3,
 						};
 						return await bot.updateUserSettings(
-							user.user,
+							user.id,
 							settings
 						);
 					}
@@ -185,7 +186,7 @@ module.exports = class Ready extends Event {
 							premiumUses: 6,
 						};
 						return await bot.updateUserSettings(
-							user.user,
+							user.id,
 							settings
 						);
 					}
@@ -197,7 +198,7 @@ module.exports = class Ready extends Event {
 							premiumUses: 10,
 						};
 						return await bot.updateUserSettings(
-							user.user,
+							user.id,
 							settings
 						);
 					}
@@ -209,7 +210,7 @@ module.exports = class Ready extends Event {
 							premiumUses: 15,
 						};
 						return await bot.updateUserSettings(
-							user.user,
+							user.id,
 							settings
 						);
 					}

@@ -6,6 +6,39 @@ const {
 } = require("discord.js");
 
 module.exports = async (bot, settings) => {
+	let settingsToUpdate = {
+		mChannelUpdateInProgress: true,
+	};
+	await bot.updateGuildSettings(settings.guildID, settingsToUpdate);
+
+	const channel = await bot.channels.fetch(settings.mChannelID);
+	const embed = await channel.messages.fetch(settings.mChannelEmbedID);
+
+	if (!embed) {
+		settingsToUpdate = {
+			mChannelUpdateInProgress: false,
+		};
+		return await bot.updateGuildSettings(
+			settings.guildID,
+			settingsToUpdate
+		);
+	}
+
+	try {
+		await embed
+			.delete()
+			.catch((e) =>
+				bot.logger.error("Error deleting old customEmbed. " + e)
+			);
+	} catch (error) {
+		bot.logger.error("Error deleting old customEmbed");
+		settingsToUpdate = {
+			mChannelUpdateInProgress: false,
+		};
+		await bot.updateGuildSettings(settings.guildID, settingsToUpdate);
+		return (global.messageUpdateInProgress = false);
+	}
+
 	let components = [
 		new ActionRowBuilder().addComponents([
 			new ButtonBuilder()
@@ -54,8 +87,6 @@ module.exports = async (bot, settings) => {
 		.setFooter(footer)
 		.setImage(bot.config.no_music);
 
-	const channel = await bot.channels.fetch(settings.mChannelID);
-
 	await channel
 		.send({
 			content: `‏‏‎ \n__**${bot.translate(
@@ -75,6 +106,7 @@ module.exports = async (bot, settings) => {
 		.then(async (x) => {
 			let newsettings = {
 				mChannelEmbedID: x.id,
+				mChannelUpdateInProgress: false,
 			};
 			await bot.updateGuildSettings(settings.guildID, newsettings);
 		});

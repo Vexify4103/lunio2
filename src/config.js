@@ -57,6 +57,7 @@ const config = {
 		mChannelID: "none",
 		mChannelEmbedID: "none",
 		mChannelBannerID: "none",
+		mChannelUpdateInProgress: false,
 		// PREMIUM
 		permpremium: false,
 		premium: false,
@@ -78,13 +79,19 @@ const config = {
 		premium: false,
 		expireDate: 0,
 		// PLAYLIS COMMANDS
-		defaultPlaylist: "Songs",
+		defaultPlaylist: "songs",
+		maxSongsInPlaylist: 100,
 		//PREMIUM GUILD SETTINGS
 		premiumUses: 0,
 		// USER BANNED SETTINGS
 		guilds: [],
 		// Will be used for the website
 		Language: "en-US",
+	},
+	changeableSettings: {
+		maxSongsInPlaylist: 15,
+		//refreshEmbedTime: 5000,
+		refreshEmbedTime: 1000 * 60 * 60 * 3,
 	},
 	// LAVALINK SETTINGS
 	lavalink: [
@@ -128,13 +135,21 @@ const config = {
 	debug: false,
 
 	blockedWords: [
+		"remix",
+		"re-mix",
 		"lyrics",
-		"official",
-		"music",
-		"video",
 		"lyric",
+		"official-musicvideo",
+		"official",
+		"musicvideo",
+		"music-video",
+		"music video",
+		"video",
 		"vevo",
 		"official mv",
+		"official-mv",
+		"official visualizer",
+		"official-visualizer",
 		"visualizer",
 		"official video",
 		"lyric video",
@@ -142,12 +157,13 @@ const config = {
 		"full version",
 		"mix",
 		"vod",
-		"Bass Boosted",
+		"bass boosted",
 		"boosted",
 		"bass",
-		"remix",
 		"animated",
 		"reverb",
+		"Official Video",
+		"m/v",
 	],
 };
 
