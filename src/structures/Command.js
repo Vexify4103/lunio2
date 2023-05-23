@@ -29,6 +29,7 @@ class Command {
 			usage = "",
 			reqVote = false,
 			flags = new Array(),
+			default_member_permissions = null,
 		}
 	) {
 		const category = dirname
@@ -37,6 +38,7 @@ class Command {
 			  ]
 			: "Other";
 		this.conf = {
+			default_member_permissions,
 			guildOnly,
 			userPermissions,
 			nsfw,

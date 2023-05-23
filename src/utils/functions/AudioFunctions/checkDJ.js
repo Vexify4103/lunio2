@@ -1,10 +1,10 @@
-module.exports = (member, settings) => {
+module.exports = (member, { MusicDJ, MusicDJRole }) => {
 	let has = [];
 	// Check if the member has role to interact with music plugin
-	if (settings.MusicDJ) {
-		for (let i = 0; i < settings.MusicDJRole.length; i++) {
-			if (member.roles.cache.has(`${settings.MusicDJRole[i]}`))
-				has.push(settings.MusicDJRole[i]);
+	if (MusicDJ) {
+		for (let i = 0; i < MusicDJRole.length; i++) {
+			if (member.roles.cache.has(`${MusicDJRole[i]}`))
+				has.push(MusicDJRole[i]);
 		}
 		if (has.length > 0) {
 			return true;

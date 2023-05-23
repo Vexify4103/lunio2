@@ -5,7 +5,6 @@ module.exports = class Bassboost extends Command {
 	constructor(bot) {
 		super(bot, {
 			name: "bassboost",
-			adminOnly: true,
 			premiumOnly: true,
 			dirname: __dirname,
 			description: "Show the current bassboost level.",

@@ -6,6 +6,7 @@ const {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
+	PermissionFlagsBits,
 } = require("discord.js");
 
 const lyricsSearcher = require("lyrics-searcher");
@@ -19,6 +20,7 @@ module.exports = class Test extends Command {
 			description: "TEST COMMAND",
 			cooldown: 2000,
 			slash: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 			options: [
 				{
 					name: "test",

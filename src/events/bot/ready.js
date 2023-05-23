@@ -1,6 +1,7 @@
 const { GuildSchema } = require("../../database/models"),
 	Event = require("../../structures/Event");
 
+require("dotenv").config();
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
 const dayjs = require("dayjs");
@@ -39,7 +40,7 @@ module.exports = class Ready extends Event {
 
 		const rest = new REST({
 			version: "10",
-		}).setToken(bot.config.token);
+		}).setToken(process.env.TOKEN);
 
 		const data = [];
 		const prvData = [];
@@ -50,26 +51,22 @@ module.exports = class Ready extends Event {
 					let item = {
 						name: command.help.name,
 						description: command.help.description,
-						defaultPermission: command.conf.defaultPermission,
+						default_member_permissions:
+							command.conf.default_member_permissions != null
+								? command.conf.default_member_permissions.toString()
+								: undefined,
 					};
 					if (command.conf.options[0]) {
 						item.options = command.conf.options;
 					}
 					data.push(item);
 				}
-				// if (command.conf.slash && command.conf.prv) {
-				// 	let item = {
-				// 		name: command.help.name,
-				// 		description: command.help.description,
-				// 		defaultPermission: command.conf.defaultPermission
-				// 	}
-				// 	prvData.push(item)
-				// }
 			} catch (error) {
 				bot.logger.error(`Error loading /commands ${error}`);
 			}
 		});
 
+		//console.log(data);
 		try {
 			bot.logger.log("Started refreshing application (/) commands");
 
@@ -78,6 +75,7 @@ module.exports = class Ready extends Event {
 					`Started refreshing application (/) commands in: ${id}`
 				);
 				await rest.put(Routes.applicationGuildCommands(clientId, id), {
+					// body: [],
 					body: data,
 				});
 			});
@@ -137,7 +135,6 @@ module.exports = class Ready extends Event {
 		// console.log(date.$d)
 		bot.logger.log(`Setting 15min interval for updating user Premium`);
 		setInterval(async () => {
-			
 			bot.logger.log(`Updating user Premium`);
 			USERS.map(async (user) => {
 				const userSettings = await bot.getUserData(bot, user.user.id);
@@ -149,10 +146,7 @@ module.exports = class Ready extends Event {
 							premium: true,
 							expireDate: date.$d,
 						};
-						return await bot.updateUserSettings(
-							user.id,
-							settings
-						);
+						return await bot.updateUserSettings(user.id, settings);
 					}
 					if (user._roles.includes(Premium1)) {
 						// RUN PREMIUM 1
@@ -161,10 +155,7 @@ module.exports = class Ready extends Event {
 							expireDate: date.$d,
 							premiumUses: 1,
 						};
-						return await bot.updateUserSettings(
-							user.id,
-							settings
-						);
+						return await bot.updateUserSettings(user.id, settings);
 					}
 					if (user._roles.includes(Premium3)) {
 						// RUN PREMIUM 3
@@ -173,10 +164,7 @@ module.exports = class Ready extends Event {
 							expireDate: date.$d,
 							premiumUses: 3,
 						};
-						return await bot.updateUserSettings(
-							user.id,
-							settings
-						);
+						return await bot.updateUserSettings(user.id, settings);
 					}
 					if (user._roles.includes(Premium6)) {
 						// RUN PREMIUM 6
@@ -185,10 +173,7 @@ module.exports = class Ready extends Event {
 							expireDate: date.$d,
 							premiumUses: 6,
 						};
-						return await bot.updateUserSettings(
-							user.id,
-							settings
-						);
+						return await bot.updateUserSettings(user.id, settings);
 					}
 					if (user._roles.includes(Premium10)) {
 						// RUN PREMIUM 10
@@ -197,10 +182,7 @@ module.exports = class Ready extends Event {
 							expireDate: date.$d,
 							premiumUses: 10,
 						};
-						return await bot.updateUserSettings(
-							user.id,
-							settings
-						);
+						return await bot.updateUserSettings(user.id, settings);
 					}
 					if (user._roles.includes(Premium15)) {
 						// RUN PREMIUM 15
@@ -209,10 +191,7 @@ module.exports = class Ready extends Event {
 							expireDate: date.$d,
 							premiumUses: 15,
 						};
-						return await bot.updateUserSettings(
-							user.id,
-							settings
-						);
+						return await bot.updateUserSettings(user.id, settings);
 					}
 				} catch (error) {
 					bot.logger.error(`Error updating user premium ${error}`);

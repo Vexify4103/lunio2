@@ -1,7 +1,22 @@
 const { EmbedBuilder } = require("discord.js");
 const musicembed = require("./musicembed");
 
-module.exports = async (bot, msg, search, settings, member) => {
+module.exports = async (
+	bot,
+	msg,
+	search,
+	{
+		mChannelID,
+		mChannelEmbedID,
+		DefaultVol,
+		SongUserLimit,
+		SongTimeLimitMS,
+		Playlists,
+		Language,
+		Requester,
+	},
+	member
+) => {
 	let player;
 	let embed;
 	try {
@@ -10,7 +25,7 @@ module.exports = async (bot, msg, search, settings, member) => {
 			voiceChannel: msg.member.voice.channel.id,
 			textChannel: msg.channel.id,
 			selfDeafen: true,
-			volume: settings.DefaultVol,
+			volume: DefaultVol,
 		});
 	} catch (err) {
 		bot.logger.error(`Error searching for songs ${err}`);
@@ -32,35 +47,30 @@ module.exports = async (bot, msg, search, settings, member) => {
 		player.connect();
 	}
 
-	const channel = await bot.channels.fetch(settings.mChannelID);
-	const message = await channel.messages.fetch(settings.mChannelEmbedID);
-
+	const channel = await bot.channels.fetch(mChannelID);
+	const message = await channel.messages.fetch(mChannelEmbedID);
 
 	bot.manager.search(search, member.user).then(async (res) => {
 		res = await bot.replaceTitle(bot, res);
 		await bot.delay(bot, 100);
 		let color = await bot.getColor(bot, msg.guild.id);
-		if (settings.SongUserLimit > 0 && bot.checkDJ(member, settings)) {
-			res.tracks = res.tracks.slice(0, settings.SongUserLimit);
+		if (SongUserLimit > 0 && bot.checkDJ(member, { SongUserLimit })) {
+			res.tracks = res.tracks.slice(0, SongUserLimit);
 		}
-		if (settings.SongTimeLimitMS > 0 && bot.checkDJ(member, settings)) {
+		if (SongTimeLimitMS > 0 && bot.checkDJ(member, { SongTimeLimitMS })) {
 			res.tracks = res.tracks.filter(
-				(song) => song.duration <= settings.SongTimeLimitMS
+				(song) => song.duration <= SongTimeLimitMS
 			);
 		}
 
 		const track = res.tracks[0];
-		//console.log(track)
-		//console.log(track) track && player.queue[0] = {track:, title:, identifier:, author:, duration:, uri:, requester:, {}}
+
 		switch (res.loadType) {
 			case "NO_MATCHES":
 				embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(
-						bot.translate(
-							settings.Language,
-							"Everyone/play:NO_MATCHES"
-						)
+						bot.translate(Language, "Everyone/play:NO_MATCHES")
 					);
 
 				return message.reply({
@@ -73,7 +83,12 @@ module.exports = async (bot, msg, search, settings, member) => {
 				if (!player.playing && !player.paused && !player.queue.size)
 					player.play();
 
-				return await musicembed(bot, player, settings);
+				return await musicembed(bot, player, {
+					mChannelID,
+					mChannelEmbedID,
+					Requester,
+					Language,
+				});
 			case "SEARCH_RESULT":
 				bot.logger.log(`Found Track: ${track.title}`);
 				player.queue.add(track);
@@ -81,7 +96,12 @@ module.exports = async (bot, msg, search, settings, member) => {
 				if (!player.playing && !player.paused && !player.queue.size)
 					player.play();
 
-				return await musicembed(bot, player, settings);
+				return await musicembed(bot, player, {
+					mChannelID,
+					mChannelEmbedID,
+					Requester,
+					Language,
+				});
 			case "PLAYLIST_LOADED":
 				var PLAYLIST_LOADED;
 				if (search.includes("&list=RD")) {
@@ -89,7 +109,7 @@ module.exports = async (bot, msg, search, settings, member) => {
 						.setColor(color)
 						.setDescription(
 							bot.translate(
-								settings.Language,
+								Language,
 								"Everyone/play:PL_LOADED_DESC_1",
 								{
 									PLAYLISTNAME: `${bot.codeBlock(
@@ -103,14 +123,19 @@ module.exports = async (bot, msg, search, settings, member) => {
 
 					if (!player.playing && !player.paused && !player.queue.size)
 						player.play();
-					await musicembed(bot, player, settings);
+					await musicembed(bot, player, {
+						mChannelID,
+						mChannelEmbedID,
+						Requester,
+						Language,
+					});
 				} else {
-					if (settings.Playlists) {
+					if (Playlists) {
 						PLAYLIST_LOADED = new EmbedBuilder()
 							.setColor(color)
 							.setDescription(
 								bot.translate(
-									settings.Language,
+									Language,
 									"Everyone/play:PL_LOADED_DESC_2",
 									{
 										SIZE: res.tracks.length,
@@ -128,13 +153,18 @@ module.exports = async (bot, msg, search, settings, member) => {
 							player.queue.totalSize === res.tracks.length
 						)
 							player.play();
-						await musicembed(bot, player, settings);
+						await musicembed(bot, player, {
+							mChannelID,
+							mChannelEmbedID,
+							Requester,
+							Language,
+						});
 					} else {
 						PLAYLIST_LOADED = new EmbedBuilder()
 							.setColor(bot.config.colorOrange)
 							.setDescription(
 								bot.translate(
-									settings.Language,
+									Language,
 									"Everyone/play:PL_NOT_ALLOWED"
 								)
 							);

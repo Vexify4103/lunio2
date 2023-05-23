@@ -111,7 +111,7 @@ class QueueEnd extends Event {
 			}
 			return;
 		} else {
-			if (settings.CustomChannel) await bot.musicoff(bot, settings);
+			if (settings.CustomChannel) await bot.disablebuttons(bot, settings);
 			player.timeout = setTimeout(() => {
 				// Don't leave channel if 24/7 mode is active
 				if (player.twentyFourSeven) return clearTimeout(player.timeout);

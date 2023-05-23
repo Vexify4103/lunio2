@@ -1,0 +1,8 @@
+{
+	"DESC": "Lets you change the bots output volume.",
+
+	"EMBED_VOLUME_CURRENT": "Volume is at `{{VOLUME}}`\nDefault volume is set to `{{DEFAULTVOL}}`",
+	"EMBED_VOLUME_SET": "Volume is now set to {{VALUE}}",
+	"EMBED_DEFAULTVOLUME_SET": "Default volume is not set to {{VALUE}}",
+	"EMBED_ALLVOL_SET": "Volume is now set to `{{VOLUME}}`\nDefault volume is not set to `{{DEFAULTVOL}}`"
+}

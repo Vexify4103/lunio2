@@ -2,6 +2,10 @@ const { EmbedBuilder } = require("discord.js");
 const Event = require("../../structures/Event");
 const chalk = require("chalk");
 const moment = require("moment");
+const {
+	setTimeoutId,
+	clearTimeoutByMessageId,
+} = require("../../utils/functions/UtilFunctios/timeoutManager");
 
 class TrackStart extends Event {
 	constructor(...args) {
@@ -13,6 +17,7 @@ class TrackStart extends Event {
 	async run(bot, player, track) {
 		if (player.timeout != "null") clearTimeout(player.timeout);
 		let settings = await bot.getGuildData(bot, player.guild);
+		track.title = await bot.replaceTitle(bot, track);
 		var title = track.title;
 
 		//console.log(player)
@@ -23,10 +28,9 @@ class TrackStart extends Event {
 			if (settings.mChannelUpdateInProgress) {
 				await bot.delay(bot, 1500);
 				settings = await bot.getGuildData(bot, player.guild);
-			} 
+			}
 			return await bot.musicembed(bot, player, settings);
 		}
-		track = await bot.replaceTitle(bot, track);
 		if (settings.Announce) {
 			let description;
 			if (settings.Requester) {
@@ -49,11 +53,14 @@ class TrackStart extends Event {
 							embeds: [embed],
 						})
 						.then((m) => {
-							setTimeout(
-								() => m.delete(),
-								track.duration < 6.048e8
-									? track.duration
-									: 60000
+							setTimeoutId(
+								m.id,
+								setTimeout(
+									() => m.delete(),
+									track.duration < 6.048e8
+										? track.duration
+										: 60000
+								)
 							);
 						})
 						.catch((err) => {

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 module.exports = {
 	init: (bot) => {
@@ -9,7 +10,7 @@ module.exports = {
 			family: 4,
 			useUnifiedTopology: true,
 		};
-		mongoose.connect(bot.config.MongoDBURl, dbOptions);
+		mongoose.connect(process.env.MONGO_URI, dbOptions);
 		mongoose.Promise = global.Promise;
 		mongoose.connection.on("connected", () => {
 			bot.logger.ready("MongoDB successfully connected");

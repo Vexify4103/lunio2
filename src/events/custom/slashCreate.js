@@ -26,7 +26,7 @@ module.exports = class slashCreate extends Event {
 		await bot.updateUserSettings(interaction.user.id, {
 			userNAME: member.user.username + "#" + member.user.discriminator,
 		});
-		
+
 		if (!channel || !member)
 			return bot.logger.error(
 				"Error running / command cause channel or member are undefined."
@@ -35,12 +35,15 @@ module.exports = class slashCreate extends Event {
 		// check user permissions
 		if (
 			cmd.conf.adminOnly &&
-			!member.permissions.has(PermissionsBitField.Flags.Administrator)
+			!member.permissions.has(PermissionsBitField.Flags.ManageGuild)
 		) {
 			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorWrong)
 				.setDescription(
-					`You need admin permissions to use this command.`
+					bot.translate(
+						settings.Language,
+						"slashCreate:MISSING_MANAGEGUILD_PERMS"
+					)
 				);
 
 			return interaction.reply({
@@ -60,9 +63,13 @@ module.exports = class slashCreate extends Event {
 			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorWrong)
 				.setDescription(
-					`You need ${bot.codeBlock(
-						neededPermissions.join("\n")
-					)} permission/s for that command.`
+					bot.translate(
+						settings.Language,
+						"slashCreate:MISSING_USER_PERMS",
+						{
+							PERMISSIONS: neededPermissions.join("\n"),
+						}
+					)
 				);
 
 			return interaction.reply({
@@ -80,7 +87,13 @@ module.exports = class slashCreate extends Event {
 			let embed = new EmbedBuilder()
 				.setColor(bot.config.colorOrange)
 				.setDescription(
-					`This command is restricted to <#${settings.mChannelID}>.`
+					bot.translate(
+						settings.Language,
+						"slashCreate:COMMAND_RESTRICTED_TO_CUSTOMVC",
+						{
+							CHANNELID: settings.mChannelID,
+						}
+					)
 				);
 
 			return interaction.reply({
@@ -157,9 +170,7 @@ module.exports = class slashCreate extends Event {
 							settings.Language,
 							"slashCreate:MISSING_PERMISSION_SETUP",
 							{
-								PERMISSION: `${bot.codeBlock(
-									"ManageMessages"
-								)}`,
+								PERMISSION: "ManageMessages",
 							}
 						)
 					);
@@ -248,7 +259,10 @@ module.exports = class slashCreate extends Event {
 					premiumUses: 0,
 					expireDate: 0,
 				};
-				await bot.updateUserSettings(interaction.user.id, newUserSettings);
+				await bot.updateUserSettings(
+					interaction.user.id,
+					newUserSettings
+				);
 			}
 		}
 		// CHECK PREMIUM EXPIRE DATES FOR GUILD
@@ -406,9 +420,8 @@ module.exports = class slashCreate extends Event {
 							settings.Language,
 							"slashCreate:MISSING_READ_TEXT",
 							{
-								PERMISSION: `${bot.codeBlock(
-									"Read Text Channels & See Voice Channels"
-								)}`,
+								PERMISSION:
+									"Read Text Channels & See Voice Channels",
 							}
 						)
 					);
@@ -455,7 +468,7 @@ module.exports = class slashCreate extends Event {
 							settings.Language,
 							"slashCreate:MISSING_PERM",
 							{
-								PERMISSION: `${bot.codeBlock("Connect")}`,
+								PERMISSION: "Connect",
 							}
 						)
 					);
@@ -477,7 +490,7 @@ module.exports = class slashCreate extends Event {
 							settings.Language,
 							"slashCreate:MISSING_PERM",
 							{
-								PERMISSION: `${bot.codeBlock("Speak")}`,
+								PERMISSION: "Speak",
 							}
 						)
 					);
@@ -499,9 +512,7 @@ module.exports = class slashCreate extends Event {
 							settings.Language,
 							"slashCreate:MISSING_PERM",
 							{
-								PERMISSION: `${bot.codeBlock(
-									"Use Voice Activity"
-								)}`,
+								PERMISSION: "Use Voice Activity",
 							}
 						)
 					);
@@ -552,6 +563,7 @@ module.exports = class slashCreate extends Event {
 			}
 		}
 		try {
+			//console.log(interaction)
 			await cmd.callback(
 				bot,
 				interaction,

@@ -21,13 +21,53 @@ module.exports = class Skip extends Command {
 					type: 4,
 					required: false,
 				},
+				{
+					name: "user",
+					description: "Skips tracks added by a user.",
+					type: 6,
+					required: false,
+				},
 			],
 		});
 	}
 	async callback(bot, interaction, guild, args, settings) {
 		const player = bot.manager.players.get(guild.id);
 		let amount = interaction.options.getInteger("amount");
+		let user = interaction.options.getUser("user");
 		let embed;
+
+		if (user) {
+			const tracksToDelete = player.queue.filter(
+				(track) => track.requester.id === user.id
+			);
+			const deleteCount = tracksToDelete.length;
+			player.queue = player.queue.filter(
+				(track) => track.requester.id !== user.id
+			);
+			player.queue.splice(0, amount);
+			player.queue.unshift(...tracksToDelete);
+
+			embed = new EmbedBuilder()
+				.setColor(await bot.getColor(bot, guild.id))
+				.setDescription(
+					bot.translate(
+						settings.Language,
+						"DJ/skip:EMBED_DELETED_USER",
+						{
+							COUNT: `${bot.codeBlock(deleteCount.toString())}`,
+							USER: `${bot.codeBlock(user.tag)}`,
+						}
+					)
+				);
+
+			interaction.reply({
+				embeds: [embed],
+				ephemeral: true,
+			});
+			if (settings.CustomChannel)
+				await bot.musicembed(bot, player, settings);
+			return;
+		}
 
 		if (!amount || amount >= 1) {
 			player.stop();

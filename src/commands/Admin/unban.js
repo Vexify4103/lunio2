@@ -1,7 +1,7 @@
 // Dependencies
 const { Embed } = require("../../utils"),
 	Command = require("../../structures/Command.js");
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 const { userSchema } = require("../../database/models");
 module.exports = class Unban extends Command {
 	constructor(bot) {
@@ -14,6 +14,7 @@ module.exports = class Unban extends Command {
 			helpPerms: "Admin",
 			usage: "unban <user>",
 			slash: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 			options: [
 				{
 					name: "user",

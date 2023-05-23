@@ -1,6 +1,9 @@
 {
 	"DESC": "Lets you skip the current song.",
 
+	"METHOD_DESC_1": "List your saved playlists.",
+
 	"EMBED_SKIPPED_1": "Skipped `1` track.",
-	"EMBED_SKIPPED_X": "Skipped {{AMOUNT}} of tracks."
+	"EMBED_SKIPPED_X": "Skipped {{AMOUNT}} of tracks.",
+	"EMBED_DELETED_USER": "Skipped {{COUNT}} of tracks from {{USER}}."
 }

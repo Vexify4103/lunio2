@@ -1,7 +1,4 @@
 const config = {
-	ownerId: ["337568120028004362"],
-	token: "OTQ1NDc0NzIzODQ2OTUwOTQ0.G_sFb0.E8N38zVzEL_vIog1vsi6rfDDJN0ebgI9Ugohxw",
-	botClient: "yoOwmjphpVP5EvMqBcgcCPtZ1Ky1DGsX",
 	// replace BOTID with the bot's ID
 	inviteLink:
 		"https://discord.com/api/oauth2/authorize?client_id=945474723846950944&permissions=36826192&scope=applications.commands%20bot",
@@ -9,14 +6,6 @@ const config = {
 	connectLink: "https://www.patreon.com/settings/apps",
 	voteLink: "https://top.gg/bot/945030475779551415",
 	translationLink: "https://crwd.in/luniobot",
-	// For looking up Twitch, Fortnite, Steam accounts
-	api_keys: {
-		// https://developer.spotify.com/documentation/web-api/
-		spotify: {
-			iD: "4146f663035447908744b4572113f2fd",
-			secret: "ec9f38bab9dc4a22b3606576c8001e32",
-		},
-	},
 	// add plugins/commands here if you don't want them loaded in the bot.
 	disabledCommands: [],
 	disabledPlugins: [],
@@ -93,23 +82,6 @@ const config = {
 		//refreshEmbedTime: 5000,
 		refreshEmbedTime: 1000 * 60 * 60 * 3,
 	},
-	// LAVALINK SETTINGS
-	lavalink: [
-		{
-			host: "0.0.0.0",
-			port: 69,
-			password: "VM2!",
-			//secure: true
-		}, //{ host: 'lavalink.scpcl.site', port: 443, password: 'lvserver', secure: true} // { host: '0.0.0.0', port: 69, password: 'VM2!'}
-	],
-	// URL to mongodb
-	// MongoDBURl: 'mongodb+srv://lunio:oEVeroXzcHIZmNkK@cluster0.av5pi4n.mongodb.net/db', //lunio
-	MongoDBURl:
-		"mongodb+srv://lunio2:IZsU62HSZ9xZAyRK@cluster0.kskchrs.mongodb.net/db", //lunio2
-
-	//lunio2 IZsU62HSZ9xZAyRK
-	//lunio oEVeroXzcHIZmNkK
-
 	// embedColor: '#06dadd', //lunio
 	embedColor: "#05db4c", //lunio 2
 	// color: "#06dadd", //lunio
@@ -118,7 +90,7 @@ const config = {
 	colorWrong: "#FF3A00",
 	colorOrange: "#FFD800",
 	DeleteTimeout: 15000,
-	LeaveTimeout: 900000,
+	LeaveTimeout: 1000 * 60 * 30,
 	// music_playing_banner: 'https://media.discordapp.net/attachments/866678034298568745/1038244662323974184/playing_image.png?width=1190&height=670', //lunio
 	music_playing_banner:
 		"https://media.discordapp.net/attachments/866678034298568745/1038244679222833192/playing_image2.png?width=1190&height=670", //lunio 2
@@ -140,6 +112,8 @@ const config = {
 		"lyrics",
 		"lyric",
 		"official-musicvideo",
+		"official-audio",
+		"audio",
 		"official",
 		"musicvideo",
 		"music-video",
@@ -162,7 +136,7 @@ const config = {
 		"bass",
 		"animated",
 		"reverb",
-		"Official Video",
+		"official video",
 		"m/v",
 	],
 };

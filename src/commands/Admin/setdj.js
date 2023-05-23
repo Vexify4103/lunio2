@@ -1,6 +1,6 @@
 // Dependencies
 const Command = require("../../structures/Command.js");
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 module.exports = class Setdj extends Command {
 	constructor(bot) {
 		super(bot, {
@@ -12,6 +12,7 @@ module.exports = class Setdj extends Command {
 			helpPerms: "Admin",
 			usage: "setdj show",
 			slash: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 			options: [
 				{
 					name: "show",

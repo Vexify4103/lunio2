@@ -1,3 +1,5 @@
+const { createRegExp, exactly, global, multiline } = require("magic-regexp");
+
 module.exports = async (bot, res) => {
 	let blockedWords = bot.config.blockedWords;
 
@@ -14,40 +16,33 @@ module.exports = async (bot, res) => {
 		newRes.title = removeBlockedWords(blockedWords, res);
 		return newRes.title;
 	}
+
 	function removeBlockedWords(blockedWords, track) {
 		let str = track.title;
-		// check if auhtor exists in title, if yes add author to blockedWords// check if auhtor exists in title, if yes add author to blockedWords
-		if (str.toLowerCase().includes(track.author.toLowerCase())) {
-			blockedWords = blockedWords.concat(track.author.split(" "));
 
-			let dashIndex = str.indexOf("-");
+		if (str.toLowerCase().includes(track.author.toLowerCase())) {
+			blockedWords.push(...track.author.split(" "));
+			const dashIndex = str.indexOf("-");
 			if (dashIndex !== -1) {
 				str = str.slice(dashIndex + 1).trim();
 			}
 		}
-		//console.log(track.author);
-		blockedWords = blockedWords.map((word) => word.toLowerCase());
-		//console.log(blockedWords);
 
-		// const parts = str.split("-");
-		// const author = parts[0].trim();
-		// // track.author = author;
-		// if (parts[1]) {
-		// 	str = parts[1].trim();
-		// }
-		//str = parts[1].trim();
+		const blockedWordsLowerCase = blockedWords.map((word) =>
+			word.toLowerCase()
+		);
 
-		for (const blocked of blockedWords) {
+		for (const blocked of blockedWordsLowerCase) {
 			const regex = new RegExp(`\\b${blocked}\\b`, "gi");
-			if (str.toLowerCase().includes(blocked)) {
-				str = str.replace(regex, "");
-			}
+			str = str.replace(regex, "");
 		}
+
 		str = str.replace(/[\(\)\[\]\{\}'"`]+/g, " ").trim();
 		str = str.replace(/\s{2,}/g, " ");
 
 		return str;
 	}
+
 	function testForIterable(obj) {
 		if (obj === null || obj === undefined) return false;
 

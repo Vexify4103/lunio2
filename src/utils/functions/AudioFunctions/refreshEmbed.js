@@ -32,11 +32,11 @@ module.exports = async (bot, settings) => {
 			);
 	} catch (error) {
 		bot.logger.error("Error deleting old customEmbed");
-		settingsToUpdate = {
-			mChannelUpdateInProgress: false,
-		};
-		await bot.updateGuildSettings(settings.guildID, settingsToUpdate);
-		return (global.messageUpdateInProgress = false);
+		// settingsToUpdate = {
+		// 	mChannelUpdateInProgress: false,
+		// };
+		// return await bot.updateGuildSettings(settings.guildID, settingsToUpdate);
+		// return (global.messageUpdateInProgress = false);
 	}
 
 	let components = [

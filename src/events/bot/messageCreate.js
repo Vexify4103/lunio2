@@ -2,12 +2,15 @@
 const { MessageType } = require("discord-api-types/v9");
 const {
 		EmbedBuilder,
-		Interaction,
 		MessageFlags,
 		PermissionsBitField,
 	} = require("discord.js"),
 	Event = require("../../structures/Event");
 
+const {
+	setTimeoutId,
+	clearTimeoutByMessageId,
+} = require("../../utils/functions/UtilFunctios/timeoutManager");
 module.exports = class Message extends Event {
 	constructor(...args) {
 		super(...args, {
@@ -127,15 +130,18 @@ module.exports = class Message extends Event {
 				msg.author.id === bot.user.id &&
 				msg.type !== MessageType.ChatInputCommand
 			) {
-				return setTimeout(async () => {
-					await msg
-						.delete()
-						.catch((e) =>
-							bot.logger.error(
-								"Error deleting message from Lunio after time"
-							)
-						);
-				}, bot.config.DeleteTimeout);
+				return setTimeoutId(
+					msg.id,
+					setTimeout(async () => {
+						await msg
+							.delete()
+							.catch((e) =>
+								bot.logger.error(
+									"Error deleting message from Lunio after time"
+								)
+							);
+					}, bot.config.DeleteTimeout)
+				);
 			}
 
 			// IF MSG IS FROM Lunio AND IS INTERACTION WITHOUT FLAGS => DELETE AFTER TIME
@@ -143,25 +149,28 @@ module.exports = class Message extends Event {
 				msg.author.id === bot.user.id &&
 				!msg.flags.has(MessageFlags.Ephemeral)
 			) {
-				return setTimeout(async () => {
-					await msg
-						.delete()
-						.catch((e) =>
-							bot.logger.error(
-								"Error deleting visible interaction from Lunio"
-							)
-						);
-				}, bot.config.DeleteTimeout);
+				return setTimeoutId(
+					msg.id,
+					setTimeout(async () => {
+						await msg
+							.delete()
+							.catch((e) =>
+								bot.logger.error(
+									"Error deleting visible interaction from Lunio"
+								)
+							);
+					}, bot.config.DeleteTimeout)
+				);
 			}
 
-			// IF MSG IS FROM Lunio AND IS INTERACTION WITH FLAGS => DONT DELETE
+			// IF MSG IS FROM Lunio AND IS MESSAGE WITH FLAGS => DONT DELETE
 			if (
 				msg.author.id === bot.user.id &&
 				msg.flags.has(MessageFlags.Ephemeral)
 			)
 				return;
 
-			// if user mentioned
+			// If user mentioned
 			if (msg.mentions.users.size > 0) {
 				return await msg.delete().catch((e) => {
 					bot.logger.error(
@@ -418,7 +427,7 @@ module.exports = class Message extends Event {
 				);
 			}
 		} else if (irc && settings.mChannelUpdateInProgress) {
-			await bot.delay(bot, 5000);
+			await bot.delay(bot, 10000);
 			let channel = await bot.channels.fetch(settings.mChannelID);
 			let messages = await channel.messages.fetch();
 			settings = await bot.getGuildData(bot, msg.guild.id);

@@ -9,19 +9,21 @@ const {
 	ButtonStyle,
 	PermissionsBitField,
 	ChannelType,
+	PermissionFlagsBits,
 } = require("discord.js");
 
 module.exports = class Setup extends Command {
 	constructor(bot) {
 		super(bot, {
 			name: "setup",
-			adminOnly: true,
+			adminOnly: false,
 			dirname: __dirname,
 			description: "Setup the unique songrequest channel.",
 			helpPerms: "Admin",
 			cooldown: 2000,
 			usage: "setup",
 			slash: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 			options: [
 				{
 					name: "embed",

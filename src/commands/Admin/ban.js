@@ -1,6 +1,6 @@
 // Dependencies
 const Command = require("../../structures/Command.js");
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField, PermissionFlagsBits } = require("discord.js");
 module.exports = class Ban extends Command {
 	constructor(bot) {
 		super(bot, {
@@ -12,6 +12,7 @@ module.exports = class Ban extends Command {
 			helpPerms: "Admin",
 			usage: "ban <user>",
 			slash: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 			options: [
 				{
 					name: "user",

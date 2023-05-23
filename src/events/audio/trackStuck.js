@@ -1,5 +1,9 @@
 const Event = require("../../structures/Event");
 const { EmbedBuilder } = require("discord.js");
+const {
+	setTimeoutId,
+	clearTimeoutByMessageId,
+} = require("../../utils/functions/UtilFunctios/timeoutManager");
 
 class TrackStuck extends Event {
 	constructor(...args) {
@@ -28,7 +32,10 @@ class TrackStuck extends Event {
 					embeds: [embed],
 				})
 				.then((m) => {
-					setTimeout(() => m.delete(), bot.config.DeleteTimeout);
+					setTimeoutId(
+						m.id,
+						setTimeout(() => m.delete(), bot.config.DeleteTimeout)
+					);
 				})
 				.catch((err) => {
 					console.error(err);

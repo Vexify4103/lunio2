@@ -9,7 +9,9 @@ class NodeError extends Event {
 
 	async run(bot, node, error) {
 		bot.logger.error(
-			`Lavalink node: '${node.options.identifier}', has error: '${error.message}'.`
+			`Lavalink node: '${node.options.identifier}', has error: ${
+				error.stack || error
+			}`
 		);
 		let embed;
 		try {
@@ -35,7 +37,7 @@ class NodeError extends Event {
 							customch.send({
 								embeds: [embed],
 							});
-							await bot.musicoff(bot, settings);
+							// await bot.musicoff(bot, settings);
 							return player.destroy();
 						} catch (error) {
 							bot.logger.error(`Error on nodeError ${error}`);

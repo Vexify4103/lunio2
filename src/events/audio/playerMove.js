@@ -12,12 +12,13 @@ class PlayerMove extends Event {
 		const settings = await bot.getGuildData(bot, player.guild);
 
 		if (!newChannel) {
-			if (!settings.CustomChannel) {
-				return player.destroy();
-			} else {
-				await bot.musicoff(bot, settings);
-				return player.destroy();
-			}
+			return player.destroy();
+			// if (!settings.CustomChannel) {
+			// 	return player.destroy();
+			// } else {
+			// 	// await bot.musicoff(bot, settings);
+			// 	return player.destroy();
+			// }
 		} else {
 			//console.log(player)
 			player.setVoiceChannel(newChannel);

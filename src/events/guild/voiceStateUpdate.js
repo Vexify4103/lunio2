@@ -58,12 +58,7 @@ module.exports = class voiceStateUpdate extends Event {
 				if (oldState.member.user.id === bot.user.id) {
 					// IF bot left vc, destroy player
 					if (!player) return;
-					if (settings.CustomChannel) {
-						await bot.musicoff(bot, settings);
-						return player.destroy();
-					} else {
-						player.destroy();
-					}
+					player.destroy();
 				}
 			} catch (err) {
 				console.error(err);
@@ -112,8 +107,9 @@ module.exports = class voiceStateUpdate extends Event {
 				if (stateChangeMembers.size >= 1 && player.paused) {
 					//resume track
 
-					setTimeout(() => {
+					setTimeout(async () => {
 						player.pause(false);
+						await bot.musicembed(bot, player, settings);
 					}, bot.ws.ping * 2);
 					if (player.timeout) clearTimeout(player.timeout);
 					return;
@@ -127,7 +123,7 @@ module.exports = class voiceStateUpdate extends Event {
 					setTimeout(() => {
 						player.pause(true);
 					}, bot.ws.ping * 2);
-					player.pause(true);
+					//player.pause(true);
 					bot.manager.emit(
 						"queueEnd",
 						player,

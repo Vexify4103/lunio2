@@ -52,7 +52,7 @@ module.exports = class Remove extends Command {
 			});
 		}
 
-		if (pos1 === 0) {
+		if (pos1 <= 0) {
 			embed = new EmbedBuilder()
 				.setColor(bot.config.colorWrong)
 				.setDescription(
@@ -88,11 +88,11 @@ module.exports = class Remove extends Command {
 		} else if (pos2) {
 			if (pos2 > player.queue.size) pos2 = player.queue.size - 1;
 			if (pos1 > pos2) {
-				pos1 = pos1 + pos2;
-				pos2 = pos1 - pos2;
-				pos1 = pos1 - pos2;
+				let temp = pos1;
+				pos1 = pos2;
+				pos2 = temp;
 			}
-
+			
 			const before = player.queue.size;
 			const songsToRemove = pos2 - pos1;
 			player.queue.splice(pos1 - 1, songsToRemove + 1);

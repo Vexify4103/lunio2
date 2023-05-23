@@ -1,6 +1,6 @@
 // Dependencies
 const Command = require("../../structures/Command.js");
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 module.exports = class Fix extends Command {
 	constructor(bot) {
 		super(bot, {
@@ -15,6 +15,7 @@ module.exports = class Fix extends Command {
 			reqvc: true,
 			reqplayer: true,
 			music: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 		});
 	}
 	async callback(bot, interaction, guild, args, settings) {

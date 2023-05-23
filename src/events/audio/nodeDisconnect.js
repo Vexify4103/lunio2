@@ -40,7 +40,7 @@ class NodeDisconnect extends Event {
 							customch.send({
 								embeds: [embed],
 							});
-							await bot.musicoff(bot, settings);
+							// await bot.musicoff(bot, settings);
 							return player.destroy();
 						} catch (error) {
 							bot.logger.error(

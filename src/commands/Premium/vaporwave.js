@@ -5,7 +5,6 @@ module.exports = class Bassboost extends Command {
 	constructor(bot) {
 		super(bot, {
 			name: "vaporwave",
-			adminOnly: true,
 			premiumOnly: true,
 			dirname: __dirname,
 			description: "Toggles the vaporwave filter.",

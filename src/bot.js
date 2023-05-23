@@ -1,7 +1,7 @@
 // Dependencies
 const Client = require("./base/Lunio.js");
 require("./structures");
-
+require("dotenv").config();
 const bot = new Client(),
 	{ promisify } = require("util"),
 	readdir = promisify(require("fs").readdir),
@@ -24,7 +24,7 @@ const bot = new Client(),
 	bot.mongoose.init(bot);
 
 	// Connect bot to discord API
-	const token = bot.config.token;
+	const token = process.env.TOKEN;
 	bot.login(token).catch((e) => bot.logger.error(e.message));
 })();
 

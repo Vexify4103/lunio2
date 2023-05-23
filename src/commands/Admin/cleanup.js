@@ -1,6 +1,6 @@
 // Dependencies
 const Command = require("../../structures/Command.js");
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 module.exports = class Cleanup extends Command {
 	constructor(bot) {
 		super(bot, {
@@ -12,6 +12,7 @@ module.exports = class Cleanup extends Command {
 			helpPerms: "Admin",
 			usage: "cleanup",
 			slash: true,
+			default_member_permissions: PermissionFlagsBits.ManageGuild,
 		});
 	}
 	async callback(bot, interaction, guild, args, settings) {

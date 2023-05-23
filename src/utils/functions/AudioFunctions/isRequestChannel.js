@@ -1,6 +1,6 @@
-module.exports = async (channelid, settings) => {
-	if (settings.CustomChannel) {
-		if (channelid === settings.mChannelID) {
+module.exports = async (channelid, { CustomChannel, mChannelID }) => {
+	if (CustomChannel) {
+		if (channelid === mChannelID) {
 			return true;
 		} else {
 			return false;

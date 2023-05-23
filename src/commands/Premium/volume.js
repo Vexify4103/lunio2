@@ -5,7 +5,6 @@ module.exports = class Bassboost extends Command {
   constructor(bot) {
     super(bot, {
       name: "volume",
-      adminOnly: true,
       premiumOnly: true,
       dirname: __dirname,
       description: "Lets you change the bots output volume.",
@@ -47,9 +46,19 @@ module.exports = class Bassboost extends Command {
     // IF NO INPUT
     if (!value && !def) {
       let embed = new EmbedBuilder()
-        .setColor(bot.config.colorOrange)
-        .setDescription(`Volume is at ${bot.codeBlock(player?.volume ? player?.volume : settings.DefaultVol)}\nDefault volume is set to ${bot.codeBlock(settings.DefaultVol)}`
-        );
+			.setColor(bot.config.colorOrange)
+			.setDescription(
+				bot.translate(
+					settings.Language,
+					"Premium/volume:EMBED_VOLUME_CURRENT",
+					{
+						VOLUME: player?.volume
+							? player?.volume
+							: settings.DefaultVol,
+						DEFAULTVOL: settings.DefaultVol,
+					}
+				)
+			)
 
       return interaction.reply({
         embeds: [embed],
@@ -95,8 +104,16 @@ module.exports = class Bassboost extends Command {
       await bot.musicembed(bot, player, settings);
 
       embed = new EmbedBuilder()
-        .setColor(await bot.getColor(bot, guild.id))
-        .setDescription(`Volume is now set to ${bot.codeBlock(value)}`);
+			.setColor(await bot.getColor(bot, guild.id))
+			.setDescription(
+				bot.translate(
+					settings.Language,
+					"Premium/volume:EMBED_VOLUME_SET",
+					{
+						VALUE: value,
+					}
+				)
+			)
 
       return interaction.reply({
         embeds: [embed],
@@ -106,8 +123,16 @@ module.exports = class Bassboost extends Command {
 
     if (!value && def) {
       embed = new EmbedBuilder()
-        .setColor(await bot.getColor(bot, guild.id))
-        .setDescription(`Default volume is not set to ${bot.codeBlock(def)}`);
+			.setColor(await bot.getColor(bot, guild.id))
+			.setDescription(
+				bot.translate(
+					settings.Language,
+					"Premium/volume:EMBED_DEFAULTVOLUME_SET",
+					{
+						VALUE: def,
+					}
+				)
+			)
 
       let newSettings = {
         DefaultVol: def,
@@ -164,8 +189,17 @@ module.exports = class Bassboost extends Command {
       await bot.musicembed(bot, player, settings);
 
       let embed = new EmbedBuilder()
-        .setColor(await bot.getColor(bot, guild.id))
-        .setDescription(`Volume is now set to ${bot.codeBlock(value)}\nDefault volume is not set to ${bot.codeBlock(def)}`)
+			.setColor(await bot.getColor(bot, guild.id))
+			.setDescription(
+				bot.translate(
+					settings.Language,
+					"Premium/volume:EMBED_ALLVOL_SET",
+					{
+						VOLUME: value,
+						DEFAULTVOL: def,
+					}
+				)
+			)
 
       return interaction.reply({
         embeds: [embed],

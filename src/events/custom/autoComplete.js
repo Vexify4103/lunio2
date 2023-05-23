@@ -158,9 +158,10 @@ class AutoComplete extends Event {
 				for (let i = start; i < end; i++) {
 					responseArray.push({
 						name: `${i + 1}: ${player.queue[i].title}`,
-						value: selectedNumber === 0 ? 1 : selectedNumber + 1,
+						value: selectedNumber <= 0 ? 1 : selectedNumber + 1,
 					});
 				}
+				//console.log(selectedNumber)
 				return interaction.respond(responseArray);
 			}
 			case "playlist": {
