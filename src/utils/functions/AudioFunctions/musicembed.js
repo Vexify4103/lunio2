@@ -25,9 +25,9 @@ module.exports = async (
 			Language,
 		});
 
+	const modifiedTitle = await bot.replaceTitle(bot, player?.queue?.current);
 	const queue = player.queue;
 	const track = player.queue.current;
-	const modifiedTitle = await bot.replaceTitle(bot, player.queue.current);
 	const multiple = 15;
 	const page = 1;
 	const end = page * multiple;
@@ -56,10 +56,6 @@ module.exports = async (
 		} - ${modifiedTitle}`,
 		iconURL: bot.user.displayAvatarURL({ format: "png" }),
 	};
-
-	const description = bot.translate(Language, "musicembed:REQUESTED_BY", {
-		REQUESTER: track.requester,
-	});
 
 	const footerText = bot.translate(Language, "musicembed:FOOTER", {
 		QUEUEAMOUNT: `${queue.length || 0}`,
@@ -198,6 +194,9 @@ module.exports = async (
 		.setColor(color)
 		.setFooter({ text: footerText });
 
+	const description = bot.translate(Language, "musicembed:REQUESTED_BY", {
+		REQUESTER: track.requester,
+	});
 	if (Requester) {
 		MUSIC.setDescription(description);
 	}
