@@ -6,7 +6,6 @@ const config = {
 	connectLink: "https://www.patreon.com/settings/apps",
 	voteLink: "https://top.gg/bot/945030475779551415",
 	translationLink: "https://crwd.in/luniobot",
-	// add plugins/commands here if you don't want them loaded in the bot.
 	disabledCommands: [],
 	disabledPlugins: [],
 	websiteURL: "Bot's dashboard",

@@ -37,7 +37,7 @@ module.exports = async (
 	const queueArray = tracks
 		.map(
 			(track, i) =>
-				`** **${tracks.length - i}. ${track.author} - ${
+				`**${tracks.length - i}.** ${track.author} - ${
 					track.title
 				} [${getduration(track.duration)}]` +
 				`${Requester ? ` ~ <@${track.requester.id}>` : ""}`
