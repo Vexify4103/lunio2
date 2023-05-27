@@ -13,8 +13,8 @@ module.exports = class TwentyFourSeven extends Command {
 			helpPerms: "Premium, Admin",
 			usage: "24/7 <on/off>",
 			slash: true,
-			reqvc: true,
-			reqplayer: true,
+			reqvc: false,
+			reqplayer: false,
 			options: [
 				{
 					name: "toggle",
@@ -37,9 +37,8 @@ module.exports = class TwentyFourSeven extends Command {
 		});
 	}
 	async callback(bot, interaction, guild, args, settings) {
-		const player = bot.manager.players.get(guild.id);
 		const choice = interaction.options.getString("toggle");
-		const TwentyFourSeven = player?.twentyFourSeven;
+		const TwentyFourSeven = settings.twentyFourSeven;
 		let embed;
 
 		if (choice === "on") {
@@ -61,7 +60,10 @@ module.exports = class TwentyFourSeven extends Command {
 					ephemeral: true,
 				});
 			}
-			player.twentyFourSeven = true;
+			let settingsUpdate = {
+				twentyFourSeven: true,
+			};
+			await bot.updateGuildSettings(guild.id, settingsUpdate);
 
 			embed = new EmbedBuilder()
 				.setColor(await bot.getColor(bot, guild.id))
@@ -96,7 +98,11 @@ module.exports = class TwentyFourSeven extends Command {
 					ephemeral: true,
 				});
 			}
-			player.twentyFourSeven = false;
+
+			let settingsUpdate = {
+				twentyFourSeven: false,
+			};
+			await bot.updateGuildSettings(guild.id, settingsUpdate);
 
 			embed = new EmbedBuilder()
 				.setColor(await bot.getColor(bot, guild.id))
@@ -107,7 +113,6 @@ module.exports = class TwentyFourSeven extends Command {
 					)
 				);
 
-			if (!player.queue.current) player.destroy();
 			return interaction.reply({
 				embeds: [embed],
 				ephemeral: true,

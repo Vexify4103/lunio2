@@ -26,12 +26,13 @@ const guildSchema = Schema({
 	mChannelID: { type: String, default: "none" },
 	mChannelEmbedID: { type: String, default: "none" },
 	mChannelBannerID: { type: String, default: "none" },
-	mChannelUpdateInProgress: { type: Boolean, default: false},
+	mChannelUpdateInProgress: { type: Boolean, default: false },
 	// PREMIUM
 	permpremium: { type: Boolean, default: false },
 	premium: { type: Boolean, default: false },
 	expireDate: { type: Number, default: 0 },
 	DefaultVol: { type: Number, default: 100 },
+	twentyFourSeven: { type: Boolean, default: false },
 	// STUFF SO THAT BOT WORKS...
 	plugins: { type: Array, default: ["Everyone", "DJ", "Admin", "Premium"] },
 	version: {

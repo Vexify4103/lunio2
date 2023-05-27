@@ -33,7 +33,7 @@ class QueueEnd extends Event {
 		}
 
 		if (!player.autoplay) {
-			if (!player.twentyFourSeven) {
+			if (!settings.twentyFourSeven) {
 				player.timeout = setTimeout(async () => {
 					const embed = new EmbedBuilder()
 						.setColor(bot.config.colorOrange)
@@ -61,7 +61,7 @@ class QueueEnd extends Event {
 				`Guild ${player.guild} is in 24/7 mode. Staying in voice channel`
 			);
 		} else {
-			if (!player.twentyFourSeven) {
+			if (!settings.twentyFourSeven) {
 				player.timeout = setTimeout(async () => {
 					const embed = new EmbedBuilder()
 						.setColor(bot.config.colorOrange)

@@ -26,6 +26,7 @@ module.exports = async (
 			textChannel: msg.channel.id,
 			selfDeafen: true,
 			volume: DefaultVol,
+			
 		});
 	} catch (err) {
 		bot.logger.error(`Error searching for songs ${err}`);
@@ -90,6 +91,7 @@ module.exports = async (
 					Language,
 				});
 			case "SEARCH_RESULT":
+				console.log(res);
 				bot.logger.log(`Found Track: ${track.title}`);
 				player.queue.add(track);
 

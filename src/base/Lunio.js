@@ -11,6 +11,8 @@ const {
 	path = require("path"),
 	{ promisify } = require("util");
 const AudioManager = require("./AudioManager");
+const BandCamp = require("./AudioSources/BandCamp");
+const SoundCloud = require("./AudioSources/soundCloud");
 const readdir = promisify(require("fs").readdir);
 
 // Creates Lunio class
@@ -67,6 +69,8 @@ class Lunio extends Client {
 		// for waiting for things
 		this.delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
+		//functionsForAudioSources
+		this.bandCamp = new BandCamp(this);
 		//functionsForAudio
 		this.progressBar = require("../utils/functions/AudioFunctions/ProgressBar"); // maxtime, currenttime
 		this.checkDJ = require("../utils/functions/AudioFunctions/checkDJ"); // member, settings { MusicDJ, MusicDJRole }

@@ -51,6 +51,7 @@ const config = {
 		premium: false,
 		expireDate: 0,
 		DefaultVol: 100,
+		twentyFourSeven: false,
 		// STUFF SO THAT BOT WORKS...
 		plugins: ["Everyone", "DJ", "Admin", "Premium"],
 		version: 1.0,
