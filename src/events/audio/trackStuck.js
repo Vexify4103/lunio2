@@ -14,7 +14,7 @@ class TrackStuck extends Event {
 
 	async run(bot, player, track, payload) {
 		bot.logger.log(
-			`Track got stuck: ${track.author} - ${track.title} in guild: ${guild.id}`
+			`Track got stuck: ${track.author} - ${track.title} in guild: ${player.guild}`
 		);
 		let title = bot.translate(settings.Language, "misc:ERROR_TITLE");
 		let embed = new EmbedBuilder()

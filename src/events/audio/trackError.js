@@ -31,7 +31,7 @@ class TrackError extends Event {
 				embeds: [embed],
 			});
 		} else {
-			return channel.send({
+			channel.send({
 				embeds: [embed],
 			});
 		}

@@ -6,6 +6,10 @@ const {
 	PermissionsBitField,
 } = require("discord.js");
 const getduration = require("./getduration");
+const {
+	setTimeoutId,
+	clearTimeoutByMessageId,
+} = require("../UtilFunctios/timeoutManager");
 
 module.exports = async (
 	bot,
@@ -221,13 +225,68 @@ module.exports = async (
 		)}:**__\n${bot.translate(Language, "musicembed:JOIN_AND_PLAY")}`;
 	}
 
-	await embed.edit({
-		content: content,
-		embeds: [MUSIC],
-		components: components,
-		allowedMentions: {
-			repliedUser: false,
-			parse: ["everyone"],
-		},
-	});
+	const currentTime = Date.now();
+
+	if (
+		embed &&
+		embed.createdAt &&
+		currentTime - embed.createdAt.getTime() >=
+			bot.config.changeableSettings.refreshEmbedTime
+	) {
+		bot.logger.log(`Updating musicembed. OldID: ${embed.id}`);
+		const UpdateInProgress = { mChannelUpdateInProgress: true };
+		const updateResult = await bot.updateGuildSettings(
+			guild.id,
+			UpdateInProgress
+		);
+		if (updateResult) {
+			await embed.delete().catch(console.error);
+
+			// Send a new music embed message
+			const newEmbedMessage = await channel.send({
+				content: content,
+				embeds: [MUSIC],
+				components: components,
+				allowedMentions: {
+					repliedUser: false,
+					parse: ["everyone"],
+				},
+			});
+
+			// Update the mChannelEmbedID with the new message ID
+			mChannelEmbedID = newEmbedMessage.id;
+
+			// Update the mChannelEmbedID in the database
+			const newSettings = {
+				mChannelEmbedID: newEmbedMessage.id,
+				mChannelUpdateInProgress: false,
+			};
+			await bot.updateGuildSettings(guild.id, newSettings);
+			bot.logger.log(`Finished updating musicembed. NewID: ${embed.id}`);
+		} else {
+			bot.logger.error("Error updating mChannelUpdateInProgress value");
+		}
+		// return bot.logger.error("Error updating mChannelUdateInProgress value");
+		// Delete the old music embed message
+	} else {
+		// Update the existing message with the new content, embed, and components
+		await embed.edit({
+			content: content,
+			embeds: [MUSIC],
+			components: components,
+			allowedMentions: {
+				repliedUser: false,
+				parse: ["everyone"],
+			},
+		});
+	}
+	// await embed.edit({
+	// 	content: content,
+	// 	embeds: [MUSIC],
+	// 	components: components,
+	// 	allowedMentions: {
+	// 		repliedUser: false,
+	// 		parse: ["everyone"],
+	// 	},
+	// });
 };

@@ -28,8 +28,8 @@ class AudioManager extends Manager {
 			],
 			trackPartial: ["title", "author", "duration", "uri", "requester"],
 			autoPlay: true,
-			send(id, payload) {
-				const guild = bot.guilds.cache.get(id);
+			async send(id, payload) {
+				const guild = await bot.guilds.fetch(id);
 				if (guild) guild.shard.send(payload);
 			},
 		});

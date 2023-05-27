@@ -89,7 +89,7 @@ const config = {
 	colorWrong: "#FF3A00",
 	colorOrange: "#FFD800",
 	DeleteTimeout: 15000,
-	LeaveTimeout: 1000 * 60 * 30,
+	LeaveTimeout: 1000 * 60 * 30, //1000 * 60 * 30
 	// music_playing_banner: 'https://media.discordapp.net/attachments/866678034298568745/1038244662323974184/playing_image.png?width=1190&height=670', //lunio
 	music_playing_banner:
 		"https://media.discordapp.net/attachments/866678034298568745/1038244679222833192/playing_image2.png?width=1190&height=670", //lunio 2

@@ -18,11 +18,10 @@ class TrackStart extends Event {
 		if (player.timeout != "null") clearTimeout(player.timeout);
 		let settings = await bot.getGuildData(bot, player.guild);
 		track.title = await bot.replaceTitle(bot, track);
-		var title = track.title;
 
 		//console.log(player)
 		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
-		const content = `${player.guild} started track: ${title}`;
+		const content = `${player.guild} started track: ${track.author} - ${track.title}`;
 		console.log(`${timestamp} ${chalk.bgMagenta("PLAYING")} ${content}`);
 		if (settings.CustomChannel) {
 			if (settings.mChannelUpdateInProgress) {
@@ -34,9 +33,9 @@ class TrackStart extends Event {
 		if (settings.Announce) {
 			let description;
 			if (settings.Requester) {
-				description = `${title} ~ <@${track.requester.id}>`;
+				description = `${track.title} ~ <@${track.requester.id}>`;
 			} else {
-				description = `${title}`;
+				description = `${track.title}`;
 			}
 			let title2 = bot.translate(settings.Language, "misc:NOW_PLAYING");
 			let embed = new EmbedBuilder()

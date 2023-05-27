@@ -1,79 +1,59 @@
-// Dependencies
-const Command = require("../../structures/Command.js");
-const { EmbedBuilder } = require("discord.js");
+const { ChannelType, PermissionsBitField } = require("discord.js");
+const Event = require("../../structures/Event");
 
-module.exports = class Skip extends Command {
-	constructor(bot) {
-		super(bot, {
-			name: "skip",
-			helpPerms: "DJ",
+module.exports = class ChannelDelete extends Event {
+	constructor(...args) {
+		super(...args, {
 			dirname: __dirname,
-			description: "Lets you skip the current song.",
-			slash: true,
-			usage: "skip",
-			music: true,
-			reqplayer: true,
-			reqvc: true,
-			options: [
-				{
-					name: "amount",
-					description: "Skips to a specific track in the queue.",
-					type: 4,
-					required: false,
-				},
-				{
-					name: "user",
-					description: "Skips tracks added by a user.",
-					type: 6,
-					required: false,
-				},
-			],
 		});
 	}
-	async callback(bot, interaction, guild, args, settings) {
-		const player = bot.manager.players.get(guild.id);
-		let amount = interaction.options.getInteger("amount");
-		let user = interaction.options.getUser("user");
-		let embed;
 
-		if (!amount || amount >= 1) {
-			player.stop();
-			embed = new EmbedBuilder()
-				.setColor(await bot.getColor(bot, guild.id))
-				.setDescription(
-					bot.translate(settings.Language, "DJ/skip:EMBED_SKIPPED_1")
-				);
+	async run(bot, channel) {
+		let settings = await bot.getGuildData(bot, channel.guild.id);
+		let irc = await bot.isrequestchannel(channel.id, settings);
 
-			interaction.reply({
-				embeds: [embed],
-				ephemeral: true,
-			});
-			if (settings.CustomChannel)
-				await bot.musicembed(bot, player, settings);
-			return;
-		} else if (amount) {
-			if (amount > player.queue.size) amount = player.queue.size;
-			player.stop(amount);
+		try {
+			if (channel.type === ChannelType.GuildVoice) {
+				if (channel.members.has(bot.user.id)) {
+					var player = bot.music.players.get(channel.guild.id);
+					if (!player) return;
+					if (channel.id === player.voiceChannel) {
+						player.destroy();
+					}
+				}
+			} else if (irc) {
+				var player = bot.manager.players.get(channel.guild.id);
 
-			embed = new EmbedBuilder()
-				.setColor(await bot.getColor(bot, guild.id))
-				.setDescription(
-					bot.translate(
-						settings.Language,
-						"DJ/skip:EMBED_SKIPPED_X",
-						{
-							AMOUNT: `${bot.codeBlock(amount)}`,
-						}
-					)
-				);
+				let settingsREMOVE = {
+					CustomChannel: false,
+					mChannelID: "",
+					mChannelEmbedID: "",
+					mChannelBannerID: "",
+				};
+				await bot.updateGuildSettings(channel.guild.id, settingsREMOVE);
 
-			interaction.reply({
-				embeds: [embed],
-				ephemeral: true,
-			});
-			if (settings.CustomChannel)
-				await bot.musicembed(bot, player, settings);
-			return;
+				if (!player) return; // If no player exists, return
+
+				let channelToSend = null;
+				const guild = channel.guild;
+
+				guild.channels.cache.forEach((channel1) => {
+					if (
+						channel1.type === ChannelType.GuildText &&
+						channel1
+							.permissionsFor(guild.me)
+							.has(PermissionsBitField.Flags.SendMessages)
+					) {
+						channelToSend = channel1;
+					}
+				});
+
+				if (!channelToSend) return;
+
+				player.setTextChannel(channelToSend);
+			}
+		} catch (err) {
+			console.error(err);
 		}
 	}
 };

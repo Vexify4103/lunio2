@@ -86,6 +86,7 @@ module.exports = class Playlist extends Command {
 						},
 						{
 							name: "song-id",
+							autocomplete: true,
 							description:
 								"Song-ID (Number) you want to be removed out of the provided playlist.",
 							type: 10,

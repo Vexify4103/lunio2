@@ -1,5 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const Event = require("../../structures/Event");
+const chalk = require("chalk");
+const moment = require("moment");
 
 class QueueEnd extends Event {
 	constructor(...args) {
@@ -8,133 +10,156 @@ class QueueEnd extends Event {
 		});
 	}
 
-	async run(bot, player, { identifier: videoID, requester }) {
-		let settings = await bot.getGuildData(bot, player.guild);
-		let channel = await bot.channels.fetch(player.textChannel);
-		let channel2;
+	async run(bot, player, track) {
+		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
+		const content = `${player.guild} finished track: ${track.author} ${track.title}`;
+		console.log(`${timestamp} ${chalk.bgYellow("FINISHED")} ${content} `);
+		
+		const videoID = track.uri.substring(track.uri.indexOf("=") + 1);
+		let randomIndex;
+		let searchURI;
+
+		do {
+			randomIndex = Math.floor(Math.random() * 23) + 2;
+			searchURI = `https://www.youtube.com/watch?v=${videoID}&list=RD${videoID}&index=${randomIndex}`;
+		} while (track.uri.includes(searchURI));
+
+		const settings = await bot.getGuildData(bot, player.guild);
 		let message;
 
+		const channel = await bot.channels.fetch(player.textChannel);
 		if (settings.CustomChannel) {
-			channel2 = await bot.channels.fetch(settings.mChannelID);
-			message = await channel2.messages.fetch(settings.mChannelEmbedID);
+			message = await channel.messages.fetch(settings.mChannelEmbedID);
 		}
-		if (player.autoplay) {
-			player.timeout = setTimeout(() => {
-				// Don't leave channel if 24/7 mode is active
-				if (player.twentyFourSeven) return clearTimeout(player.timeout);
 
-				let embed = new EmbedBuilder()
-					.setColor(bot.config.colorOrange)
-					.setDescription(
-						bot.translate(
-							settings.Language,
-							"misc:INACTIVE_TIMEOUT",
-							{
-								URL: bot.config.premiumLink,
-							}
-						)
-					);
+		if (!player.autoplay) {
+			if (!player.twentyFourSeven) {
+				player.timeout = setTimeout(async () => {
+					const embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"misc:INACTIVE_TIMEOUT",
+								{
+									URL: bot.config.premiumLink,
+								}
+							)
+						);
 
-				if (settings.CustomChannel) message.reply({ embeds: [embed] });
-				else channel.send({ embeds: [embed] });
-				player.destroy();
-			}, bot.config.LeaveTimeout); //bot.config.LeaveTimeout
-			
-			player.playing = false;
-			player.paused = false;
+					if (settings.CustomChannel) {
+						await message.reply({ embeds: [embed] });
+					} else {
+						await channel.send({ embeds: [embed] });
+					}
+
+					player.destroy();
+				}, bot.config.LeaveTimeout);
+				return;
+			}
+			bot.logger.log(
+				`Guild ${player.guild} is in 24/7 mode. Staying in voice channel`
+			);
+		} else {
+			if (!player.twentyFourSeven) {
+				player.timeout = setTimeout(async () => {
+					const embed = new EmbedBuilder()
+						.setColor(bot.config.colorOrange)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"misc:INACTIVE_TIMEOUT",
+								{
+									URL: bot.config.premiumLink,
+								}
+							)
+						);
+
+					if (settings.CustomChannel) {
+						await message.reply({ embeds: [embed] });
+					} else {
+						await channel.send({ embeds: [embed] });
+					}
+
+					player.destroy();
+				}, bot.config.LeaveTimeout);
+			}
+
 			let res;
 			try {
-				res = await player.search(
-					`https://www.youtube.com/watch?v=${videoID}&list=RD${
-						Math.floor(Math.random() * 24) + 1
-					}`,
-					requester
-				);
+				res = await bot.manager.search(searchURI, track.requester);
 				res = await bot.replaceTitle(bot, res);
+				//console.log(res);
+
 				if (res.loadType === "LOAD_FAILED") {
 					if (!player.queue.current) player.destroy();
 					throw res.exception;
 				}
+
+				// Shuffle the tracks array
+				const shuffledTracks = res.tracks.sort(
+					() => Math.random() - 0.5
+				);
+
+				// Find a track that is different from the original track
+				const foundTrack = shuffledTracks.find(
+					(track2) => track2.uri !== track.uri
+				);
+
+				switch (res.loadType) {
+					case "NO_MATCHES":
+						const nores = new EmbedBuilder()
+							.setColor(bot.config.colorWrong)
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/play:NO_MATCHES"
+								)
+							);
+
+						if (settings.CustomChannel) {
+							await message.reply({ embeds: [nores] });
+						} else {
+							await channel.send({ embeds: [nores] });
+						}
+						break;
+					case "PLAYLIST_LOADED":
+					case "TRACK_LOADED":
+					case "SEARCH_RESULT":
+						const timestamp = `[${moment().format("HH:mm:ss")}]:`;
+						const content = `${player.guild} added track: ${track.author} - ${track.title}`;
+						console.log(
+							`${timestamp} ${chalk.bgCyan(
+								"AUTOPLAY"
+							)} ${content}`
+						);
+						player.queue.add(foundTrack, track.requester);
+						if (
+							!player.playing &&
+							!player.paused &&
+							!player.queue.size
+						) {
+							await player.play();
+						}
+						if (settings.CustomChannel) {
+							await bot.musicembed(bot, player, settings);
+						}
+						break;
+				}
 			} catch (error) {
-				let embed = new EmbedBuilder()
+				console.log(error);
+				const embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(
 						bot.translate(settings.Language, "misc:AUTOPLAY_ERROR")
 					);
 
-				if (settings.CustomChannel) message.reply({ embeds: [embed] });
-				else
-					return channel.send({
-						embeds: [embed],
-					});
+				if (settings.CustomChannel) {
+					await message.reply({ embeds: [embed] });
+				} else {
+					await channel.send({ embeds: [embed] });
+				}
 			}
-			const track = res.tracks[2];
-			switch (res.loadType) {
-				case "NO_MATCHES":
-					const nores = new EmbedBuilder()
-						.setColor(bot.config.colorWrong)
-						.setDescription(
-							bot.translate(
-								settings.Language,
-								"Everyone/play:NO_MATCHES"
-							)
-						);
-
-					if (settings.CustomChannel)
-						message.reply({ embeds: [embed] });
-					else
-						channel.send({
-							embeds: [nores],
-						});
-					break;
-				case "PLAYLIST_LOADED":
-					player.queue.add(track);
-					if (!player.playing && !player.paused && !player.queue.size)
-						await player.play();
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
-					break;
-				case "TRACK_LOADED":
-					player.queue.add(track);
-					if (!player.playing && !player.paused && !player.queue.size)
-						await player.play();
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
-					break;
-				case "SEARCH_RESULT":
-					player.queue.add(track);
-					if (!player.playing && !player.paused && !player.queue.size)
-						await player.play();
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
-					break;
-			}
-			return;
-		} else {
-			if (settings.CustomChannel) await bot.disablebuttons(bot, settings);
-			player.timeout = setTimeout(() => {
-				// Don't leave channel if 24/7 mode is active
-				if (player.twentyFourSeven) return clearTimeout(player.timeout);
-
-				let embed = new EmbedBuilder()
-					.setColor(bot.config.colorOrange)
-					.setDescription(
-						bot.translate(
-							settings.Language,
-							"misc:INACTIVE_TIMEOUT",
-							{
-								URL: bot.config.premiumLink,
-							}
-						)
-					);
-
-				if (settings.CustomChannel) message.reply({ embeds: [embed] });
-				else
-					channel.send({
-						embeds: [embed],
-					});
-				player.destroy();
-			}, bot.config.LeaveTimeout); //bot.config.LeaveTimeout
 		}
 	}
 }

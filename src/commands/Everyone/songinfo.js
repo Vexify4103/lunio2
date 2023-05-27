@@ -89,7 +89,7 @@ module.exports = class Songinfo extends Command {
 			});
 		} else {
 			embed = new EmbedBuilder()
-				.setTitle(`${player.queue.current.title}`)
+				.setTitle(`${player.queue.current.author} - ${player.queue.current.title}`)
 				.setColor(await bot.getColor(bot, guild.id))
 				.setDescription(
 					bot.translate(

@@ -73,11 +73,7 @@ async function loadEvents() {
 					name
 				);
 				bot.logger.log(`Loading Event: ${name}`);
-				if (folder == "giveaway") {
-					bot.giveawaysManager.on(name, (...args) =>
-						event.run(bot, ...args)
-					);
-				} else if (folder == "audio") {
+				if (folder == "audio") {
 					bot.manager.on(name, (...args) => event.run(bot, ...args));
 				} else {
 					bot.on(name, (...args) => event.run(bot, ...args));

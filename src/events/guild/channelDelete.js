@@ -1,69 +1,70 @@
 const { ChannelType, PermissionsBitField } = require("discord.js");
 const Event = require("../../structures/Event");
-module.exports = class channelDelete extends Event {
+
+module.exports = class ChannelDelete extends Event {
 	constructor(...args) {
 		super(...args, {
 			dirname: __dirname,
 		});
 	}
+
 	async run(bot, channel) {
 		let settings = await bot.getGuildData(bot, channel.guild.id);
 		let irc = await bot.isrequestchannel(channel.id, settings);
+
 		try {
 			if (channel.type === ChannelType.GuildVoice) {
 				if (channel.members.has(bot.user.id)) {
 					var player = bot.music.players.get(channel.guild.id);
 					if (!player) return;
 					if (channel.id === player.voiceChannel) {
-						if (irc) {
-							await musicoff(bot, player, settings).catch(
-								(err) => {
-									console.error(err);
-								}
-							);
-							return player.destroy();
-						} else {
-							return player.destroy();
-						}
+						player.destroy();
 					}
 				}
-			}
-			if (irc) {
+			} else if (irc) {
 				var player = bot.manager.players.get(channel.guild.id);
+
 				let settingsREMOVE = {
 					CustomChannel: false,
 					mChannelID: "",
 					mChannelEmbedID: "",
 					mChannelBannerID: "",
 				};
-				if (!player) {
-					return await bot.updateGuildSettings(
-						channel.guild.id,
-						settingsREMOVE
-					);
-				} else {
-					await bot.updateGuildSettings(
-						channel.guild.id,
-						settingsREMOVE
-					);
-					let channeltosend;
-					let guild = channel.guild;
+				await bot.updateGuildSettings(channel.guild.id, settingsREMOVE);
+
+				if (!player) return; // If no player exists, return
+
+				let channelToSend = null;
+				const guild = channel.guild;
+
+				guild.channels.cache.forEach((channel1) => {
+					if (
+						channel1.type === ChannelType.GuildText &&
+						channel1
+							.permissionsFor(guild.members.me)
+							.has(PermissionsBitField.Flags.SendMessages) &&
+						channel1.name.toLowerCase().includes("bot")
+					) {
+						channelToSend = channel1.id; // Assign the channel ID instead of the channel object
+					}
+				});
+
+				if (!channelToSend) {
 					guild.channels.cache.forEach((channel1) => {
 						if (
 							channel1.type === ChannelType.GuildText &&
-							!channeltosend &&
 							channel1
 								.permissionsFor(guild.members.me)
 								.has(PermissionsBitField.Flags.SendMessages)
 						) {
-							channeltosend = channel1;
+							channelToSend = channel1.id; // Assign the channel ID instead of the channel object
 						}
 					});
-
-					if (!channeltosend) return;
-					player.setTextChannel(channeltosend);
-					return;
 				}
+
+				if (!channelToSend) return;
+
+				player.setTextChannel(channelToSend);
 			}
 		} catch (err) {
 			console.error(err);

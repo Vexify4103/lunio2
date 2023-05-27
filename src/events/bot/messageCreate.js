@@ -427,6 +427,7 @@ module.exports = class Message extends Event {
 				);
 			}
 		} else if (irc && settings.mChannelUpdateInProgress) {
+			bot.logger.log("Message recognised during EmbedUpdate");
 			await bot.delay(bot, 10000);
 			let channel = await bot.channels.fetch(settings.mChannelID);
 			let messages = await channel.messages.fetch();

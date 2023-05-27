@@ -107,9 +107,10 @@ class AutoComplete extends Event {
 					if (parsed) results.push(parsed);
 				}
 
+				//console.log(results)
 				interaction.respond(
 					results.map((video) => ({
-						name: video.title,
+						name: `${video.title} [${video.duration_raw}]`,
 						value:
 							interaction.commandName == "play"
 								? video.url
@@ -145,7 +146,7 @@ class AutoComplete extends Event {
 				if (isNaN(input) || input > player.queue.size || input < 0) {
 					return interaction.respond([]);
 				}
-				const selectedNumber = parseInt(input, 10) - 1; // subtract 1 to match the 0-indexed array
+				let selectedNumber = parseInt(input, 10) - 1; // subtract 1 to match the 0-indexed array
 
 				let responseArray = [];
 
@@ -344,7 +345,7 @@ class AutoComplete extends Event {
 
 							return interaction.respond(
 								results.map((video) => ({
-									name: video.title,
+									name: `${video.title} [${video.duration_raw}]`,
 									value:
 										interaction.commandName == "playlist"
 											? video.url
@@ -357,25 +358,63 @@ class AutoComplete extends Event {
 						focusedOption =
 							interaction.options.getFocused(true).name;
 
-						if (focusedOption != "playlist-name") return;
+						if (focusedOption == "playlist-name") {
+							if (playlistArray.length <= 0) {
+								await bot.createPlaylist(bot, defaultSettings);
+								return interaction.respond([
+									{
+										name: defaultSettings.name,
+										value: defaultSettings.name,
+									},
+								]);
+							}
+							for (let i = 0; i < playlistArray.length; i++) {
+								const playlist = playlistArray[i];
+								responseArray.push({
+									name: playlist.name,
+									value: playlist.name,
+								});
+							}
+							return interaction.respond(responseArray);
+						} else if (focusedOption == "song-id") {
+							const selectedPlaylist =
+								interaction.options.getString("playlist-name");
+							const playlist = playlistArray.find(
+								(playlist) => playlist.name === selectedPlaylist
+							);
 
-						if (playlistArray.length <= 0) {
-							await bot.createPlaylist(bot, defaultSettings);
-							return interaction.respond([
-								{
-									name: defaultSettings.name,
-									value: defaultSettings.name,
-								},
-							]);
+							if (!playlist) return interaction.respond([]);
+
+							const inputNumber =
+								interaction.options.getNumber("song-id") || 1;
+							const selectedIndex = Math.max(0, inputNumber - 1);
+
+							if (
+								isNaN(inputNumber) ||
+								inputNumber > playlist.songs.length ||
+								inputNumber < 0
+							) {
+								return interaction.respond([]);
+							}
+							
+							let responseArray = [];
+
+							const start =
+								selectedIndex - 2 >= 0 ? selectedIndex - 2 : 0;
+							const end =
+								selectedIndex + 3 <= playlist.songs.length
+									? selectedIndex + 3
+									: playlist.songs.length;
+
+							for (let i = start; i < end; i++) {
+								responseArray.push({
+									name: `${i + 1}: ${playlist.songs[i].author} - ${playlist.songs[i].title}`,
+									value: selectedIndex <= 0 ? 1 : inputNumber,
+								});
+							}
+
+							return interaction.respond(responseArray);
 						}
-						for (let i = 0; i < playlistArray.length; i++) {
-							const playlist = playlistArray[i];
-							responseArray.push({
-								name: playlist.name,
-								value: playlist.name,
-							});
-						}
-						return interaction.respond(responseArray);
 				}
 				return interaction.respond([]);
 			}

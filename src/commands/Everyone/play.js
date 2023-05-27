@@ -51,7 +51,7 @@ module.exports = class Play extends Command {
 		let player;
 		let embed;
 		const member = await guild.members.fetch(interaction.user.id);
-		const textchannel = guild.channels.cache.get(interaction.channelId);
+		const textchannel = await guild.channels.fetch(interaction.channelId);
 
 		// reply to interaciton
 		await interaction.deferReply({ ephemeral: true });
@@ -127,7 +127,7 @@ module.exports = class Play extends Command {
 					break;
 
 				case "TRACK_LOADED":
-					bot.logger.log(`Track Loaded: ${track.title}`);
+					bot.logger.log(`${guild.id} track Loaded: ${track.title}`);
 					player.queue.add(track);
 
 					if (!player.playing && !player.paused && !player.queue.size)
@@ -144,7 +144,7 @@ module.exports = class Play extends Command {
 						embed = new EmbedBuilder()
 							.setColor(color)
 							.setTitle(title)
-							.setDescription(`${track.title}`);
+							.setDescription(`${track.author} - ${track.title}`);
 					} else {
 						title = bot.translate(
 							settings.Language,
@@ -153,7 +153,7 @@ module.exports = class Play extends Command {
 						embed = new EmbedBuilder()
 							.setColor(color)
 							.setTitle(title)
-							.setDescription(`${track.title}`);
+							.setDescription(`${track.author} - ${track.title}`);
 					}
 					setTimeout(() => {
 						interaction.editReply({
@@ -185,7 +185,9 @@ module.exports = class Play extends Command {
 							embed = new EmbedBuilder()
 								.setColor(color)
 								.setTitle(title)
-								.setDescription(`${track.title}`);
+								.setDescription(
+									`${track.author} - ${track.title}`
+								);
 						} else {
 							title = bot.translate(
 								settings.Language,
@@ -194,7 +196,9 @@ module.exports = class Play extends Command {
 							embed = new EmbedBuilder()
 								.setColor(color)
 								.setTitle(title)
-								.setDescription(`${track.title}`);
+								.setDescription(
+									`${track.author} - ${track.title}`
+								);
 						}
 
 						setTimeout(() => {
@@ -215,7 +219,9 @@ module.exports = class Play extends Command {
 							embed = new EmbedBuilder()
 								.setColor(color)
 								.setTitle(title)
-								.setDescription(`${track.title}`);
+								.setDescription(
+									`${track.author} - ${track.title}`
+								);
 						} else {
 							title = bot.translate(
 								settings.Language,
@@ -224,7 +230,9 @@ module.exports = class Play extends Command {
 							embed = new EmbedBuilder()
 								.setColor(color)
 								.setTitle(title)
-								.setDescription(`${track.title}`);
+								.setDescription(
+									`${track.author} - ${track.title}`
+								);
 						}
 
 						setTimeout(() => {
@@ -233,7 +241,8 @@ module.exports = class Play extends Command {
 								ephemeral: true,
 							});
 						}, bot.ws.ping * 2);
-						await bot.musicembed(bot, player, settings);
+						if (settings.CustomChannel)
+							await bot.musicembed(bot, player, settings);
 					}
 					break;
 
@@ -411,17 +420,5 @@ module.exports = class Play extends Command {
 				array[j] = temp;
 			}
 		}
-		// function shuffleArray(array) {
-		//      // Create a copy of the original array.
-		//      const shuffledArray = [...array];
-
-		//      // Shuffle the elements of the array.
-		//      for (let i = shuffledArray.length - 1; i > 0; i--) {
-		//           const j = Math.floor(Math.random() * (i + 1));
-		//      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-		//      }
-
-		//      return shuffledArray;
-		// }
 	}
 };

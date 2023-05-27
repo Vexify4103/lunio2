@@ -12,9 +12,13 @@ module.exports = class Message extends Event {
 	}
 
 	async run(bot, msg) {
-		if (!msg.author.bot || msg.author.id !== bot.user.id) return;
-		if (msg.author.bot && msg.author.id === bot.user.id) {
+		if (msg.author == null) return;
+		if (msg.author.id !== bot.user.id) return;
+		try {
 			clearTimeoutByMessageId(msg.id);
+		} catch (error) {
+			bot.logger.error(`Error deleting a timeout for message: ${msg.id}`);
+			console.log(error);
 		}
 		return;
 	}
