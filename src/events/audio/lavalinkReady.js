@@ -7,7 +7,7 @@ class lavalinkReady extends Event {
 		});
 	}
 	async run(bot, node, payload) {
-		bot.logger.ready(`Lavalink (${payload.sessionId}) is ready.`);
+		bot.logger.ready(`Lavalink session: ${payload.sessionId} is ready.`);
 	}
 }
 

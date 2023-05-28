@@ -25,8 +25,7 @@ class AutoComplete extends Event {
 	 */
 	async run(bot, interaction) {
 		switch (interaction.commandName) {
-			case "play":
-			case "search": {
+			case "play": {
 				// Get current input and make sure it's not 0
 				const searchQuery = interaction.options.getFocused(true).value;
 				if (searchQuery.length == 0) return interaction.respond([]);
@@ -110,11 +109,10 @@ class AutoComplete extends Event {
 				//console.log(results)
 				interaction.respond(
 					results.map((video) => ({
-						name: `${video.title} [${video.duration_raw}]`,
-						value:
-							interaction.commandName == "play"
-								? video.url
-								: video.title,
+						name: `${video.title.substring(0, 95)} [${
+							video.duration_raw
+						}]`,
+						value: video.url,
 					}))
 				);
 				break;
@@ -158,7 +156,10 @@ class AutoComplete extends Event {
 
 				for (let i = start; i < end; i++) {
 					responseArray.push({
-						name: `${i + 1}: ${player.queue[i].title}`,
+						name: `${i + 1}: ${player.queue[i].title.substring(
+							0,
+							100
+						)}`,
 						value: selectedNumber <= 0 ? 1 : selectedNumber + 1,
 					});
 				}
@@ -222,7 +223,7 @@ class AutoComplete extends Event {
 						for (let i = 0; i < playlistArray.length; i++) {
 							const playlist = playlistArray[i];
 							responseArray.push({
-								name: playlist.name,
+								name: playlist.name.substring(0, 100),
 								value: playlist.name,
 							});
 						}
@@ -236,7 +237,10 @@ class AutoComplete extends Event {
 								await bot.createPlaylist(bot, defaultSettings);
 								return interaction.respond([
 									{
-										name: defaultSettings.name,
+										name: defaultSettings.name.substring(
+											0,
+											100
+										),
 										value: defaultSettings.name,
 									},
 								]);
@@ -244,7 +248,7 @@ class AutoComplete extends Event {
 							for (let i = 0; i < playlistArray.length; i++) {
 								const playlist = playlistArray[i];
 								responseArray.push({
-									name: playlist.name,
+									name: playlist.name.substring(0, 100),
 									value: playlist.name,
 								});
 							}
@@ -345,11 +349,10 @@ class AutoComplete extends Event {
 
 							return interaction.respond(
 								results.map((video) => ({
-									name: `${video.title} [${video.duration_raw}]`,
-									value:
-										interaction.commandName == "playlist"
-											? video.url
-											: video.title,
+									name: `${video.title.substring(0, 95)} [${
+										video.duration_raw
+									}]`,
+									value: video.url,
 								}))
 							);
 						}
@@ -363,7 +366,10 @@ class AutoComplete extends Event {
 								await bot.createPlaylist(bot, defaultSettings);
 								return interaction.respond([
 									{
-										name: defaultSettings.name,
+										name: defaultSettings.name.substring(
+											0,
+											100
+										),
 										value: defaultSettings.name,
 									},
 								]);
@@ -371,7 +377,7 @@ class AutoComplete extends Event {
 							for (let i = 0; i < playlistArray.length; i++) {
 								const playlist = playlistArray[i];
 								responseArray.push({
-									name: playlist.name,
+									name: playlist.name.substring(0, 100),
 									value: playlist.name,
 								});
 							}
@@ -396,7 +402,7 @@ class AutoComplete extends Event {
 							) {
 								return interaction.respond([]);
 							}
-							
+
 							let responseArray = [];
 
 							const start =
@@ -408,7 +414,12 @@ class AutoComplete extends Event {
 
 							for (let i = start; i < end; i++) {
 								responseArray.push({
-									name: `${i + 1}: ${playlist.songs[i].author} - ${playlist.songs[i].title}`,
+									name: `${i + 1}: ${
+										playlist.songs[i].author
+									} - ${playlist.songs[i].title.substring(
+										0,
+										95
+									)}`,
 									value: selectedIndex <= 0 ? 1 : inputNumber,
 								});
 							}

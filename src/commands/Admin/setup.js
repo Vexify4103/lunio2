@@ -36,8 +36,7 @@ module.exports = class Setup extends Command {
 		});
 	}
 	async callback(bot, interaction, guild, args, settings) {
-		const guildId = guild.id;
-		const player = bot.manager.players.get(guildId);
+		const player = bot.manager.players.get(guild.id);
 		const banner = interaction.options.getBoolean("embed");
 		// IF ALREADY SETUP
 		if (settings.CustomChannel) {
@@ -136,8 +135,20 @@ module.exports = class Setup extends Command {
 		});
 
 		await createChannel(bot, settings, banner, createdChannel);
-		await bot.delay(bot, 1500);
-		if (player) await bot.musicembed(bot, player, settings);
+		if (player) { 
+			let updatedSettings = await bot.getGuildData(bot, guild.id)
+			player.setTextChannel(createdChannel.id);
+			let newsettings2 = {
+				CustomChannel: true,
+			};
+			await bot.updateGuildSettings(guild.id, newsettings2);
+			await bot.musicembed(bot, player, updatedSettings);
+		} else {
+			let newsettings2 = {
+				CustomChannel: true,
+			};
+			await bot.updateGuildSettings(guild.id, newsettings2);
+		}
 		return;
 
 		async function createChannel(bot, settings, banner, createdChannel) {
@@ -193,12 +204,11 @@ module.exports = class Setup extends Command {
 				})
 				.then(async (x) => {
 					let newsettings = {
-						CustomChannel: true,
 						mChannelID: createdChannel.id,
 						mChannelEmbedID: x.id,
 						mChannelBannerID: banner.id,
 					};
-					await bot.updateGuildSettings(guildId, newsettings);
+					await bot.updateGuildSettings(guild.id, newsettings);
 				});
 			
 		}

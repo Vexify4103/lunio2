@@ -57,6 +57,7 @@ class QueueEnd extends Event {
 				}, bot.config.LeaveTimeout);
 				return;
 			}
+			await bot.musicoff(bot, settings);
 			bot.logger.log(
 				`Guild ${player.guild} is in 24/7 mode. Staying in voice channel`
 			);

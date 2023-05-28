@@ -220,10 +220,12 @@ module.exports = class Ready extends Event {
 			"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
 			"ready"
 		);
-		bot.user.setStatus("online");
-		bot.user.setActivity({
-			name: "/help",
-			type: ActivityType.Listening,
-		});
+		setTimeout(() => {
+			bot.user.setStatus("online");
+			bot.user.setActivity({
+				name: "/help",
+				type: ActivityType.Listening,
+			});
+		}, 1000 * 60 * 5)
 	}
 };

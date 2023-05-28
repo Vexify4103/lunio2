@@ -13,14 +13,7 @@ class PlayerMove extends Event {
 
 		if (!newChannel) {
 			return player.destroy();
-			// if (!settings.CustomChannel) {
-			// 	return player.destroy();
-			// } else {
-			// 	// await bot.musicoff(bot, settings);
-			// 	return player.destroy();
-			// }
 		} else {
-			//console.log(player)
 			player.setVoiceChannel(newChannel);
 			if (player.state !== "CONNECTED") player.connect();
 
