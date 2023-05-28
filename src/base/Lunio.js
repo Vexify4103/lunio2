@@ -38,15 +38,15 @@ class Lunio extends Client {
 			],
 			failIfNotExists: false,
 			restGlobalRateLimit: 50,
-			presence: {
-				status: "online",
-				activities: [
-					{
-						name: "/help",
-						type: ActivityType.Listening,
-					},
-				],
-			},
+				// presence: {
+				// 	status: "online",
+				// 	activities: [
+				// 		{
+				// 			name: "/help",
+				// 			type: ActivityType.Listening,
+				// 		},
+				// 	],
+				// },
 		});
 		// for console logging
 		this.logger = require("../utils/Logger");

@@ -2,6 +2,7 @@ const { GuildSchema } = require("../../database/models"),
 	Event = require("../../structures/Event");
 
 require("dotenv").config();
+const { ActivityType } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
 const dayjs = require("dayjs");
@@ -17,6 +18,12 @@ module.exports = class Ready extends Event {
 
 	// run event
 	async run(bot) {
+		bot.user.setStatus("idle");
+		bot.user.setActivity({
+			name: "starting...",
+			type: ActivityType.Playing,
+		});
+
 		const clientId = bot.user.id;
 		const guildIds = [
 			"823543363688464455",
@@ -31,8 +38,6 @@ module.exports = class Ready extends Event {
 				`Audio manager failed to load due to error: ${err.message}`
 			);
 		}
-		// Updates the bot's status
-		bot.user.setStatus("online");
 
 		bot.logger.log(
 			"=-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-="
@@ -68,7 +73,7 @@ module.exports = class Ready extends Event {
 
 		//console.log(data);
 		try {
-			bot.logger.log("Started refreshing application (/) commands");
+			bot.logger.log("Started reloading application (/) commands");
 
 			guildIds.forEach(async (id) => {
 				bot.logger.log(
@@ -95,6 +100,9 @@ module.exports = class Ready extends Event {
 			// );
 
 			bot.logger.log("Successfully reloaded application (/) commands");
+			bot.logger.log(
+				"=-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-="
+			);
 		} catch (error) {
 			console.error(error);
 		}
@@ -212,5 +220,10 @@ module.exports = class Ready extends Event {
 			"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
 			"ready"
 		);
+		bot.user.setStatus("online");
+		bot.user.setActivity({
+			name: "/help",
+			type: ActivityType.Listening,
+		});
 	}
 };

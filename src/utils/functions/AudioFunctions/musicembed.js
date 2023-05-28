@@ -241,6 +241,10 @@ module.exports = async (
 		);
 		if (updateResult) {
 			await embed.delete().catch(console.error);
+			const delay = bot.ws.ping * 2;
+
+			// Delay after the message delete
+			await new Promise((resolve) => setTimeout(resolve, delay));
 
 			// Send a new music embed message
 			const newEmbedMessage = await channel.send({

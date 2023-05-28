@@ -11,9 +11,11 @@ module.exports = async (bot, res) => {
 		for (const track of newRes.tracks) {
 			track.title = removeBlockedWords(blockedWords, track);
 		}
+		//console.log(newRes);
 		return newRes;
 	} else {
 		newRes.title = removeBlockedWords(blockedWords, res);
+		//console.log(newRes.title);
 		return newRes.title;
 	}
 

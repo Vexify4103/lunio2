@@ -28,7 +28,6 @@ module.exports = class Message extends Event {
 		const irc = await bot.isrequestchannel(msg.channel.id, settings);
 		// Should not respond to bots
 		if (irc && msg.author.bot && msg.author.id !== bot.user.id) {
-			if (msg.deletable)
 				await msg
 					.delete()
 					.catch((e) =>
@@ -123,7 +122,7 @@ module.exports = class Message extends Event {
 			//console.log(msg.mentions.users > 0) return console.log("user mentioned")
 			const player = bot.manager.players.get(msg.guild.id);
 
-			if (global.messageUpdateInProgress) return;
+			if (settings.mChannelUpdateInProgress) return;
 			if (msg.id === settings.mChannelEmbedID) return;
 			// IF MSG IS FROM Lunio AND IS NORMAL MESSAGE => DELETE AFTER TIME
 			if (
@@ -411,9 +410,7 @@ module.exports = class Message extends Event {
 
 			try {
 				// await bot.refreshEmbed(bot, settings);
-				global.messageUpdateInProgress = false;
 				bot.logger.log("Searching for song using search function");
-				global.messageUpdateInProgress = false;
 				return await bot.search(
 					bot,
 					msg,

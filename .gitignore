@@ -2,3 +2,4 @@ node_modules/
 Lavalink/application.yml
 .env
 src/utils/logs
+src/save

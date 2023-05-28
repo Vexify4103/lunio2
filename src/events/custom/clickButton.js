@@ -35,7 +35,10 @@ module.exports = class clickButton extends Event {
 		// GET PLAYER
 		let player = bot.manager?.players?.get(guild.id);
 		// IF THE USER IS IN NO VOICE CHANNEL RETURN
-		if (!member.voice.channel) return button.deferUpdate();
+		if (!member.voice.channel) { 
+			button.deferUpdate(); 
+			if (!player) return await bot.musicoff(bot, settings);
+		}
 		// IF USER IS NOT IN SAME CHANNEL RETURN
 		if (player && member.voice.channel.id !== player?.voiceChannel)
 			return button.deferUpdate();
