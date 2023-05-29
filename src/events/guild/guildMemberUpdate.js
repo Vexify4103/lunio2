@@ -42,7 +42,7 @@ class GuildMemberUpdate extends Event {
 				const { premiumUses } = roleMappings[roleID];
 				const premiumSettings = {
 					premium: true,
-					expireDate,
+					premiumExpireDate,
 					premiumUses,
 					userNAME: `${user.username}#${user.discriminator}`,
 				};

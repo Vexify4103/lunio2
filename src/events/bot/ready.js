@@ -71,8 +71,6 @@ module.exports = class Ready extends Event {
 
 		//console.log(data);
 		try {
-			bot.logger.log("Started reloading application (/) commands");
-
 			guildIds.forEach(async (id) => {
 				bot.logger.log(
 					`Started refreshing application (/) commands in: ${id}`
@@ -96,8 +94,6 @@ module.exports = class Ready extends Event {
 			//           body: data
 			//      },
 			// );
-
-			bot.logger.log("Successfully reloaded application (/) commands");
 			bot.logger.log(
 				"=-=-=-=-=-=-=- Loading Guild Specific Interaction(s) -=-=-=-=-=-=-="
 			);
@@ -156,7 +152,7 @@ module.exports = class Ready extends Event {
 						const { premiumUses } = roleMappings[roleID];
 						const settings = {
 							premium: true,
-							expireDate: expireDate,
+							premiumExpireDate: expireDate,
 							premiumUses,
 						};
 						await bot.updateUserSettings(user.id, settings);

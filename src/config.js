@@ -66,6 +66,7 @@ const config = {
 		//PREMIUM USER SETTINGS
 		permpremium: false,
 		premium: false,
+		premiumExpireDate: 0,
 		expireDate: 0,
 		// PLAYLIS COMMANDS
 		defaultPlaylist: "songs",

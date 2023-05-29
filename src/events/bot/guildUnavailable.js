@@ -12,8 +12,7 @@ module.exports = class guildUnavailable extends Event {
 	// run event
 	async run(bot, guild) {
 		// For debugging
-		if (bot.config.debug)
-			bot.logger.debug(`Guild: ${guild.name} has become unavailable.`);
+		bot.logger.debug(`Guild: ${guild.name} has become unavailable.`);
 
 		// only show error once an hour
 		if (unavailableGuilds.includes(guild.id)) {

@@ -284,7 +284,7 @@ module.exports = class Premium extends Command {
 
 					let newGuildSettings = {
 						premium: true,
-						expireDate: expireDate,
+						premiumExpireDate: expireDate,
 					};
 
 					await bot.updateGuildSettings(server.id, newGuildSettings);

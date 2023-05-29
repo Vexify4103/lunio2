@@ -26,7 +26,8 @@ const guildSchema = Schema({
 	// PREMIUM
 	permpremium: { type: Boolean, default: false },
 	premium: { type: Boolean, default: false },
-	expireDate: { type: Number, default: 0 },
+	premiumExpireDate: { type: Number, default: 0},
+	expireDate: { type: Date, default: null },
 	DefaultVol: { type: Number, default: 100 },
 	twentyFourSeven: { type: Boolean, default: false },
 	// STUFF SO THAT BOT WORKS...

@@ -252,12 +252,12 @@ module.exports = class slashCreate extends Event {
 		}
 
 		// CHECK PREMIUM EXPIRE DATES FOR USER
-		if (usersettings.expireDate !== 0) {
-			if (usersettings.expireDate < new Date()) {
+		if (usersettings.premiumExpireDate !== 0) {
+			if (usersettings.premiumExpireDate < new Date()) {
 				let newUserSettings = {
 					premium: false,
 					premiumUses: 0,
-					expireDate: 0,
+					premiumExpireDate: 0,
 				};
 				await bot.updateUserSettings(
 					interaction.user.id,
@@ -266,11 +266,11 @@ module.exports = class slashCreate extends Event {
 			}
 		}
 		// CHECK PREMIUM EXPIRE DATES FOR GUILD
-		if (settings.expireDate !== 0) {
-			if (settings.expireDate < new Date()) {
+		if (settings.premiumExpireDate !== 0) {
+			if (settings.premiumExpireDate < new Date()) {
 				let newGuildSettings = {
 					premium: false,
-					expireDate: 0,
+					premiumExpireDate: 0,
 				};
 				await bot.updateGuildSettings(guildId, newGuildSettings);
 			}

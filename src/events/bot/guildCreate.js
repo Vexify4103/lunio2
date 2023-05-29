@@ -5,6 +5,7 @@ const {
 		PermissionsBitField,
 	} = require("discord.js"),
 	Event = require("../../structures/Event");
+const { GuildSchema } = require("../../database/models/");
 
 module.exports = class GuildCreate extends Event {
 	constructor(...args) {
@@ -15,6 +16,15 @@ module.exports = class GuildCreate extends Event {
 
 	// run event
 	async run(bot, guild) {
+		// Check if the guild document already exists in MongoDB
+		const existingGuild = await GuildSchema.findOne({ guildID: guild.id });
+		const newSettings = {
+			expireDate: null,
+		};
+		if (existingGuild) {
+			// The guild document already exists, update the expiration date to infinite
+			await bot.updateGuildSettings(guild.id, newSettings);
+		}
 		let channelToSend;
 
 		guild.channels.cache.forEach((channel) => {

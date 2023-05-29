@@ -93,7 +93,6 @@ class Lunio extends Client {
 
 		//functionsForGuildData
 		this.createGuildData = require("../utils/functions/GuildDataFunctions/createGuildData"); // settings
-		this.deleteGuildData = require("../utils/functions/GuildDataFunctions/deleteGuildData"); // guildId
 		this.getGuildData = require("../utils/functions/GuildDataFunctions/getGuildData"); // bot, guildId
 		this.removeGuildSettings = require("../utils/functions/GuildDataFunctions/removeGuildSettings"); // guildId, sett
 		this.updateGuildSettings = require("../utils/functions/GuildDataFunctions/updateGuildSettings"); // guildId, settings
