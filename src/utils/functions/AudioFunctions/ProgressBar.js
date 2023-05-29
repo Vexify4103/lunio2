@@ -1,3 +1,6 @@
+const config = require("../../../config");
+const url = config.inviteLink;
+
 module.exports = (
 	maxtime,
 	currenttime,
@@ -8,22 +11,20 @@ module.exports = (
 	try {
 		let bar =
 			currenttime > maxtime
-				? [line.repeat((size / 2) * 2), (currenttime / maxtime) * 100]
+				? [
+						`[${line.repeat((size / 2) * 2)}](${url})`,
+						(currenttime / maxtime) * 100,
+				  ]
 				: [
-						line
-							.repeat(
-								Math.round((size / 2) * (currenttime / maxtime))
-							)
-							.replace(/.$/, slider) +
-							line.repeat(
-								size -
-									Math.round(size * (currenttime / maxtime)) +
-									1
-							),
+						`[${line.repeat(
+							Math.round((size / 2) * (currenttime / maxtime))
+						)}${slider}](${url})${line.repeat(
+							size - Math.round(size * (currenttime / maxtime))
+						)}`,
 						currenttime / maxtime,
 				  ];
-		if (!String(bar).includes("🔘"))
-			return `**🔘${line.repeat(size - 1)}**`;
+		if (!bar[0].includes(slider))
+			return `**[${slider}${line.repeat(size - 1)}](${url})**`;
 		return `${bar[0]}`;
 	} catch (e) {
 		console.log(e);

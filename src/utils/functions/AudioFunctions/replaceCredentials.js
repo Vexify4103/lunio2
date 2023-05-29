@@ -8,20 +8,17 @@ module.exports = async (bot, res) => {
 	for (const track of newRes.tracks) {
 		track.author = replaceAuthor(track);
 		track.title = removeBlockedWords(blockedWords, track);
-		// track.author = checkAuthor(track);
 	}
-    // console.log(newRes)
-	//console.log(newRes.tracks);
 	return newRes.tracks;
 
 	function removeBlockedWords(blockedWords, track) {
 		let str = track.title;
 
-        const dashIndex = track.title.indexOf("-");
-        if (dashIndex !== -1) {
-            str = track.title = track.title.slice(dashIndex + 1).trim();
-        }
-        //console.log(str);
+		const dashIndex = track.title.indexOf("-");
+		if (dashIndex !== -1) {
+			str = track.title = track.title.slice(dashIndex + 1).trim();
+		}
+		//console.log(str);
 		if (str.toLowerCase().includes(track.author.toLowerCase())) {
 			blockedWords.push(...track.author.split(" "));
 			const dashIndex = str.indexOf("-");
@@ -46,42 +43,21 @@ module.exports = async (bot, res) => {
 	}
 
 	function replaceAuthor(track) {
-        let str = track.author;
+		let str = track.author;
 		const dashIndex = track.title.indexOf("-");
-        if (dashIndex !== -1) {
-            const titleAuthor = track.title.slice(0, dashIndex).trim();
-            if (titleAuthor.toLowerCase() !== str.toLowerCase()) {
-                if (titleAuthor) {
-                    str = titleAuthor;
-                } else {
-                    str = track.author;
-                }
-            } else {
-                str = track.author;
-            }
-        }
+		if (dashIndex !== -1) {
+			const titleAuthor = track.title.slice(0, dashIndex).trim();
+			if (titleAuthor.toLowerCase() !== str.toLowerCase()) {
+				if (titleAuthor) {
+					str = titleAuthor;
+				} else {
+					str = track.author;
+				}
+			} else {
+				str = track.author;
+			}
+		}
 
-        return str;
+		return str;
 	}
-	// function checkAuthor(track) {
-	// 	let str = track.author;
-	// 	const dashIndex = track.title.indexOf("-");
-	// 	if (dashIndex !== -1) {
-	// 		const titleAuthor = track.title.slice(0, dashIndex).trim();
-	// 		// console.log(str)
-	// 		// console.log(titleAuthor)
-	// 		// console.log("--------------")
-	// 		if (titleAuthor.toLowerCase() !== track.author.toLowerCase()) {
-	// 			if (titleAuthor) {
-	// 				track.title = track.title.slice(dashIndex + 1).trim();
-	// 			} else {
-	// 				str = track.author; // Assign original author back to str if it becomes empty
-	// 			}
-	// 		} else {
-	// 			str = titleAuthor;
-	// 			track.title = track.title.slice(dashIndex + 1).trim();
-	// 		}
-	// 	}
-	// 	return str;
-	// }
 };

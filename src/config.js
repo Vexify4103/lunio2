@@ -164,6 +164,9 @@ const config = {
 		"23 hour",
 		"24 hour",
 		"48 hour",
+		"music",
+		"free music",
+		"ncs release",
 	],
 };
 
