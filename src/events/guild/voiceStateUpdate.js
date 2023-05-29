@@ -8,11 +8,10 @@ module.exports = class voiceStateUpdate extends Event {
 		});
 	}
 
-	// run event
 	async run(bot, oldState, newState) {
 		const stateChange = {};
 		let timeout247;
-		// get the state change
+
 		if (oldState.channel === null && newState.channel !== null)
 			stateChange.type = "JOIN";
 		if (oldState.channel !== null && newState.channel === null)
@@ -32,7 +31,6 @@ module.exports = class voiceStateUpdate extends Event {
 			oldState.guild.id || newState.guild.id
 		);
 
-		// check if bot got server un-defeaned or not
 		if (
 			newState.id === bot.user.id &&
 			oldState.serverDeaf === true &&
@@ -40,8 +38,8 @@ module.exports = class voiceStateUpdate extends Event {
 		) {
 			try {
 				newState.setDeaf(true);
-				if (player.paused === true) return;
-				if (player.playing === true) {
+				if (player?.paused) return;
+				if (player?.playing) {
 					setTimeout(() => {
 						player.pause(true);
 						setTimeout(() => {
@@ -56,9 +54,7 @@ module.exports = class voiceStateUpdate extends Event {
 
 		if (oldState.channelId && !newState.channelId) {
 			try {
-				if (oldState.member.user.id === bot.user.id) {
-					// IF bot left vc, destroy player
-					if (!player) return;
+				if (oldState.member.user.id === bot.user.id && player) {
 					player.destroy();
 				}
 			} catch (err) {
@@ -66,8 +62,10 @@ module.exports = class voiceStateUpdate extends Event {
 			}
 		}
 
-		if (!player) return;
-		if (!newState.guild.members.cache.get(bot.user.id).voice.channelId)
+		if (
+			player &&
+			!newState.guild.members.cache.get(bot.user.id).voice.channelId
+		)
 			player.destroy();
 
 		if (
@@ -78,12 +76,16 @@ module.exports = class voiceStateUpdate extends Event {
 				try {
 					await newState.guild.members.me.voice
 						.setSuppressed(false)
-						.then(() => bot.logger.log("Joined stage channel"));
+						.then(() =>
+							bot.logger.log(
+								`${settings.guildID} joined stage channel`
+							)
+						);
 				} catch (err) {
-					player.pause(true);
+					player?.pause(true);
 				}
 			} else if (oldState.suppress !== newState.suppress) {
-				player.pause(newState.suppress);
+				player?.pause(newState.suppress);
 			}
 		}
 
@@ -92,55 +94,52 @@ module.exports = class voiceStateUpdate extends Event {
 			return;
 
 		let stateChangeMembers = {};
-		let channelcheck =
+		let channelCheck =
 			newState.guild.channels.cache.get(
 				newState.channel?.id ?? newState.channelId
 			) ||
 			oldState.guild.channels.cache.get(
 				oldState.channel?.id ?? oldState.channelId
 			);
-		stateChangeMembers = channelcheck.members.filter(
+		stateChangeMembers = channelCheck.members.filter(
 			(member) => !member.user.bot
 		);
+
+		if (!player) return;
 		switch (stateChange.type) {
 			case "JOIN":
-				if (!player) return;
-				if (stateChangeMembers.size >= 1 && player.paused) {
-					//resume track
+				bot.logger.debug("JOIN");
+				if (
+					stateChangeMembers.size >= 1 &&
+					player.paused &&
+					channel.id === player.voiceChannel
+				) {
 					player.pause(false);
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
+					if (
+						player.playing &&
+						player.queue.current &&
+						player.queue.size
+					) {
+						if (settings.CustomChannel)
+							await bot.musicembed(bot, player, settings);
+					}
 					if (player.timeout) clearTimeout(player.timeout);
-					if (timeout247) clearTimeout(timeout247);
-					return;
+					if (player.timeout2) clearTimeout(player.timeout2);
+					if (player.timeout3) clearTimeout(player.timeout3);
 				}
 				break;
 			case "LEAVE":
-				if (!player) return;
-				if (stateChangeMembers.size === 0 && player.playing) {
-					//pause track
-					player.pause(true);
+				bot.logger.debug("LEAVE");
+				if (stateChangeMembers.size === 0) {
+					if (player.playing) player.pause(true);
 					if (settings.CustomChannel)
 						await bot.musicembed(bot, player, settings);
-
-					if (!settings.twentyFourSeven) {
-						//player.pause(true);
-						bot.manager.emit(
-							"queueEnd",
-							player,
-							player.queue.current,
-							bot
-						);
-					} else {
-						timeout247 = setTimeout(async () => {
-							if (settings.CustomChannel) {
-								player.queue.clear();
-								player.stop();
-								await bot.musicoff(bot, settings);
-							}
-						}, bot.config.LeaveTimeout);
-					}
-					return;
+					bot.manager.emit(
+						"queueEnd",
+						player,
+						player.queue.current,
+						bot
+					);
 				}
 				break;
 		}

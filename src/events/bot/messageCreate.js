@@ -410,7 +410,6 @@ module.exports = class Message extends Event {
 
 			try {
 				// await bot.refreshEmbed(bot, settings);
-				bot.logger.log("Searching for song using search function");
 				return await bot.search(
 					bot,
 					msg,

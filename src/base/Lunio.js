@@ -82,8 +82,9 @@ class Lunio extends Client {
 		this.musicoff = require("../utils/functions/AudioFunctions/musicoff"); // bot, settings { mChannelID, mChannelEmbedID, Language }
 		this.getduration = require("../utils/functions/AudioFunctions/getduration"); // duration
 		this.read24hFormat = require("../utils/functions/AudioFunctions/read24hFormat"); // text
-		this.replaceTitle = require("../utils/functions/AudioFunctions/replaceTitle"); // bot, res
 		this.refreshEmbed = require("../utils/functions/AudioFunctions/refreshEmbed"); // bot, settings
+		this.replaceTitle = require("../utils/functions/AudioFunctions/replaceTitle"); // bot, res
+		this.replaceCredentials = require("../utils/functions/AudioFunctions/replaceCredentials"); // bot, res
 
 		//functionsForPlalists
 		this.createPlaylist = require("../utils/functions/PlaylistFunctions/createPlaylist"); // bot, settings

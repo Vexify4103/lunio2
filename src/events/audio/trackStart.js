@@ -16,6 +16,9 @@ class TrackStart extends Event {
 
 	async run(bot, player, track) {
 		if (player.timeout != "null") clearTimeout(player.timeout);
+		if (player.timeout2 != "null") clearTimeout(player.timeout2);
+		if (player.timeout3 != "null") clearTimeout(player.timeout3);
+		
 		let settings = await bot.getGuildData(bot, player.guild);
 		track.title = await bot.replaceTitle(bot, track);
 

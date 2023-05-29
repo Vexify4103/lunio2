@@ -56,7 +56,17 @@ class QueueEnd extends Event {
 				}, bot.config.LeaveTimeout);
 				return;
 			}
-			await bot.musicoff(bot, settings);
+			if (player.queue.size) {
+				player.timeout2 = setTimeout(async () => {
+					if (settings.CustomChannel) {
+						player.queue.clear();
+						player.stop();
+						await bot.musicoff(bot, settings);
+					}
+				}, bot.config.LeaveTimeout);
+			} else {
+				if (settings.CustomChannel) await bot.musicoff(bot, settings);
+			}
 			bot.logger.log(
 				`${player.guild} is set to 24/7 mode. Staying in voice channel`
 			);
@@ -83,13 +93,13 @@ class QueueEnd extends Event {
 
 					player.destroy();
 				}, bot.config.LeaveTimeout);
+				return;
 			}
 
 			let res;
 			try {
 				res = await bot.manager.search(searchURI, track.requester);
 				res = await bot.replaceTitle(bot, res);
-				//console.log(res);
 
 				if (res.loadType === "LOAD_FAILED") {
 					if (!player.queue.current) player.destroy();

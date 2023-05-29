@@ -53,7 +53,6 @@ module.exports = class Play extends Command {
 		const member = await guild.members.fetch(interaction.user.id);
 		const textchannel = await guild.channels.fetch(interaction.channelId);
 
-		// reply to interaciton
 		await interaction.deferReply({ ephemeral: true });
 		const { channel } = member.voice;
 		const search = interaction.options.getString("track");
@@ -76,23 +75,39 @@ module.exports = class Play extends Command {
 			return;
 		}
 
-		bot.manager.search(search, member.user).then(async (res) => {
-			res = await bot.replaceTitle(bot, res);
-			await bot.delay(bot, 500);
-			let color = await bot.getColor(bot, guild.id);
+		let res = await bot.manager.search(search, member.user);
+		res = await bot.replaceTitle(bot, res);
+		await bot.delay(bot, 500);
+		const color = await bot.getColor(bot, guild.id);
 
-			if (settings.SongUserLimit > 0 && bot.checkDJ(member, settings)) {
-				res.tracks = res.tracks.slice(0, settings.SongUserLimit);
-			}
-			if (settings.SongTimeLimitMS > 0 && bot.checkDJ(member, settings)) {
-				res.tracks = res.tracks.filter(
-					(song) => song.duration <= settings.SongTimeLimitMS
+		if (settings.SongUserLimit > 0 && bot.checkDJ(member, settings)) {
+			res.tracks = res.tracks.slice(0, settings.SongUserLimit);
+		}
+		if (settings.SongTimeLimitMS > 0 && bot.checkDJ(member, settings)) {
+			res.tracks = res.tracks.filter(
+				(song) => song.duration <= settings.SongTimeLimitMS
+			);
+		}
+
+		const track = res.tracks[0];
+
+		if (!track || res.tracks.length === 0) {
+			embed = new EmbedBuilder()
+				.setColor(bot.config.colorWrong)
+				.setDescription(
+					bot.translate(settings.Language, "Everyone/play:NO_MATCHES")
 				);
-			}
 
-			const track = res.tracks[0];
+			return setTimeout(() => {
+				interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+			}, bot.ws.ping * 2);
+		}
 
-			if (!track || res.tracks.length === 0) {
+		switch (res.loadType) {
+			case "NO_MATCHES":
 				embed = new EmbedBuilder()
 					.setColor(bot.config.colorWrong)
 					.setDescription(
@@ -102,37 +117,57 @@ module.exports = class Play extends Command {
 						)
 					);
 
-				return setTimeout(() => {
+				interaction.editReply({
+					embeds: [embed],
+					ephemeral: true,
+				});
+				break;
+
+			case "TRACK_LOADED":
+				bot.logger.log(`${guild.id} track loaded: ${track.title}`);
+				player.queue.add(track);
+
+				if (!player.playing && !player.paused && !player.queue.size)
+					await player.play();
+
+				if (player.queue.length !== 0) {
+					title = bot.translate(
+						settings.Language,
+						"Everyone/play:LOADED_TITLE_1",
+						{
+							POS: player.queue.length,
+						}
+					);
+				} else {
+					title = bot.translate(
+						settings.Language,
+						"Everyone/play:LOADED_TITLE_2"
+					);
+				}
+				embed = new EmbedBuilder()
+					.setColor(color)
+					.setTitle(title)
+					.setDescription(`${track.author} - ${track.title}`);
+
+				setTimeout(() => {
 					interaction.editReply({
 						embeds: [embed],
 						ephemeral: true,
 					});
 				}, bot.ws.ping * 2);
-			}
-			switch (res.loadType) {
-				case "NO_MATCHES":
-					embed = new EmbedBuilder()
-						.setColor(bot.config.colorWrong)
-						.setDescription(
-							bot.translate(
-								settings.Language,
-								"Everyone/play:NO_MATCHES"
-							)
-						);
+				if (settings.CustomChannel) {
+					await bot.musicembed(bot, player, settings);
+				}
+				break;
 
-					interaction.editReply({
-						embeds: [embed],
-						ephemeral: true,
-					});
-					break;
+			case "SEARCH_RESULT":
+				bot.logger.log(`track found: ${track.title}`);
+				player.queue.add(track);
 
-				case "TRACK_LOADED":
-					bot.logger.log(`${guild.id} track Loaded: ${track.title}`);
-					player.queue.add(track);
+				if (!player.playing && !player.paused && !player.queue.size)
+					await player.play();
 
-					if (!player.playing && !player.paused && !player.queue.size)
-						await player.play();
-
+				if (!settings.CustomChannel) {
 					if (player.queue.length !== 0) {
 						title = bot.translate(
 							settings.Language,
@@ -141,276 +176,210 @@ module.exports = class Play extends Command {
 								POS: player.queue.length,
 							}
 						);
-						embed = new EmbedBuilder()
-							.setColor(color)
-							.setTitle(title)
-							.setDescription(`${track.author} - ${track.title}`);
 					} else {
 						title = bot.translate(
 							settings.Language,
 							"Everyone/play:LOADED_TITLE_2"
 						);
-						embed = new EmbedBuilder()
-							.setColor(color)
-							.setTitle(title)
-							.setDescription(`${track.author} - ${track.title}`);
 					}
+					embed = new EmbedBuilder()
+						.setColor(color)
+						.setTitle(title)
+						.setDescription(`${track.author} - ${track.title}`);
+
 					setTimeout(() => {
 						interaction.editReply({
 							embeds: [embed],
 							ephemeral: true,
 						});
 					}, bot.ws.ping * 2);
-					if (settings.CustomChannel) {
-						await bot.musicembed(bot, player, settings);
+				} else {
+					if (player.queue.length !== 0) {
+						title = bot.translate(
+							settings.Language,
+							"Everyone/play:LOADED_TITLE_1",
+							{
+								POS: player.queue.length,
+							}
+						);
+					} else {
+						title = bot.translate(
+							settings.Language,
+							"Everyone/play:LOADED_TITLE_2"
+						);
 					}
-					break;
+					embed = new EmbedBuilder()
+						.setColor(color)
+						.setTitle(title)
+						.setDescription(`${track.author} - ${track.title}`);
 
-				case "SEARCH_RESULT":
-					bot.logger.log(`Track found: ${track.title}`);
-					player.queue.add(track);
+					setTimeout(() => {
+						interaction.editReply({
+							embeds: [embed],
+							ephemeral: true,
+						});
+					}, bot.ws.ping * 2);
+					if (settings.CustomChannel)
+						await bot.musicembed(bot, player, settings);
+				}
+				break;
+
+			case "PLAYLIST_LOADED":
+				let PLAYLIST_LOADED;
+				if (search.includes("&list=RD")) {
+					PLAYLIST_LOADED = new EmbedBuilder()
+						.setColor(color)
+						.setDescription(
+							bot.translate(
+								settings.Language,
+								"Everyone/play:PL_LOADED_DESC_1",
+								{
+									PLAYLISTNAME: `${bot.codeBlock(
+										res.playlist.name
+									)}`,
+								}
+							)
+						);
+
+					player.queue.add(res.tracks[0]);
 
 					if (!player.playing && !player.paused && !player.queue.size)
 						await player.play();
 
-					if (!settings.CustomChannel) {
-						if (player.queue.length !== 0) {
-							title = bot.translate(
-								settings.Language,
-								"Everyone/play:LOADED_TITLE_1",
-								{
-									POS: player.queue.length,
-								}
-							);
-							embed = new EmbedBuilder()
-								.setColor(color)
-								.setTitle(title)
-								.setDescription(
-									`${track.author} - ${track.title}`
-								);
-						} else {
-							title = bot.translate(
-								settings.Language,
-								"Everyone/play:LOADED_TITLE_2"
-							);
-							embed = new EmbedBuilder()
-								.setColor(color)
-								.setTitle(title)
-								.setDescription(
-									`${track.author} - ${track.title}`
-								);
-						}
+					setTimeout(() => {
+						interaction.editReply({
+							embeds: [PLAYLIST_LOADED],
+							ephemeral: true,
+						});
+					}, bot.ws.ping * 2);
+				} else {
+					if (settings.Playlists) {
+						switch (flags) {
+							case "n":
+								res.tracks.shift();
 
-						setTimeout(() => {
-							interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}, bot.ws.ping * 2);
+								PLAYLIST_LOADED = new EmbedBuilder()
+									.setColor(color)
+									.setDescription(
+										bot.translate(
+											settings.Language,
+											"Everyone/play:PL_LOADED_DESC_2",
+											{
+												SIZE: res.tracks.length - 1,
+												PLAYLISTNAME: `${bot.codeBlock(
+													res.playlist.name
+												)}`,
+											}
+										)
+									);
+
+								player.queue.add(res.tracks);
+								if (
+									!player.playing &&
+									!player.paused &&
+									player.queue.totalSize === res.tracks.length
+								)
+									await player.play();
+								break;
+							case "s":
+								shuffleArray(res.tracks);
+
+								PLAYLIST_LOADED = new EmbedBuilder()
+									.setColor(color)
+									.setDescription(
+										bot.translate(
+											settings.Language,
+											"Everyone/play:PL_LOADED_DESC_2",
+											{
+												SIZE: res.tracks.length,
+												PLAYLISTNAME: `${bot.codeBlock(
+													res.playlist.name
+												)}`,
+											}
+										)
+									);
+
+								player.queue.add(res.tracks);
+								if (
+									!player.playing &&
+									!player.paused &&
+									player.queue.totalSize === res.tracks.length
+								)
+									await player.play();
+								break;
+							case "r":
+								res.tracks.reverse();
+
+								PLAYLIST_LOADED = new EmbedBuilder()
+									.setColor(color)
+									.setDescription(
+										bot.translate(
+											settings.Language,
+											"Everyone/play:PL_LOADED_DESC_2",
+											{
+												SIZE: res.tracks.length,
+												PLAYLISTNAME: `${bot.codeBlock(
+													res.playlist.name
+												)}`,
+											}
+										)
+									);
+
+								player.queue.add(res.tracks);
+								if (
+									!player.playing &&
+									!player.paused &&
+									player.queue.totalSize === res.tracks.length
+								)
+									await player.play();
+								break;
+							default:
+								PLAYLIST_LOADED = new EmbedBuilder()
+									.setColor(color)
+									.setDescription(
+										bot.translate(
+											settings.Language,
+											"Everyone/play:PL_LOADED_DESC_2",
+											{
+												SIZE: res.tracks.length,
+												PLAYLISTNAME: `${bot.codeBlock(
+													res.playlist.name
+												)}`,
+											}
+										)
+									);
+
+								player.queue.add(res.tracks);
+								if (
+									!player.playing &&
+									!player.paused &&
+									player.queue.totalSize === res.tracks.length
+								)
+									await player.play();
+								break;
+						}
 					} else {
-						if (player.queue.length !== 0) {
-							title = bot.translate(
-								settings.Language,
-								"Everyone/play:LOADED_TITLE_1",
-								{
-									POS: player.queue.length,
-								}
-							);
-							embed = new EmbedBuilder()
-								.setColor(color)
-								.setTitle(title)
-								.setDescription(
-									`${track.author} - ${track.title}`
-								);
-						} else {
-							title = bot.translate(
-								settings.Language,
-								"Everyone/play:LOADED_TITLE_2"
-							);
-							embed = new EmbedBuilder()
-								.setColor(color)
-								.setTitle(title)
-								.setDescription(
-									`${track.author} - ${track.title}`
-								);
-						}
-
-						setTimeout(() => {
-							interaction.editReply({
-								embeds: [embed],
-								ephemeral: true,
-							});
-						}, bot.ws.ping * 2);
-						if (settings.CustomChannel)
-							await bot.musicembed(bot, player, settings);
-					}
-					break;
-
-				case "PLAYLIST_LOADED":
-					let PLAYLIST_LOADED;
-					if (search.includes("&list=RD")) {
 						PLAYLIST_LOADED = new EmbedBuilder()
-							.setColor(color)
+							.setColor(bot.config.colorOrange)
 							.setDescription(
 								bot.translate(
 									settings.Language,
-									"Everyone/play:PL_LOADED_DESC_1",
-									{
-										PLAYLISTNAME: `${bot.codeBlock(
-											res.playlist.name
-										)}`,
-									}
+									"Everyone/play:PL_NOT_ALLOWED"
 								)
 							);
-
-						player.queue.add(res.tracks[0]);
-
-						if (
-							!player.playing &&
-							!player.paused &&
-							!player.queue.size
-						)
-							await player.play();
-
-						setTimeout(() => {
-							interaction.editReply({
-								embeds: [PLAYLIST_LOADED],
-								ephemeral: true,
-							});
-						}, bot.ws.ping * 2);
-					} else {
-						if (settings.Playlists) {
-							switch (flags) {
-								case "n":
-									res.tracks.shift();
-
-									PLAYLIST_LOADED = new EmbedBuilder()
-										.setColor(color)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/play:PL_LOADED_DESC_2",
-												{
-													SIZE: res.tracks.length - 1,
-													PLAYLISTNAME: `${bot.codeBlock(
-														res.playlist.name
-													)}`,
-												}
-											)
-										);
-
-									player.queue.add(res.tracks);
-									if (
-										!player.playing &&
-										!player.paused &&
-										player.queue.totalSize ===
-											res.tracks.length
-									)
-										await player.play();
-									break;
-								case "s":
-									shuffleArray(res.tracks);
-
-									PLAYLIST_LOADED = new EmbedBuilder()
-										.setColor(color)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/play:PL_LOADED_DESC_2",
-												{
-													SIZE: res.tracks.length,
-													PLAYLISTNAME: `${bot.codeBlock(
-														res.playlist.name
-													)}`,
-												}
-											)
-										);
-
-									player.queue.add(res.tracks);
-									if (
-										!player.playing &&
-										!player.paused &&
-										player.queue.totalSize ===
-											res.tracks.length
-									)
-										await player.play();
-									break;
-								case "r":
-									res.tracks.reverse();
-
-									PLAYLIST_LOADED = new EmbedBuilder()
-										.setColor(color)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/play:PL_LOADED_DESC_2",
-												{
-													SIZE: res.tracks.length,
-													PLAYLISTNAME: `${bot.codeBlock(
-														res.playlist.name
-													)}`,
-												}
-											)
-										);
-
-									player.queue.add(res.tracks);
-									if (
-										!player.playing &&
-										!player.paused &&
-										player.queue.totalSize ===
-											res.tracks.length
-									)
-										await player.play();
-									break;
-								default:
-									PLAYLIST_LOADED = new EmbedBuilder()
-										.setColor(color)
-										.setDescription(
-											bot.translate(
-												settings.Language,
-												"Everyone/play:PL_LOADED_DESC_2",
-												{
-													SIZE: res.tracks.length,
-													PLAYLISTNAME: `${bot.codeBlock(
-														res.playlist.name
-													)}`,
-												}
-											)
-										);
-
-									player.queue.add(res.tracks);
-									if (
-										!player.playing &&
-										!player.paused &&
-										player.queue.totalSize ===
-											res.tracks.length
-									)
-										await player.play();
-									break;
-							}
-						} else {
-							PLAYLIST_LOADED = new EmbedBuilder()
-								.setColor(bot.config.colorOrange)
-								.setDescription(
-									bot.translate(
-										settings.Language,
-										"Everyone/play:PL_NOT_ALLOWED"
-									)
-								);
-						}
-						setTimeout(() => {
-							interaction.editReply({
-								embeds: [PLAYLIST_LOADED],
-								ephemeral: true,
-							});
-						}, bot.ws.ping * 2);
 					}
-					if (settings.CustomChannel) {
-						await bot.musicembed(bot, player, settings);
-					}
-					break;
-			}
-		});
+					setTimeout(() => {
+						interaction.editReply({
+							embeds: [PLAYLIST_LOADED],
+							ephemeral: true,
+						});
+					}, bot.ws.ping * 2);
+				}
+				if (settings.CustomChannel) {
+					await bot.musicembed(bot, player, settings);
+				}
+				break;
+		}
 
 		function shuffleArray(array) {
 			for (var i = array.length - 1; i > 0; i--) {

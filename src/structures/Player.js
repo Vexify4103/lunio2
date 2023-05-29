@@ -10,6 +10,8 @@ module.exports = Structure.extend("Player", (Player) => {
 			this.skipSong = [];
 			// for bot leave function
 			this.timeout = null;
+			this.timeout2 = null;
+			this.timeout3 = null;
 			// for filters
 			this.speed = 1;
 			this.nightcore = false;
