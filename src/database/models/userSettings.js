@@ -1,8 +1,4 @@
 const { Schema, model } = require("mongoose");
-// const dayjs = require('dayjs');
-// const duration = require('dayjs/plugin/duration');
-// dayjs.extend(duration);
-// const date = dayjs().add(dayjs.duration({'months' : 1}));
 
 const userSchema = Schema({
 	//IDENTIFIER

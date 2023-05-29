@@ -25,7 +25,54 @@ class AutoComplete extends Event {
 	 */
 	async run(bot, interaction) {
 		switch (interaction.commandName) {
-			case "play": {
+			case "premium":
+				if (interaction.options.getSubcommand() === "upgrade") {
+					// Retrieve the guilds where the bot and the user are both members
+					const sharedGuilds = await getSharedGuilds(
+						bot,
+						interaction.user.id
+					);
+
+					// Get the user's input to sort the guilds by name
+					const userInput = interaction.options.getString("server");
+
+					// Sort the shared guilds by name based on the user's input
+					const sortedGuilds = sharedGuilds.sort((guildA, guildB) =>
+						guildA.name.localeCompare(guildB.name)
+					);
+
+					// Filter the sorted guilds based on the user's input
+					const filteredGuilds = sortedGuilds.filter((guild) =>
+						guild.name
+							.toLowerCase()
+							.startsWith(userInput.toLowerCase())
+					);
+
+					// Convert filteredGuilds to an array
+					const guildArray = Array.from(filteredGuilds);
+
+					// Limit the number of options to 24
+					const options = guildArray.slice(0, 24).map((guild) => ({
+						name: guild[1].name,
+						value: guild[0],
+					}));
+
+					// Respond with the options
+					interaction.respond(options);
+
+					async function getSharedGuilds(bot, userId) {
+						const botGuilds = await bot.guilds.fetch();
+						const userGuilds = await bot.guilds.cache.filter(
+							(guild) => guild.members.cache.has(userId)
+						);
+						const sharedGuilds = botGuilds.filter((guild) =>
+							userGuilds.has(guild.id)
+						);
+						return sharedGuilds;
+					}
+				}
+				break;
+			case "play":
 				// Get current input and make sure it's not 0
 				const searchQuery = interaction.options.getFocused(true).value;
 				if (searchQuery.length == 0) return interaction.respond([]);
@@ -109,14 +156,13 @@ class AutoComplete extends Event {
 				//console.log(results)
 				interaction.respond(
 					results.map((video) => ({
-						name: `${video.title.substring(0, 95)} [${
+						name: `${video.title.substring(0, 90)} [${
 							video.duration_raw
 						}]`,
 						value: video.url,
 					}))
 				);
 				break;
-			}
 			case "help": {
 				const input = interaction.options.getFocused(true).value,
 					commands = [...bot.commands.keys()]
@@ -158,7 +204,7 @@ class AutoComplete extends Event {
 					responseArray.push({
 						name: `${i + 1}: ${player.queue[i].title.substring(
 							0,
-							100
+							90
 						)}`,
 						value: selectedNumber <= 0 ? 1 : selectedNumber + 1,
 					});
@@ -173,25 +219,6 @@ class AutoComplete extends Event {
 					bot,
 					interaction.user.id
 				);
-				/**
-				 * {
-				 *	_id: new ObjectId("636735c42e200cc0a02f4efe"),
-				 *	userID: '337568120028004362',
-				 *	userNAME: 'Vexify#0001',
-				 *	Language: 'en-US',
-				 *	__v: 0,
-				 *	defaultPlaylist: 'songs',
-				 *	expireDate: 1670300357200,
-				 *	guilds: [],
-				 *	hasVoted: false,
-				 *	permpremium: true,
-				 *	premium: true,
-				 *	premiumUses: 99,
-				 *	votedTime: 0
-				 *	}
-				 * console.log(userSettings);
-				 */
-
 				const playlistArray = await PlaylistSchema.find({
 					creator: interaction.user.id,
 				}).exec();
@@ -223,7 +250,7 @@ class AutoComplete extends Event {
 						for (let i = 0; i < playlistArray.length; i++) {
 							const playlist = playlistArray[i];
 							responseArray.push({
-								name: playlist.name.substring(0, 100),
+								name: playlist.name.substring(0, 90),
 								value: playlist.name,
 							});
 						}
@@ -239,7 +266,7 @@ class AutoComplete extends Event {
 									{
 										name: defaultSettings.name.substring(
 											0,
-											100
+											90
 										),
 										value: defaultSettings.name,
 									},
@@ -248,7 +275,7 @@ class AutoComplete extends Event {
 							for (let i = 0; i < playlistArray.length; i++) {
 								const playlist = playlistArray[i];
 								responseArray.push({
-									name: playlist.name.substring(0, 100),
+									name: playlist.name.substring(0, 90),
 									value: playlist.name,
 								});
 							}
@@ -349,7 +376,7 @@ class AutoComplete extends Event {
 
 							return interaction.respond(
 								results.map((video) => ({
-									name: `${video.title.substring(0, 95)} [${
+									name: `${video.title.substring(0, 90)} [${
 										video.duration_raw
 									}]`,
 									value: video.url,
@@ -368,7 +395,7 @@ class AutoComplete extends Event {
 									{
 										name: defaultSettings.name.substring(
 											0,
-											100
+											90
 										),
 										value: defaultSettings.name,
 									},
@@ -377,7 +404,7 @@ class AutoComplete extends Event {
 							for (let i = 0; i < playlistArray.length; i++) {
 								const playlist = playlistArray[i];
 								responseArray.push({
-									name: playlist.name.substring(0, 100),
+									name: playlist.name.substring(0, 90),
 									value: playlist.name,
 								});
 							}
@@ -418,7 +445,7 @@ class AutoComplete extends Event {
 										playlist.songs[i].author
 									} - ${playlist.songs[i].title.substring(
 										0,
-										95
+										90
 									)}`,
 									value: selectedIndex <= 0 ? 1 : inputNumber,
 								});

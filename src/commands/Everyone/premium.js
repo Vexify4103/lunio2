@@ -1,4 +1,3 @@
-// Dependencies
 const Command = require("../../structures/Command.js");
 const {
 	EmbedBuilder,
@@ -6,9 +5,7 @@ const {
 	ButtonBuilder,
 	ButtonStyle,
 } = require("discord.js");
-const dayjs = require("dayjs");
-const duration = require("dayjs/plugin/duration");
-dayjs.extend(duration);
+
 
 module.exports = class Premium extends Command {
 	constructor(bot) {
@@ -24,30 +21,29 @@ module.exports = class Premium extends Command {
 			reqvc: false,
 			options: [
 				{
-					// COMMAND #1
 					name: "status",
 					description: "Show the user and server premium status.",
 					type: 1,
 				},
 				{
-					// COMMAND #2 / PREMIUM
 					name: "upgrade",
 					description: "Upgrade 1 server to premium.",
 					type: 1,
 					options: [
 						{
-							name: "server-id",
+							name: "server",
 							description:
 								"ID of the server you want to be upgraded.",
 							type: 3,
 							required: true,
+							autocomplete: true
 						},
 					],
 				},
 			],
 			methods: [
 				{
-					name: "upgrade <server-id>",
+					name: "upgrade <server>",
 					description: "ID of the server you want to be upgraded.",
 					perms: "Premium",
 				},
@@ -59,7 +55,7 @@ module.exports = class Premium extends Command {
 		const member = await guild.members.fetch(interaction.user.id);
 		let userSettings = await bot.getUserData(bot, member.user.id);
 		const Sub = interaction.options.getSubcommand(["status", "upgrade"]);
-		const ID = interaction.options.getString("server-id");
+		const ID = interaction.options.getString("server");
 
 		let supportServer = await bot.guilds.fetch("866666289178869770");
 		const Supporter = "951804516490174514";
@@ -74,7 +70,6 @@ module.exports = class Premium extends Command {
 				.setURL(bot.config.premiumLink)
 				.setLabel("Premium")
 				.setStyle(ButtonStyle.Link),
-
 			new ButtonBuilder()
 				.setURL(bot.config.premiumLink)
 				.setLabel("Premium")
@@ -104,54 +99,49 @@ module.exports = class Premium extends Command {
 						ephemeral: true,
 					});
 				}
-				let userSubscription;
-				if (!userSettings.premium) {
-					userSubscription = bot.translate(
-						settings.Language,
-						"Everyone/premium:NO_PREMIUM"
-					);
-				} else {
-					if (user._roles.includes(Supporter)) {
-						userSubscription = bot.translate(
-							settings.Language,
-							"Everyone/premium:SUPPORTER_PREMIUM"
-						);
-					} else if (user._roles.includes(Premium1)) {
-						userSubscription = bot.translate(
-							settings.Language,
-							"Everyone/premium:1_SERVER_PREMIUM"
-						);
-					} else if (user._roles.includes(Premium3)) {
-						userSubscription = bot.translate(
-							settings.Language,
-							"Everyone/premium:3_SERVER_PREMIUM"
-						);
-					} else if (user._roles.includes(Premium6)) {
-						userSubscription = bot.translate(
-							settings.Language,
-							"Everyone/premium:6_SERVER_PREMIUM"
-						);
-					} else if (user._roles.includes(Premium10)) {
-						userSubscription = bot.translate(
-							settings.Language,
-							"Everyone/premium:10_SERVER_PREMIUM"
-						);
-					} else if (user._roles.includes(Premium15)) {
-						userSubscription = bot.translate(
-							settings.Language,
-							"Everyone/premium:15_SERVER_PREMIUM"
-						);
-					} else {
-						userSubscription = bot.translate(
+				let userSubscription = userSettings.premium
+					? user._roles.includes(Supporter)
+						? bot.translate(
+								settings.Language,
+								"Everyone/premium:SUPPORTER_PREMIUM"
+						  )
+						: user._roles.includes(Premium1)
+						? bot.translate(
+								settings.Language,
+								"Everyone/premium:1_SERVER_PREMIUM"
+						  )
+						: user._roles.includes(Premium3)
+						? bot.translate(
+								settings.Language,
+								"Everyone/premium:3_SERVER_PREMIUM"
+						  )
+						: user._roles.includes(Premium6)
+						? bot.translate(
+								settings.Language,
+								"Everyone/premium:6_SERVER_PREMIUM"
+						  )
+						: user._roles.includes(Premium10)
+						? bot.translate(
+								settings.Language,
+								"Everyone/premium:10_SERVER_PREMIUM"
+						  )
+						: user._roles.includes(Premium15)
+						? bot.translate(
+								settings.Language,
+								"Everyone/premium:15_SERVER_PREMIUM"
+						  )
+						: bot.translate(
+								settings.Language,
+								"Everyone/premium:NO_PREMIUM"
+						  )
+					: bot.translate(
 							settings.Language,
 							"Everyone/premium:NO_PREMIUM"
-						);
-					}
-				}
+					  );
+
 				let embed2 = new EmbedBuilder().setColor(
 					await bot.getColor(bot, guild.id)
 				);
-
 				let usesLeft = userSettings.premiumUses;
 
 				if (settings.permpremium) {
@@ -196,7 +186,7 @@ module.exports = class Premium extends Command {
 					components: [linkRow],
 					ephemeral: true,
 				});
-			case "upgrade": //ID required
+			case "upgrade":
 				let embed;
 				if (!userSettings.premium) {
 					embed = new EmbedBuilder()
@@ -284,15 +274,17 @@ module.exports = class Premium extends Command {
 						newUserSettings
 					);
 
-					const date = dayjs().add(
-						dayjs.duration({
-							months: 1,
-						})
+					const currentDate = new Date();
+					const nextMonthDate = new Date(
+						currentDate.getFullYear(),
+						currentDate.getMonth() + 1,
+						currentDate.getDate()
 					);
+					const expireDate = nextMonthDate.getTime();
 
 					let newGuildSettings = {
 						premium: true,
-						expireDate: date.$d,
+						expireDate: expireDate,
 					};
 
 					await bot.updateGuildSettings(server.id, newGuildSettings);

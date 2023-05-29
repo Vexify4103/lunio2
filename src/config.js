@@ -14,7 +14,7 @@ const config = {
 		// Link to your support server
 		link: "https://discord.gg/rrqEFukVUZ",
 		// Your support's server ID
-		GuildID: "735649514815488120",
+		GuildID: "866666289178869770",
 		// This for using the suggestion command on your server
 		ModRole: "785285760064159745",
 		// What channel to post the suggestions

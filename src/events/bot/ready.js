@@ -5,9 +5,7 @@ require("dotenv").config();
 const { ActivityType } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
-const dayjs = require("dayjs");
-const duration = require("dayjs/plugin/duration");
-dayjs.extend(duration);
+
 module.exports = class Ready extends Event {
 	constructor(...args) {
 		super(...args, {
@@ -126,86 +124,49 @@ module.exports = class Ready extends Event {
 			}
 		}
 
-		bot.logger.ready("All guilds have been initialized");
-
-		let supportServer = await bot.guilds.fetch("866666289178869770");
-		const Supporter = "951804516490174514";
-		const Premium1 = "951807454553976903";
-		const Premium3 = "951809000062738462";
-		const Premium6 = "951826517535653918";
-		const Premium10 = "951826481204580382";
-		const Premium15 = "951826570249666560";
+		const supportServer = await bot.guilds.fetch(
+			bot.config.SupportServer.GuildID
+		);
+		const roleMappings = {
+			"951804516490174514": { premiumUses: null }, // SUPPORTER
+			"951807454553976903": { premiumUses: 1 }, // PREMIUM 1
+			"951809000062738462": { premiumUses: 3 }, // PREMIUM 3
+			"951826517535653918": { premiumUses: 6 }, // PREMIUM 6
+			"951826481204580382": { premiumUses: 10 }, // PREMIUM 10
+			"951826570249666560": { premiumUses: 15 }, // PREMIUM 15
+		};
 
 		const USERS = await supportServer.members.fetch();
+		const currentDate = new Date();
+		const nextMonthDate = new Date(
+			currentDate.getFullYear(),
+			currentDate.getMonth() + 1,
+			currentDate.getDate()
+		);
+		const expireDate = nextMonthDate.getTime();
 
-		// console.log(date.$d > new Date())
-		const date = dayjs().add(dayjs.duration({ months: 1 }));
-		// console.log(date.$d)
-		bot.logger.log(`Setting 15min interval for updating user Premium`);
-		setInterval(async () => {
-			bot.logger.log(`Updating user Premium`);
-			USERS.map(async (user) => {
-				const userSettings = await bot.getUserData(bot, user.user.id);
-				if (userSettings.premium) return;
-				try {
-					if (user._roles.includes(Supporter)) {
-						// RUN SUPPORTER
-						let settings = {
+		bot.logger.log(`Updating user Premium`);
+
+		for (const [, user] of USERS) {
+			const userSettings = await bot.getUserData(bot, user.user.id);
+			if (userSettings.premium) continue;
+			try {
+				for (const roleID in roleMappings) {
+					if (user._roles.includes(roleID)) {
+						const { premiumUses } = roleMappings[roleID];
+						const settings = {
 							premium: true,
-							expireDate: date.$d,
+							expireDate: expireDate,
+							premiumUses,
 						};
-						return await bot.updateUserSettings(user.id, settings);
+						await bot.updateUserSettings(user.id, settings);
+						break;
 					}
-					if (user._roles.includes(Premium1)) {
-						// RUN PREMIUM 1
-						let settings = {
-							premium: true,
-							expireDate: date.$d,
-							premiumUses: 1,
-						};
-						return await bot.updateUserSettings(user.id, settings);
-					}
-					if (user._roles.includes(Premium3)) {
-						// RUN PREMIUM 3
-						let settings = {
-							premium: true,
-							expireDate: date.$d,
-							premiumUses: 3,
-						};
-						return await bot.updateUserSettings(user.id, settings);
-					}
-					if (user._roles.includes(Premium6)) {
-						// RUN PREMIUM 6
-						let settings = {
-							premium: true,
-							expireDate: date.$d,
-							premiumUses: 6,
-						};
-						return await bot.updateUserSettings(user.id, settings);
-					}
-					if (user._roles.includes(Premium10)) {
-						// RUN PREMIUM 10
-						let settings = {
-							premium: true,
-							expireDate: date.$d,
-							premiumUses: 10,
-						};
-						return await bot.updateUserSettings(user.id, settings);
-					}
-					if (user._roles.includes(Premium15)) {
-						// RUN PREMIUM 15
-						let settings = {
-							premium: true,
-							expireDate: date.$d,
-							premiumUses: 15,
-						};
-						return await bot.updateUserSettings(user.id, settings);
-					}
-				} catch (error) {
-					bot.logger.error(`Error updating user premium ${error}`);
 				}
-			});
-		}, 1000 * 60 * 15); //1000 * 60 * 15 //15min
+			} catch (error) {
+				bot.logger.error(`Error updating user premium ${error}`);
+			}
+		}
 
 		// LOG ready event
 		bot.logger.log(
@@ -226,6 +187,6 @@ module.exports = class Ready extends Event {
 				name: "/help",
 				type: ActivityType.Listening,
 			});
-		}, 1000 * 60 * 5)
+		}, 1000 * 60 * 5);
 	}
 };

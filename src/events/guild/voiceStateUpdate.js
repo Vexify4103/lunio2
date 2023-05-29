@@ -11,6 +11,7 @@ module.exports = class voiceStateUpdate extends Event {
 	// run event
 	async run(bot, oldState, newState) {
 		const stateChange = {};
+		let timeout247;
 		// get the state change
 		if (oldState.channel === null && newState.channel !== null)
 			stateChange.type = "JOIN";
@@ -106,13 +107,11 @@ module.exports = class voiceStateUpdate extends Event {
 				if (!player) return;
 				if (stateChangeMembers.size >= 1 && player.paused) {
 					//resume track
-
-					setTimeout(async () => {
-						player.pause(false);
-						if (settings.CustomChannel)
-							await bot.musicembed(bot, player, settings);
-					}, bot.ws.ping * 2);
+					player.pause(false);
+					if (settings.CustomChannel)
+						await bot.musicembed(bot, player, settings);
 					if (player.timeout) clearTimeout(player.timeout);
+					if (timeout247) clearTimeout(timeout247);
 					return;
 				}
 				break;
@@ -120,19 +119,27 @@ module.exports = class voiceStateUpdate extends Event {
 				if (!player) return;
 				if (stateChangeMembers.size === 0 && player.playing) {
 					//pause track
+					player.pause(true);
+					if (settings.CustomChannel)
+						await bot.musicembed(bot, player, settings);
 
-					setTimeout(async () => {
-						player.pause(true);
-						if (settings.CustomChannel)
-							await bot.musicembed(bot, player, settings);
-					}, bot.ws.ping * 2);
-					//player.pause(true);
-					bot.manager.emit(
-						"queueEnd",
-						player,
-						player.queue.current,
-						bot
-					);
+					if (!settings.twentyFourSeven) {
+						//player.pause(true);
+						bot.manager.emit(
+							"queueEnd",
+							player,
+							player.queue.current,
+							bot
+						);
+					} else {
+						timeout247 = setTimeout(async () => {
+							if (settings.CustomChannel) {
+								player.queue.clear();
+								player.stop();
+								await bot.musicoff(bot, settings);
+							}
+						}, bot.config.LeaveTimeout);
+					}
 					return;
 				}
 				break;

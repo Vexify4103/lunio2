@@ -14,7 +14,7 @@ class QueueEnd extends Event {
 		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
 		const content = `${player.guild} finished track: ${track.author} ${track.title}`;
 		console.log(`${timestamp} ${chalk.bgYellow("FINISHED")} ${content} `);
-		
+
 		const videoID = track.uri.substring(track.uri.indexOf("=") + 1);
 		let randomIndex;
 		let searchURI;
@@ -52,14 +52,13 @@ class QueueEnd extends Event {
 					} else {
 						await channel.send({ embeds: [embed] });
 					}
-
 					player.destroy();
 				}, bot.config.LeaveTimeout);
 				return;
 			}
 			await bot.musicoff(bot, settings);
 			bot.logger.log(
-				`Guild ${player.guild} is in 24/7 mode. Staying in voice channel`
+				`${player.guild} is set to 24/7 mode. Staying in voice channel`
 			);
 		} else {
 			if (!settings.twentyFourSeven) {
