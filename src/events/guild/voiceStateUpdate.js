@@ -9,9 +9,17 @@ module.exports = class voiceStateUpdate extends Event {
 	}
 
 	async run(bot, oldState, newState) {
-		const stateChange = {};
-		let timeout247;
+		// get guild and player
+		const guildId = newState.guild.id || oldState?.guild.id;
+		const player = bot.manager.players.get(guildId);
+		const settings = await bot.getGuildData(bot, guildId);
+		// check if the bot is active (playing, paused or empty does not matter (return otherwise)
+		if (!player || player.state !== "CONNECTED") return;
 
+		// prepreoces the data
+		const stateChange = {};
+
+		// get the state change
 		if (oldState.channel === null && newState.channel !== null)
 			stateChange.type = "JOIN";
 		if (oldState.channel !== null && newState.channel === null)
@@ -20,16 +28,45 @@ module.exports = class voiceStateUpdate extends Event {
 			stateChange.type = "MOVE";
 		if (oldState.channel === null && newState.channel === null) return;
 
-		const channel = newState.guild.channels.cache.get(
-			newState.channel?.id ?? newState.channelId
-		);
-		let settings = await bot.getGuildData(
-			bot,
-			oldState.guild.id || newState.guild.id
-		);
-		const player = bot.manager.players.get(
-			oldState.guild.id || newState.guild.id
-		);
+		if (
+			newState.id === bot.user.id &&
+			newState.serverMute == true &&
+			oldState.serverMute == false
+		) {
+			player.pause(true);
+			if (settings.CustomChannel)
+				await bot.musicembed(bot, player, settings);
+			return;
+		}
+		if (
+			newState.id === bot.user.id &&
+			newState.serverMute == false &&
+			oldState.serverMute == true
+		) {
+			player.pause(false);
+			if (settings.CustomChannel)
+				await bot.musicembed(bot, player, settings);
+			return;
+		}
+
+		// move check first as it changes type
+		if (stateChange.type === "MOVE") {
+			if (oldState.channel.id === player.voiceChannel)
+				stateChange.type = "LEAVE";
+			if (newState.channel.id === player.voiceChannel)
+				stateChange.type = "JOIN";
+		}
+		// double triggered on purpose for MOVE events
+		if (stateChange.type === "JOIN") stateChange.channel = newState.channel;
+		if (stateChange.type === "LEAVE")
+			stateChange.channel = oldState.channel;
+
+		// check if the bot's voice channel is involved (return otherwise)
+		if (
+			!stateChange.channel ||
+			stateChange.channel.id !== player.voiceChannel
+		)
+			return;
 
 		if (
 			newState.id === bot.user.id &&
@@ -38,39 +75,14 @@ module.exports = class voiceStateUpdate extends Event {
 		) {
 			try {
 				newState.setDeaf(true);
-				if (player?.paused) return;
-				if (player?.playing) {
-					setTimeout(() => {
-						player.pause(true);
-						setTimeout(() => {
-							player.pause(false);
-						}, bot.ws.ping * 2);
-					}, bot.ws.ping * 2);
-				}
 			} catch (error) {
 				console.error(error);
 			}
 		}
 
-		if (oldState.channelId && !newState.channelId) {
-			try {
-				if (oldState.member.user.id === bot.user.id && player) {
-					player.destroy();
-				}
-			} catch (err) {
-				console.error(err);
-			}
-		}
-
-		if (
-			player &&
-			!newState.guild.members.cache.get(bot.user.id).voice.channelId
-		)
-			player.destroy();
-
 		if (
 			newState.id == bot.user.id &&
-			channel?.type == ChannelType.GuildStageVoice
+			newState.type == ChannelType.GuildStageVoice
 		) {
 			if (!oldState.channelId) {
 				try {
@@ -89,48 +101,24 @@ module.exports = class voiceStateUpdate extends Event {
 			}
 		}
 
-		if (oldState.id === bot.user.id) return;
-		if (!oldState.guild.members.cache.get(bot.user.id).voice.channelId)
-			return;
-
-		let stateChangeMembers = {};
-		let channelCheck =
-			newState.guild.channels.cache.get(
-				newState.channel?.id ?? newState.channelId
-			) ||
-			oldState.guild.channels.cache.get(
-				oldState.channel?.id ?? oldState.channelId
-			);
-		stateChangeMembers = channelCheck.members.filter(
+		stateChange.members = stateChange.channel.members.filter(
 			(member) => !member.user.bot
 		);
 
-		if (!player) return;
 		switch (stateChange.type) {
 			case "JOIN":
-				bot.logger.debug("JOIN");
-				if (
-					stateChangeMembers.size >= 1 &&
-					player.paused &&
-					channel.id === player.voiceChannel
-				) {
+				if (stateChange.members.size === 1 && player.paused) {
 					player.pause(false);
-					if (
-						player.playing &&
-						player.queue.current &&
-						player.queue.size
-					) {
-						if (settings.CustomChannel)
-							await bot.musicembed(bot, player, settings);
-					}
+					if (settings.CustomChannel)
+						await bot.musicembed(bot, player, settings);
+
 					if (player.timeout) clearTimeout(player.timeout);
 					if (player.timeout2) clearTimeout(player.timeout2);
 					if (player.timeout3) clearTimeout(player.timeout3);
 				}
 				break;
 			case "LEAVE":
-				bot.logger.debug("LEAVE");
-				if (stateChangeMembers.size === 0) {
+				if (stateChange.members.size === 0 && !player.paused) {
 					if (player.playing) player.pause(true);
 					if (settings.CustomChannel)
 						await bot.musicembed(bot, player, settings);

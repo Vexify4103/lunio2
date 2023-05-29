@@ -152,7 +152,7 @@ module.exports = class Lyrics extends Command {
 						),
 					};
 					let embed = new EmbedBuilder()
-						.setTitle(options.title)
+						.setTitle(`${options.artist} - ${options.title}`)
 						.setThumbnail(bot.config.googlelogo)
 						.setColor(await bot.getColor(bot, guild.id))
 						.setDescription(`${lyrics}`)
@@ -214,7 +214,7 @@ module.exports = class Lyrics extends Command {
 		const pages = [];
 		for (let i = 0; i < pagesNum; i++) {
 			const embed = new EmbedBuilder()
-				.setTitle(options.title)
+				.setTitle(`${options.artist} - ${options.title}`)
 				.setColor(await bot.getColor(bot, guild.id))
 				.setDescription(info.substring(i * 3072, (i + 1) * 3072))
 				.setThumbnail(bot.config.googlelogo)

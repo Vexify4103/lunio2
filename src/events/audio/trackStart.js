@@ -14,13 +14,15 @@ class TrackStart extends Event {
 		});
 	}
 
-	async run(bot, player, track) {
+	async run(bot, player, track2) {
 		if (player.timeout != "null") clearTimeout(player.timeout);
 		if (player.timeout2 != "null") clearTimeout(player.timeout2);
 		if (player.timeout3 != "null") clearTimeout(player.timeout3);
-		
+
 		let settings = await bot.getGuildData(bot, player.guild);
-		track.title = await bot.replaceTitle(bot, track);
+		const res = { tracks: [track2] };
+		res.tracks = await bot.replaceCredentials(bot, res);
+		const track = res.tracks[0];
 
 		//console.log(player)
 		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
@@ -36,9 +38,13 @@ class TrackStart extends Event {
 		if (settings.Announce) {
 			let description;
 			if (settings.Requester) {
-				description = `${track.title} ~ <@${track.requester.id}>`;
+				description = `[${bot.getduration(track.duration)}] - ${
+					track.author
+				} - ${track.title} ~ <@${track.requester.id}>`;
 			} else {
-				description = `${track.title}`;
+				description = `[${bot.getduration(track.duration)}] - ${
+					track.author
+				} - ${track.title}`;
 			}
 			let title2 = bot.translate(settings.Language, "misc:NOW_PLAYING");
 			let embed = new EmbedBuilder()

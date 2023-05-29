@@ -12,7 +12,7 @@ class QueueEnd extends Event {
 
 	async run(bot, player, track) {
 		const timestamp = `[${moment().format("HH:mm:ss")}]:`;
-		const content = `${player.guild} finished track: ${track.author} ${track.title}`;
+		const content = `${player.guild} finished track: ${track.author} - ${track.title}`;
 		console.log(`${timestamp} ${chalk.bgYellow("FINISHED")} ${content} `);
 
 		const videoID = track.uri.substring(track.uri.indexOf("=") + 1);
@@ -56,11 +56,12 @@ class QueueEnd extends Event {
 				}, bot.config.LeaveTimeout);
 				return;
 			}
-			if (player.queue.size) {
+			if (player.queue.current) {
 				player.timeout2 = setTimeout(async () => {
+					player.queue.clear();
+					player.stop();
+					player.pause(false);
 					if (settings.CustomChannel) {
-						player.queue.clear();
-						player.stop();
 						await bot.musicoff(bot, settings);
 					}
 				}, bot.config.LeaveTimeout);
@@ -99,7 +100,7 @@ class QueueEnd extends Event {
 			let res;
 			try {
 				res = await bot.manager.search(searchURI, track.requester);
-				res = await bot.replaceTitle(bot, res);
+				res.tracks = await bot.replaceCredentials(bot, res);
 
 				if (res.loadType === "LOAD_FAILED") {
 					if (!player.queue.current) player.destroy();

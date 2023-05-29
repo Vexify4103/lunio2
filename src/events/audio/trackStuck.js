@@ -20,7 +20,7 @@ class TrackStuck extends Event {
 		let embed = new EmbedBuilder()
 			.setColor(bot.config.colorWrong)
 			.setTitle(title)
-			.setDescription(`${track.title}`);
+			.setDescription(`${track.author} - ${track.title}`);
 
 		let channel = await bot.channels.fetch(player.textChannel);
 

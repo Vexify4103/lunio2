@@ -195,22 +195,28 @@ module.exports = class clickButton extends Event {
 
 						for (const song of playlistArray.songs) {
 							try {
-								const searchResult = await bot.manager.search(
-									`${song.title} - ${song.author}`,
+								let res = await bot.manager.search(
+									`${song.author} - ${song.title}`,
 									user
 								);
-
-								switch (searchResult.loadType) {
+								res.tracks = await bot.replaceCredentials(bot, res);
+								switch (res.loadType) {
 									case "NO_MATCHES":
-										failedSongsArray.push(song.title);
+										failedSongsArray.push(
+											`${song.author} - ${song.title}`
+										);
 										break;
 
 									case "TRACK_LOADED":
 									case "SEARCH_RESULT":
 									case "PLAYLIST_LOADED":
-										const track = searchResult.tracks[0];
+										const track = res.tracks[0];
 										bot.logger.log(
-											`Track loaded: ${track.title}`
+											`${
+												guild.id
+											} ${res.loadType.toLowerCase()}: ${
+												track.author
+											} - ${track.title}`
 										);
 										player.queue.add(track);
 
@@ -261,22 +267,28 @@ module.exports = class clickButton extends Event {
 
 					for (const song of playlistArray.songs) {
 						try {
-							const searchResult = await bot.manager.search(
-								`${song.title} - ${song.author}`,
+							let res = await bot.manager.search(
+								`${song.author} - ${song.title}`,
 								user
 							);
-
+							res.tracks = await bot.replaceCredentials(bot, res);
 							switch (searchResult.loadType) {
 								case "NO_MATCHES":
-									failedSongsArray.push(song.title);
+									failedSongsArray.push(
+										`${song.author} - ${song.title}`
+									);
 									break;
 
 								case "TRACK_LOADED":
 								case "SEARCH_RESULT":
 								case "PLAYLIST_LOADED":
-									const track = searchResult.tracks[0];
+									const track = res.tracks[0];
 									bot.logger.log(
-										`Track loaded: ${track.title}`
+										`${
+											guild.id
+										} ${res.loadType.toLowerCase()}: ${
+											track.author
+										} - ${track.title}`
 									);
 									player.queue.add(track);
 

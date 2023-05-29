@@ -12,14 +12,14 @@ class TrackError extends Event {
 		const settings = await bot.getGuildData(bot, player.gild);
 		//console.log(track)
 		bot.logger.error(
-			`Track error: ${payload.message} **${payload.severity}** in guild: ${player.guild} for this song: ${track.title}.`
+			`Track error: ${payload.message} **${payload.severity}** in guild: ${player.guild} for this song: ${track.author} - ${track.title}.`
 		);
 
 		let title = bot.translate(settings.Language, "misc:ERROR_TITLE");
 		let embed = new EmbedBuilder()
 			.setColor(bot.config.colorWrong)
 			.setTitle(title)
-			.setDescription(`${track.title}`);
+			.setDescription(`${track.author} - ${track.title}`);
 
 		let channel = await bot.channels.fetch(player.textChannel);
 		if (settings.CustomChannel) {

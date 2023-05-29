@@ -439,7 +439,7 @@ module.exports = class Playlist extends Command {
 
 				// Search for song using userInput
 				let res = await bot.manager.search(track, member.user);
-				res = await bot.replaceTitle(bot, res);
+				res.tracks = await bot.replaceCredentials(bot, res);
 				// CHECK IF USER HAS ENOUGH SPACE IN PLAYLIST
 				if (
 					(playlistArray.songs.length >=
@@ -517,10 +517,10 @@ module.exports = class Playlist extends Command {
 					res.loadType === "SEARCH_RESULT"
 				) {
 					let finalResult = await bot.manager.search(
-						`${res.tracks[0].title} - ${res.tracks[0].author}`,
+						`${res.tracks[0].author} - ${res.tracks[0].title}`,
 						member.user
 					);
-					res = await bot.replaceTitle(bot, finalResult);
+					res.tracks = await bot.replaceCredentials(bot, finalResult);
 
 					if (finalResult.loadType === "NO_MATCHES") {
 						embed = new EmbedBuilder()
@@ -762,22 +762,31 @@ module.exports = class Playlist extends Command {
 						try {
 							bot.manager
 								.search(
-									`${song.title} - ${song.author}`,
+									`${song.author} - ${song.title}`,
 									member.user
 								)
 								.then(async (res) => {
-									res = await bot.replaceTitle(bot, res);
+									res.tracks = await bot.replaceCredentials(
+										bot,
+										res
+									);
 									await bot.delay(bot, 100);
 
 									let track = res.tracks[0];
 									// console.log(track);
 									switch (res.loadType) {
 										case "NO_MATCHES":
-											failedSongsArray.push(song.title);
+											failedSongsArray.push(
+												failedSongsArray`${song.author} - ${song.title}`
+											);
 											break;
 										case "TRACK_LOADED":
 											bot.logger.log(
-												`Track Loaded: ${track.title}`
+												`${
+													guild.id
+												} ${res.loadType.toLowerCase()}: ${
+													track.author
+												} - ${track.title}`
 											);
 											player.queue.add(track);
 											if (
@@ -790,7 +799,11 @@ module.exports = class Playlist extends Command {
 											break;
 										case "SEARCH_RESULT":
 											bot.logger.log(
-												`Track found: ${track.title}`
+												`${
+													guild.id
+												} ${res.loadType.toLowerCase()}: ${
+													track.author
+												} - ${track.title}`
 											);
 											player.queue.add(track);
 											if (
@@ -803,7 +816,11 @@ module.exports = class Playlist extends Command {
 											break;
 										case "PLAYLIST_LOADED":
 											bot.logger.log(
-												`Playlist loaded: ${track.title}`
+												`${
+													msg.guild.id
+												} ${res.loadType.toLowerCase()}: ${
+													res.playlist.name
+												}`
 											);
 											player.queue.add(track);
 											if (
@@ -817,7 +834,9 @@ module.exports = class Playlist extends Command {
 									}
 								});
 						} catch (error) {
-							failedSongsArray.push(song.title);
+							failedSongsArray.push(
+								`${song.author} - ${song.title}`
+							);
 							bot.logger.error(error);
 						}
 					}

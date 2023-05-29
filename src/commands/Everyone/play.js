@@ -56,7 +56,26 @@ module.exports = class Play extends Command {
 		await interaction.deferReply({ ephemeral: true });
 		const { channel } = member.voice;
 		const search = interaction.options.getString("track");
-		const flags = interaction.options.getString("flags");
+		const flagsString = interaction.options.getString("flags");
+
+		let flags = {
+			shuffle: false,
+			reverse: false,
+			next: false,
+		};
+		switch (flagsString) {
+			case "n":
+				flags.next = true;
+				break;
+			case "s":
+				flags.shuffle = true;
+				break;
+			case "r":
+				flags.reverse = true;
+				break;
+			default:
+				break;
+		}
 
 		let title;
 		try {
@@ -76,7 +95,7 @@ module.exports = class Play extends Command {
 		}
 
 		let res = await bot.manager.search(search, member.user);
-		res = await bot.replaceTitle(bot, res);
+		res.tracks = await bot.replaceCredentials(bot, res);
 		await bot.delay(bot, 500);
 		const color = await bot.getColor(bot, guild.id);
 
@@ -122,47 +141,19 @@ module.exports = class Play extends Command {
 					ephemeral: true,
 				});
 				break;
-
 			case "TRACK_LOADED":
-				bot.logger.log(`${guild.id} track loaded: ${track.title}`);
-				player.queue.add(track);
-
-				if (!player.playing && !player.paused && !player.queue.size)
-					await player.play();
-
-				if (player.queue.length !== 0) {
-					title = bot.translate(
-						settings.Language,
-						"Everyone/play:LOADED_TITLE_1",
-						{
-							POS: player.queue.length,
-						}
-					);
-				} else {
-					title = bot.translate(
-						settings.Language,
-						"Everyone/play:LOADED_TITLE_2"
-					);
-				}
-				embed = new EmbedBuilder()
-					.setColor(color)
-					.setTitle(title)
-					.setDescription(`${track.author} - ${track.title}`);
-
-				setTimeout(() => {
-					interaction.editReply({
-						embeds: [embed],
-						ephemeral: true,
-					});
-				}, bot.ws.ping * 2);
-				if (settings.CustomChannel) {
-					await bot.musicembed(bot, player, settings);
-				}
-				break;
-
 			case "SEARCH_RESULT":
-				bot.logger.log(`track found: ${track.title}`);
-				player.queue.add(track);
+				bot.logger.log(
+					`${guild.id} ${res.loadType.toLowerCase()}: ${
+						track.author
+					} - ${track.title}`
+				);
+				if (flags.next) {
+					player.queue.unshift(track);
+				} else {
+					player.queue.add(track);
+				}
+				if (flags.shuffle) player.queue.shuffle();
 
 				if (!player.playing && !player.paused && !player.queue.size)
 					await player.play();
@@ -219,14 +210,22 @@ module.exports = class Play extends Command {
 							ephemeral: true,
 						});
 					}, bot.ws.ping * 2);
-					if (settings.CustomChannel)
-						await bot.musicembed(bot, player, settings);
+					await bot.musicembed(bot, player, settings);
 				}
 				break;
-
 			case "PLAYLIST_LOADED":
+				//FLAGS
 				let PLAYLIST_LOADED;
 				if (search.includes("&list=RD")) {
+					bot.logger.log(
+						`${guild.id} track_loaded: ${track.author} - ${track.title}`
+					);
+					if (flags.next) {
+						player.queue.unshift(track);
+					} else {
+						player.queue.add(track);
+					}
+					if (flags.shuffle) player.queue.shuffle();
 					PLAYLIST_LOADED = new EmbedBuilder()
 						.setColor(color)
 						.setDescription(
@@ -241,8 +240,6 @@ module.exports = class Play extends Command {
 							)
 						);
 
-					player.queue.add(res.tracks[0]);
-
 					if (!player.playing && !player.paused && !player.queue.size)
 						await player.play();
 
@@ -254,110 +251,39 @@ module.exports = class Play extends Command {
 					}, bot.ws.ping * 2);
 				} else {
 					if (settings.Playlists) {
-						switch (flags) {
-							case "n":
-								res.tracks.shift();
-
-								PLAYLIST_LOADED = new EmbedBuilder()
-									.setColor(color)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/play:PL_LOADED_DESC_2",
-											{
-												SIZE: res.tracks.length - 1,
-												PLAYLISTNAME: `${bot.codeBlock(
-													res.playlist.name
-												)}`,
-											}
-										)
-									);
-
-								player.queue.add(res.tracks);
-								if (
-									!player.playing &&
-									!player.paused &&
-									player.queue.totalSize === res.tracks.length
-								)
-									await player.play();
-								break;
-							case "s":
-								shuffleArray(res.tracks);
-
-								PLAYLIST_LOADED = new EmbedBuilder()
-									.setColor(color)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/play:PL_LOADED_DESC_2",
-											{
-												SIZE: res.tracks.length,
-												PLAYLISTNAME: `${bot.codeBlock(
-													res.playlist.name
-												)}`,
-											}
-										)
-									);
-
-								player.queue.add(res.tracks);
-								if (
-									!player.playing &&
-									!player.paused &&
-									player.queue.totalSize === res.tracks.length
-								)
-									await player.play();
-								break;
-							case "r":
-								res.tracks.reverse();
-
-								PLAYLIST_LOADED = new EmbedBuilder()
-									.setColor(color)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/play:PL_LOADED_DESC_2",
-											{
-												SIZE: res.tracks.length,
-												PLAYLISTNAME: `${bot.codeBlock(
-													res.playlist.name
-												)}`,
-											}
-										)
-									);
-
-								player.queue.add(res.tracks);
-								if (
-									!player.playing &&
-									!player.paused &&
-									player.queue.totalSize === res.tracks.length
-								)
-									await player.play();
-								break;
-							default:
-								PLAYLIST_LOADED = new EmbedBuilder()
-									.setColor(color)
-									.setDescription(
-										bot.translate(
-											settings.Language,
-											"Everyone/play:PL_LOADED_DESC_2",
-											{
-												SIZE: res.tracks.length,
-												PLAYLISTNAME: `${bot.codeBlock(
-													res.playlist.name
-												)}`,
-											}
-										)
-									);
-
-								player.queue.add(res.tracks);
-								if (
-									!player.playing &&
-									!player.paused &&
-									player.queue.totalSize === res.tracks.length
-								)
-									await player.play();
-								break;
+						bot.logger.log(
+							`${guild.id} ${res.loadType.toLowerCase()}: ${
+								res.playlist.name
+							}`
+						);
+						if (flags.shuffle) shuffleArray(res.tracks);
+						if (flags.reverse) res.tracks.reverse();
+						if (flags.next) { 
+							player.queue.unshift(...res.tracks);
+						} else {
+							player.queue.add(res.tracks);
 						}
+						PLAYLIST_LOADED = new EmbedBuilder()
+							.setColor(color)
+							.setDescription(
+								bot.translate(
+									settings.Language,
+									"Everyone/play:PL_LOADED_DESC_2",
+									{
+										SIZE: res.tracks.length,
+										PLAYLISTNAME: `${bot.codeBlock(
+											res.playlist.name
+										)}`,
+									}
+								)
+							);
+
+						if (
+							!player.playing &&
+							!player.paused &&
+							player.queue.totalSize === res.tracks.length
+						)
+							await player.play();
 					} else {
 						PLAYLIST_LOADED = new EmbedBuilder()
 							.setColor(bot.config.colorOrange)

@@ -67,7 +67,8 @@ module.exports = async (
 	const message = await channel.messages.fetch(mChannelEmbedID);
 
 	bot.manager.search(search, member.user).then(async (res) => {
-		res = await bot.replaceTitle(bot, res);
+		res.tracks = await bot.replaceCredentials(bot, res);
+		//console.log(res)
 		await bot.delay(bot, 100);
 		const color = await bot.getColor(bot, msg.guild.id);
 		if (SongUserLimit > 0 && bot.checkDJ(member, { SongUserLimit })) {
@@ -80,7 +81,6 @@ module.exports = async (
 		}
 
 		const track = res.tracks[0];
-
 		switch (res.loadType) {
 			case "NO_MATCHES":
 				embed = new EmbedBuilder()
@@ -147,8 +147,11 @@ module.exports = async (
 						);
 						if (flags.shuffle) shuffleArray(res.tracks);
 						if (flags.reverse) res.tracks.reverse();
-						if (flags.next) player.queue.unshift(...res.tracks);
-
+						if (flags.next) { 
+							player.queue.unshift(...res.tracks);
+						} else {
+							player.queue.add(res.tracks);
+						}
 						embed = new EmbedBuilder()
 							.setColor(color)
 							.setDescription(
@@ -164,7 +167,6 @@ module.exports = async (
 								)
 							);
 
-						player.queue.add(res.tracks);
 						if (
 							!player.playing &&
 							!player.paused &&

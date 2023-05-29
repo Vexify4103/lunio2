@@ -5,11 +5,11 @@ const {
 	ButtonStyle,
 	PermissionsBitField,
 } = require("discord.js");
-const getduration = require("./getduration");
 const {
 	setTimeoutId,
 	clearTimeoutByMessageId,
 } = require("../UtilFunctios/timeoutManager");
+const getduration = require("./getduration");
 
 module.exports = async (
 	bot,
@@ -29,7 +29,6 @@ module.exports = async (
 			Language,
 		});
 
-	const modifiedTitle = await bot.replaceTitle(bot, player?.queue?.current);
 	const queue = player.queue;
 	const track = player.queue.current;
 	const multiple = 15;
@@ -57,7 +56,7 @@ module.exports = async (
 	let Author = {
 		name: `[${getduration(track.duration)}] - ${
 			track.author
-		} - ${modifiedTitle}`,
+		} - ${track.title}`,
 		iconURL: bot.user.displayAvatarURL({ format: "png" }),
 	};
 
