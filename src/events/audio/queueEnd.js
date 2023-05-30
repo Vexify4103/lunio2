@@ -34,6 +34,7 @@ class QueueEnd extends Event {
 
 		if (!player.autoplay) {
 			if (!settings.twentyFourSeven) {
+				if (settings.CustomChannel) await bot.musicoff(bot, settings);
 				player.timeout = setTimeout(async () => {
 					const embed = new EmbedBuilder()
 						.setColor(bot.config.colorOrange)
@@ -54,7 +55,6 @@ class QueueEnd extends Event {
 					}
 					player.destroy();
 				}, bot.config.LeaveTimeout);
-				if (settings.CustomChannel) await bot.musicoff(bot, settings);
 				return;
 			}
 			if (player.queue.current) {
