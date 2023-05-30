@@ -1,6 +1,6 @@
 const config = {
 	inviteLink:
-		"https://discord.com/api/oauth2/authorize?client_id=945474723846950944&permissions=36826192&scope=applications.commands%20bot",
+		"https://discord.com/api/oauth2/authorize?client_id=945474723846950944&permissions=57797648&scope=applications.commands%20bot",
 	premiumLink: "https://www.patreon.com/luniobot",
 	connectLink: "https://www.patreon.com/settings/apps",
 	voteLink: "https://top.gg/bot/945030475779551415",

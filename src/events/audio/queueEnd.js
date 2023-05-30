@@ -54,6 +54,7 @@ class QueueEnd extends Event {
 					}
 					player.destroy();
 				}, bot.config.LeaveTimeout);
+				if (settings.CustomChannel) await bot.musicoff(bot, settings);
 				return;
 			}
 			if (player.queue.current) {
