@@ -1,5 +1,4 @@
 const config = {
-	// replace BOTID with the bot's ID
 	inviteLink:
 		"https://discord.com/api/oauth2/authorize?client_id=945474723846950944&permissions=36826192&scope=applications.commands%20bot",
 	premiumLink: "https://www.patreon.com/luniobot",
@@ -9,6 +8,7 @@ const config = {
 	disabledCommands: [],
 	disabledPlugins: [],
 	websiteURL: "Bot's dashboard",
+	lavalinkLocal: false,
 	// your support server
 	SupportServer: {
 		// Link to your support server

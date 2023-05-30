@@ -3,8 +3,10 @@ const Deezer = require("erela.js-deezer");
 const Spotify = require("erela.js-spotify");
 const Facebook = require("erela.js-facebook");
 require("dotenv").config();
-//const { lavalink: nodes, api_keys: { spotify } } = require("../config");
+const config = require("../config");
 require("../structures/Player");
+const path = require("path");
+const fs = require("fs");
 
 /**
  * Audio manager
@@ -13,11 +15,9 @@ require("../structures/Player");
 class AudioManager extends Manager {
 	constructor(bot) {
 		super({
-			nodes: [{
-				host: process.env.LAVALINKHOST,
-				port: parseInt(process.env.LAVALINKPORT),
-				password: process.env.LAVALINKPASSWORD,
-			}],
+			nodes: config.lavalinkLocal
+				? retrieveNodesFromConfig()
+				: retrieveNodesFromJson(),
 			plugins: [
 				new Deezer({ playlistLimit: 1, albumLimit: 1 }),
 				new Facebook(),
@@ -34,6 +34,41 @@ class AudioManager extends Manager {
 			},
 		});
 	}
+}
+
+function retrieveNodesFromJson() {
+	try {
+		// Construct the absolute path to the JSON file
+		const jsonPath = path.join(
+			__dirname,
+			"AudioNodes",
+			"LavalinkNodes.json"
+		);
+		// Read the JSON file
+		const jsonData = fs.readFileSync(jsonPath, "utf-8");
+
+		// Parse the JSON data
+		const nodes = JSON.parse(jsonData);
+
+		// Return the array of nodes
+		return nodes;
+	} catch (error) {
+		console.error("Error retrieving nodes from JSON file:", error);
+		return [];
+	}
+}
+
+function retrieveNodesFromConfig() {
+	const stringValue = process.env.LAVALINKSECURE;
+	const boolean = stringValue === "TRUE";
+	return [
+		{
+			host: process.env.LAVALINKHOST,
+			port: parseInt(process.env.LAVALINKPORT),
+			password: process.env.LAVALINKPASSWORD,
+			secure: boolean,
+		},
+	];
 }
 
 module.exports = AudioManager;

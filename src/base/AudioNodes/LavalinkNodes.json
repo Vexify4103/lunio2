@@ -1,0 +1,62 @@
+[
+	{
+		"host": "lavalink.lexnet.cc", 
+		"port": 443,
+		"password": "lexn3tl@val!nk",
+        "secure": true
+	},
+	{
+		"host": "lavalink.devamop.in",
+		"port": 443,
+		"password": "DevamOP",
+        "secure": true
+	},
+	{
+		"host": "oce-lavalink.lexnet.cc",
+		"port": 443,
+		"password": "lexn3tl@val!nk",
+        "secure": true
+	},
+    {
+		"host": "fsn.lavalink.alexanderof.xyz",
+		"port": 2333,
+		"password": "lavalink",
+		"secure": false
+	},
+    {
+		"host": "lavalink1.albinhakanson.se",
+		"port": 1141,
+		"password": "albinhakanson.se",
+		"secure": false
+	},
+    {
+		"host": "lava3.horizxon.studio",
+		"port": 80,
+		"password": "horizxon.studio",
+		"secure": false
+	},
+	{
+		"host": "minatoaqua.miraclecherrypie.cf",
+		"port": 8080,
+		"password": "KawaiiOnyanisbetter!!!!",
+		"secure": false
+	},
+    {
+		"host": "lavalink.clxud.pro",
+		"port": 2333,
+		"password": "youshallnotpass",
+		"secure": false
+	},
+    {
+		"host": "lavalink.cyber-host.eu",
+		"port": 2333,
+		"password": "discord.gg/cyberhost",
+		"secure": false
+	},
+    {
+		"host": "lavalink.jirayu.pw",
+		"port": 2100,
+		"password": "jirayu.pw",
+		"secure": false
+	}
+]

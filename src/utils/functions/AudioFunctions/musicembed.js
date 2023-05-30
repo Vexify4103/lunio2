@@ -232,7 +232,7 @@ module.exports = async (
 		currentTime - embed.createdAt.getTime() >=
 			bot.config.changeableSettings.refreshEmbedTime
 	) {
-		bot.logger.log(`Updating musicembed. OldID: ${embed.id}`);
+		bot.logger.log(`${guild.id} updating musicembed`);
 		const UpdateInProgress = { mChannelUpdateInProgress: true };
 		const updateResult = await bot.updateGuildSettings(
 			guild.id,
@@ -265,12 +265,10 @@ module.exports = async (
 				mChannelUpdateInProgress: false,
 			};
 			await bot.updateGuildSettings(guild.id, newSettings);
-			bot.logger.log(`Finished updating musicembed. NewID: ${embed.id}`);
+			bot.logger.log`${guild.id} finished updating musicembed - NewID: ${embed.id}`;
 		} else {
-			bot.logger.error("Error updating mChannelUpdateInProgress value");
+			bot.logger.error(`${guild.id} error updating musicembed`);
 		}
-		// return bot.logger.error("Error updating mChannelUdateInProgress value");
-		// Delete the old music embed message
 	} else {
 		// Update the existing message with the new content, embed, and components
 		await embed.edit({
@@ -283,13 +281,4 @@ module.exports = async (
 			},
 		});
 	}
-	// await embed.edit({
-	// 	content: content,
-	// 	embeds: [MUSIC],
-	// 	components: components,
-	// 	allowedMentions: {
-	// 		repliedUser: false,
-	// 		parse: ["everyone"],
-	// 	},
-	// });
 };

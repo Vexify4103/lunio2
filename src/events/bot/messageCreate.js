@@ -230,7 +230,7 @@ module.exports = class Message extends Event {
 			}
 			// CHECK IF USER IS IN *SAME* VC
 			if (player && member.voice.channel.id !== player.voiceChannel) {
-				embed = new EmbedBuilder()
+				let embed = new EmbedBuilder()
 					.setColor(bot.config.colorOrange)
 					.setDescription(
 						bot.translate(

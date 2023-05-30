@@ -7,8 +7,8 @@ class NodeConnect extends Event {
 		});
 	}
 	async run(bot, node) {
-		bot.logger.ready(
-			`Lavalink node: ${node.options.identifier} has connected.`
+		bot.logger.lavalink(
+			`node: ${node.options.identifier} has connected`
 		);
 	}
 }

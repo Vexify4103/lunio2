@@ -8,12 +8,12 @@ class PlayerCreate extends Event {
 	}
 
 	async run(bot, player) {
-		if (bot.config.debug)
-			bot.logger.log(
-				`Lavalink player created in guild: ${player.guild}.`
-			);
+		bot.logger.lavalink(`player created in guild: ${player.guild}.`);
 		var guild = await bot.guilds.fetch(player.guild);
 
+		bot.logger.lavalink(
+			`${player.node.options.identifier} is playing for ${player.guild}`
+		);
 		if (!guild.members.me.voice.serverDeaf) {
 			setTimeout(() => {
 				guild.members.me.voice.setDeaf(true).catch((err) => {

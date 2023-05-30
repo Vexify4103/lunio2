@@ -1,15 +1,15 @@
 module.exports = (duration) => {
-	(seconds = Math.floor((duration / 1000) % 60)),
-		(minutes = Math.floor((duration / (1000 * 60)) % 60)),
-		(hours = Math.floor((duration / (1000 * 60 * 60)) % 24));
+	const seconds = Math.floor((duration / 1000) % 60);
+	const minutes = Math.floor((duration / (1000 * 60)) % 60);
+	let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
 	hours = hours < 10 ? "0" + hours : hours;
-	minutes = minutes < 10 ? "0" + minutes : minutes;
-	seconds = seconds < 10 ? "0" + seconds : seconds;
+	const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+	const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
 	if (hours >= 1) {
-		return hours + ":" + minutes + ":" + seconds;
+		return hours + ":" + formattedMinutes + ":" + formattedSeconds;
 	} else {
-		return minutes + ":" + seconds;
+		return formattedMinutes + ":" + formattedSeconds;
 	}
 };

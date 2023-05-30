@@ -18,6 +18,20 @@ exports.log = (content, type = "log") => {
 				`${timestamp} ${chalk.bgBlue(type.toUpperCase())} ${content} `
 			);
 			break;
+		case "lavalink":
+			log.info(content);
+			console.log(
+				`${timestamp} ${chalk.greenBright(
+					type.toUpperCase()
+				)} ${content}`
+			);
+			break;
+		case "lavalinkError":
+			log.error(content);
+			console.log(
+				`${timestamp} ${chalk.redBright(type.toUpperCase())} ${content}`
+			);
+			break;
 		case "warn":
 			log.warn(content);
 			console.log(
@@ -68,3 +82,7 @@ exports.debug = (...args) => this.log(...args, "debug");
 exports.cmd = (...args) => this.log(...args, "cmd");
 
 exports.ready = (...args) => this.log(...args, "ready");
+
+exports.lavalink = (...args) => this.log(...args, "lavalink");
+
+exports.lavalinkError = (...args) => this.log(...args, "lavalinkError");
