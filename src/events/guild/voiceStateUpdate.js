@@ -13,8 +13,25 @@ module.exports = class voiceStateUpdate extends Event {
 		const guildId = newState.guild.id || oldState?.guild.id;
 		const player = bot.manager.players.get(guildId);
 		const settings = await bot.getGuildData(bot, guildId);
+
+		if (oldState.channelId && !newState.channelId) {
+			try {
+				if (oldState.member.user.id === bot.user.id) {
+					// IF bot left vc, destroy player
+					if (!player) return;
+					player.destroy();
+				}
+			} catch (error) {
+				bot.logger.lavalinkError(`${guildId} error destroying player`)
+			}
+		}
 		// check if the bot is active (playing, paused or empty does not matter (return otherwise)
-		if (!player || player.state !== "CONNECTED") return;
+		if (!player || player.state !== "CONNECTED") {
+			if (player) {
+				player.destroy();
+			}
+			return;
+		}
 
 		// prepreoces the data
 		const stateChange = {};
@@ -94,10 +111,18 @@ module.exports = class voiceStateUpdate extends Event {
 							)
 						);
 				} catch (err) {
-					player?.pause(true);
+					player.pause(true);
+					if (settings.CustomChannel) {
+						if (player.queue.current)
+							await bot.musicembed(bot, player, settings);
+					}
 				}
 			} else if (oldState.suppress !== newState.suppress) {
-				player?.pause(newState.suppress);
+				player.pause(newState.suppress);
+				if (settings.CustomChannel) {
+					if (player.queue.current)
+						await bot.musicembed(bot, player, settings);
+				}
 			}
 		}
 
