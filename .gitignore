@@ -3,3 +3,4 @@ Lavalink/application.yml
 .env
 src/utils/logs
 src/save
+src/config.js

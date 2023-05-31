@@ -26,7 +26,6 @@ module.exports = class Ready extends Event {
 		const guildIds = [
 			"823543363688464455",
 			"866666289178869770",
-			"709832515577184287",
 		]; // Support Server: 866666289178869770, TEST Server: 823543363688464455, Friends Server: 709832515577184287
 		// Load up audio player
 		try {
@@ -64,6 +63,20 @@ module.exports = class Ready extends Event {
 					}
 					data.push(item);
 				}
+				if (command.conf.slash && command.conf.prv) {
+					let item = {
+						name: command.help.name,
+						description: command.help.description,
+						default_member_permissions:
+							command.conf.default_member_permissions != null
+								? command.conf.default_member_permissions.toString()
+								: undefined,
+					};
+					if (command.conf.options[0]) {
+						item.options = command.conf.options
+					}
+					prvData.push(item)
+				}
 			} catch (error) {
 				bot.logger.error(`Error loading /commands ${error}`);
 			}
@@ -75,18 +88,23 @@ module.exports = class Ready extends Event {
 				bot.logger.log(
 					`Started refreshing application (/) commands in: ${id}`
 				);
-				await rest.put(Routes.applicationGuildCommands(clientId, id), {
-					// body: [],
-					body: data,
-				});
+				if (id === bot.config.SupportServer.GuildID) {
+					bot.logger.log('Reloading private commands')
+					const combinedData = prvData.concat(data)
+					await rest.put(
+						Routes.applicationGuildCommands(clientId, bot.config.SupportServer.GuildID), {
+							// body: [],
+							body: combinedData,
+						}
+					)
+				} else {
+					await rest.put(Routes.applicationGuildCommands(clientId, id), {
+						// body: [],
+						body: data,
+					});
+				}
 			});
 
-			// bot.logger.log('Reloading private commands')
-			// await rest.put(
-			// 	Routes.applicationGuildCommand(clientId, '866666289178869770'), {
-			// 		body: prvData
-			// 	}
-			// )
 
 			// for Global commands:
 			// await rest.put(
